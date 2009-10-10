@@ -1,0 +1,10 @@
+rack --version 1.0.0
+
+activesupport --version 2.3.4
+activerecord --version 2.3.4
+actionpack --version 2.3.4
+actionmailer --version 2.3.4
+rails --version 2.3.4
+
+haml --version 2.2.7
+email-veracity --version 0.3.0
