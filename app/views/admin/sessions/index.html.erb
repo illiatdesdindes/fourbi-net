@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml;charset=UTF-8"/>
+  <meta name="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"/>
+  <meta http-equiv="CACHE-CONTROL" content="no-cache, must-revalidate"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <title>Connection</title>
+  <%= stylesheet_link_tag 'admin' %>
+</head>
+<body>
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end -%>
+
+<% if flash[:error] %>
+    <div id="error"><%= flash[:error] %></div>
+<% end -%>
+<div class="form">
+  <fieldset>
+    <legend>Merci de vous authentifier</legend>
+    <% form_tag do %>
+        <p>
+          <label for="name">Login</label>
+          <%= text_field_tag :login, params[:login] %>
+        </p>
+
+        <p>
+          <label for="password">Mot de passe</label>
+          <%= password_field_tag :mot_de_passe, params[:mot_de_passe] %>
+        </p>
+
+        <p>
+          <%= submit_tag "S'authentifier" %>
+        </p>
+    <% end %>
+  </fieldset>
+</div>
+</body>
+</html>

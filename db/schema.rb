@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091019161423) do
+ActiveRecord::Schema.define(:version => 20091019163539) do
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -20,5 +20,19 @@ ActiveRecord::Schema.define(:version => 20091019161423) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "utilisateurs", :force => true do |t|
+    t.string   "login",           :limit => 20, :null => false
+    t.string   "nom",             :limit => 40, :null => false
+    t.string   "email",           :limit => 40, :null => false
+    t.string   "hashed_password",               :null => false
+    t.string   "salt",                          :null => false
+    t.boolean  "site_admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "utilisateurs", ["login"], :name => "index_utilisateurs_on_login", :unique => true
+  add_index "utilisateurs", ["nom"], :name => "index_utilisateurs_on_nom", :unique => true
 
 end

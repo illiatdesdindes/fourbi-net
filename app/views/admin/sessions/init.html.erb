@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml;charset=UTF-8"/>
+  <meta name="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+  <meta http-equiv="CACHE-CONTROL" content="no-cache, must-revalidate">
+  <title>Créer un utilisateur</title>
+  <%= stylesheet_link_tag 'admin' %>
+</head>
+<body>
+<% if flash[:notice] -%>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end -%>
+
+<% if flash[:error] -%>
+    <div id="error"><%= flash[:error] %></div>
+<% end -%>
+
+<div class="form">
+  <fieldset>
+    <legend>Merci d'entrer les informations n&eacute;cessaires</legend>
+    <% form_tag :controller => '/admin/sessions', :action => :init do %>
+        <p>
+          <label for="name">Login</label>
+          <%= text_field_tag :login, params[:login] %>
+        </p>
+
+        <p>
+          <label for="nom">Nom</label>
+          <%= text_field_tag :nom, params[:nom] %>
+        </p>
+
+        <p>
+          <label for="email">Email</label>
+          <%= text_field_tag :email, params[:email] %>
+        </p>
+
+        <p>
+          <label for="password">Mot de passe</label>
+          <%= password_field_tag :mot_de_passe, params[:mot_de_passe] %>
+        </p>
+
+        <p>
+          <%= submit_tag "Cr&eacute;er l'utilisateur" %>
+        </p>
+    <% end %>
+  </fieldset>
+</div>
+</body>
+</html>

@@ -1,7 +1,9 @@
 class Admin::IndexController < Admin::DefaultAdminController
 
-  def index
+  before_filter :authorize_base
 
+  def index
+    @page_title = 'Administration'
   end
 
 end

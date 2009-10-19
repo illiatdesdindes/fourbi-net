@@ -1,0 +1,13 @@
+<%= error_messages_for :utilisateur %>
+
+<% form_for @utilisateur, :url => { :controller => 'admin/utilisateurs', :action => :create} do |f| %>
+
+    <%= render(:partial => "admin/utilisateurs/display_for_edit", :locals => {:f => f}) %>
+
+    <table class="barreBoutons">
+      <tr>
+        <td><%= f.submit 'Cr&eacute;er' %></td>
+        <td><%= link_to 'Liste des utilisateurs', :action => :index %></td>
+      </tr>
+    </table>
+<% end %>
