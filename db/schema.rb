@@ -9,7 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091019163539) do
+ActiveRecord::Schema.define(:version => 20091020180721) do
+
+  create_table "boutiques", :force => true do |t|
+    t.string   "nom",        :null => false
+    t.integer  "numero",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "boutiques", ["numero"], :name => "index_boutiques_on_numero", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -30,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20091019163539) do
     t.boolean  "site_admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "boutique_id"
   end
 
   add_index "utilisateurs", ["login"], :name => "index_utilisateurs_on_login", :unique => true

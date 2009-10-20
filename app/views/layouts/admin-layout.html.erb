@@ -38,8 +38,11 @@
 
 <div id="navigation">
   <h2 id="currentUser"><%= link_or_current h(@current_user.nom), {:controller => :'/admin/utilisateurs', :action => :show, :id => @current_user.id} %></h2>
-
   <div id="logout"><%= link_to 'Se d&eacute;connecter', :controller => '/admin/sessions', :action => :logout %></div>
+  <br/>
+
+  <h3><%= link_or_current 'Les boutiques', {:controller => :'/admin/boutiques', :action => :index} %></h3>
+
 
 </div>
 

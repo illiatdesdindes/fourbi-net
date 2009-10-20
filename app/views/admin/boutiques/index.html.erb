@@ -1,0 +1,15 @@
+<table class="sortable alternated barreBoutons">
+  <thead>
+  <th>&nbsp;&nbsp;</th>
+  <th>Nom&nbsp;&nbsp;</th>
+  </thead>
+  <tbody>
+  <% for boutique in @boutiques %>
+      <tr>
+        <td><%= link_to_view boutique, nil, 'Voir' %></td>
+        <td><%= h boutique.nom %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
