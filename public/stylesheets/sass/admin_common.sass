@@ -1,35 +1,12 @@
-*
-  margin: 0px
-  padding: 0px
+@import admin_constants.sass
 
-body
-  color: cccccc
-  background-color 333333
+#logo
+  position: absolute
+  top: 5px
+  left: 20px
   font:
-    family: "Lucida Grande", Lucida, Arial, Verdana, sans-serif
-    size: 12px
-
-h1
-  padding:
-    top: 10px
-    bottom: 20px
-  font-weight: normal
-
-h2
-  padding:
-    top: 5px
-    bottom: 10px
-  font-weight: normal
-
-h3
-  padding
-    top: 2px
-    bottom: 5px
-  font-weight: normal
-
-h6
-  font-weight: normal
-  font-size: inherit
+    size: 30px
+    weight: bold
 
 #navigation
   position: absolute
@@ -73,3 +50,146 @@ h6
     right: 10px
   a:hover
     background-color: #DDDDDD
+
+// les boutons en bas de page
+.barreBoutons
+  padding-top: 10px
+
+.barreBoutons a, .barreBoutons input, .barreBoutons textareaenv
+  border: 2px outset #f5f5f5
+  padding: 2px
+  text-decoration: none
+  background-color: white
+  color: black
+  margin: 2px
+  padding: 2px
+  font-size: 12px
+  cursor: pointer
+  +rounded-corners(5px)
+
+.barreBoutons a:hover
+  background-color: white
+
+// la notification
+.flash
+  padding: 2px
+  margin-bottom: 5px
+  font-weight: bold
+#notice
+  border: 2px solid green
+#warning
+  border: 2px solid orange
+#error
+  border: 2px solid red
+
+#errorExplanation
+  width: 400px
+  border: 2px solid red
+  padding: 7px
+  padding-bottom: 12px
+  margin-bottom: 20px
+  background-color: #f0f0f0
+  list-style-position: inside
+
+.fieldWithErrors input
+  border: 2px solid red
+  display: inline
+
+// les listes a virgules
+.listeVirgules
+  li
+    display: inline
+  li:before
+    content: ", "
+  li:first-child:before
+  content: ""
+
+// la pagination
+.pagination
+  text-align: right
+  margin-bottom: 10px
+
+  .current, a
+    border: 1px solid #cccccc
+    padding: 1px
+
+// tables a couleur alternee
+table.alternated
+  border: 1px solid black
+  border-collapse: collapse
+  empty-cells: nowrap
+  text-align: justify
+  width: 100%
+
+  td, th
+    border: 1px solid #b0b0b0
+    vertical-align: middle
+    padding:
+      left: 5px
+      right: 5px
+      top: 5px
+      bottom: 5px
+  thead
+    background-color: #cccccc
+    color: black
+  tr:hover
+    background-color: #FFFF99
+
+.even
+  :background-color #e5eeee
+
+// table triables
+table.sortable thead
+  th.header
+    background:
+      image: url(/images/bg.gif)
+      repeat: no-repeat
+      position: center right
+    cursor: pointer
+  th.headerSortUp
+    background-image: url(/images/asc.gif)
+  th.headerSortDown
+    background-image: url(/images/desc.gif)
+  th.headerSortDown, .headerSortUp
+    background-color: #8dbdd8
+
+// tables a bordures
+table.bordered
+  borde:r 1px solid #b0b0b0
+  border-collapse: separate
+  empty-cells: nowrap
+  text-align: justify
+
+  td
+    padding:
+      left: 5px
+      right: 5px
+      top: 5px
+    border: 1px solid #b0b0b0
+    vertical-align: top
+
+  fieldset
+    vertical-align: top
+
+table.edit td
+  vertical-align: top
+  width: 50%
+  padding:
+    left: 5px
+    right: 5px
+
+.edit
+  padding-bottom: 5px
+
+.displayValue
+  padding-bottom: 10px
+
+.edit form,.edit form div
+  display: inline
+
+.droite
+  float: right
+
+// affichage de donnes supprimees
+.deleted
+  background-color: #ffcccc

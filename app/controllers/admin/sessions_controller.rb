@@ -46,7 +46,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
   private
 
   def cleanup_sessions
-    ActiveRecord::Base.connection.execute('DELETE FROM sessions WHERE extract(epoch from (NOW() - updated_at)) > 3600' )
+    # ActiveRecord::Base.connection.execute('DELETE FROM sessions WHERE extract(epoch from (NOW() - updated_at)) > 3600' )
   end
 
 
