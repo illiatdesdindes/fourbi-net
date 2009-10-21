@@ -14,6 +14,7 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
       end
     else
       @utilisateur = Utilisateur.find(params[:id])
+      @boutiques = Boutique.find(:all, :order => 'nom')
       @page_title = "Modifier utilisateur-trice \"#{@utilisateur.nom}\""
     end
   end
@@ -26,12 +27,14 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
   def new
     if request.post?
       @utilisateur = Utilisateur.new(params[:utilisateur])
+      @utilisateur.boutique = Boutique.find(@utilisateur.boutique)
       if @utilisateur.save
         flash[:notice] = "Utilisateur-rice \"#{@utilisateur.nom}\" créé"
         redirect_to :action => :show, :id => @utilisateur.id
       end
     else
       @utilisateur = Utilisateur.new
+      @boutiques = Boutique.find(:all, :order => 'nom')
       @page_title = 'Créer un utilisateur-rice'
     end
   end

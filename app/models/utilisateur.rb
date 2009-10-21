@@ -22,7 +22,7 @@ class Utilisateur < ActiveRecord::Base
   validates_uniqueness_of :login, :nom
   validates_confirmation_of :mot_de_passe, :message => 'invalide.'
 
-  has_one :boutique
+  belongs_to :boutique
 
   attr_accessor :confirmation_mot_de_passe
 

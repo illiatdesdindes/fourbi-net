@@ -2,7 +2,7 @@
 
 <% form_for @utilisateur, :url => { :controller => 'admin/utilisateurs', :action => :edit, :id => @utilisateur.id }, :html => {:method => :put} do |f| %>
 
-    <%= render(:partial => "admin/utilisateurs/display_for_edit", :locals => {:f => f}) %>
+    <%= render(:partial => "admin/utilisateurs/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
 
     <table class="barreBoutons">
       <tr>

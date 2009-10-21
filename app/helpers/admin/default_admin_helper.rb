@@ -32,6 +32,14 @@ module Admin::DefaultAdminHelper
     "<div><label>#{name}</label> #{value}</div>"
   end
 
+  def edit_value_table(name, value, div_param = nil)
+    if div_param
+      "<tr #{div_param}><td><label>#{name}</label></td><td>#{value}</td></tr>"
+    else
+      "<tr><td><label>#{name}</label></td><td>#{value}</td></tr>"
+    end
+  end
+
   def link_or_current name, options
     link_to_unless_current(name, options, {}) do
       name + " &#60;"

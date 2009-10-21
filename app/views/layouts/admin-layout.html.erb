@@ -42,8 +42,14 @@
   <br/>
 
   <h3><%= link_or_current 'Les boutiques', {:controller => :'/admin/boutiques', :action => :index} %></h3>
+  <br/>
+  <% if @current_user.boutique %>
+      <h3><%= link_or_current @current_user.boutique.nom, {:controller => :'/admin/boutiques', :action => :show, :id => @current_user.boutique} %></h3>
+      <br/>
+  <% end %>
 
 
+  <h3><%= link_or_current 'Les utilisateur-rice-s', {:controller => :'/admin/utilisateurs'} %></h3>
 </div>
 
 </body>

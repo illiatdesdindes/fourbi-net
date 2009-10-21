@@ -1,10 +1,12 @@
 <%= display_value_changed 'Login', h(@utilisateur.login), 'login' %>
 <%= display_value_changed 'Nom', h(@utilisateur.nom), 'nom' %>
 <%= display_value_changed 'Email', "<a href=\"mailto:#{h(@utilisateur.email)}\">#{h(@utilisateur.email)}</a>", 'email' %>
+<%= display_value_changed 'Boutique', @utilisateur.boutique.andand.nom, 'boutique' %>
+<%= display_value_changed 'Administrateur-rice du site', @utilisateur.site_admin?.to_fs, 'site_admin' %>
 
 <table class="barreBoutons">
   <tr>
-    <% if @site_admin %>
+    <% if @site_admin || (@utilisateur == @current_user)%>
         <td><%= link_to_edit @utilisateur %></td>
     <% end %>
     <td><%= link_to 'Afficher la liste des utilisateurs', :action => :index %></td>

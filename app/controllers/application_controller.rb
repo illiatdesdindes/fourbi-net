@@ -10,3 +10,15 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 end
+
+class TrueClass
+  def to_fs
+    "oui"
+  end
+end
+
+class FalseClass
+  def to_fs
+    "non"
+  end
+end
