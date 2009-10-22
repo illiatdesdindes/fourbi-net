@@ -1,7 +1,30 @@
 <%= display_value_changed 'Nom', h(@boutique.nom), 'nom' %>
 
+<br/>
+
+<table class="sortable alternated barreBoutons">
+  <thead>
+  <th>&nbsp;&nbsp;</th>
+  <th>Nom&nbsp;&nbsp;</th>
+  <th>Numéro&nbsp;&nbsp;</th>
+  <th>Active&nbsp;&nbsp;</th>
+  </thead>
+  <tbody>
+  <% for serie in @series %>
+      <tr>
+        <td><%= link_to_view serie, "admin/series", 'Voir' %></td>
+        <td><%= h serie.nom %></td>
+        <td><%= serie.active? ? serie.numero : 'inactive' %></td>
+        <td><%= serie.active?.to_fs %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <table class="barreBoutons">
   <tr>
-    <td><%= link_to 'Afficher la liste des boutiques', :action => :index %></td>
+    <td><%= link_to 'Créer une série', :controller => "/admin/series", :action => :new, :id => @boutique %></td>
+    <td><%= link_to 'Classer les séries', :action => :reorder, :id => @boutique %></td>
+    <td><%= link_to 'Liste des boutiques', :action => :index %></td>
   </tr>
 </table>

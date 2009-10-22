@@ -1,0 +1,11 @@
+<%= display_value_changed 'Nom', h(@serie.nom), 'nom' %>
+<%= display_value_changed 'Numero', @serie.active? ? @serie.numero : 'inactive', 'email' %>
+<%= display_value_changed 'Boutique', @serie.boutique.nom, 'boutique' %>
+<%= display_value_changed 'Active', @serie.active?.to_fs, 'active' %>
+
+<table class="barreBoutons">
+  <tr>
+    <td><%= link_to_edit @serie %></td>
+    <td><%= link_to 'Liste des séries', :controller => "admin/boutiques", :action => :show, :id => @serie.boutique %></td>
+  </tr>
+</table>

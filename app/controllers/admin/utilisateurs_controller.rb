@@ -11,6 +11,9 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
       if @utilisateur.save
         flash[:notice] = "Utilisateur-rice \"#{@utilisateur.nom}\" modifié-e"
         redirect_to :action => :show, :id => @utilisateur.id
+      else
+        flash[:error] = "Utilisateur-trice \"#{@utilisateur.nom}\" non modifié-e : #{@utilisateur.errors.full_messages[0]}"
+        @boutiques = Boutique.find(:all, :order => 'nom')
       end
     else
       @utilisateur = Utilisateur.find(params[:id])
@@ -27,10 +30,12 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
   def new
     if request.post?
       @utilisateur = Utilisateur.new(params[:utilisateur])
-      @utilisateur.boutique = Boutique.find(@utilisateur.boutique)
       if @utilisateur.save
         flash[:notice] = "Utilisateur-rice \"#{@utilisateur.nom}\" créé"
         redirect_to :action => :show, :id => @utilisateur.id
+      else
+        flash[:error] = "Utilisateur-trice \"#{@utilisateur.nom}\" non modifié-e : #{@utilisateur.errors.full_messages[0]}"
+        @boutiques = Boutique.find(:all, :order => 'nom')
       end
     else
       @utilisateur = Utilisateur.new

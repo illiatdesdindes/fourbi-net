@@ -8,6 +8,11 @@ class Admin::DefaultAdminController < ApplicationController
       redirect_to :controller => "admin/sessions", :action => :index
     else
       @site_admin = @current_user.site_admin?
+      if @current_user.boutique
+        @current_series = Serie.find(:all, :conditions => ['boutique_id = ? and active= true', @current_user.boutique], :order => 'numero asc')
+      else
+        @current_series = []
+      end
     end
   end
 

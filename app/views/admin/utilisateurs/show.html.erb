@@ -9,6 +9,6 @@
     <% if @site_admin || (@utilisateur == @current_user)%>
         <td><%= link_to_edit @utilisateur %></td>
     <% end %>
-    <td><%= link_to 'Afficher la liste des utilisateurs', :action => :index %></td>
+    <td><%= link_to 'Liste des utilisateurs', :action => :index %></td>
   </tr>
 </table>
