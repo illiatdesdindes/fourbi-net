@@ -51,7 +51,7 @@ class Admin::SeriesController < Admin::DefaultAdminController
       end
       if @serie.save
         flash[:notice] = "Série \"#{@serie.nom}\" créée"
-        redirect_to :action => :show, :id => @serie.id
+        redirect_to :action => :show, :id => @serie
       else
         flash[:error] = "Série \"#{@serie.nom}\" non modifié-e : #{@serie.errors.full_messages[0]}"
         @boutiques = Boutique.find(:all, :order => 'nom')
@@ -67,7 +67,6 @@ class Admin::SeriesController < Admin::DefaultAdminController
   def show
     @serie = Serie.find(params[:id])
     @page_title = "Voir série \"#{@serie.nom}\""
-
   end
 
 

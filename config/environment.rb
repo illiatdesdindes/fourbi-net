@@ -19,7 +19,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'haml', :version => '2.2.7', :lib => 'haml'
+  config.gem 'haml', :version => '2.2.9', :lib => 'haml'
   config.gem 'email-veracity', :version => '0.3.0', :lib => 'email_veracity'
   config.gem 'andand', :version => '1.3.1', :lib => 'andand'
 
