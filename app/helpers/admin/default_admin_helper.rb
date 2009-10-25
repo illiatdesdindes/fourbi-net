@@ -1,7 +1,11 @@
 module Admin::DefaultAdminHelper
 
   def changed? attribute_name
-    @changes && @changes.include?(attribute_name)
+    session[:changes] && session[:changes].include?(attribute_name)
+  end
+
+  def clear_change attribute_name
+    session[:changes].delete attribute_name
   end
 
   def display_value(name, value, text_after = nil)
@@ -14,6 +18,7 @@ module Admin::DefaultAdminHelper
 
   def display_image_value_changed(image, attribute_name, width = nil, height = nil)
     if changed? attribute_name
+      clear_change attribute_name
       "<p>#{image_tag image, :class => 'imageChanged', :width => width, :height => height}</p>"
     else
       "<p>#{image_tag image, :width => width, :height => height}</p>"
@@ -22,6 +27,7 @@ module Admin::DefaultAdminHelper
 
   def display_value_changed(name, value, attribute_name, text_after = nil)
     if changed? attribute_name
+      clear_change attribute_name
       "<p>#{name} :<span class='changed'> #{value}#{text_after}</span></p>"
     else
       "<p>#{name} : #{value}#{text_after}</p>"
@@ -84,6 +90,14 @@ module Admin::DefaultAdminHelper
       link_to 'Supprimer', {:action => :'delete', :id => object },
               :confirm => 'En &ecirc;tes vous certain ?',
               :method => :delete, :id => 'deleteButton'
+    end
+  end
+
+  def nombre_restant_ou_infini nombre_restant
+    if nombre_restant != -1
+      nombre_restant
+    else
+      '&infin;'
     end
   end
 

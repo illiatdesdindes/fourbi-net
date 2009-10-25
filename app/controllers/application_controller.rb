@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  after_filter :set_content_type
+
+  def set_content_type
+    if (response.content_type == 'text/html') && request.accepts.include?('application/xml')
+      response.content_type = 'application/xhtml+xml'
+    end
+  end
+
 end
 
 class TrueClass

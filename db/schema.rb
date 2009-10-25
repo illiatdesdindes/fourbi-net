@@ -9,7 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091021170330) do
+ActiveRecord::Schema.define(:version => 20091025154137) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "nom",            :null => false
+    t.text     "description"
+    t.integer  "numero",         :null => false
+    t.integer  "serie_id",       :null => false
+    t.integer  "nombre_restant", :null => false
+    t.float    "prix",           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "articles", ["nombre_restant"], :name => "index_articles_on_nombre_restant"
+  add_index "articles", ["numero"], :name => "index_articles_on_numero"
+  add_index "articles", ["serie_id"], :name => "index_articles_on_serie_id"
 
   create_table "boutiques", :force => true do |t|
     t.string   "nom",        :null => false

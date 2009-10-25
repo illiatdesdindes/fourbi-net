@@ -1,5 +1,13 @@
 class Admin::DefaultAdminController < ApplicationController
 
+  def set_changes changes
+    session[:changes] = changes
+  end
+
+  def clean_changes
+    session[:changes] = {}
+  end
+
   private
 
   def authorize_base

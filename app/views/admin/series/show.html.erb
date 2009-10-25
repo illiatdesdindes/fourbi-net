@@ -1,11 +1,38 @@
 <%= display_value_changed 'Nom', h(@serie.nom), 'nom' %>
-<%= display_value_changed 'Numero', @serie.active? ? @serie.numero : 'inactive', 'email' %>
+<%= display_value_changed 'Numero', @serie.active? ? @serie.numero : 'inactive', 'numero' %>
 <%= display_value_changed 'Boutique', @serie.boutique.nom, 'boutique' %>
 <%= display_value_changed 'Active', @serie.active?.to_fs, 'active' %>
+
+<br/>
+
+<h3>Les articles de la série</h3>
+<br/>
+
+<table class="sortable alternated barreBoutons">
+  <thead>
+  <th>&nbsp;&nbsp;</th>
+  <th>Nom&nbsp;&nbsp;</th>
+  <th>Numéro&nbsp;&nbsp;</th>
+  <th>Prix&nbsp;&nbsp;</th>
+  <th>Nombre restant&nbsp;&nbsp;</th>
+  </thead>
+  <tbody>
+  <% for article in @articles %>
+      <tr>
+        <td><%= link_to_view article, "admin/articles", 'Voir' %></td>
+        <td><%= h article.nom %></td>
+        <td><%= (article.numero >=0) ? article.numero : 'inactive' %></td>
+        <td><%= article.prix %> &euro;</td>
+        <td><%= nombre_restant_ou_infini article.nombre_restant %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <table class="barreBoutons">
   <tr>
     <td><%= link_to_edit @serie %></td>
+    <td><%= link_to 'Ajouter un article', :controller => "/admin/articles", :action => :new, :id => @serie%></td>
     <td><%= link_to 'Liste des séries', :controller => "admin/boutiques", :action => :show, :id => @serie.boutique %></td>
   </tr>
 </table>

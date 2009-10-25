@@ -7,11 +7,12 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
     if request.put?
       @utilisateur = Utilisateur.find(params[:id])
       @utilisateur.attributes = params[:utilisateur]
-      @changes = @utilisateur.changed
+      set_changes = @utilisateur.changed
       if @utilisateur.save
         flash[:notice] = "Utilisateur-rice \"#{@utilisateur.nom}\" modifié-e"
-        redirect_to :action => :show, :id => @utilisateur.id
+        redirect_to :action => :show, :id => @utilisateur
       else
+        clean_changes
         flash[:error] = "Utilisateur-trice \"#{@utilisateur.nom}\" non modifié-e : #{@utilisateur.errors.full_messages[0]}"
         @boutiques = Boutique.find(:all, :order => 'nom')
       end
@@ -32,7 +33,7 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
       @utilisateur = Utilisateur.new(params[:utilisateur])
       if @utilisateur.save
         flash[:notice] = "Utilisateur-rice \"#{@utilisateur.nom}\" créé"
-        redirect_to :action => :show, :id => @utilisateur.id
+        redirect_to :action => :show, :id => @utilisateur
       else
         flash[:error] = "Utilisateur-trice \"#{@utilisateur.nom}\" non modifié-e : #{@utilisateur.errors.full_messages[0]}"
         @boutiques = Boutique.find(:all, :order => 'nom')

@@ -1,6 +1,6 @@
 <%= error_messages_for :serie %>
 
-<% form_for @serie, :url => {:action => :edit, :id => @serie.id }, :html => {:method => :put} do |f| %>
+<% form_for @serie, :url => {:action => :edit, :id => @serie }, :html => {:method => :put} do |f| %>
 
     <%= render(:partial => "admin/series/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
 
