@@ -1,7 +1,7 @@
 <%= display_value_changed 'Nom', h(@article.nom), 'nom' %>
 <%= display_value_changed 'Description', @article.description, 'description' %>
 <%= display_value_changed 'Numero', (@article.numero >= 0) ? @article.numero : 'inactif', 'numero' %>
-<%= display_value_changed 'Série', h(@article.serie.nom), 'serie' %>
+<%= display_value_changed 'Série', link_to_view(@article.serie, 'admin/series', h(@article.serie.nom)), 'boutique' %>
 <%= display_value_changed 'Nombre restant', nombre_restant_ou_infini(@article.nombre_restant), 'nombre_restant' %>
 <%= display_value_changed 'Prix', "#{h(@article.prix)} &euro;", 'prix' %>
 
