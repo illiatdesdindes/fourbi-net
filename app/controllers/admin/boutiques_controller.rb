@@ -40,7 +40,7 @@ class Admin::BoutiquesController < Admin::DefaultAdminController
   def show
     @boutique = Boutique.find(params[:id])
     @page_title = "Voir boutique #{@boutique.nom}"
-    @series = Serie.find(:all, :conditions => ['boutique_id = ?', @boutique], :order => "active desc, numero asc, nom asc")
+    @series = Serie.find(:all, :conditions => ['boutique_id = ?', @boutique], :order => "numero asc, nom asc")
   end
 
 end

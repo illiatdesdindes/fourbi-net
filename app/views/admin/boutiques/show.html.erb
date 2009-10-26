@@ -10,15 +10,13 @@
   <th>&nbsp;&nbsp;</th>
   <th>Nom&nbsp;&nbsp;</th>
   <th>Numéro&nbsp;&nbsp;</th>
-  <th>Active&nbsp;&nbsp;</th>
   </thead>
   <tbody>
   <% for serie in @series %>
       <tr>
         <td><%= link_to_view serie, "admin/series", 'Voir' %></td>
         <td><%= h serie.nom %></td>
-        <td><%= serie.active? ? serie.numero : 'inactive' %></td>
-        <td><%= serie.active?.to_fs %></td>
+        <td><%= serie.disponible? ? serie.numero : 'indisponible' %></td>
       </tr>
   <% end %>
   </tbody>

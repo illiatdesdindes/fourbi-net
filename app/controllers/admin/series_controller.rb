@@ -6,18 +6,13 @@ class Admin::SeriesController < Admin::DefaultAdminController
   def edit
     if request.put?
       @serie = Serie.find(params[:id])
-      was_active = @serie.active?
+      etatit_disponible = @serie.disponible?
       @serie.attributes = params[:serie]
 
-      if was_active && (!@serie.active?)
+      if etatit_disponible && (!@serie.disponible?)
         @serie.numero = -1
-      elsif (!was_active) && @serie.active?
-        serie_max = Serie.find(:first, :conditions => ['boutique_id = ?', @serie.boutique_id], :order => 'numero desc')
-        if serie_max
-          @serie.numero = serie_max.numero + 1
-        else
-          @serie.numero = 0
-        end
+      elsif (!etatit_disponible) && @serie.disponible?
+        @serie.numero = prochain_numero @serie
       end
 
       set_changes @serie.changed
@@ -40,13 +35,8 @@ class Admin::SeriesController < Admin::DefaultAdminController
   def new
     if request.post?
       @serie = Serie.new(params[:serie])
-      if @serie.active?
-        serie_max = Serie.find(:first, :conditions => ['boutique_id = ?', @serie.boutique], :order => 'numero desc')
-        if serie_max
-          @serie.numero = serie_max.numero + 1
-        else
-          @serie.numero = 0
-        end
+      if @serie.disponible?
+        @serie.numero = prochain_numero @serie
       else
         @serie.numero = -1
       end
@@ -70,6 +60,17 @@ class Admin::SeriesController < Admin::DefaultAdminController
     @serie = Serie.find(params[:id])
     @articles = Article.find(:all, :conditions => ['serie_id = ?', @serie], :order => "numero asc, nom asc")
     @page_title = "Voir série \"#{@serie.nom}\""
+  end
+
+  private
+
+  def prochain_numero serie
+    serie_max = Serie.find(:first, :conditions => ['boutique_id = ?', serie.boutique], :order => 'numero desc')
+    if serie_max
+      serie_max.numero + 1
+    else
+      0
+    end
   end
 
 

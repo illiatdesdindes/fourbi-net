@@ -1,7 +1,6 @@
 <%= display_value_changed 'Nom', h(@serie.nom), 'nom' %>
-<%= display_value_changed 'Numero', @serie.active? ? @serie.numero : 'inactive', 'numero' %>
+<%= display_value_changed 'Numero', @serie.disponible? ? @serie.numero : 'indisponible', 'numero' %>
 <%= display_value_changed 'Boutique', link_to_view(@serie.boutique, 'admin/boutiques', @serie.boutique.nom), 'boutique' %>
-<%= display_value_changed 'Active', @serie.active?.to_fs, 'active' %>
 
 <br/>
 
@@ -21,7 +20,7 @@
       <tr>
         <td><%= link_to_view article, "admin/articles", 'Voir' %></td>
         <td><%= h article.nom %></td>
-        <td><%= (article.numero >=0) ? article.numero : 'inactive' %></td>
+        <td><%= (article.numero >=0) ? article.numero : 'indisponible' %></td>
         <td><%= article.prix %> &euro;</td>
         <td><%= nombre_restant_ou_infini article.nombre_restant %></td>
       </tr>

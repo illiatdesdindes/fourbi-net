@@ -53,7 +53,7 @@
           <ul>
       <% end %>
       <% @current_series.each do |serie| %>
-          <li><%= link_or_current serie.nom, {:controller => :'/admin/series', :action => :show, :id => serie} %></li>
+          <li><%= link_or_current h(serie.nom), {:controller => :'/admin/series', :action => :show, :id => serie} %></li>
       <% end %>
       <% unless @current_series.empty? %>
           </ul>

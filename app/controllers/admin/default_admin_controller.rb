@@ -17,7 +17,7 @@ class Admin::DefaultAdminController < ApplicationController
     else
       @site_admin = @current_user.site_admin?
       if @current_user.boutique
-        @current_series = Serie.find(:all, :conditions => ['boutique_id = ? and active= true', @current_user.boutique], :order => 'numero asc')
+        @current_series = Serie.find(:all, :conditions => ['boutique_id = ? and numero != -1', @current_user.boutique], :order => 'numero asc')
       else
         @current_series = []
       end
