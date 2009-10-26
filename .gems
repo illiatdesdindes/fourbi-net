@@ -9,3 +9,7 @@ rails --version 2.3.4
 haml --version 2.2.9
 email-veracity --version 0.3.0
 andand --version 1.3.1
+
+bullet --version 1.7.0
+ruby-growl --version 1.0.1
+
