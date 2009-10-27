@@ -1,4 +1,4 @@
-class Serie < ActiveRecord::Migration
+class CreateSerie < ActiveRecord::Migration
   def self.up
     create_table :series do |t|
       t.string :nom, :null => false
