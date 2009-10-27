@@ -28,3 +28,8 @@ end
 
 config.gem 'bullet', :source => 'http://gemcutter.org', :version => '1.7.0'
 config.gem 'ruby-growl', :version => '1.0.1'
+
+RestClient.log = 'stdout'
+
+Paperclip::Storage::Http::SCRIPT_URL = "http://localhost:8080/images/post.php"
+Paperclip::Storage::Http::IMAGES_ROOT_URL = "http://localhost:8080/images/images/"

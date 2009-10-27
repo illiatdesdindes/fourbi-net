@@ -9,6 +9,15 @@
           <%= edit_value_table('Disponible', (f.check_box :disponible?)) %>
           <%= edit_value_table('Prix', (f.text_field :prix)) %>
           <%= edit_value_table("Nombre restant (-1 : non renseigné)", (f.text_field :nombre_restant)) %>
+          <tr>
+            <td colspan="2">
+              <fieldset>
+                <legend>Image</legend>
+                <div><%= image_tag article.image.url %></div>
+                <%= f.file_field :image %>
+              </fieldset>
+            </td>
+          </tr>
         </table>
       </fieldset>
     </td>

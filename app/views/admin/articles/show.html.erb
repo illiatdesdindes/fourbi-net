@@ -4,6 +4,7 @@
 <%= display_value_changed 'Série', link_to_view(@article.serie, 'admin/series', h(@article.serie.nom)), 'boutique' %>
 <%= display_value_changed 'Nombre restant', nombre_restant_ou_infini(@article.nombre_restant), 'nombre_restant' %>
 <%= display_value_changed 'Prix', "#{h(@article.prix)} &euro;", 'prix' %>
+<%= display_image_value_changed @article.image.url, 'extension' %>
 
 <table class="barreBoutons">
   <tr>

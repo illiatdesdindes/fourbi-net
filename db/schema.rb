@@ -9,17 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091026200122) do
+ActiveRecord::Schema.define(:version => 20091027175921) do
 
   create_table "articles", :force => true do |t|
-    t.string   "nom",            :null => false
+    t.string   "nom",                :null => false
     t.text     "description"
-    t.integer  "numero",         :null => false
-    t.integer  "serie_id",       :null => false
-    t.integer  "nombre_restant", :null => false
-    t.float    "prix",           :null => false
+    t.integer  "numero",             :null => false
+    t.integer  "serie_id",           :null => false
+    t.integer  "nombre_restant",     :null => false
+    t.float    "prix",               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "articles", ["nombre_restant"], :name => "index_articles_on_nombre_restant"

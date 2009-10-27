@@ -1,8 +1,8 @@
 <%= error_messages_for :article %>
 
-<% form_for @article, :url => {:action => :edit, :id => @article }, :html => {:method => :put} do |f| %>
+<% form_for @article, :url => {:action => :edit, :id => @article }, :html => {:multipart=>true, :method => :put} do |f| %>
 
-    <%= render(:partial => "admin/articles/display_for_edit", :locals => {:f => f, :series=> @series}) %>
+    <%= render(:partial => "admin/articles/display_for_edit", :locals => {:f => f, :series=> @series, :article => @article}) %>
 
     <table class="barreBoutons">
       <tr>

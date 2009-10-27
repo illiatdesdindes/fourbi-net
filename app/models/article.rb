@@ -2,18 +2,28 @@
 #
 # Table name: articles
 #
-#  id             :integer         not null, primary key
-#  description    :text
-#  nom            :string(255)     not null
-#  nombre_restant :integer         not null
-#  numero         :integer         not null
-#  prix           :float           not null
-#  serie_id       :integer         not null
-#  created_at     :datetime
-#  updated_at     :datetime
+#  id                 :integer         not null, primary key
+#  description        :text
+#  image_content_type :string(255)
+#  image_file_name    :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  nom                :string(255)     not null
+#  nombre_restant     :integer         not null
+#  numero             :integer         not null
+#  prix               :float           not null
+#  serie_id           :integer         not null
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 class Article < ActiveRecord::Base
+
+  has_attached_file :image, :path => ":class/:attachment/:id.:extension", :url => "#{Paperclip::Storage::Http::IMAGES_ROOT_URL}:class/:attachment/:id.:extension", :storage => :http
+
+  validates_attachment_content_type :image,
+                                    :content_type => ['image/gif', 'image/jpeg', 'image/png', 'image/pjpeg',
+                                                      'image/x-png']
   belongs_to :serie
 
   attr_writer :disponible
