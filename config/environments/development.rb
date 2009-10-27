@@ -25,3 +25,6 @@ config.after_initialize do
   Bullet.rails_logger = true
   Bullet.disable_browser_cache = true
 end
+
+config.gem 'bullet', :source => 'http://gemcutter.org', :version => '1.7.0'
+config.gem 'ruby-growl', :version => '1.0.1'
