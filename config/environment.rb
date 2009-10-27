@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'email-veracity', :version => '0.3.0', :lib => 'email_veracity'
   config.gem 'andand', :version => '1.3.1', :lib => 'andand'
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com', :version => '2.3.1'
+  config.gem 'rest-client', :lib => 'rest_client', :version => '1.0.3'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
