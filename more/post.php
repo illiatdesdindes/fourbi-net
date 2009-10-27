@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
       if(move_uploaded_file($_FILES['content']['tmp_name'], $target)) { 
          echo "OK"; 
       } else { 
-         header($_SERVER["SERVER_PROTOCOL"]. "Existing file not deleted", true, 500);
+         header($_SERVER["SERVER_PROTOCOL"]. "Failed to copy the file", true, 500);
       } 
    } 
 } else {
