@@ -8,6 +8,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
         user.nom = params[:nom]
         user.email = params[:email]
         user.mot_de_passe = params[:mot_de_passe]
+        user.site_admin = true
         if !user.save
           flash[:error] = "Utilisateur non cr&eacute;&eacute; : #{user.errors.full_messages[0]}"
         else
