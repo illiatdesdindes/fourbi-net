@@ -50,6 +50,7 @@ class Admin::ArticlesController < Admin::DefaultAdminController
       end
     else
       @article = Article.new
+      @article.nombre_restant = -1
       @article.serie = Serie.find(params[:id])
       @series = Serie.find(:all, :order => 'numero', :conditions => ['boutique_id = ?', @article.serie.boutique_id])
       @page_title = 'Ajouter un article'
@@ -63,7 +64,7 @@ class Admin::ArticlesController < Admin::DefaultAdminController
 
   private
 
-    def prochain_numero article
+  def prochain_numero article
     article_max = Article.find(:first, :conditions => ['serie_id = ?', article.serie], :order => 'numero desc')
     if article_max
       article_max.numero + 1
