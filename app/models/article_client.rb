@@ -24,5 +24,29 @@ class ArticleClient < ActiveRecord::Base
     end
   end
 
+  def before_create
+    update_article quantite
+  end
+
+  def before_destroy
+    update_article -quantite
+  end
+
+  def before_update
+    if changes.include? 'quantite'
+      c = changes['quantite']
+      update_article(c[1] - c[0])
+    end
+  end
+
+  def update_article delta
+    if delta < 0 && article.nombre_restant == 0
+      raise 'Plus d\'exemplaire de l\'article restant, impossible de le réserver'
+    elsif article.nombre_restant != -1
+      article.nombre_restant += article.nombre_restant
+      article.save!
+    end
+  end
+
 
 end
