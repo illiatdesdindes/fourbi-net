@@ -19,12 +19,31 @@
                 <fieldset>
                   <legend><%= h boutique.nom %></legend>
                   <% for serie in boutique.series %>
-                      <% if serie.articles.any? {|article| article.disponible?} %>
+                      <%# les séries qui ont quelque chose de disponlibles ou celles pour lesquelles le client a un article%>
+                      <% if (serie.disponible? && serie.articles.any? {|article| article.disponible?}) || @client.articles.any?{|article| article.serie == serie}%>
                           <fieldset>
                             <legend><%= h serie.nom %></legend>
                             <table>
-                              <% for article in serie.articles %>
-                                  <%= edit_value_table("#{link_to_view(article, 'admin/articles', h(article.nom))} #{article.prix}€", select_tag("article[#{article.id}]", (0..((article.nombre_restant == -1) ? 20 : article.nombre_restant)).map{ |i| "<option>#{i}</option>" })) %>
+                              <% for article in serie.articles.find_all{|article| article.disponible?} %>
+                                  <%
+                                     article_client = @client.article_clients.detect{|article_client| article_client.article == article}
+                                     if article_client
+                                         max_number = (article.nombre_restant == -1) ? 20 : ([article.nombre_restant + article_client.quantite, 20].min)
+                                         selected = article_client.quantite
+                                     else
+                                         selected = 0
+                                         max_number = (article.nombre_restant == -1) ? 20 : article.nombre_restant
+                                     end
+                                  %>
+                                  <%= edit_value_table(
+                                          "#{link_to_view(article, 'admin/articles', h(article.nom))} #{number_to_currency article.prix}",
+                                          select_tag("article[#{article.id}]", (0..max_number).map{ |i| "<option#{(i == selected) ? ' selected="selected"' : ''}>#{i}</option>" })) %>
+                              <% end %>
+                              <%# articles de la série qui ne sont plus disponibles %>
+                              <% for article_client in @client.article_clients.find_all{|article_client| (article_client.article.serie == serie) && (!article_client.article.disponible?) } %>
+                                  <%= edit_value_table(
+                                          "#{link_to_view(article, 'admin/articles', h(article_client.article.nom))} #{number_to_currency article_client.prix_unitaire}",
+                                          select_tag("article[#{article_client.article.id}]", (0..article_client.quantite).map{ |i| "<option#{(i == article_client.quantite) ? ' selected="selected"' : ''}>#{i}</option>" })) %>
                               <% end %>
                             </table>
                           </fieldset>

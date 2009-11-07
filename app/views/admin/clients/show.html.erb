@@ -6,7 +6,7 @@
   <%= display_value_changed 'Ville', @client.ville, 'ville' %>
   <%= display_value_changed 'Pays', @client.pays, 'pays' %>
   <%= display_value_changed 'Email', "<a href=\"mailto:#{h(@client.email)}\">#{h(@client.email)}</a>", 'email' %>
-  <%= display_value_changed 'Prix', "#{@client.prix}€", 'prix' %>
+  <%= display_value_changed 'Prix', "#{number_to_currency @client.prix}", 'prix' %>
 </fieldset>
 <fieldset>
   <legend>Commande</legend>

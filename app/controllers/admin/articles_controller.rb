@@ -6,13 +6,14 @@ class Admin::ArticlesController < Admin::DefaultAdminController
   def edit
     if request.put?
       @article = Article.find(params[:id])
+
       etait_disponible = @article.disponible?
       @article.attributes = params[:article]
 
-      if etait_disponible && (!@article.disponible?)
+      if etait_disponible && ((!@article.disponible?) || (@article.nombre_restant == 0))
         @article.numero = -1
-      elsif (!etait_disponible) && @article.disponible?
-        @article.numero = prochain_numero @article
+      elsif (!etait_disponible) && @article.disponible? && (@article.nombre_restant != 0)
+        @article.numero = Article.prochain_numero @article.serie
       end
 
       set_changes @article.changed
@@ -35,8 +36,8 @@ class Admin::ArticlesController < Admin::DefaultAdminController
   def new
     if request.post?
       @article = Article.new(params[:article])
-      if @article.disponible?
-        @article.numero = prochain_numero @article
+      if @article.disponible? && (@article.nombre_restant != 0)
+        @article.numero = Article.prochain_numero @article.serie
       else
         @article.numero = -1
       end
@@ -60,17 +61,6 @@ class Admin::ArticlesController < Admin::DefaultAdminController
   def show
     @article = Article.find(params[:id])
     @page_title = "Voir article \"#{@article.nom}\""
-  end
-
-  private
-
-  def prochain_numero article
-    article_max = Article.find(:first, :conditions => ['serie_id = ?', article.serie], :order => 'numero desc')
-    if article_max
-      article_max.numero + 1
-    else
-      0
-    end
   end
 
 end

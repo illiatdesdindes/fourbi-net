@@ -44,5 +44,20 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def before_save
+    if nombre_restant == 0
+      self.numero = -1
+    end
+  end
+
+  def Article.prochain_numero serie
+    article_max = Article.find(:first, :conditions => ['serie_id = ?', serie], :order => 'numero desc')
+    if article_max
+      article_max.numero + 1
+    else
+      0
+    end
+  end
+
 
 end
