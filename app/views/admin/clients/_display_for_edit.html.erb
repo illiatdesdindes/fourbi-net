@@ -41,9 +41,10 @@
                               <% end %>
                               <%# articles de la série qui ne sont plus disponibles %>
                               <% for article_client in @client.article_clients.find_all{|article_client| (article_client.article.serie == serie) && (!article_client.article.disponible?) } %>
+                                  <% max_number = (article.nombre_restant == -1) ? 20 : ([article.nombre_restant + article_client.quantite, 20].min) %>
                                   <%= edit_value_table(
                                           "#{link_to_view(article, 'admin/articles', h(article_client.article.nom))} #{number_to_currency article_client.prix_unitaire}",
-                                          select_tag("article[#{article_client.article.id}]", (0..article_client.quantite).map{ |i| "<option#{(i == article_client.quantite) ? ' selected="selected"' : ''}>#{i}</option>" })) %>
+                                          select_tag("article[#{article_client.article.id}]", (0..max_number).map{ |i| "<option#{(i == article_client.quantite) ? ' selected="selected"' : ''}>#{i}</option>" })) %>
                               <% end %>
                             </table>
                           </fieldset>
