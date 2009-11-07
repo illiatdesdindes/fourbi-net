@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20091106110217) do
     t.float   "prix_unitaire", :null => false
   end
 
+  add_index "article_clients", ["article_id", "client_id"], :name => "index_article_clients_on_article_id_and_client_id", :unique => true
+
   create_table "articles", :force => true do |t|
     t.string   "nom",                :null => false
     t.text     "description"

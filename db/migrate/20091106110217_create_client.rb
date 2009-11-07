@@ -24,6 +24,7 @@ class CreateClient < ActiveRecord::Migration
     execute "alter table article_clients add constraint fk_article_clients_clientss foreign key (client_id) references clients(id)"
     add_index :clients, :status, :unique => false
     add_index :clients, :commande_envoyee, :unique => false
+    add_index :article_clients, [:article_id, :client_id], :unique => true
   end
 
   def self.down
