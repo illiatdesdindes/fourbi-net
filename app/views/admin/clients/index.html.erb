@@ -32,7 +32,7 @@
 </div>
 <br/>
 
-<table class="sortable alternated barreBoutons">
+<table class="sortable alternated">
   <thead>
   <th>&nbsp;&nbsp;</th>
   <th>Identifiant&nbsp;&nbsp;</th>
@@ -46,8 +46,8 @@
       <tr>
         <td><%= link_to_view client, nil, 'Voir' %></td>
         <td><%= h client.identifiant %></td>
-        <td><%= "blop" %></td>
-        <td><%= client.prix %></td>
+        <td><%= client.article_clients.collect{ |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}"}.join(', ') %></td>
+        <td><%= "#{client.prix} €" %></td>
         <td><%= client.status_lisible %></td>
         <td><%= client.commande_envoyee.to_fs %></td>
       </tr>

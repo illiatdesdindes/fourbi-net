@@ -22,7 +22,7 @@
                         <% for article in serie.articles %>
                             <% if @client.articles.include? article %>
                                 <% article_client = @client.article_clients.detect{|article_client| article_client.article == article} %>
-                                <%= "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %>
+                                <p><%= "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %></p>
                             <% end %>
                         <% end %>
                       </table>
