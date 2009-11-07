@@ -44,7 +44,7 @@
   <tbody>
   <% for client in @clients %>
       <tr>
-        <td><%= link_to_view user, nil, 'Voir' %></td>
+        <td><%= link_to_view client, nil, 'Voir' %></td>
         <td><%= h client.identifiant %></td>
         <td><%= "blop" %></td>
         <td><%= client.prix %></td>

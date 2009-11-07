@@ -26,7 +26,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
   end
 
   def index
-    @clients = Client.paginate(:all, :order => 'status desc, id', :per_page => 50, :page => params[:page], :include => [{:article_clients => :articles}])
+    @clients = Client.paginate(:all, :order => 'status desc, id', :per_page => 50, :page => params[:page], :include => [{:article_clients => :article}])
     @page_title = 'Liste des clients'
   end
 
