@@ -9,45 +9,45 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
       @utilisateur.attributes = params[:utilisateur]
       set_changes = @utilisateur.changed
       if @utilisateur.save
-        flash[:notice] = "Utilisateur-rice \"#{@utilisateur.nom}\" modifié-e"
+        flash[:notice] = "Utilisateur \"#{@utilisateur.nom}\" modifié"
         redirect_to :action => :show, :id => @utilisateur
       else
         clean_changes
-        flash[:error] = "Utilisateur-trice \"#{@utilisateur.nom}\" non modifié-e : #{@utilisateur.errors.full_messages[0]}"
+        flash[:error] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
         @boutiques = Boutique.find(:all, :order => 'nom')
       end
     else
       @utilisateur = Utilisateur.find(params[:id])
       @boutiques = Boutique.find(:all, :order => 'nom')
-      @page_title = "Modifier utilisateur-trice \"#{@utilisateur.nom}\""
+      @page_title = "Modifier utilisateur \"#{@utilisateur.nom}\""
     end
   end
 
   def index
     @utilisateurs = Utilisateur.find(:all, :order => 'nom')
-    @page_title = 'Liste des utilisateur-rice-s'
+    @page_title = 'Liste des utilisateurs'
   end
 
   def new
     if request.post?
       @utilisateur = Utilisateur.new(params[:utilisateur])
       if @utilisateur.save
-        flash[:notice] = "Utilisateur-rice \"#{@utilisateur.nom}\" créé"
+        flash[:notice] = "Utilisateur \"#{@utilisateur.nom}\" créé"
         redirect_to :action => :show, :id => @utilisateur
       else
-        flash[:error] = "Utilisateur-trice \"#{@utilisateur.nom}\" non modifié-e : #{@utilisateur.errors.full_messages[0]}"
+        flash[:error] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
         @boutiques = Boutique.find(:all, :order => 'nom')
       end
     else
       @utilisateur = Utilisateur.new
       @boutiques = Boutique.find(:all, :order => 'nom')
-      @page_title = 'Créer un utilisateur-rice'
+      @page_title = 'Créer un utilisateur'
     end
   end
 
   def show
     @utilisateur = Utilisateur.find(params[:id])
-    @page_title = "Voir utilisateur-trice \"#{@utilisateur.nom}\""
+    @page_title = "Voir utilisateur \"#{@utilisateur.nom}\""
   end
 
 end

@@ -209,3 +209,17 @@ ul.draggable
     margin: auto
       bottom: 5px
     text-align: center
+
+// les blocs flotants
+.floating
+  :float left
+
+.including_floating:after
+  :content "."
+  :display block
+  :height 0
+  :clear both
+  :visibility hidden
+
+.including_floating tr td
+  vertical-align: top

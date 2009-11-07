@@ -12,7 +12,7 @@
 class Boutique < ActiveRecord::Base
 
   has_many :utilisateurs
-  has_many :series
+  has_many :series, :order => 'numero ASC'
 
   validates_presence_of :nom, :numero
   validates_uniqueness_of :nom, :numero

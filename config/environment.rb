@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'andand', :version => '1.3.1', :lib => 'andand'
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com', :version => '2.3.1'
   config.gem 'rest-client', :lib => 'rest_client', :version => '1.1.6'
+  config.gem 'mislav-will_paginate', :version => '2.3.11', :lib => 'will_paginate', :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091027175921) do
+ActiveRecord::Schema.define(:version => 20091106110217) do
+
+  create_table "article_clients", :force => true do |t|
+    t.integer "article_id",    :null => false
+    t.integer "client_id",     :null => false
+    t.integer "quantite",      :null => false
+    t.float   "prix_unitaire", :null => false
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "nom",                :null => false
@@ -38,6 +45,23 @@ ActiveRecord::Schema.define(:version => 20091027175921) do
   end
 
   add_index "boutiques", ["numero"], :name => "index_boutiques_on_numero", :unique => true
+
+  create_table "clients", :force => true do |t|
+    t.string   "identifiant",                         :null => false
+    t.text     "adresse",                             :null => false
+    t.string   "code_postal"
+    t.string   "ville"
+    t.string   "pays",                                :null => false
+    t.string   "email",                               :null => false
+    t.string   "status",                              :null => false
+    t.float    "prix",                                :null => false
+    t.boolean  "commande_envoyee", :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clients", ["commande_envoyee"], :name => "index_clients_on_commande_envoyee"
+  add_index "clients", ["status"], :name => "index_clients_on_status"
 
   create_table "series", :force => true do |t|
     t.string   "nom",         :null => false

@@ -1,0 +1,42 @@
+<fieldset>
+  <legend>Information générales</legend>
+  <%= display_value_changed 'Nom prénom', h(@client.identifiant), 'identifiant' %>
+  <%= display_value_changed 'Adresse', h(@client.adresse), 'adresse' %>
+  <%= display_value_changed 'Code Postal', h(@client.code_postal), 'code_postal' %>
+  <%= display_value_changed 'Ville', @client.ville, 'ville' %>
+  <%= display_value_changed 'Pays', @client.pays, 'pays' %>
+  <%= display_value_changed 'Email', "<a href=\"mailto:#{h(@client.email)}\">#{h(@client.email)}</a>", 'email' %>
+  <%= display_value_changed 'Prix', "#{@client.prix}€", 'prix' %>
+</fieldset>
+<fieldset>
+  <legend>Commande</legend>
+  <% for boutique in @boutiques %>
+      <% if boutique.series.any? {|serie| serie.articles.any? {|article| @client.articles.include? article}} %>
+          <fieldset>
+            <legend><%= h boutique.nom %></legend>
+            <% for serie in boutique.series %>
+                <% if serie.articles.any? {|article| @client.articles.include? article} %>
+                    <fieldset>
+                      <legend><%= h serie.nom %></legend>
+                      <table>
+                        <% for article in serie.articles %>
+                            <% if @client.articles.include? article %>
+                                <% article_client = @client.article_clients.detect{|article_client| article_client.article == article} %>
+                                <%= "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %>
+                            <% end %>
+                        <% end %>
+                      </table>
+                    </fieldset>
+                <% end %>
+            <% end %>
+          </fieldset>
+      <% end %>
+  <% end %>
+</fieldset>
+
+<table class="barreBoutons">
+  <tr>
+    <td><%= link_to_edit @client %></td>
+    <td><%= link_to 'Liste des clients', :action => :index %></td>
+  </tr>
+</table>

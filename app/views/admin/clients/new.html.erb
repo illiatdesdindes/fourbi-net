@@ -1,0 +1,13 @@
+<%= error_messages_for :client %>
+
+<% form_for @client, :url => {:action => :new} do |f| %>
+
+    <%= render(:partial => "admin/clients/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
+
+    <table class="barreBoutons">
+      <tr>
+        <td><%= f.submit 'Cr&eacute;er' %></td>
+        <td><%= link_to 'Liste des clients', :action => :index %></td>
+      </tr>
+    </table>
+<% end %>

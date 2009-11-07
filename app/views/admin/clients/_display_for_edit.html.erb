@@ -1,0 +1,39 @@
+<table class="edit">
+  <tr>
+    <td>
+      <fieldset>
+        <legend>Information générales</legend>
+        <table>
+          <%= edit_value_table('Nom prénom', (f.text_field :identifiant, :size => 30)) %>
+          <%= edit_value_table('Adresse', (f.text_field :adresse, :size => 50)) %>
+          <%= edit_value_table('Code postal', (f.text_field :code_postal, :size => 5)) %>
+          <%= edit_value_table('Ville', (f.text_field :ville)) %>
+          <%= edit_value_table("Pays", (f.select :pays, Countries::NAME_TO_CODE_ARRAY)) %>
+          <%= edit_value_table('Email', (f.text_field :email, :size => 30)) %>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Commande</legend>
+        <% for boutique in @boutiques %>
+            <% if boutique.series.any? {|serie| serie.disponible? && serie.articles.any? {|article| article.disponible?}} %>
+                <fieldset>
+                  <legend><%= h boutique.nom %></legend>
+                  <% for serie in boutique.series %>
+                      <% if serie.articles.any? {|article| article.disponible?} %>
+                          <fieldset>
+                            <legend><%= h serie.nom %></legend>
+                            <table>
+                              <% for article in serie.articles %>
+                                  <%= edit_value_table("#{link_to_view(article, 'admin/articles', h(article.nom))} #{article.prix}€", select_tag("article[#{article.id}]", (0..((article.nombre_restant == -1) ? 20 : article.nombre_restant)).map{ |i| "<option>#{i}</option>" })) %>
+                              <% end %>
+                            </table>
+                          </fieldset>
+                      <% end %>
+                  <% end %>
+                </fieldset>
+            <% end %>
+        <% end %>
+      </fieldset>
+    </td>
+  </tr>
+</table>

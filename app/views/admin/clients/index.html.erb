@@ -1,0 +1,65 @@
+<div class="including_floating">
+  <table>
+    <tr>
+      <td>
+        <% form_tag({:action => :search}, {:class => 'floating barreBoutons'}) do %>
+            <fieldset>
+              <legend>Recherche</legend>
+              <div>
+                <label for="name">Nom</label><br/>
+                <%= text_field_tag :search, params[:search], :size => 20 %>
+              </div>
+              <div>
+                <%= check_box_tag :supprime %>
+                <label>Inclure les clients supprim&eacute;s</label>
+              </div>
+              <%= submit_tag "Rechercher", :class => "droite" %>
+            </fieldset>
+        <% end %>
+      </td>
+      <td>
+        <% form_tag({:action => :show}, {:class => 'floating barreBoutons'}) do %>
+            <fieldset>
+              <legend>Choisir</legend>
+              <%= label_tag "Afficher le client n°" %>
+              <%= text_field_tag "numero", "", :size => 5 %>
+              <%= submit_tag "Afficher", :class => "droite" %>
+            </fieldset>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+<br/>
+
+<table class="sortable alternated barreBoutons">
+  <thead>
+  <th>&nbsp;&nbsp;</th>
+  <th>Identifiant&nbsp;&nbsp;</th>
+  <th>Commande&nbsp;&nbsp;</th>
+  <th>Prix&nbsp;&nbsp;</th>
+  <th>Status&nbsp;&nbsp;</th>
+  <th>Commande Envoyée&nbsp;&nbsp;</th>
+  </thead>
+  <tbody>
+  <% for client in @clients %>
+      <tr>
+        <td><%= link_to_view user, nil, 'Voir' %></td>
+        <td><%= h client.identifiant %></td>
+        <td><%= "blop" %></td>
+        <td><%= client.prix %></td>
+        <td><%= client.status_lisible %></td>
+        <td><%= client.commande_envoyee.to_fs %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<br/>
+<br/>
+<%= pagine @clients %>
+
+<table class="barreBoutons">
+  <tr>
+    <td><%= link_to 'Nouveau client', :action => :new %></td>
+  </tr>
+</table>

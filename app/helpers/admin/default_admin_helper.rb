@@ -101,4 +101,10 @@ module Admin::DefaultAdminHelper
     end
   end
 
+  def pagine elements
+    if elements.respond_to?('total_pages')
+      will_paginate elements, {:prev_label => '&lt;', :next_label => '&gt;'}
+    end
+  end
+
 end

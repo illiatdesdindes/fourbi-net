@@ -61,8 +61,14 @@
       <br/>
   <% end %>
 
+  <h3><%= link_or_current 'Les clients', {:controller => :'/admin/clients', :action => :index} %></h3>
+  <ul>
+    <li><%= link_or_current 'attente d\'envoi', {:controller => :'/admin/clients', :action => :attente_envoi} %></li>
+    <li><%= link_or_current 'attente de paiement', {:controller => :'/admin/clients', :action => :attente_paiement} %></li>
+  </ul>
+  <br/>
 
-  <h3><%= link_or_current 'Les utilisateur-rice-s', {:controller => :'/admin/utilisateurs'} %></h3>
+  <h3><%= link_or_current 'Les utilisateurs', {:controller => :'/admin/utilisateurs'} %></h3>
 </div>
 
 </body>
