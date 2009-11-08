@@ -63,6 +63,9 @@ class Client < ActiveRecord::Base
 
   def validate
     errors.add_to_base('Aucun article commandé') if article_clients.empty?
+    unless EmailVeracity::Address.new(email).valid?
+      errors.add(:email, 'L\'adresse email est invalide')
+    end
   end
 
 
