@@ -3,16 +3,24 @@ class Admin::ClientsController < Admin::DefaultAdminController
   layout 'admin-layout'
   before_filter :authorize_base
 
+  def article
+    article = Article.find(params[:id])
+    article_clients = ArticleClient.find(:all, :include => [:article, :client], :conditions => ['article_id = ?', article])
+    @clients = article_clients.collect{|article_client| article_client.client}.find_all{|client| client.status != Client::SUPPRIME}
+    @page_title = "Liste des clients ayant commandé \"#{article.nom}\""
+    render :action => :index
+  end
+
   def attente_envoi
     @clients = Client.attente_envoi(:all, :include => [{:article_clients => :articles}])
     @page_title = 'Liste des clients en attente d\'envoi'
-    render :template => 'admin/clients/index'
+    render :action => :index
   end
 
   def attente_paiement
     @clients = Client.attente_paiement(:all, :include => [{:article_clients => :articles}])
     @page_title = 'Liste des clients en attente de paiement'
-    render :template => 'admin/clients/index'
+    render :action => :index
   end
 
   def cheque_recu

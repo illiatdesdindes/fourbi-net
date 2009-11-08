@@ -10,5 +10,6 @@
   <tr>
     <td><%= link_to_edit @article %></td>
     <td><%= link_to 'Liste des articles', :controller => "admin/series", :action => :show, :id => @article.serie %></td>
+    <td><%= link_to 'Liste des clients l\'ayant commandé', :controller => "admin/clients", :action => :article, :id => @article %></td>
   </tr>
 </table>
