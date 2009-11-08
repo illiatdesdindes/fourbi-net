@@ -8,8 +8,9 @@ class CreateClient < ActiveRecord::Migration
       t.string :pays, :null => false, :length => 2
       t.string :email, :null => false, :length => 100
       t.string :status, :null => false, :length => 1
+      t.datetime :date_paiement, :null => true
       t.float :prix, :null => false
-      t.boolean :commande_envoyee, :null => false, :default => false
+      t.datetime :date_envoi, :null => true
       t.timestamps
     end
 
@@ -23,7 +24,7 @@ class CreateClient < ActiveRecord::Migration
     execute "alter table article_clients add constraint fk_article_clients_articles foreign key (article_id) references articles(id)"
     execute "alter table article_clients add constraint fk_article_clients_clientss foreign key (client_id) references clients(id)"
     add_index :clients, :status, :unique => false
-    add_index :clients, :commande_envoyee, :unique => false
+    add_index :clients, :date_envoi, :unique => false
     add_index :article_clients, [:article_id, :client_id], :unique => true
   end
 

@@ -28,7 +28,7 @@ module Admin::DefaultAdminHelper
   def display_value_changed(name, value, attribute_name, text_after = nil)
     if changed? attribute_name
       clear_change attribute_name
-      "<p>#{name} :<span class='changed'> #{value}#{text_after}</span></p>"
+      "<p>#{name} :<span class='changed'> #{value}</span>#{text_after}</p>"
     else
       "<p>#{name} : #{value}#{text_after}</p>"
     end

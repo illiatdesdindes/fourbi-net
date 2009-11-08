@@ -7,15 +7,13 @@
 
 <table class="sortable alternated">
   <thead>
-  <th>&nbsp;&nbsp;</th>
   <th>Nom&nbsp;&nbsp;</th>
   <th>Numéro&nbsp;&nbsp;</th>
   </thead>
   <tbody>
   <% for serie in @series %>
       <tr>
-        <td><%= link_to_view serie, "admin/series", 'Voir' %></td>
-        <td><%= h serie.nom %></td>
+        <td><%= link_to_view serie, "admin/series", h(serie.nom) %></td>
         <td><%= serie.disponible? ? serie.numero : 'indisponible' %></td>
       </tr>
   <% end %>

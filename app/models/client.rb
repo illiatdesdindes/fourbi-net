@@ -2,18 +2,19 @@
 #
 # Table name: clients
 #
-#  id               :integer         not null, primary key
-#  adresse          :text            not null
-#  code_postal      :string(255)
-#  commande_envoyee :boolean         not null
-#  email            :string(255)     not null
-#  identifiant      :string(255)     not null
-#  pays             :string(255)     not null
-#  prix             :float           not null
-#  status           :string(255)     not null
-#  ville            :string(255)
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id            :integer         not null, primary key
+#  adresse       :text            not null
+#  code_postal   :string(255)
+#  date_envoi    :datetime
+#  date_paiement :datetime
+#  email         :string(255)     not null
+#  identifiant   :string(255)     not null
+#  pays          :string(255)     not null
+#  prix          :float           not null
+#  status        :string(255)     not null
+#  ville         :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Client < ActiveRecord::Base
@@ -40,9 +41,9 @@ class Client < ActiveRecord::Base
       when NOUVEAU
         'Nouveau'
       when PAIEMENT_CHEQUE
-        'Payé par chèque'
+        "Payé par chèque le #{I18n.localize(date_paiement)}"
       when PAIEMENT_EN_LIGNE
-        'Payé en ligne'
+        "Payé en ligne le #{I18n.localize(date_paiement)}"
       when SUPPRIME
         'Supprimé'
       else
@@ -50,8 +51,23 @@ class Client < ActiveRecord::Base
     end
   end
 
+  def before_update
+    if changes.include? 'status'
+      if (status == PAIEMENT_CHEQUE) || (status == PAIEMENT_EN_LIGNE)
+        self.date_paiement= DateTime.now
+      elsif status == NOUVEAU
+        self.date_paiement= null
+      end
+    end
+  end
+
+  def validate
+    errors.add_to_base('Aucun article commandé') if article_clients.empty?
+  end
+
+
   named_scope :attente_paiement, :conditions => ['status = ?', NOUVEAU], :order => 'id asc'
 
-  named_scope :attente_envoi, :conditions => ['(status = ? or status = ?) and commande_envoyee = false', PAIEMENT_CHEQUE, PAIEMENT_EN_LIGNE], :order => 'id asc'
+  named_scope :attente_envoi, :conditions => ['(status = ? or status = ?) and date_envoi is null', PAIEMENT_CHEQUE, PAIEMENT_EN_LIGNE], :order => 'id asc'
 
 end

@@ -15,6 +15,30 @@ class Admin::ClientsController < Admin::DefaultAdminController
     render :template => 'admin/clients/index'
   end
 
+  def cheque_recu
+    @client = Client.find(params[:id], :include => [:article_clients => :article ])
+    if @client.status == Client::NOUVEAU
+      @client.status = Client::PAIEMENT_CHEQUE
+      @client.save!
+      flash[:notice] = "Client \"#{@client.identifiant}\" modifié"
+    else
+      flash[:error] = "Le client \"#{@client.identifiant}\" n'est pas dans un status compatible avec la réception d'un chèque"
+    end
+    redirect_to :action => :show, :id => @client
+  end
+
+  def commande_envoyee
+    @client = Client.find(params[:id], :include => [:article_clients => :article ])
+    if @client.status == Client::PAIEMENT_CHEQUE || @client.status == Client::PAIEMENT_EN_LIGNE
+      @client.date_envoi = DateTime.now
+      @client.save!
+      flash[:notice] = "Client \"#{@client.identifiant}\" modifié"
+    else
+      flash[:error] = "Le client \"#{@client.identifiant}\" n'est pas dans un status compatible avec l'envoi de sa commande"
+    end
+    redirect_to :action => :show, :id => @client
+  end
+
   def edit
     if request.put?
       @client = Client.find(params[:id])
@@ -48,7 +72,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
           end
         end
         if @client.save
-          flash[:notice] = "client \"#{@client.identifiant}\" modifié"
+          flash[:notice] = "Client \"#{@client.identifiant}\" modifié"
           redirect_to :action => :show, :id => @client
         else
           clean_changes
@@ -104,13 +128,24 @@ class Admin::ClientsController < Admin::DefaultAdminController
   end
 
   def search
-
+    query = "(identifiant ilike ? or adresse ilike ?)"
+    unless params[:supprime]
+      query << "and status != '#{Client::SUPPRIME}'"
+    end
+    search_param = "%" + params[:search].upcase + "%"
+    @clients = Client.find(:all, :conditions => [query, search_param, search_param], :order => 'identifiant')
+    if @clients.size == 1
+      redirect_to :action => :show, :id => @clients[0]
+    else
+      render :action => :index
+    end
   end
 
   def show
     begin
       @client = Client.find(params[:id], :include => [:article_clients => :article ])
       @boutiques = Boutique.find(:all, :order => 'numero asc', :include => [:series => :articles])
+      @page_title = "Voir client \"#{@client.identifiant}\""
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "Le client-e numéro #{params[:id]} n'existe pas"
       redirect_to :action => :index

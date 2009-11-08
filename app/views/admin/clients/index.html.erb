@@ -13,7 +13,7 @@
                 <%= check_box_tag :supprime %>
                 <label>Inclure les clients supprim&eacute;s</label>
               </div>
-              <%= submit_tag "Rechercher", :class => "droite" %>
+              <%= submit_tag 'Rechercher', :class => 'droite' %>
             </fieldset>
         <% end %>
       </td>
@@ -21,9 +21,9 @@
         <% form_tag({:action => :show}, {:class => 'floating barreBoutons'}) do %>
             <fieldset>
               <legend>Choisir</legend>
-              <%= label_tag "Afficher le client n°" %>
-              <%= text_field_tag "numero", "", :size => 5 %>
-              <%= submit_tag "Afficher", :class => "droite" %>
+              <%= label_tag 'Afficher le client n°' %>
+              <%= text_field_tag 'id', '', :size => 5 %>
+              <%= submit_tag 'Afficher', :class => 'droite' %>
             </fieldset>
         <% end %>
       </td>
@@ -34,22 +34,22 @@
 
 <table class="sortable alternated">
   <thead>
-  <th>&nbsp;&nbsp;</th>
   <th>Identifiant&nbsp;&nbsp;</th>
   <th>Commande&nbsp;&nbsp;</th>
   <th>Prix&nbsp;&nbsp;</th>
   <th>Status&nbsp;&nbsp;</th>
-  <th>Commande Envoyée&nbsp;&nbsp;</th>
+  <th>Envoi&nbsp;&nbsp;</th>
+  <th>Création&nbsp;&nbsp;</th>
   </thead>
   <tbody>
   <% for client in @clients %>
       <tr>
-        <td><%= link_to_view client, nil, 'Voir' %></td>
-        <td><%= h client.identifiant %></td>
+        <td><%= link_to_view client, nil, h(client.identifiant) %></td>
         <td><%= client.article_clients.collect{ |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}"}.join(', ') %></td>
         <td><%= "#{number_to_currency client.prix}" %></td>
         <td><%= client.status_lisible %></td>
-        <td><%= client.commande_envoyee.to_fs %></td>
+        <td><%= client.date_envoi ? I18n.localize(client.date_envoi) : 'non' %></td>
+        <td><%= I18n.localize(client.created_at) %></td>
       </tr>
   <% end %>
   </tbody>
