@@ -26,5 +26,4 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
-Paperclip::Storage::Http::SCRIPT_URL = ENV['SCRIPT_URL'],
-Paperclip::Storage::Http::IMAGES_ROOT_URL = ENV['IMAGES_ROOT_URL']
+
