@@ -1,16 +1,6 @@
 <?php
 
-function endsWith($haystack, $needle, $case=true) {
-    if($case){return (strcmp(substr($haystack, strlen($haystack) - strlen($needle)),$needle)===0);}
-    return (strcasecmp(substr($haystack, strlen($haystack) - strlen($needle)),$needle)===0);
-}
-
-if(!endsWith(gethostbyaddr($_SERVER["REMOTE_ADDR"]), "amazonaws.com") {
-         header($_SERVER["SERVER_PROTOCOL"]. "Wük ?", true, 500);
-         die("Wük ?");
-}
-
-$base_path = "images/";
+$base_path = "../images/";
 
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
    $target = $base_path . $_GET['id'];
