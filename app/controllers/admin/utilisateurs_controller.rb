@@ -14,11 +14,9 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
       else
         clean_changes
         flash[:error] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
-        @boutiques = Boutique.find(:all, :order => 'nom')
       end
     else
       @utilisateur = Utilisateur.find(params[:id])
-      @boutiques = Boutique.find(:all, :order => 'nom')
       @page_title = "Modifier utilisateur \"#{@utilisateur.nom}\""
     end
   end
@@ -36,11 +34,9 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
         redirect_to :action => :show, :id => @utilisateur
       else
         flash[:error] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
-        @boutiques = Boutique.find(:all, :order => 'nom')
       end
     else
       @utilisateur = Utilisateur.new
-      @boutiques = Boutique.find(:all, :order => 'nom')
       @page_title = 'Créer un utilisateur'
     end
   end

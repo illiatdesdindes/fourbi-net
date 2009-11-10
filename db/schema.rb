@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091106110217) do
+ActiveRecord::Schema.define(:version => 20091110191053) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(:version => 20091106110217) do
     t.boolean  "site_admin"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "boutique_id"
   end
 
   add_index "utilisateurs", ["login"], :name => "index_utilisateurs_on_login", :unique => true

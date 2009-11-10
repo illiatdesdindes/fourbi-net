@@ -3,7 +3,6 @@
 # Table name: utilisateurs
 #
 #  id              :integer         not null, primary key
-#  boutique_id     :integer
 #  email           :string(40)      not null
 #  hashed_password :string(255)     not null
 #  login           :string(20)      not null

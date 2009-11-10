@@ -46,20 +46,20 @@
   <br/>
 
   <h3><%= link_or_current 'Les boutiques', {:controller => :'/admin/boutiques', :action => :index} %></h3>
-  <br/>
-  <% if @current_user.boutique %>
-      <h3><%= link_or_current @current_user.boutique.nom, {:controller => :'/admin/boutiques', :action => :show, :id => @current_user.boutique} %></h3>
-      <% unless @current_series.empty? %>
-          <ul>
-      <% end %>
-      <% @current_series.each do |serie| %>
-          <li><%= link_or_current h(serie.nom), {:controller => :'/admin/series', :action => :show, :id => serie} %></li>
-      <% end %>
-      <% unless @current_series.empty? %>
-          </ul>
-      <% end %>
-      <br/>
+  <ul>
+  <% Boutique.find(:all, :order => 'nom').each do |boutique| %>
+      <li>
+          <%= link_or_current boutique.nom, {:controller => :'/admin/boutiques', :action => :show, :id => boutique} %>
+          <% unless boutique.series.empty? %>
+            <ul>
+            <% boutique.series.each do |serie| %>
+                <li><%= link_or_current h(serie.nom), {:controller => :'/admin/series', :action => :show, :id => serie} %></li>
+            <% end %>
+            </ul>
+          <% end %>
+     </li>
   <% end %>
+  </ul>
 
   <h3><%= link_or_current 'Les clients', {:controller => :'/admin/clients', :action => :index} %></h3>
   <ul>
