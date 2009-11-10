@@ -8,7 +8,7 @@
           <%= edit_value_table('Série (*: série indisponible)', (f.collection_select :serie_id, series, :id, :nom_disponible)) %>
           <%= edit_value_table('Disponible', (f.check_box :disponible?)) %>
           <%= edit_value_table('Prix', (f.text_field :prix)) %>
-          <%= edit_value_table("Nombre restant (-1 : non renseigné)", (f.text_field :nombre_restant)) %>
+          <%= edit_value_table("Nombre restant <br/>(-1 : pas de limite, par exemple pour les photos imprimées à la demande)", (f.text_field :nombre_restant)) %>
           <tr>
             <td colspan="2">
               <fieldset>
