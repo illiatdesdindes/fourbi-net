@@ -16,23 +16,27 @@ module Paperclip
       # PASSWORD = nil
 
       def self.extended base
+        raise "No script url provided" unless Paperclip::Storage::Http::SCRIPT_URL
+        raise "No images root url provided" unless Paperclip::Storage::Http::IMAGES_ROOT_URL
+        RAILS_DEFAULT_LOGGER.error "Script url : \"#{Paperclip::Storage::Http::SCRIPT_URL}\""
+        RAILS_DEFAULT_LOGGER.error "Images root url : \"#{Paperclip::Storage::Http::IMAGES_ROOT_URL}\""
       end
 
       def flush_deletes
         @queued_for_delete.each do |path|
-          RestClient.delete "#{SCRIPT_URL}?id=#{path}", get_params
+          RestClient.delete "#{Paperclip::Storage::Http::SCRIPT_URL}?id=#{path}", get_params
         end
       end
 
       def flush_writes
         @queued_for_write.each do |style, file|
-          RestClient.post SCRIPT_URL, {:content => file, :id => path(style)}, get_params
+          RestClient.post Paperclip::Storage::Http::SCRIPT_URL, {:content => file, :id => path(style)}, get_params
         end
       end
 
       def exists?(style = default_style)
         begin
-          RestClient.head "#{IMAGES_ROOT_URL}#{path(style)}"
+          RestClient.head "#{Paperclip::Storage::Http::IMAGES_ROOT_URL}#{path(style)}"
           return true
         rescue RestClient::ResourceNotFound
           return false
@@ -41,14 +45,9 @@ module Paperclip
 
       private
 
-      def check_params
-         raise "No script url provided" unless SCRIPT_URL
-         raise "No image root url provided" unless IMAGES_ROOT_URL
-      end
-
       def get_params
-        if USER && PASSWORD
-          {:user => USER, :password => PASSWORD}
+        if Paperclip::Storage::Http::USER && Paperclip::Storage::Http::PASSWORD
+          {:user => Paperclip::Storage::Http::USER, :password => Paperclip::Storage::Http::PASSWORD}
         else
           {}
         end
