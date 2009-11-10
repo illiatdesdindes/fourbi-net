@@ -32,6 +32,7 @@
   <tr>
     <td><%= link_to_edit @serie %></td>
     <td><%= link_to 'Ajouter un article', :controller => "/admin/articles", :action => :new, :id => @serie %></td>
+    <td><%= link_to 'Classer les séries', :action => :reorder, :id => @serie %></td>
     <td><%= link_to 'Liste des séries', :controller => "admin/boutiques", :action => :show, :id => @serie.boutique %></td>
   </tr>
 </table>

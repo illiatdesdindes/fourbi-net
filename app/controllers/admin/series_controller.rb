@@ -56,6 +56,35 @@ class Admin::SeriesController < Admin::DefaultAdminController
     end
   end
 
+  def reorder
+    if request.put?
+      something_updated = false
+      serie = Serie.find(params[:id])
+      order_string = params[:order]
+      order_split = order_string.split('|')
+      order_split.each_index do |i|
+        id_article = order_split[i]
+        article = Article.find(id_article[id_article.index('_')...id_article.size].to_i)
+        unless article.serie != serie
+          if article.numero != i
+            article.numero = i
+            article.save!
+            something_updated = true
+          end
+        end
+      end
+      if something_updated
+        flash[:notice] = "Article mises à jour"
+      end
+      redirect_to :action => :show, :id => serie
+    else
+      @serie = Serie.find(params[:id])
+      @page_title = "Reclasser les articles de #{@serie.nom}"
+      @articles = Article.find(:all, :conditions => ['serie_id = ? and numero != -1', @serie], :order => "numero asc")
+      @custom_javascript_include = 'dragsort-0.3.min'
+    end
+  end
+
   def show
     @serie = Serie.find(params[:id])
     @articles = Article.find(:all, :conditions => ['serie_id = ?', @serie], :order => "numero asc, nom asc")

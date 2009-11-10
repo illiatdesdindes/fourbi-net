@@ -1,0 +1,18 @@
+<div class="divDraggable">
+  <ul class="draggable">
+    <% for article in @articles %>
+        <li id="numero_<%= article.id %>"><%= "#{h article.nom} (#{article.numero})" %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% form_for @serie, :url => {:action => :reorder, :id => @serie }, :html => {:method => :put} do |f| %>
+    <input type="hidden" name="order"/>
+    <table class="barreBoutons">
+      <tr>
+        <td><%= f.submit 'Modifier', :id => 'updateButton', :onclick => 'calculateOrder();' %></td>
+        <td><%= link_to 'Afficher', :action => :show, :id => @serie %></td>
+      </tr>
+    </table>
+<% end %>
+
