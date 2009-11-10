@@ -18,8 +18,8 @@ module Paperclip
       def self.extended base
         raise "No script url provided" unless Paperclip::Storage::Http::SCRIPT_URL
         raise "No images root url provided" unless Paperclip::Storage::Http::IMAGES_ROOT_URL
-        RAILS_DEFAULT_LOGGER.error "Script url : \"#{Paperclip::Storage::Http::SCRIPT_URL}\""
-        RAILS_DEFAULT_LOGGER.error "Images root url : \"#{Paperclip::Storage::Http::IMAGES_ROOT_URL}\""
+        RAILS_DEFAULT_LOGGER.warn "Script url : \"#{Paperclip::Storage::Http::SCRIPT_URL}\""
+        RAILS_DEFAULT_LOGGER.warn "Images root url : \"#{Paperclip::Storage::Http::IMAGES_ROOT_URL}\""
       end
 
       def flush_deletes
