@@ -7,13 +7,13 @@ module Paperclip
     # Usefull when your app is on heroku and you want to use a cheap non-ruby hosting plan for your images
     module Http
 
-      SCRIPT_URL = nil
+      # SCRIPT_URL = nil
 
-      IMAGES_ROOT_URL = nil
+      # IMAGES_ROOT_URL = nil
 
-      USER = nil
+      # USER = nil
 
-      PASSWORD = nil
+      # PASSWORD = nil
 
       def self.extended base
       end
