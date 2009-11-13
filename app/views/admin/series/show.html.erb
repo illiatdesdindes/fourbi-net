@@ -14,6 +14,7 @@
   <th>Numéro&nbsp;&nbsp;</th>
   <th>Prix&nbsp;&nbsp;</th>
   <th>Nombre restant&nbsp;&nbsp;</th>
+  <th>Image&nbsp;&nbsp;</th>
   </thead>
   <tbody>
   <% for article in @articles %>
@@ -23,6 +24,7 @@
         <td><%= (article.numero >=0) ? article.numero : 'indisponible' %></td>
         <td><%= article.prix %> &euro;</td>
         <td><%= nombre_restant_ou_infini article.nombre_restant %></td>
+        <td><%= image_tag article.image.url, {:height => '75px'} %></td>
       </tr>
   <% end %>
   </tbody>
