@@ -47,7 +47,7 @@
 
   <h3><%= link_or_current 'Les boutiques', {:controller => :'/admin/boutiques', :action => :index} %></h3>
   <ul>
-  <% Boutique.find(:all, :order => 'nom').each do |boutique| %>
+  <% @boutiques_layout.each do |boutique| %>
       <li>
           <%= link_or_current boutique.nom, {:controller => :'/admin/boutiques', :action => :show, :id => boutique} %>
           <% unless boutique.series.empty? %>

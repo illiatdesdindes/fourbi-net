@@ -16,6 +16,7 @@ class Admin::DefaultAdminController < ApplicationController
       redirect_to :controller => "admin/sessions", :action => :index
     else
       @site_admin = @current_user.site_admin?
+      @boutiques_layout = Boutique.find(:all, :order => 'nom', :include => [:series])
     end
   end
 
