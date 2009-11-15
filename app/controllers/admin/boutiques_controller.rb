@@ -3,6 +3,24 @@ class Admin::BoutiquesController < Admin::DefaultAdminController
   layout 'admin-layout'
   before_filter :authorize_base
 
+  def edit
+    if request.put?
+      @boutique = Boutique.find(params[:id])
+      @boutique.attributes = params[:boutique]
+      set_changes = @boutique.changed
+      if @boutique.save
+        flash[:notice] = "Boutique \"#{@boutique.nom}\" modifiée"
+        redirect_to :action => :show, :id => @boutique
+      else
+        clean_changes
+        flash[:error] = "Boutique \"#{@boutique.nom}\" non modifiée : #{@boutique.errors.full_messages[0]}"
+      end
+    else
+      @boutique = Boutique.find(params[:id])
+      @page_title = "Modifier boutique \"#{@boutique.nom}\""
+    end
+  end
+
   def index
     @boutiques = Boutique.find(:all, :order => 'numero')
     @page_title = 'Liste des boutiques'

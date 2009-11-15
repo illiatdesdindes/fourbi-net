@@ -1,4 +1,5 @@
 <%= display_value_changed 'Nom', h(@serie.nom), 'nom' %>
+<%= display_value_changed 'Descriptif', @serie.description, 'description' %>
 <%= display_value_changed 'Numero', @serie.disponible? ? @serie.numero : 'indisponible', 'numero' %>
 <%= display_value_changed 'Boutique', link_to_view(@serie.boutique, 'admin/boutiques', @serie.boutique.nom), 'boutique' %>
 

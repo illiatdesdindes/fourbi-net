@@ -4,6 +4,7 @@
 #
 #  id          :integer         not null, primary key
 #  boutique_id :integer         not null
+#  description :text
 #  nom         :string(255)     not null
 #  numero      :integer         not null
 #  created_at  :datetime

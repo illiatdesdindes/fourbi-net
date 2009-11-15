@@ -1,0 +1,23 @@
+<%= error_messages_for :boutique %>
+
+<% form_for @boutique, :url => {:action => :edit, :id => @boutique}, :html => {:method => :put} do |f| %>
+
+    <table class="edit">
+      <tr>
+        <td>
+          <fieldset>
+            <table>
+              <%= edit_value_table('Description', (f.text_area :description, :cols => 100, :rows => 5)) %>
+            </table>
+          </fieldset>
+        </td>
+      </tr>
+    </table>
+
+    <table class="barreBoutons">
+      <tr>
+        <td><%= f.submit 'Modifier', {:id => 'updateButton'} %></td>
+        <td><%= link_to 'Afficher', :action => :show, :id => @boutique %></td>
+      </tr>
+    </table>
+<% end %>

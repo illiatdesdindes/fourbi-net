@@ -4,6 +4,7 @@
       <fieldset>
         <table>
           <%= edit_value_table('Nom', (f.text_field :nom)) %>
+          <%= edit_value_table('Description', (f.text_area :description, :cols => 100, :rows => 5)) %>
           <%= edit_value_table('Boutique', (f.collection_select :boutique_id, boutiques, :id, :nom)) %>
           <%= edit_value_table('Disponible', (f.check_box :disponible?)) %>
         </table>

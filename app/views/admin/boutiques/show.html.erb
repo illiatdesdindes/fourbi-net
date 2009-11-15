@@ -1,4 +1,5 @@
 <%= display_value_changed 'Nom', h(@boutique.nom), 'nom' %>
+<%= display_value_changed 'Description', @boutique.description, 'description' %>
 
 <br/>
 
@@ -8,12 +9,14 @@
 <table class="sortable alternated">
   <thead>
   <th>Nom&nbsp;&nbsp;</th>
+  <th>Description&nbsp;&nbsp;</th>
   <th>Numéro&nbsp;&nbsp;</th>
   </thead>
   <tbody>
   <% for serie in @series %>
       <tr>
         <td><%= link_to_view serie, "admin/series", h(serie.nom) %></td>
+        <td><%= serie.description %></td>
         <td><%= serie.disponible? ? serie.numero : 'indisponible' %></td>
       </tr>
   <% end %>
@@ -22,6 +25,7 @@
 
 <table class="barreBoutons">
   <tr>
+    <td><%= link_to_edit @boutique %></td>
     <td><%= link_to 'Ajouter une série', :controller => "/admin/series", :action => :new, :id => @boutique %></td>
     <td><%= link_to 'Classer les séries', :action => :reorder, :id => @boutique %></td>
     <td><%= link_to 'Liste des boutiques', :action => :index %></td>
