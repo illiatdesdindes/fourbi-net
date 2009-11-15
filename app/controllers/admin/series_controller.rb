@@ -87,7 +87,7 @@ class Admin::SeriesController < Admin::DefaultAdminController
 
   def show
     @serie = Serie.find(params[:id])
-    @articles = Article.find(:all, :conditions => ['serie_id = ?', @serie], :order => "numero asc, nom asc")
+    @articles = Article.paginate(:all, :conditions => ['serie_id = ?', @serie], :order => "numero asc, nom asc", :per_page => 20, :page => params[:page])
     @page_title = "Voir série \"#{@serie.nom}\""
   end
 
