@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
    if ($_POST['id'] == '') {
       header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
       echo "No id";
-   } else if ($_FILES['content']['size'] > 500000) {
+   } else if ($_FILES['content']['size'] > 1000000) {
       header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
       echo "Your file is too large";
    } else {
