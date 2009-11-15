@@ -6,7 +6,7 @@ actionpack --version 2.3.4
 actionmailer --version 2.3.4
 rails --version 2.3.4
 
-haml --version 2.2.9
+haml --version 2.2.13
 email-veracity --version 0.3.0
 andand --version 1.3.1
 
