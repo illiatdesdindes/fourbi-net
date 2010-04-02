@@ -2,7 +2,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
 
   def init
     if request.post?
-      if Utilisateur.find(:all).empty?
+      if Utilisateur.find.empty?
         user = Utilisateur.new
         user.login = params[:login]
         user.nom = params[:nom]
@@ -22,7 +22,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
 
   def index
     session[:id_user] = nil
-    if Utilisateur.find(:all).empty?
+    if Utilisateur.find.empty?
       redirect_to :action => :init
     elsif request.post?
       user = Utilisateur.authenticate(params[:login], params[:mot_de_passe])

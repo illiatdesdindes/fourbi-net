@@ -23,12 +23,12 @@ class Admin::ArticlesController < Admin::DefaultAdminController
       else
         clean_changes
         flash[:error] = "Article \"#{@article.nom}\" non modifié : #{@article.errors.full_messages[0]}"
-        @series = Serie.find(:all, :order => 'numero', :conditions => ['boutique_id = ?', @article.serie.boutique_id])
+        @series = Serie.boutique(@article.serie.boutique_id)
         @page_title = "Modifier un article \"#{@article.nom}\""
       end
     else
       @article = Article.find(params[:id])
-      @series = Serie.find(:all, :order => 'numero', :conditions => ['boutique_id = ?', @article.serie.boutique_id])
+      @series = Serie.boutique(@article.serie.boutique_id)
       @page_title = "Modifier un article \"#{@article.nom}\""
     end
   end
@@ -46,14 +46,14 @@ class Admin::ArticlesController < Admin::DefaultAdminController
         redirect_to :action => :show, :id => @article
       else
         flash[:error] = "Article \"#{@article.nom}\" non ajouté : #{@article.errors.full_messages[0]}"
-        @series = Serie.find(:all, :order => 'numero', :conditions => ['boutique_id = ?', @article.serie.boutique_id])
+        @series = Serie.boutique(@article.serie.boutique_id)
         @page_title = 'Ajouter un article'
       end
     else
       @article = Article.new
       @article.nombre_restant = -1
       @article.serie = Serie.find(params[:id])
-      @series = Serie.find(:all, :order => 'numero', :conditions => ['boutique_id = ?', @article.serie.boutique_id])
+      @series = Serie.boutique(@article.serie.boutique_id)
       @page_title = 'Ajouter un article'
     end
   end

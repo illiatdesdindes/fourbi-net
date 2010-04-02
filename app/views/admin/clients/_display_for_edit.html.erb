@@ -17,12 +17,12 @@
         <% for boutique in @boutiques %>
             <% if boutique.series.any? {|serie| serie.disponible? && serie.articles.any? {|article| article.disponible?}} %>
                 <fieldset>
-                  <legend><%= h boutique.nom %></legend>
+                  <legend><%= boutique.nom %></legend>
                   <% for serie in boutique.series %>
                       <%# les séries qui ont quelque chose de disponlibles ou celles pour lesquelles le client a un article%>
                       <% if (serie.disponible? && serie.articles.any? {|article| article.disponible?}) || @client.articles.any?{|article| article.serie == serie} %>
                           <fieldset>
-                            <legend><%= h serie.nom %></legend>
+                            <legend><%= serie.nom %></legend>
                             <table>
                               <% for article in serie.articles.find_all{|article| article.disponible?} %>
                                   <%
@@ -35,8 +35,8 @@
                                          max_number = (article.nombre_restant == -1) ? 20 : article.nombre_restant
                                      end
                                   %>
-                                  <%= edit_value_table(
-                                          "#{link_to_view(article, 'admin/articles', h(article.nom))} #{number_to_currency article.prix}",
+                                  <%= edit_value_table_raw(
+                                          "#{link_to_view(article, 'admin/articles', article.nom)} #{number_to_currency article.prix}",
                                           select_tag("article[#{article.id}]", (0..max_number).map{ |i| "<option#{(i == selected) ? ' selected="selected"' : ''}>#{i}</option>"}, {:class => 'article', :onchange => "mettreAJourPrix()" })) %>
                                   <%= hidden_field_tag("prix_article[#{article.id}]", article.prix) %>
                               <% end %>
@@ -44,7 +44,7 @@
                               <% for article_client in @client.article_clients.find_all{|article_client| (article_client.article.serie == serie) && (!article_client.article.disponible?) } %>
                                   <% max_number = (article.nombre_restant == -1) ? 20 : ([article.nombre_restant + article_client.quantite, 20].min) %>
                                   <%= edit_value_table(
-                                          "#{link_to_view(article, 'admin/articles', h(article_client.article.nom))} #{number_to_currency article_client.prix_unitaire}",
+                                          "#{link_to_view(article, 'admin/articles', article_client.article.nom)} #{number_to_currency article_client.prix_unitaire}",
                                           select_tag("article[#{article_client.article.id}]", (0..max_number).map{ |i| "<option#{(i == article_client.quantite) ? ' selected="selected"' : ''}>#{i}</option>"}, {:class => 'article', :onchange => "mettreAJourPrix()"})) %>
                                   <%= hidden_field_tag("prix_article[#{article.id}]", article_client.prix_unitaire) %>
                               <% end %>

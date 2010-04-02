@@ -497,6 +497,6 @@ module Countries
           "Zambie" => 'ZM',
           "Zimbabwe" => 'ZW'}
 
-  NAME_TO_CODE_ARRAY = NAME_TO_CODE.to_a.sort{|x,y| y[0] <=> x[0] }
+  NAME_TO_CODE_ARRAY = NAME_TO_CODE.to_a.sort{|x,y| x[0] <=> y[0] }
 
 end

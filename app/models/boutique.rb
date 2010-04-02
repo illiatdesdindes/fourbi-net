@@ -13,6 +13,7 @@
 class Boutique < ActiveRecord::Base
 
   has_many :utilisateurs
+
   has_many :series, :order => 'numero ASC'
 
   validates_presence_of :nom, :numero

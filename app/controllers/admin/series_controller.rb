@@ -22,11 +22,11 @@ class Admin::SeriesController < Admin::DefaultAdminController
       else
         clean_changes
         flash[:error] = "Série \"#{@serie.nom}\" non modifié-e : #{@serie.errors.full_messages[0]}"
-        @boutiques = Boutique.find(:all, :order => 'nom')
+        @boutiques = Boutique.order('nom asc')
       end
     else
       @serie = Serie.find(params[:id])
-      @boutiques = Boutique.find(:all, :order => 'nom')
+      @boutiques = Boutique.order('nom asc')
       @page_title = "Modifier série \"#{@serie.nom}\""
     end
 
@@ -46,12 +46,12 @@ class Admin::SeriesController < Admin::DefaultAdminController
       else
         flash[:error] = "Série \"#{@serie.nom}\" non modifié : #{@serie.errors.full_messages[0]}"
         @page_title = 'Ajouter une série'
-        @boutiques = Boutique.find(:all, :order => 'nom')
+        @boutiques = Boutique.order('nom asc')
       end
     else
       @serie = Serie.new
       @serie.boutique = Boutique.find(params[:id])
-      @boutiques = Boutique.find(:all, :order => 'numero')
+      @boutiques = Boutique.order('numero asc')
       @page_title = 'Ajouter une série'
     end
   end
@@ -80,7 +80,7 @@ class Admin::SeriesController < Admin::DefaultAdminController
     else
       @serie = Serie.find(params[:id])
       @page_title = "Reclasser les articles de #{@serie.nom}"
-      @articles = Article.find(:all, :conditions => ['serie_id = ? and numero != -1', @serie], :order => "numero asc")
+      @articles = Article.where(['serie_id = ? and numero != -1', @serie]).order('numero asc')
       @custom_javascript_include = 'dragsort-0.3.min'
     end
   end
@@ -94,7 +94,7 @@ class Admin::SeriesController < Admin::DefaultAdminController
   private
 
   def prochain_numero serie
-    serie_max = Serie.find(:first, :conditions => ['boutique_id = ?', serie.boutique], :order => 'numero desc')
+    serie_max = Serie.where(['boutique_id = ?', serie.boutique]).order('numero desc').first
     if serie_max
       serie_max.numero + 1
     else

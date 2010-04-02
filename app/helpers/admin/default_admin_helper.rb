@@ -9,28 +9,28 @@ module Admin::DefaultAdminHelper
   end
 
   def display_value(name, value, text_after = nil)
-    "<div class=\"displayValue\">#{name} : #{value}#{text_after}</div>"
+    raw "<div class=\"displayValue\">#{name} : #{value}#{text_after}</div>"
   end
 
   def display_image(image, width = nil, height = nil)
-    "<p>#{image_tag image, :width => width, :height => height}</p>"
+    raw "<p>#{image_tag image, :width => width, :height => height}</p>"
   end
 
   def display_image_value_changed(image, attribute_name, width = nil, height = nil)
     if changed? attribute_name
       clear_change attribute_name
-      "<p>#{image_tag image, :class => 'imageChanged', :width => width, :height => height}</p>"
+      raw "<p>#{image_tag image, :class => 'imageChanged', :width => width, :height => height}</p>"
     else
-      "<p>#{image_tag image, :width => width, :height => height}</p>"
+      raw "<p>#{image_tag image, :width => width, :height => height}</p>"
     end
   end
 
   def display_value_changed(name, value, attribute_name, text_after = nil)
     if changed? attribute_name
       clear_change attribute_name
-      "<p>#{name} :<span class='changed'> #{value}</span>#{text_after}</p>"
+      raw "<p>#{name} :<span class='changed'> #{value}</span>#{text_after}</p>"
     else
-      "<p>#{name} : #{value}#{text_after}</p>"
+      raw "<p>#{name} : #{value}#{text_after}</p>"
     end
   end
 
@@ -40,15 +40,23 @@ module Admin::DefaultAdminHelper
 
   def edit_value_table(name, value, div_param = nil)
     if div_param
-      "<tr #{div_param}><td><label>#{name}</label></td><td>#{value}</td></tr>"
+      raw "<tr #{div_param}><td><label>#{h name}</label></td><td>#{value}</td></tr>"
     else
-      "<tr><td><label>#{name}</label></td><td>#{value}</td></tr>"
+      raw "<tr><td><label>#{h name}</label></td><td>#{value}</td></tr>"
+    end
+  end
+
+  def edit_value_table_raw(name, value, div_param = nil)
+    if div_param
+      raw "<tr #{div_param}><td><label>#{name}</label></td><td>#{value}</td></tr>"
+    else
+      raw "<tr><td><label>#{name}</label></td><td>#{value}</td></tr>"
     end
   end
 
   def link_or_current name, options
     link_to_unless_current(name, options, {}) do
-      name + " &#60;"
+      "#{name} <"
     end
   end
 
@@ -97,7 +105,7 @@ module Admin::DefaultAdminHelper
     if nombre_restant != -1
       nombre_restant
     else
-      '&infin;'
+      raw '&infin;'
     end
   end
 

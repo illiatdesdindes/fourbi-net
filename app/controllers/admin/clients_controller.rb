@@ -5,26 +5,26 @@ class Admin::ClientsController < Admin::DefaultAdminController
 
   def article
     article = Article.find(params[:id])
-    article_clients = ArticleClient.find(:all, :include => [:article, :client], :conditions => ['article_id = ?', article])
+    article_clients = ArticleClient.where(:article_id => article).includes(:article, :client)
     @clients = article_clients.collect{|article_client| article_client.client}.find_all{|client| client.status != Client::SUPPRIME}
     @page_title = "Liste des clients ayant commandé \"#{article.nom}\""
     render :action => :index
   end
 
   def attente_envoi
-    @clients = Client.attente_envoi(:all, :include => [{:article_clients => :articles}])
+    @clients = Client.attente_envoi.includes([{:article_clients => :articles}])
     @page_title = 'Liste des clients en attente d\'envoi'
     render :action => :index
   end
 
   def attente_paiement
-    @clients = Client.attente_paiement(:all, :include => [{:article_clients => :articles}])
+    @clients = Client.attente_paiement.includes([{:article_clients => :articles}])
     @page_title = 'Liste des clients en attente de paiement'
     render :action => :index
   end
 
   def cheque_recu
-    @client = Client.find(params[:id], :include => [:article_clients => :article ])
+    @client = Client.find(params[:id]).includes([:article_clients => :article ])
     if @client.status == Client::NOUVEAU
       @client.status = Client::PAIEMENT_CHEQUE
       @client.save!
@@ -36,7 +36,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
   end
 
   def commande_envoyee
-    @client = Client.find(params[:id], :include => [:article_clients => :article ])
+    @client = Client.find(params[:id]).includes([:article_clients => :article ])
     if @client.status == Client::PAIEMENT_CHEQUE || @client.status == Client::PAIEMENT_EN_LIGNE
       @client.date_envoi = DateTime.now
       @client.save!
@@ -85,20 +85,20 @@ class Admin::ClientsController < Admin::DefaultAdminController
         else
           clean_changes
           flash[:error] = "Client \"#{@client.identifiant}\" non modifié : #{@client.errors.full_messages[0]}"
-          @boutiques = Boutique.find(:all, :order => 'nom')
-          @boutiques = Boutique.find(:all, :order => 'numero asc', :include => [:series => :articles])
+          @boutiques = Boutique.order('nom asc')
+          @boutiques = Boutique.order('numero asc').includes([:series => :articles])
           @page_title = "Modifier client \"#{@client.identifiant}\""
         end
       end
     else
       @client = Client.find(params[:id])
-      @boutiques = Boutique.find(:all, :order => 'numero asc', :include => [:series => :articles])
+      @boutiques = Boutique.order('numero asc').includes([:series => :articles])
       @page_title = "Modifier client \"#{@client.identifiant}\""
     end
   end
 
   def index
-    @clients = Client.paginate(:all, :order => 'status desc, id', :per_page => 50, :page => params[:page], :include => [{:article_clients => :article}])
+    @clients = Client.paginate(:per_page => 50, :page => params[:page], :order => 'status desc, id', :include => [{:article_clients => :article}])
     @page_title = 'Liste des clients'
   end
 
@@ -125,13 +125,13 @@ class Admin::ClientsController < Admin::DefaultAdminController
           redirect_to :action => :show, :id => @client
         else
           @page_title = 'Créer un client'
-          @boutiques = Boutique.find(:all, :order => 'numero asc', :include => [:series => :articles])
+          @boutiques = Boutique.order('numero asc').includes([:series => :articles])
         end
       end
     else
       @client = Client.new
       @client.pays = 'FR'
-      @boutiques = Boutique.find(:all, :order => 'numero asc', :include => [:series => :articles])
+      @boutiques = Boutique.order('numero asc').includes([:series => :articles])
     end
   end
 
@@ -141,7 +141,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
       query << "and status != '#{Client::SUPPRIME}'"
     end
     search_param = "%" + params[:search].upcase + "%"
-    @clients = Client.find(:all, :conditions => [query, search_param, search_param], :order => 'identifiant')
+    @clients = Client.where([query, search_param, search_param]).order('identifiant asc')
     if @clients.size == 1
       redirect_to :action => :show, :id => @clients[0]
     else
@@ -151,11 +151,11 @@ class Admin::ClientsController < Admin::DefaultAdminController
 
   def show
     begin
-      @client = Client.find(params[:id], :include => [:article_clients => :article ])
-      @boutiques = Boutique.find(:all, :order => 'numero asc', :include => [:series => :articles])
+      @client = Client.find(params[:id]).includes([:article_clients => :article ])
+      @boutiques = Boutique.order('numero asc').includes([:series => :articles])
       @page_title = "Voir client \"#{@client.identifiant}\""
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = "Le client-e numéro #{params[:id]} n'existe pas"
+      flash[:error] = "Le client numéro #{params[:id]} n'existe pas"
       redirect_to :action => :index
     end
   end

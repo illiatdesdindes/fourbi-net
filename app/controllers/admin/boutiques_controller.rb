@@ -22,7 +22,7 @@ class Admin::BoutiquesController < Admin::DefaultAdminController
   end
 
   def index
-    @boutiques = Boutique.find(:all, :order => 'numero')
+    @boutiques = Boutique.order('numero')
     @page_title = 'Liste des boutiques'
   end
 
@@ -50,7 +50,7 @@ class Admin::BoutiquesController < Admin::DefaultAdminController
     else
       @boutique = Boutique.find(params[:id])
       @page_title = "Reclasser les boutiques de #{@boutique.nom}"
-      @series = Serie.find(:all, :conditions => ['boutique_id = ? and numero != -1', @boutique], :order => "numero asc")
+      @series = Serie.where('boutique_id = ? and numero != -1', @boutique).order(:order => 'numero asc')
       @custom_javascript_include = 'dragsort-0.3.min'
     end
   end
@@ -58,7 +58,7 @@ class Admin::BoutiquesController < Admin::DefaultAdminController
   def show
     @boutique = Boutique.find(params[:id])
     @page_title = "Voir boutique #{@boutique.nom}"
-    @series = Serie.find(:all, :conditions => ['boutique_id = ?', @boutique], :order => "numero asc, nom asc")
+    @series = Serie.where(:boutique_id => @boutique).order('numero asc, nom asc')
   end
 
 end

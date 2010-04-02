@@ -54,8 +54,8 @@ class Article < ActiveRecord::Base
   end
 
   def Article.prochain_numero serie
-    article_max = Article.find(:first, :conditions => ['serie_id = ?', serie], :order => 'numero desc')
-    if article_max
+    article_max = Article.where(:serie_id =>serie).order('numero desc')
+    if article_max.first
       article_max.numero + 1
     else
       0

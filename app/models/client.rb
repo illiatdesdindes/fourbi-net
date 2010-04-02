@@ -36,6 +36,10 @@ class Client < ActiveRecord::Base
 
   attr_protected :prix, :status, :commande_envoyee
 
+  scope :attente_paiement, :conditions => ['status = ?', NOUVEAU], :order => 'id asc'
+
+  scope :attente_envoi, :conditions => ['(status = ? or status = ?) and date_envoi is null', PAIEMENT_CHEQUE, PAIEMENT_EN_LIGNE], :order => 'id asc'
+
   def status_lisible
     case status
       when NOUVEAU
@@ -67,10 +71,5 @@ class Client < ActiveRecord::Base
       errors.add(:email, 'L\'adresse email est invalide')
     end
   end
-
-
-  named_scope :attente_paiement, :conditions => ['status = ?', NOUVEAU], :order => 'id asc'
-
-  named_scope :attente_envoi, :conditions => ['(status = ? or status = ?) and date_envoi is null', PAIEMENT_CHEQUE, PAIEMENT_EN_LIGNE], :order => 'id asc'
 
 end

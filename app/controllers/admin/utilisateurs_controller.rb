@@ -22,7 +22,7 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
   end
 
   def index
-    @utilisateurs = Utilisateur.find(:all, :order => 'nom')
+    @utilisateurs = Utilisateur.order('nom asc')
     @page_title = 'Liste des utilisateurs'
   end
 
