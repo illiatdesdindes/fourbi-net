@@ -1,7 +1,9 @@
 class Public::IndexController < Public::DefaultPublicController
 
-  def index
+  layout 'public-layout'
 
+  def index
+    @page_title = ''
   end
 
 end

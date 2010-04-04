@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml;charset=UTF-8"/>
+  <meta name="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"/>
+  <meta http-equiv="CACHE-CONTROL" content="no-cache, must-revalidate"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <title><%= @page_title %></title>
+  <%= stylesheet_link_tag 'public' %>
+  <%= javascript_include_tag 'jquery-1.4.2.min', 'admin' %>
+  <% if @custom_javascript_include %>
+      <%= javascript_include_tag @custom_javascript_include %>
+  <% end %>
+</head>
+<body>
+
+<div id="contenu">
+
+  <% if flash[:error] -%>
+      <div id="error" class="flash"><%= flash[:error] %></div>
+  <% end -%>
+
+  <% if flash[:warning] -%>
+      <div id="warning" class="flash"><%= flash[:warning] %></div>
+  <% end -%>
+
+  <% if flash[:notice] -%>
+      <div id="notice" class="flash"><%= flash[:notice] %></div>
+  <% end -%>
+
+  <h1 class="courier"><%= h @page_title %></h1>
+
+  <%= yield %>
+
+</div>
+
+<div id="logo">
+   <%= image_tag 'logo.jpg', :alt => 'fourbi.net' %>
+</div>
+
+</body>
+</html>
