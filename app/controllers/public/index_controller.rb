@@ -2,8 +2,12 @@ class Public::IndexController < Public::DefaultPublicController
 
   layout 'public-layout'
 
-  def index
+  def sommaire
     @page_title = ''
+  end
+
+  def boutique
+
   end
 
 end

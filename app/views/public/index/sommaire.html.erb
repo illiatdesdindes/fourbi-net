@@ -1,0 +1,18 @@
+<div id="sommaire_descriptif">
+  <p>fourbi.net est le site de vente en ligne des sites <%= link_to 'Désordre', 'http://www.desordre.net' %> et <%= link_to 'le Terrier', 'http://www.le-terrier.net/' %>, vous y trouverez à des prix que nous
+  tentons de garder modestes des photograhies, des livres et des disques, et d'autres choses diverses, autant d'items
+  que vous ne trouverez pas nécessairement ailleurs.</p>
+
+  <p>Le paiement en ligne est entièrement sécurisé et vos achats vous sont envoyés par la poste dans les meilleurs délais
+  possible de fabrication et d'expédition.</p>
+
+  <p>Philippe De Jonckheere &#38; L.L. de Mars</p>
+</div>
+
+<div id="sommaire_bulle_desordre">
+  <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), :action => :boutique, :id =>  Boutique::NUMERO_DESORDRE %>
+</div>
+
+<div id="sommaire_bulle_terrier">
+  <%= link_to image_tag('bulles/terrier.jpg', :alt => 'la boutique du terrier'), :action => :boutique, :id =>  Boutique::NUMERO_TERRIER %>
+</div>
