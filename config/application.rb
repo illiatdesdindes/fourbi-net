@@ -2,8 +2,9 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# Auto-require default libraries and those for the current Rails environment.
-Bundler.require :default, Rails.env
+# If you have a Gemfile, require the gems listed there, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Fourbi
   class Application < Rails::Application
@@ -26,7 +27,7 @@ module Fourbi
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :fr
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
@@ -38,7 +39,6 @@ module Fourbi
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
-
     config.time_zone = 'Paris'
   end
 end

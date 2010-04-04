@@ -22,7 +22,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
 
   def index
     session[:id_user] = nil
-    if Utilisateur.find.empty?
+    if Utilisateur.all.empty?
       redirect_to :action => :init
     elsif request.post?
       user = Utilisateur.authenticate(params[:login], params[:mot_de_passe])
