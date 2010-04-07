@@ -20,8 +20,8 @@ class Boutique < ActiveRecord::Base
   validates_uniqueness_of :nom, :numero
   validates_numericality_of :numero, :allow_nil => false, :only_integer => true, :greater_than_or_equal_to => 0
 
-  NUMERO_DESORDRE = 0
+  NOM_DESORDRE = 'desordre.net'
 
-  NUMERO_TERRIER = 1
+  NOM_TERRIER = 'le-terrier.net'
 
 end

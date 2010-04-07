@@ -10,9 +10,24 @@
 </div>
 
 <div id="sommaire_bulle_desordre">
-  <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), :action => :boutique, :id =>  Boutique::NUMERO_DESORDRE %>
+  <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), :action => :boutique, :id => @boutique_desordre %>
 </div>
 
+<% for i in [0...[3, @articles_desordre.length].min] %>
+  <div id="sommaire_image_desordre_<%= i + 1 %>" class="sommaire_image_desordre"><%= image_tag @articles_desordre[i].image.url %></div>
+  <div id="sommaire_cadre_desordre_<%= i + 1 %>" class="sommaire_cadre_desordre">
+    <%= link_to image_tag('cadres/desordre_moyen.gif', :alt => @articles_desordre[i].nom ), :action => :article, :id =>  @articles_desordre[i] %>
+  </div>
+<% end %>
+
 <div id="sommaire_bulle_terrier">
-  <%= link_to image_tag('bulles/terrier.jpg', :alt => 'la boutique du terrier'), :action => :boutique, :id =>  Boutique::NUMERO_TERRIER %>
+  <%= link_to image_tag('bulles/terrier.jpg', :alt => 'la boutique du terrier'), :action => :boutique, :id => @boutique_terrier %>
 </div>
+
+<% for i in [0...[4, @articles_terrier.length].min] %>
+  <div id="sommaire_image_terrier_<%= i + 1 %>" class="sommaire_image_terrier"><%= image_tag @articles_terrier[i].image.url %></div>
+  <div id="sommaire_cadre_terrier_<%= i + 1 %>" class="sommaire_cadre_terrier">
+    <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => @articles_terrier[i].nom ), :action => :article, :id =>  @articles_terrier[i] %>
+  </div>
+<% end %>
+

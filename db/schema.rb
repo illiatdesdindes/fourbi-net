@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091115151107) do
+ActiveRecord::Schema.define(:version => 20100406171408) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20091115151107) do
     t.text     "description"
   end
 
+  add_index "boutiques", ["nom"], :name => "index_boutiques_on_nom", :unique => true
   add_index "boutiques", ["numero"], :name => "index_boutiques_on_numero", :unique => true
 
   create_table "clients", :force => true do |t|

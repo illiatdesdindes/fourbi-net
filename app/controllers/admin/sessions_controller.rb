@@ -2,7 +2,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
 
   def init
     if request.post?
-      if Utilisateur.find.empty?
+      if Utilisateur.all.empty?
         user = Utilisateur.new
         user.login = params[:login]
         user.nom = params[:nom]

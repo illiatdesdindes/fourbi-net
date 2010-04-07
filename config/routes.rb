@@ -92,8 +92,10 @@ Fourbi::Application.routes.draw do |map|
 
   match 'admin/logout' => 'admin/sessions#logout'
   match 'admin/sessions' => 'admin/sessions#index'
+  match 'admin/init' => 'admin/sessions#init'
 
-  match 'public/boutique/:id' => 'public/index#boutique'
+  match 'boutique/:id' => 'public/index#boutique'
+  match 'article/:id' => 'public/index#article'
 
 
   root :to => 'public/index#sommaire'
