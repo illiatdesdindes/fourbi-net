@@ -35,5 +35,5 @@ group :development do
 end
 
 group :production do
-  gem 'hassle', '0.0.1'
+  # gem 'hassle', '0.0.1'
 end
