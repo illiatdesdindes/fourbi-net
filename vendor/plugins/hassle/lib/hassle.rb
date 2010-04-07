@@ -4,26 +4,15 @@ require 'sass/plugin'
 
 class Hassle
   def initialize(app)
-    @app = app
-    @compiler = Hassle::Compiler.new
-    @compiler.compile
+    compiler = Hassle::Compiler.new
+    compiler.compile
+    @static = Rack::Static.new(app,
+                               :urls => compiler.stylesheets,
+                               :root => compiler.compile_location)
   end
 
   def call(env)
-    path = env['PATH_INFO']
-
-    if @compiler.stylesheets.include?(path)
-      stylesheet = path.split('/').last
-      stylesheet_path = File.join(@compiler.compile_location, path)
-
-      # Read the contents of the stylesheet
-      content = File.read(stylesheet_path)
-      length = "".respond_to?(:bytesize) ? content.bytesize.to_s : content.size.to_s
-      [200, {'Content-Type' => 'text/css', 'Content-Length' => length}, [content]]
-    else
-      # Not a request Hassle cares about
-      @app.call(env)
-    end
+    @static.call(env)
   end
 end
 
@@ -35,13 +24,8 @@ class Hassle::Compiler
   def css_location(path)
     expanded = File.expand_path(path)
     public_dir = File.join(File.expand_path(Dir.pwd), "public")
-    compiled_path = compile_location(expanded.gsub(public_dir, ''))
 
-    if 'sass' == expanded.split('/').last
-      File.expand_path(File.join(compiled_path, '..'))
-    else
-      File.expand_path(compiled_path)
-    end
+    File.expand_path(compile_location(expanded.gsub(public_dir, ''), '..'))
   end
 
   def compile_location(*subdirs)
@@ -49,18 +33,16 @@ class Hassle::Compiler
   end
 
   def normalize
-    options[:template_location] = 
-      if options[:hassle_location]
-        options[:hassle_location]
-      elsif options[:template_location].is_a?(Hash) || options[:template_location].is_a?(Array)
-        options[:hassle_location] = options[:template_location].to_a.map do |input, output|
-          [input, css_location(output)]
-        end
-      else
-        default_location = File.join(options[:css_location], "sass")
-        options[:hassle_location] = 
-          {default_location => File.expand_path(css_location(default_location), '..')}
+    template_location = options[:template_location]
+
+    if template_location.is_a?(Hash) || template_location.is_a?(Array)
+      options[:template_location] = template_location.to_a.map do |input, output|
+        [input, css_location(input)]
       end
+    else
+      default_location = File.join(options[:css_location], "sass")
+      options[:template_location] = {default_location => css_location(default_location)}
+    end
   end
 
   def prepare

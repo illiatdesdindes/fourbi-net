@@ -10,8 +10,7 @@ And /^I have a file "(.*)" with:$/ do |path, content|
 end
 
 Then /^I should see the following in "(.*)":$/ do |path, content|
-  fullpath = File.join(TEST_DIR, path)
-  content.strip.should == File.read(fullpath).strip
+  content.strip.should == File.read(File.join(TEST_DIR, path)).strip
 end
 
 When /^Hassle is installed as a plugin$/ do
