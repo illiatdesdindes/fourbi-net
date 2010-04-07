@@ -3,7 +3,7 @@ $(function() {
         resize_to_fit($("#sommaire_image_desordre_" + i + "> img"), $("#sommaire_image_desordre_" + i));
     }
     for (var j = 1; j <= 4; j++) {
-        resize_to_fit($("#sommaire_image_terrier_" + j + "> img"), $("#sommaire_image_terrier_" + i));
+        resize_to_fit($("#sommaire_image_terrier_" + j + "> img"), $("#sommaire_image_terrier_" + j));
     }
 });
 
