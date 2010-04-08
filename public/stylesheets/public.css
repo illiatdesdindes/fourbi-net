@@ -59,8 +59,31 @@ a {
 #haut_terrier > a > img {
   height: 75px; }
 
-.boutique_titre {
-  font-weight: bold; }
+.boutique_titre_serie {
+  font-weight: bold;
+  font-size: 14px;
+  width: 200px;
+  padding-bottom: 0px; }
+
+.boutique_descriptif {
+  font-size: 10px;
+  width: 200px;
+  padding-bottom: 20px; }
+
+.boutique_titre_boutique {
+  font-weight: bold;
+  font-size: 14px;
+  width: 200px; }
+
+#boutique_liste_serie a {
+  font-weight: normal; }
+
+#boutique_liste_serie a:hover {
+  text-decoration: underline; }
+
+#boutique_liste_serie li {
+  font-size: 10px;
+  list-style: none; }
 
 #sommaire_descriptif {
   position: absolute;
@@ -151,5 +174,5 @@ a {
 
 #boutique_desordre_descriptif_serie {
   position: absolute;
-  top: 220px;
+  top: 360px;
   left: 20px; }

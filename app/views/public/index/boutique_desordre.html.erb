@@ -2,4 +2,14 @@
   <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), :action => :boutique_desordre %>
 </div>
 
-<div id="boutique_desordre_descriptif_serie"></div>
+<div id="boutique_desordre_descriptif_serie">
+  <div class="boutique_titre_serie"><%= @serie.nom %></div>
+  <div class="boutique_descriptif"><%= @serie.description %></div>
+  <div class="boutique_titre_boutique">Les séries du désordre</div>
+  <ul id="boutique_liste_serie">
+  <% for serie in @series %>
+    <li><%= link_to serie.nom, {:id => serie}, {:title => serie.description} %></li>  
+  <% end %>
+  </ul>
+</div>
+
