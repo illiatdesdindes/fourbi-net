@@ -21,27 +21,43 @@ a {
 .image_haut {
   position: absolute; }
 
-#timbre {
+#haut_timbre {
   top: 30px;
   left: 592px; }
 
-#timbre > a > img {
+#haut_timbre > a > img {
   height: 50px;
   width: 50px; }
 
-#panier {
+#haut_panier {
   top: 33px;
   left: 647px; }
 
-#panier > a > img {
-  height: 47px; }
+#haut_panier > a > img {
+  height: 47px;
+  width: 75px; }
 
-#aide {
+#haut_aide {
   top: 10px;
   left: 720px; }
 
-#aide > a > img {
+#haut_aide > a > img {
+  height: 70px;
+  width: 70px; }
+
+#haut_desordre {
+  top: 10px;
+  left: 790px; }
+
+#haut_desordre > a > img {
   height: 70px; }
+
+#haut_terrier {
+  top: 5px;
+  left: 870px; }
+
+#haut_terrier > a > img {
+  height: 75px; }
 
 #sommaire_descriptif {
   position: absolute;

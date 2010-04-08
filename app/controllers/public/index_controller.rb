@@ -2,20 +2,28 @@ class Public::IndexController < Public::DefaultPublicController
 
   layout 'public-layout'
 
-  def article
+  def article_desordre
 
   end
 
-  def boutique
+  def article_terrier
 
+  end
+
+  def boutique_desordre
+
+  end
+
+  def boutique_terrier
+    
   end
 
   def sommaire
     @page_title = ''
-    @boutique_desordre = Boutique.where(:nom => Boutique::NOM_DESORDRE).first
-    @articles_desordre = find_articles 3, @boutique_desordre
-    @boutique_terrier = Boutique.where(:nom => Boutique::NOM_TERRIER).first
-    @articles_terrier = find_articles 4, @boutique_terrier
+    boutique_desordre = Boutique.where(:nom => Boutique::NOM_DESORDRE).first
+    @articles_desordre = find_articles 3, boutique_desordre
+    boutique_terrier = Boutique.where(:nom => Boutique::NOM_TERRIER).first
+    @articles_terrier = find_articles 4, boutique_terrier
   end
 
   private

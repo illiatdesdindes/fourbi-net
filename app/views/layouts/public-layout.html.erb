@@ -39,14 +39,20 @@
    <%= image_tag 'logo.jpg', :alt => 'fourbi.net' %>
 </div>
 
-<div id="timbre" class="image_haut">
-  <%= link_to image_tag("timbres/#{sprintf('%03d', (rand(39) + 1))}.jpg", :alt => 'nous écrire'), :action => :boutique, :id => :sommaire %>
+<div id="haut_timbre" class="image_haut">
+  <%= link_to image_tag("timbres/#{sprintf('%03d', (rand(39) + 1))}.jpg", :alt => 'nous écrire'), {:controller => 'public/index', :action => :sommaire}, {:title => 'nous écrire'} %>
 </div>
-<div id="panier" class="image_haut">
-  <%= link_to image_tag('panier.jpg', :alt => 'votre panier'), :action => :boutique, :id => :sommaire %>
+<div id="haut_panier" class="image_haut">
+  <%= link_to image_tag('panier.jpg', :alt => 'votre panier'), {:controller => 'public/index', :action => :sommaire}, {:title => 'votre panier'} %>
 </div>
-<div id="aide" class="image_haut">
-  <%= link_to image_tag("questions/#{sprintf('%03d', (rand(3) + 1))}.jpg", :alt => 'aide'), :action => :boutique, :id => :sommaire %>
+<div id="haut_aide" class="image_haut">
+  <%= link_to image_tag("questions/#{sprintf('%03d', (rand(3) + 1))}.jpg", :alt => 'aide'), {:controller => 'public/index', :action => :sommaire}, {:title => 'aide'} %>
+</div>
+<div id="haut_desordre" class="image_haut">
+  <%= link_to image_tag("boutons/#{sprintf('%03d', (rand(50) + 1))}.jpg", :alt => 'galerie du désordre'), {:controller => 'public/index', :action => :boutique_desordre}, {:title => 'galerie du désordre'} %>
+</div>
+<div id="haut_terrier" class="image_haut">
+  <%= link_to image_tag("insectes/#{sprintf('%03d', (rand(3) + 1))}.jpg", :alt => 'galerie du terrier'), {:controller => 'public/index', :action => :boutique_terrier}, {:title => 'galerie du terrier'} %>
 </div>
 
 
