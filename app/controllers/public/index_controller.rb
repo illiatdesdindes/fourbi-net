@@ -11,15 +11,19 @@ class Public::IndexController < Public::DefaultPublicController
   end
 
   def boutique_desordre
-
+    @page_title = 'fourbi.net: la boutique du desordre'
+    @boutique = Boutique.where(:nom => Boutique::NOM_DESORDRE).includes(:series).first
+    boutique
   end
 
   def boutique_terrier
-    
+    @page_title = 'fourbi.net: la boutique du terrier'
+    @boutique = Boutique.where(:nom => Boutique::NOM_TERRIER).includes(:series).first
+    boutique
   end
 
   def sommaire
-    @page_title = ''
+    @page_title = 'fourbi.net, brocante à toutes heures'
     boutique_desordre = Boutique.where(:nom => Boutique::NOM_DESORDRE).first
     @articles_desordre = find_articles 3, boutique_desordre
     boutique_terrier = Boutique.where(:nom => Boutique::NOM_TERRIER).first
@@ -29,10 +33,10 @@ class Public::IndexController < Public::DefaultPublicController
   private
 
   def find_articles number, boutique
-    series = Serie.where(:boutique_id => boutique).order('id desc')
+    series = Serie.disponible.boutique(boutique)
     articles = []
     for serie in series
-      articles_series = Article.where(:serie_id => serie.id).order('random()')
+      articles_series = Article.disponible.serie(serie).order('random()')
       unless articles_series.empty?
         articles << articles_series.first
         if articles.length == number
@@ -42,4 +46,14 @@ class Public::IndexController < Public::DefaultPublicController
     end
     articles
   end
+
+  def boutique
+    @series = Serie.boutique(@boutique).disponible
+    if params[:id]
+      @serie = Serie.find(params[:id])
+    else
+      @serie = @series[0]
+    end
+  end
+
 end

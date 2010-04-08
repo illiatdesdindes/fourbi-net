@@ -39,6 +39,10 @@ class Article < ActiveRecord::Base
 
   has_many :article_clients, :dependent => :delete_all
 
+  scope :serie, lambda {|serie| {:conditions => {:serie_id => serie}, :order => 'numero desc'} }
+
+  scope :disponible, :conditions => ['numero != ?', -1], :order => 'numero desc'
+
   def disponible?
     if @disponible.nil?
       numero != -1

@@ -25,7 +25,9 @@ class Serie < ActiveRecord::Base
 
   attr_writer :disponible
 
-  scope :boutique, lambda {|boutique| {:conditions => {:boutique_id => boutique}, :order => 'numero asc'} }
+  scope :boutique, lambda {|boutique| {:conditions => {:boutique_id => boutique}, :order => 'numero desc'} }
+
+  scope :disponible, :conditions => ['numero != ?', -1], :order => 'numero desc'
 
   def nom_disponible
     if numero != -1
