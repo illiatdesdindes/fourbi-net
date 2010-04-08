@@ -1,0 +1,83 @@
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: white; }
+
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px; }
+
+#logo {
+  position: absolute;
+  top: 16px;
+  left: 0px; }
+
+a {
+  font-weight: bold;
+  color: black;
+  text-decoration: none; }
+
+#sommaire_descriptif {
+  position: absolute;
+  left: 17px;
+  top: 180px;
+  width: 226px;
+  font-size: 10px; }
+
+#sommaire_descriptif p {
+  padding-bottom: 10px; }
+
+#sommaire_bulle_desordre {
+  position: absolute;
+  top: 167px;
+  left: 275px; }
+
+#sommaire_bulle_terrier {
+  position: absolute;
+  top: 605px;
+  left: 305px; }
+
+.sommaire_cadre_desordre {
+  position: absolute;
+  top: 330px; }
+
+.sommaire_image_desordre {
+  position: absolute;
+  top: 350px;
+  height: 210px;
+  width: 210px; }
+
+#sommaire_cadre_desordre_1 {
+  left: 264px; }
+
+#sommaire_image_desordre_1 {
+  left: 284px; }
+
+#sommaire_cadre_desordre_2 {
+  left: 538px; }
+
+#sommaire_image_desordre_2 {
+  left: 558px; }
+
+#sommaire_cadre_desordre_3 {
+  left: 812px; }
+
+#sommaire_image_desordre_3 {
+  left: 832px; }
+
+.sommaire_cadre_terrier {
+  position: absolute;
+  top: 821px; }
+
+#sommaire_cadre_terrier_1 {
+  left: 279px; }
+
+#sommaire_cadre_terrier_2 {
+  left: 473px; }
+
+#sommaire_cadre_terrier_3 {
+  left: 667px; }
+
+#sommaire_cadre_terrier_4 {
+  left: 861px; }
