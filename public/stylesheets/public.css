@@ -18,6 +18,31 @@ a {
   color: black;
   text-decoration: none; }
 
+.image_haut {
+  position: absolute; }
+
+#timbre {
+  top: 30px;
+  left: 592px; }
+
+#timbre > a > img {
+  height: 50px;
+  width: 50px; }
+
+#panier {
+  top: 33px;
+  left: 647px; }
+
+#panier > a > img {
+  height: 47px; }
+
+#aide {
+  top: 10px;
+  left: 720px; }
+
+#aide > a > img {
+  height: 70px; }
+
 #sommaire_descriptif {
   position: absolute;
   left: 17px;
