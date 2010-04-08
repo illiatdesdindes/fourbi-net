@@ -14,8 +14,8 @@
 </div>
 
 <% (0...[3, @articles_desordre.length].min).each do |i| %>
-  <div id="sommaire_image_desordre_<%= i + 1 %>" class="sommaire_image_desordre"><%= image_tag @articles_desordre[i].image.url %></div>
-  <div id="sommaire_cadre_desordre_<%= i + 1 %>" class="sommaire_cadre_desordre">
+  <div id="sommaire_image_desordre_<%= i %>" class="sommaire_image_desordre"><%= image_tag @articles_desordre[i].image.url %></div>
+  <div id="sommaire_cadre_desordre_<%= i %>" class="sommaire_cadre_desordre">
     <%= link_to image_tag('cadres/desordre_moyen.gif', :alt => @articles_desordre[i].nom ), :action => :article, :id =>  @articles_desordre[i] %>
   </div>
 <% end %>
@@ -25,8 +25,8 @@
 </div>
 
 <% (0...[4, @articles_terrier.length].min).each do |i| %>
-  <div id="sommaire_image_terrier_<%= i + 1 %>" class="sommaire_image_terrier"><%= image_tag @articles_terrier[i].image.url %></div>
-  <div id="sommaire_cadre_terrier_<%= i + 1 %>" class="sommaire_cadre_terrier">
+  <div id="sommaire_image_terrier_<%= i %>" class="sommaire_image_terrier"><%= image_tag @articles_terrier[i].image.url %></div>
+  <div id="sommaire_cadre_terrier_<%= i %>" class="sommaire_cadre_terrier">
     <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => @articles_terrier[i].nom ), :action => :article, :id =>  @articles_terrier[i] %>
   </div>
 <% end %>
