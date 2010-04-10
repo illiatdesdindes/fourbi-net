@@ -23,6 +23,9 @@ class Serie < ActiveRecord::Base
   validates_presence_of :nom, :numero, :boutique_id
   validates_numericality_of :numero, :allow_nil => false, :only_integer => true, :greater_than_or_equal_to => -1
 
+  validates :nom, :xml => true
+  validates :description, :xml => true
+
   attr_writer :disponible
 
   scope :boutique, lambda {|boutique| {:conditions => {:boutique_id => boutique}, :order => 'numero desc'} }

@@ -36,6 +36,8 @@ class Article < ActiveRecord::Base
   validates_numericality_of :prix, :allow_nil => true, :greater_than => 0, :message => 'doit être supérieur ou égal à 0'
   validates_numericality_of :nombre_restant, :only_integer => true, :allow_nil => false, :greater_than_or_equal_to => -1
   validates_numericality_of :numero, :allow_nil => false, :only_integer => true, :greater_than_or_equal_to => -1
+  validates :nom, :xml => true
+  validates :description, :xml => true
 
   has_many :article_clients, :dependent => :delete_all
 

@@ -5,7 +5,7 @@
   <tbody>
   <% for boutique in @boutiques %>
       <tr>
-        <td><%= link_to_view boutique, nil, h(boutique.nom) %></td>
+        <td><%= link_to_view boutique, nil, boutique.nom %></td>
       </tr>
   <% end %>
   </tbody>

@@ -1,7 +1,7 @@
 <div class="divDraggable">
   <ul class="draggable">
     <% for serie in @series %>
-        <li id="numero_<%= serie.id %>"><%= "#{h serie.nom} (#{serie.numero})" %></li>
+        <li id="numero_<%= serie.id %>"><%= "#{serie.nom} (#{serie.numero})" %></li>
     <% end %>
   </ul>
 </div>
