@@ -25,7 +25,7 @@
 </div>
 
 <% (0...[4, @articles_terrier.length].min).each do |i| %>
-  <div id="sommaire_image_terrier_<%= i %>" class="sommaire_image_terrier"><%= image_tag @articles_terrier[i].image.url %></div>
+  <div id="sommaire_image_terrier_<%= i %>" class="sommaire_image_terrier"><div class="sommaire_image_terrier_div"><%= image_tag @articles_terrier[i].image.url %></div></div>
   <div id="sommaire_cadre_terrier_<%= i %>" class="sommaire_cadre_terrier">
     <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => @articles_terrier[i].nom ), {:action => :article_terrier, :id =>  @articles_terrier[i]}, {:title => @articles_terrier[i].nom} %>
   </div>

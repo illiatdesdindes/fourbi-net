@@ -146,33 +146,40 @@ a {
 
 .sommaire_image_terrier {
   position: absolute;
-  top: 836px;
-  width: 145px;
-  height: 207px; }
+  top: 831px;
+  width: 155px;
+  height: 217px; }
+
+.sommaire_image_terrier_div {
+  text-align: center; }
+
+.sommaire_image_terrier_div > img {
+  max-height: 217px;
+  max-width: 155px; }
 
 #sommaire_cadre_terrier_0 {
   left: 279px; }
 
 #sommaire_image_terrier_0 {
-  left: 294px; }
+  left: 289px; }
 
 #sommaire_cadre_terrier_1 {
   left: 473px; }
 
 #sommaire_image_terrier_1 {
-  left: 498px; }
+  left: 483px; }
 
 #sommaire_cadre_terrier_2 {
   left: 667px; }
 
 #sommaire_image_terrier_2 {
-  left: 683px; }
+  left: 677px; }
 
 #sommaire_cadre_terrier_3 {
   left: 861px; }
 
 #sommaire_image_terrier_3 {
-  left: 876px; }
+  left: 871px; }
 
 #boutique_desordre_bulle_desordre {
   position: absolute;
