@@ -14,7 +14,7 @@
 </div>
 
 <% (0...[3, @articles_desordre.length].min).each do |i| %>
-  <div id="sommaire_image_desordre_<%= i %>" class="sommaire_image_desordre"><%= image_tag @articles_desordre[i].image.url %></div>
+  <div id="sommaire_image_desordre_<%= i %>" class="sommaire_image_desordre"><div class="sommaire_image_desordre_div"><%= image_tag @articles_desordre[i].image.url %></div></div>
   <div id="sommaire_cadre_desordre_<%= i %>" class="sommaire_cadre_desordre">
     <%= link_to image_tag('cadres/desordre_moyen.gif', :alt => @articles_desordre[i].nom ), {:action => :article_desordre, :id =>  @articles_desordre[i]}, {:title => @articles_desordre[i].nom} %>
   </div>
