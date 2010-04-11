@@ -13,6 +13,7 @@ class Public::IndexController < Public::DefaultPublicController
   def boutique_desordre
     @page_title = 'fourbi.net: la boutique du desordre'
     boutique
+    @articles = trouver_articles(@boutique_desordre.series, 13)
   end
 
   def boutique_terrier
@@ -56,6 +57,19 @@ class Public::IndexController < Public::DefaultPublicController
   def boutique
     @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
     @boutique_terrier = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
+  end
+
+  def trouver_articles series, max_number
+    articles = []
+    for serie in series
+      if article = Article.disponible.serie(serie).order('random()').first
+        articles << article
+        if articles.length == max_number
+          return articles
+        end
+      end
+    end
+    articles
   end
 
 end

@@ -222,19 +222,19 @@ a {
 
 #boutique_desordre_cadre_1 {
   top: 342px;
-  left: 530px; }
+  left: 528px; }
 
 #boutique_desordre_image_1 {
   top: 396px;
-  left: 548px; }
+  left: 546px; }
 
 #boutique_desordre_cadre_2 {
   top: 342px;
-  left: 790px; }
+  left: 786px; }
 
 #boutique_desordre_image_2 {
   top: 396px;
-  left: 808px; }
+  left: 804px; }
 
 #boutique_desordre_cadre_3 {
   top: 599px;
@@ -246,43 +246,63 @@ a {
 
 #boutique_desordre_cadre_4 {
   top: 601px;
-  left: 530px; }
+  left: 528px; }
 
 #boutique_desordre_image_4 {
   top: 655px;
-  left: 548px; }
+  left: 546px; }
 
 #boutique_desordre_cadre_5 {
   top: 601px;
-  left: 790px; }
+  left: 786px; }
 
 #boutique_desordre_image_5 {
   top: 655px;
-  left: 808px; }
+  left: 804px; }
 
-#boutique_desordre_cadre_6 {
-  top: 860px;
-  left: 267px; }
+#boutique_desordre_predelle_cadres {
+  position: absolute;
+  top: 855px;
+  left: 266px; }
+  #boutique_desordre_predelle_cadres li {
+    display: inline;
+    list-style: none;
+    padding-right: 6px; }
 
-#boutique_desordre_image_6 {
-  top: 914px;
-  left: 285px; }
+.boutique_desordre_predelle_image {
+  position: absolute;
+  top: 877px;
+  height: 57px;
+  width: 87px;
+  display: table; }
+  .boutique_desordre_predelle_image div {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle; }
+    .boutique_desordre_predelle_image div img {
+      max-height: 57px;
+      max-width: 87px; }
 
-#boutique_desordre_cadre_7 {
-  top: 860px;
-  left: 530px; }
+#boutique_desordre_predelle_image_0 {
+  left: 273px; }
 
-#boutique_desordre_image_7 {
-  top: 914px;
-  left: 548px; }
+#boutique_desordre_predelle_image_1 {
+  left: 383px; }
 
-#boutique_desordre_cadre_8 {
-  top: 862px;
-  left: 790px; }
+#boutique_desordre_predelle_image_2 {
+  left: 495px; }
 
-#boutique_desordre_image_8 {
-  top: 916px;
-  left: 808px; }
+#boutique_desordre_predelle_image_3 {
+  left: 607px; }
+
+#boutique_desordre_predelle_image_4 {
+  left: 719px; }
+
+#boutique_desordre_predelle_image_5 {
+  left: 831px; }
+
+#boutique_desordre_predelle_image_6 {
+  left: 943px; }
 
 #boutique_terrier_bulle {
   position: absolute;
