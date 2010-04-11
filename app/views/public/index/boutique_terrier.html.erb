@@ -1,0 +1,23 @@
+<div id="boutique_terrier_bulle">
+  <%= image_tag 'bulles/terrier.jpg', :alt => 'la boutique du terrier' %>
+</div>
+
+<div id="boutique_terrier_info_boutiques">
+  <%= render(:partial => "public/index/boutique_series_terrier", :locals => {:boutique_terrier => @boutique_terrier}) %>
+  <%= render(:partial => "public/index/boutique_series_desordre", :locals => {:boutique_desordre => @boutique_desordre}) %>
+</div>
+
+<% i = 0 %>
+<% for serie in @boutique_terrier.series %>
+  <% if i < 8 %>
+    <% if article = Article.disponible.serie(serie).order('random()').first %>
+      <div id="boutique_terrier_image_<%= i %>" class="boutique_terrier_image">
+        <div><%= image_tag article.image.url, :alt => article.nom %></div>
+      </div>
+      <div id="boutique_terrier_cadre_<%= i %>" class="boutique_terrier_cadre">
+        <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
+      </div>
+      <% i += 1 %>
+    <% end %>
+  <% end %>
+<% end %>

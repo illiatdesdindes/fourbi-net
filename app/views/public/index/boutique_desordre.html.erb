@@ -1,25 +1,10 @@
-<div id="boutique_desordre_bulle_desordre">
+<div id="boutique_desordre_bulle">
   <%= image_tag 'bulles/desordre.jpg', :alt => 'la boutique du désordre' %>
 </div>
 
 <div id="boutique_desordre_info_boutiques">
-
-  <div><%= link_to image_tag('boutons/bouton.jpg', :alt => 'la boutique du désordre', :id => 'boutique_logo_desordre'), {:action => :boutique_desordre}, {:title => 'La boutique du désordre'} %></div>
-  <div class="boutique_nom_boutique">Les séries du désordre</div>
-  <ul class="boutique_liste_series">
-    <% for serie in @boutique_desordre.series %>
-      <li><%= link_to serie.nom, {:action => :serie_desordre, :id => serie}, {:title => serie.description } %></li>
-    <% end %>
-  </ul>
-  
-  <div><%= link_to image_tag('insectes/cerambycide.jpg', :alt => 'la boutique du terrier', :id => 'boutique_logo_terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %></div>
-  <div class="boutique_nom_boutique">Les séries du terrier</div>
-  <ul class="boutique_liste_series">
-    <% for serie in @boutique_terrier.series %>
-      <li><%= link_to serie.nom, {:action => :serie_desordre, :id => serie}, {:title => serie.description} %></li>
-    <% end %>
-  </ul>
-  
+  <%= render(:partial => "public/index/boutique_series_desordre", :locals => {:boutique_desordre => @boutique_desordre}) %>
+  <%= render(:partial => "public/index/boutique_series_terrier", :locals => {:boutique_terrier => @boutique_terrier}) %>
 </div>
 
 <% i = 0 %>
@@ -33,7 +18,6 @@
         <%= link_to image_tag('cadres/desordre_moyen.gif', :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom} %>
       </div>
       <% i += 1 %>
-
     <% end %>
   <% end %>
 <% end %>
