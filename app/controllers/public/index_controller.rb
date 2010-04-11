@@ -19,6 +19,7 @@ class Public::IndexController < Public::DefaultPublicController
   def boutique_terrier
     @page_title = 'fourbi.net: la boutique du terrier'
     boutique
+    @articles = trouver_articles(@boutique_terrier.series, 15)
   end
 
   def serie_desordre

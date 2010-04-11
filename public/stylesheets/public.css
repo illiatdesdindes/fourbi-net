@@ -394,6 +394,50 @@ a {
   top: 610px;
   left: 876px; }
 
+#boutique_terrier_predelle_cadres {
+  position: absolute;
+  top: 860px;
+  left: 282px; }
+  #boutique_terrier_predelle_cadres li {
+    display: inline;
+    list-style: none;
+    padding-right: 4px; }
+
+.boutique_terrier_predelle_image {
+  position: absolute;
+  top: 870px;
+  height: 100px;
+  width: 79px;
+  display: table; }
+  .boutique_terrier_predelle_image div {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle; }
+    .boutique_terrier_predelle_image div img {
+      max-height: 100px;
+      max-width: 79px; }
+
+#boutique_terrier_predelle_image_0 {
+  left: 293px; }
+
+#boutique_terrier_predelle_image_1 {
+  left: 401px; }
+
+#boutique_terrier_predelle_image_2 {
+  left: 511px; }
+
+#boutique_terrier_predelle_image_3 {
+  left: 621px; }
+
+#boutique_terrier_predelle_image_4 {
+  left: 731px; }
+
+#boutique_terrier_predelle_image_5 {
+  left: 841px; }
+
+#boutique_terrier_predelle_image_6 {
+  left: 951px; }
+
 .serie_titre_serie {
   font-weight: bold;
   font-size: 14px;

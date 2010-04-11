@@ -21,3 +21,27 @@
     <% end %>
   <% end %>
 <% end %>
+
+<% for i in (0...[8, @articles.length].min) %>
+  <% article = @articles[i] %>
+  <div id="boutique_terrier_image_<%= i %>" class="boutique_terrier_image">
+    <div><%= image_tag article.image.url, :alt => article.nom %></div>
+  </div>
+  <div id="boutique_terrier_cadre_<%= i %>" class="boutique_terrier_cadre">
+    <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
+  </div>
+<% end %>
+
+<% for i in (8...@articles.length) %>
+  <div id="boutique_terrier_predelle_image_<%= i - 8 %>" class="boutique_terrier_predelle_image">
+    <% article = @articles[i] %>
+    <div><%= image_tag article.image.url, :alt => article.nom %></div>
+  </div>
+<% end %>
+
+<ul id="boutique_terrier_predelle_cadres">
+  <% for i in (8...@articles.length) %>
+    <% article = @articles[i] %>
+    <li><%= link_to image_tag('cadres/terrier_minuscule.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %></li>
+  <% end %>
+</ul>
