@@ -45,6 +45,8 @@ class Article < ActiveRecord::Base
 
   scope :disponible, :conditions => ['numero != ?', -1], :order => 'numero desc'
 
+  before_save :update_order
+
   def disponible?
     if @disponible.nil?
       numero != -1
@@ -53,7 +55,7 @@ class Article < ActiveRecord::Base
     end
   end
 
-  def before_save
+  def update_order
     if nombre_restant == 0
       self.numero = -1
     end
