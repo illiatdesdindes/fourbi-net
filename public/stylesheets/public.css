@@ -161,7 +161,8 @@ a {
   width: 150px;
   height: 150px;
   padding-left: 17px;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+  padding-top: 10px; }
 
 #boutique_logo_terrier {
   width: 250px;
@@ -192,7 +193,7 @@ a {
 
 #boutique_desordre_info_boutiques {
   position: absolute;
-  top: 180px;
+  top: 170px;
   left: 0; }
 
 .boutique_desordre_cadre {
