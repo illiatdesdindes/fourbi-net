@@ -1,0 +1,101 @@
+@import public/constants.sass
+
+#sommaire_descriptif
+  position: absolute
+  left: 17px
+  top: 180px
+  width: 226px
+  font-size: 10px
+
+#sommaire_descriptif p
+  padding-bottom: 10px
+
+#sommaire_bulle_desordre
+  position: absolute
+  top: 167px
+  left: 275px
+
+#sommaire_bulle_terrier
+  position: absolute
+  top: 605px
+  left: 305px
+
+.sommaire_cadre_desordre
+  position: absolute
+  top: 330px
+
+.sommaire_image_desordre
+  position: absolute
+  top: 385px
+  height = !hauteur_image_visible_cadre_desordre_moyen
+  width = !largeur_image_visible_cadre_desordre_moyen
+  display: table
+  div
+    text-align: center
+    display: table-cell
+    vertical-align: middle
+    img
+      max-height: 150px
+      max-width: 217px
+
+!sommaire_desordre_cadre_0 = 264px
+!sommaire_desordre_cadre_1 = 538px
+!sommaire_desordre_cadre_2 = 812px
+
+#sommaire_cadre_desordre_0
+  left = !sommaire_desordre_cadre_0
+#sommaire_image_desordre_0
+  left = !sommaire_desordre_cadre_0 + !largeur_bord_gauche_cadre_desordre_moyen
+
+#sommaire_cadre_desordre_1
+  left = !sommaire_desordre_cadre_1
+#sommaire_image_desordre_1
+  left = !sommaire_desordre_cadre_1+ !largeur_bord_gauche_cadre_desordre_moyen
+
+#sommaire_cadre_desordre_2
+  left = !sommaire_desordre_cadre_2
+#sommaire_image_desordre_2
+  left = !sommaire_desordre_cadre_2 + !largeur_bord_gauche_cadre_desordre_moyen
+
+.sommaire_cadre_terrier
+  position: absolute
+  top: 821px
+
+.sommaire_image_terrier
+  position: absolute
+  top: 831px
+  display: table
+  height = !hauteur_image_visible_cadre_terrier_moyen
+  width = !largeur_image_visible_cadre_terrier_moyen
+  div
+    text-align: center
+    display: table-cell
+    vertical-align: middle
+    img
+      max-height: 217px
+      max-width: 155px
+
+!sommaire_terrier_cadre_0 = 279px
+!sommaire_terrier_cadre_1 = 473px
+!sommaire_terrier_cadre_2 = 667px
+!sommaire_terrier_cadre_3 = 861px
+
+#sommaire_cadre_terrier_0
+  left = !sommaire_terrier_cadre_0
+#sommaire_image_terrier_0
+  left = !sommaire_terrier_cadre_0 + !largeur_bord_gauche_cadre_terrier_moyen
+
+#sommaire_cadre_terrier_1
+  left = !sommaire_terrier_cadre_1
+#sommaire_image_terrier_1
+  left = !sommaire_terrier_cadre_1 + !largeur_bord_gauche_cadre_terrier_moyen
+
+#sommaire_cadre_terrier_2
+  left = !sommaire_terrier_cadre_2
+#sommaire_image_terrier_2
+  left = !sommaire_terrier_cadre_2 + !largeur_bord_gauche_cadre_terrier_moyen
+
+#sommaire_cadre_terrier_3
+  left = !sommaire_terrier_cadre_3
+#sommaire_image_terrier_3
+  left = !sommaire_terrier_cadre_3 + !largeur_bord_gauche_cadre_terrier_moyen

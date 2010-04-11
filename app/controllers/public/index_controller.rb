@@ -12,21 +12,27 @@ class Public::IndexController < Public::DefaultPublicController
 
   def boutique_desordre
     @page_title = 'fourbi.net: la boutique du desordre'
-    @boutique = Boutique.where(:nom => Boutique::NOM_DESORDRE).includes(:series).first
     boutique
   end
 
   def boutique_terrier
     @page_title = 'fourbi.net: la boutique du terrier'
-    @boutique = Boutique.where(:nom => Boutique::NOM_TERRIER).includes(:series).first
     boutique
+  end
+
+  def serie_desordre
+
+  end
+
+  def serie_terrier
+
   end
 
   def sommaire
     @page_title = 'fourbi.net, brocante à toutes heures'
-    boutique_desordre = Boutique.where(:nom => Boutique::NOM_DESORDRE).first
+    boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).first
     @articles_desordre = find_articles 3, boutique_desordre
-    boutique_terrier = Boutique.where(:nom => Boutique::NOM_TERRIER).first
+    boutique_terrier = Boutique.nom(Boutique::NOM_TERRIER).first
     @articles_terrier = find_articles 4, boutique_terrier
   end
 
@@ -48,12 +54,8 @@ class Public::IndexController < Public::DefaultPublicController
   end
 
   def boutique
-    @series = Serie.boutique(@boutique).disponible
-    if params[:id]
-      @serie = Serie.find(params[:id])
-    else
-      @serie = @series[0]
-    end
+    @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
+    @boutique_terrier = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
   end
 
 end

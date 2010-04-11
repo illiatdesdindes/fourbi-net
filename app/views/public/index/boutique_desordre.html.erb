@@ -1,15 +1,39 @@
 <div id="boutique_desordre_bulle_desordre">
-  <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), :action => :boutique_desordre %>
+  <%= image_tag 'bulles/desordre.jpg', :alt => 'la boutique du désordre' %>
 </div>
 
-<div id="boutique_desordre_descriptif_serie">
-  <div class="boutique_titre_serie"><%= @serie.nom %></div>
-  <div class="boutique_descriptif"><%= @serie.description %></div>
-  <div class="boutique_titre_boutique">Les séries du désordre</div>
-  <ul id="boutique_liste_serie">
-  <% for serie in @series %>
-    <li><%= link_to serie.nom, {:id => serie}, {:title => serie.description} %></li>  
-  <% end %>
+<div id="boutique_desordre_info_boutiques">
+
+  <div><%= link_to image_tag('boutons/bouton.jpg', :alt => 'la boutique du désordre', :id => 'boutique_logo_desordre'), {:action => :boutique_desordre}, {:title => 'La boutique du désordre'} %></div>
+  <div class="boutique_nom_boutique">Les séries du désordre</div>
+  <ul class="boutique_liste_series">
+    <% for serie in @boutique_desordre.series %>
+      <li><%= link_to serie.nom, {:action => :serie_desordre, :id => serie}, {:title => serie.description } %></li>
+    <% end %>
   </ul>
+  
+  <div><%= link_to image_tag('insectes/cerambycide.jpg', :alt => 'la boutique du terrier', :id => 'boutique_logo_terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %></div>
+  <div class="boutique_nom_boutique">Les séries du terrier</div>
+  <ul class="boutique_liste_series">
+    <% for serie in @boutique_terrier.series %>
+      <li><%= link_to serie.nom, {:action => :serie_desordre, :id => serie}, {:title => serie.description} %></li>
+    <% end %>
+  </ul>
+  
 </div>
 
+<% i = 0 %>
+<% for serie in @boutique_desordre.series %>
+  <% if i < 9 %>
+    <% if article = Article.disponible.serie(serie).order('random()').first %>
+      <div id="boutique_desordre_image_<%= i %>" class="boutique_desordre_image">
+        <div><%= image_tag article.image.url, :alt => article.nom %></div>
+      </div>
+      <div id="boutique_desordre_cadre_<%= i %>" class="boutique_desordre_cadre">
+        <%= link_to image_tag('cadres/desordre_moyen.gif', :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom} %>
+      </div>
+      <% i += 1 %>
+
+    <% end %>
+  <% end %>
+<% end %>

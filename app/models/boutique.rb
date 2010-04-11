@@ -23,6 +23,9 @@ class Boutique < ActiveRecord::Base
   validates :nom, :xml => true
   validates :description, :xml => true
 
+  scope :nom, lambda {|nom| {:conditions => {:nom => nom} }}
+
+
   NOM_DESORDRE = 'desordre.net'
 
   NOM_TERRIER = 'le-terrier.net'
