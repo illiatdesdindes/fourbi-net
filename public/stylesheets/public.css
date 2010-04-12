@@ -363,40 +363,40 @@ a {
   left: 886px; }
 
 #boutique_terrier_cadre_4 {
-  top: 600px;
+  top: 575px;
   left: 281px; }
 
 #boutique_terrier_image_4 {
-  top: 618px;
+  top: 593px;
   left: 301px; }
 
 #boutique_terrier_cadre_5 {
-  top: 601px;
+  top: 576px;
   left: 476px; }
 
 #boutique_terrier_image_5 {
-  top: 619px;
+  top: 594px;
   left: 496px; }
 
 #boutique_terrier_cadre_6 {
-  top: 601px;
+  top: 576px;
   left: 671px; }
 
 #boutique_terrier_image_6 {
-  top: 619px;
+  top: 594px;
   left: 691px; }
 
 #boutique_terrier_cadre_7 {
-  top: 601px;
+  top: 576px;
   left: 865px; }
 
 #boutique_terrier_image_7 {
-  top: 618px;
+  top: 593px;
   left: 886px; }
 
 #boutique_terrier_predelle_cadres {
   position: absolute;
-  top: 860px;
+  top: 810px;
   left: 282px; }
   #boutique_terrier_predelle_cadres li {
     display: inline;
@@ -405,7 +405,7 @@ a {
 
 .boutique_terrier_predelle_image {
   position: absolute;
-  top: 870px;
+  top: 820px;
   height: 100px;
   width: 79px;
   display: table; }
