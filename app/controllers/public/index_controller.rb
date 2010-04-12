@@ -3,7 +3,7 @@ class Public::IndexController < Public::DefaultPublicController
   layout 'public-layout'
 
   def article_desordre
-
+    @article = Article.find(params[:id])
   end
 
   def article_terrier

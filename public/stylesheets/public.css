@@ -157,6 +157,67 @@ a {
 #sommaire_image_terrier_3 {
   left: 881px; }
 
+#article_info {
+  position: absolute;
+  top: 445px;
+  left: 0px;
+  width: 210px; }
+
+#article_nom_article {
+  font-weight: bold;
+  font-size: 12px;
+  padding-bottom: 5px;
+  padding-left: 20px; }
+
+#article_description_article {
+  font-size: 10px;
+  list-style: none;
+  padding-bottom: 5px;
+  padding-left: 20px; }
+
+#article_description_article a {
+  font-weight: normal; }
+
+#article_description_article a:hover {
+  text-decoration: underline; }
+
+#article_prix_article {
+  font-size: 12px;
+  padding-left: 20px; }
+
+#article_ajouter_panier {
+  padding-left: 15px; }
+
+#article_desordre_bulle {
+  position: absolute;
+  top: 165px;
+  left: 275px; }
+
+#article_desordre_retour_serie {
+  position: absolute;
+  top: 321px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  font-size: 10px;
+  background-image: url('/images/cadres/desordre_minuscule.gif');
+  background-repeat: no-repeat;
+  padding-top: 40px;
+  padding-left: 10px; }
+  #article_desordre_retour_serie a {
+    font-weight: normal; }
+  #article_desordre_retour_serie a:hover {
+    text-decoration: underline; }
+
+#article_desordre_bloc_centre {
+  position: absolute;
+  top: 320px;
+  left: 270px; }
+
+#article_desordre_image {
+  min-width: 700px;
+  text-align: center; }
+
 #boutique_logo_desordre {
   width: 150px;
   height: 150px;

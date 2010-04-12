@@ -1,0 +1,18 @@
+<div id="article_desordre_bulle">
+  <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), {:action => :boutique_desordre}, {:title => 'La boutique du désordre'} %>
+</div>
+
+<div id="article_desordre_retour_serie"><%= link_to 'Retour à la série', {:action => :serie_desordre, :id => @article.serie}, {:title => @article.serie.nom } %></div>
+
+<div id="article_info">
+  <div id="article_nom_article"><%= raw @article.nom %></div>
+  <div id="article_description_article"><%= raw @article.description %></div>
+  <div id="article_prix_article"><%= number_to_currency @article.prix %></div>
+  <div id="article_ajouter_panier">
+    <%= link_to image_tag('panier.jpg', :alt => 'votre panier'), {:controller => 'public/index', :action => :sommaire}, {:title => 'votre panier'} %>
+  </div>
+</div>
+
+<div id="article_desordre_bloc_centre">
+  <div id="article_desordre_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
+</div>
