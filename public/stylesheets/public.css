@@ -212,11 +212,11 @@ a {
 #article_desordre_bloc_centre {
   position: absolute;
   top: 320px;
-  left: 270px;
-  text-align: center; }
+  left: 270px; }
 
 #article_desordre_image {
-  min-width: 700px; }
+  min-width: 700px;
+  text-align: center; }
 
 #article_scroll_content {
   height: 100px;

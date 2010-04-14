@@ -15,8 +15,7 @@
 
 <div id="article_desordre_bloc_centre">
   <div id="article_desordre_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
-
-  <table>
+  <table id="article_desordre_predelle">
     <tbody>
     <tr>
       <td><%= link_to image_tag('mains/gauche.gif', :id => 'article_scroll_gauche', :alt => 'Scroller vers la gauche'), '#', {:onclick  => 'scollLeft(); return false;', :title => 'Se déplacer vers la droite' } %></td>
@@ -29,6 +28,10 @@
                 <% article = @article.serie.articles[i] %>
                 <td><%= link_to image_tag(article.image.url, :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom, :id => "article_#{i}"} %></td>
               <% end %>
+              <% for i in (@article.serie.articles.length..7) %>
+                <td></td>
+              <% end %>
+
             </tr>
             </tbody>
           </table>
