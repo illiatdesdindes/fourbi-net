@@ -1,10 +1,15 @@
 $(function() {
+    centerImages();
     $("#article_desordre_image").load(function() {
-        if ($("#article_desordre_image").width() > $("#article_desordre_predelle").width()) {
-            $("#article_desordre_predelle").css("padding-left", "" + (($("#article_desordre_image").width() - $("#article_desordre_predelle").width()) / 2) + "px");
-        }
+        centerImages()
     });
 });
+
+function centerImages() {
+    if ($("#article_desordre_image").width() > $("#article_desordre_predelle").width()) {
+        $("#article_desordre_predelle").css("padding-left", "" + (($("#article_desordre_image").width() - $("#article_desordre_predelle").width()) / 2) + "px");
+    }
+}
 
 
 function scollLeft() {
