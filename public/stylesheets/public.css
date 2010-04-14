@@ -212,11 +212,32 @@ a {
 #article_desordre_bloc_centre {
   position: absolute;
   top: 320px;
-  left: 270px; }
+  left: 270px;
+  text-align: center; }
 
 #article_desordre_image {
-  min-width: 700px;
-  text-align: center; }
+  min-width: 700px; }
+
+#article_scroll_content {
+  height: 100px;
+  width: 714px;
+  overflow: hidden; }
+  #article_scroll_content table {
+    height: 100px;
+    border-collapse: collapse; }
+    #article_scroll_content table td {
+      background-image: url('/images/cadres/desordre_minuscule.gif');
+      background-repeat: no-repeat;
+      max-width: 86px;
+      min-width: 86px;
+      padding-left: 7px;
+      padding-right: 9px;
+      padding-top: 22px;
+      vertical-align: top;
+      text-align: center; }
+      #article_scroll_content table td img {
+        max-height: 57px;
+        max-width: 86px; }
 
 #boutique_logo_desordre {
   width: 150px;
@@ -334,7 +355,7 @@ a {
   position: absolute;
   top: 877px;
   height: 57px;
-  width: 87px;
+  width: 86px;
   display: table; }
   .boutique_desordre_predelle_image div {
     text-align: center;
@@ -342,7 +363,7 @@ a {
     vertical-align: middle; }
     .boutique_desordre_predelle_image div img {
       max-height: 57px;
-      max-width: 87px; }
+      max-width: 86px; }
 
 #boutique_desordre_predelle_image_0 {
   left: 273px; }

@@ -4,6 +4,8 @@ class Public::IndexController < Public::DefaultPublicController
 
   def article_desordre
     @article = Article.find(params[:id])
+    @page_title = "fourbi.net: #{@article.nom}"
+    @custom_javascript = 'var numberArticlesPerPage = 7;'
   end
 
   def article_terrier

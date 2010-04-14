@@ -15,4 +15,27 @@
 
 <div id="article_desordre_bloc_centre">
   <div id="article_desordre_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
+
+  <table>
+    <tbody>
+    <tr>
+      <td><%= link_to image_tag('mains/gauche.gif', :id => 'article_scroll_gauche', :alt => 'Scroller vers la gauche'), '#', {:onclick  => 'scollLeft(); return false;', :title => 'Se déplacer vers la droite' } %></td>
+      <td colspan="5">
+        <div id="article_scroll_content">
+          <table>
+            <tbody>
+            <tr>
+              <% for i in (0...@article.serie.articles.length) %>
+                <% article = @article.serie.articles[i] %>
+                <td><%= link_to image_tag(article.image.url, :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom, :id => "article_#{i}"} %></td>
+              <% end %>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+      <td><%= link_to image_tag('mains/droite.gif', :id => 'article_scroll_droite', :alt => 'Scroller vers la droite'), '#', {:onclick  => 'scollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
+    </tr>
+    </tbody>
+  </table>
 </div>

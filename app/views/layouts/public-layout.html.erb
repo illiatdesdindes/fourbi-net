@@ -8,9 +8,14 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
   <title><%= @page_title %></title>
   <%= stylesheet_link_tag 'public' %>
-  <%= javascript_include_tag 'jquery-1.4.2.min', 'public' %>
+  <%= javascript_include_tag 'jquery-1.4.2.min', 'jquery.scrollTo-1.4.2-min', 'public' %>
   <% if @custom_javascript_include %>
       <%= javascript_include_tag @custom_javascript_include %>
+  <% end %>
+  <% if @custom_javascript %>
+      <script type="text/javascript">
+          <%= @custom_javascript %>
+      </script>
   <% end %>
 </head>
 <body>
