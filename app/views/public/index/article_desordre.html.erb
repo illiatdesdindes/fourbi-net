@@ -28,10 +28,9 @@
                 <% article = @article.serie.articles[i] %>
                 <td><%= link_to image_tag(article.image.url, :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom, :id => "article_#{i}"} %></td>
               <% end %>
-              <% for i in (@article.serie.articles.length..7) %>
+              <% (@article.serie.articles.length..7).each do %>
                 <td></td>
               <% end %>
-
             </tr>
             </tbody>
           </table>
