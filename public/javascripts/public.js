@@ -1,21 +1,20 @@
 $(function() {
     centerImages();
-    $("#article_desordre_image").load(function() {
+    $("#article_image").load(function() {
         centerImages()
     });
 });
 
 function centerImages() {
-    if ($("#article_desordre_image").width() > $("#article_desordre_predelle").width()) {
-        $("#article_desordre_predelle").css("padding-left", "" + (($("#article_desordre_image").width() - $("#article_desordre_predelle").width()) / 2) + "px");
+    if ($("#article_image").width() > $("#article_predelle").width()) {
+        $("#article_predelle").css("padding-left", "" + (($("#article_image").width() - $("#article_predelle").width()) / 2) + "px");
     }
 }
 
-
-function scollLeft() {
-    $("#article_scroll_content").scrollTo("-=" + (numberArticlesPerPage * $($("#article_scroll_content td")[0]).outerWidth()), 800);
+function scrollLeft(id) {
+    $("#" + id).scrollTo("-=" + (numberArticlesPerPage * $($("#" + id + " td")[0]).outerWidth()), 800);
 }
 
-function scollRight() {
-    $("#article_scroll_content").scrollTo("+=" + (numberArticlesPerPage * $($("#article_scroll_content td")[0]).outerWidth()), 800);
+function scrollRight(id) {
+    $("#" + id).scrollTo("+=" + (numberArticlesPerPage * $($("#" + id +" td")[0]).outerWidth()), 800);
 }

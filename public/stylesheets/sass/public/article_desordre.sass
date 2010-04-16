@@ -2,12 +2,12 @@
 
 #article_desordre_bulle
   position: absolute
-  top: 165px
-  left: 275px
+  top: 215px
+  left: 435px
 
 #article_desordre_retour_serie
   position: absolute
-  top: 321px
+  top: 301px
   left: 20px
   width = !largeur_image_desordre_minuscule
   height = !hauteur_image_desordre_minuscule
@@ -25,14 +25,10 @@
 
 #article_desordre_bloc_centre
   position: absolute
-  top: 320px
+  top: 300px
   left: 270px
 
-#article_desordre_image
-  min-width: 700px
-  text-align: center
-
-#article_scroll_content
+#article_desordre_scroll_content
   height= !hauteur_image_desordre_minuscule
   width = 7 * (!largeur_image_desordre_minuscule + 2px)
   overflow: hidden
@@ -43,13 +39,13 @@
       background:
         image: url('/images/cadres/desordre_minuscule.gif')
         repeat: no-repeat
-      max-width = !largeur_image_visible_cadre_desordre_minuscule
       min-width = !largeur_image_visible_cadre_desordre_minuscule
       padding-left = !largeur_bord_gauche_cadre_desordre_minuscule
       padding-right = !largeur_image_desordre_minuscule - (!largeur_bord_gauche_cadre_desordre_minuscule + !largeur_image_visible_cadre_desordre_minuscule) + 2px
       padding-top: 4px
-      vertical-align: center
+      vertical-align: middle
       text-align: center
       img
         max-height = !hauteur_image_visible_cadre_desordre_minuscule
         max-width = !largeur_image_visible_cadre_desordre_minuscule
+

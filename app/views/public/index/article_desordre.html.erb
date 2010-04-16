@@ -14,18 +14,18 @@
 </div>
 
 <div id="article_desordre_bloc_centre">
-  <div id="article_desordre_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
+  <div id="article_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
   <table id="article_desordre_predelle">
     <tbody>
     <tr>
-      <td><%= link_to image_tag('mains/gauche.gif', :id => 'article_scroll_gauche', :alt => 'Scroller vers la gauche'), '#', {:onclick  => 'scollLeft(); return false;', :title => 'Se déplacer vers la droite' } %></td>
+      <td><%= link_to image_tag('mains/gauche.gif', :id => 'article_scroll_gauche', :alt => 'Scroller vers la gauche'), '#', {:onclick  => 'scrollLeft("article_desordre_scroll_content"); return false;', :title => 'Se déplacer vers la droite' } %></td>
       <td colspan="5">
-        <div id="article_scroll_content">
+        <div id="article_desordre_scroll_content">
           <table>
             <tbody>
             <tr>
-              <% for i in (0...@article.serie.articles.length) %>
-                <% article = @article.serie.articles[i] %>
+              <% for i in (0...@articles_serie.length) %>
+                <% article = @articles_serie[i] %>
                 <td><%= link_to image_tag(article.image.url, :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom, :id => "article_#{i}"} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
@@ -36,7 +36,7 @@
           </table>
         </div>
       </td>
-      <td><%= link_to image_tag('mains/droite.gif', :id => 'article_scroll_droite', :alt => 'Scroller vers la droite'), '#', {:onclick  => 'scollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
+      <td><%= link_to image_tag('mains/droite.gif', :id => 'article_scroll_droite', :alt => 'Scroller vers la droite'), '#', {:onclick  => 'scollRight("article_desordre_scroll_content"); return false;', :title => 'Se déplacer vers la droite'} %></td>
     </tr>
     </tbody>
   </table>

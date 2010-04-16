@@ -6,10 +6,14 @@ class Public::IndexController < Public::DefaultPublicController
     @article = Article.find(params[:id])
     @page_title = "fourbi.net: #{@article.nom}"
     @custom_javascript = 'var numberArticlesPerPage = 7;'
+    @articles_serie = @article.serie.articles.delete_if{|article| article == @article}
   end
 
   def article_terrier
-
+    @article = Article.find(params[:id])
+    @page_title = "fourbi.net: #{@article.nom}"
+    @custom_javascript = 'var numberArticlesPerPage = 7;'
+    @articles_serie = @article.serie.articles.delete_if{|article| article == @article}
   end
 
   def boutique_desordre
@@ -21,7 +25,7 @@ class Public::IndexController < Public::DefaultPublicController
   def boutique_terrier
     @page_title = 'fourbi.net: la boutique du terrier'
     boutique
-    @articles = trouver_articles(@boutique_terrier.series, 15)
+    @articles = trouver_articles(@boutique_terrier.series, 17)
   end
 
   def serie_desordre
