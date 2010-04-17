@@ -1,4 +1,4 @@
-<div id="sommaire_descriptif">
+<div id="s_descriptif">
   <p>fourbi.net est le site de vente en ligne des sites <%= link_to 'Désordre', 'http://www.desordre.net' %> et <%= link_to 'le Terrier', 'http://www.le-terrier.net/' %>, vous y trouverez à des prix que nous
   tentons de garder modestes des photograhies, des livres et des disques, et d'autres choses diverses, autant d'items
   que vous ne trouverez pas nécessairement ailleurs.</p>
@@ -9,26 +9,26 @@
   <p>Philippe De Jonckheere &#38; L.L. de Mars</p>
 </div>
 
-<div id="sommaire_bulle_desordre">
+<div id="s_bulle_desordre">
   <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), {:action => :boutique_desordre}, {:title => 'La boutique du désordre'} %>
 </div>
 
 <% (0...[5, @articles_desordre.length].min).each do |i| %>
   <% article = @articles_desordre[i] %>
-  <div id="sommaire_image_desordre_<%= i %>" class="sommaire_image_desordre"><div><%= image_tag article.image.url, :alt => article.nom %></div></div>
-  <div id="sommaire_cadre_desordre_<%= i %>" class="sommaire_cadre_desordre">
+  <div id="s_image_desordre_<%= i %>" class="s_image_desordre"><div><%= image_tag article.image.url, :alt => article.nom %></div></div>
+  <div id="s_cadre_desordre_<%= i %>" class="s_cadre_desordre">
     <%= link_to image_tag('cadres/desordre_moyen.gif', :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom} %>
   </div>
 <% end %>
 
-<div id="sommaire_bulle_terrier">
+<div id="s_bulle_terrier">
   <%= link_to image_tag('bulles/terrier.jpg', :alt => 'la boutique du terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %>
 </div>
 
 <% (0...[4, @articles_terrier.length].min).each do |i| %>
   <% article = @articles_terrier[i] %>
-  <div id="sommaire_image_terrier_<%= i %>" class="sommaire_image_terrier"><div><%= image_tag article.image.url, :alt => article.nom %></div></div>
-  <div id="sommaire_cadre_terrier_<%= i %>" class="sommaire_cadre_terrier">
+  <div id="s_image_terrier_<%= i %>" class="s_image_terrier"><div><%= image_tag article.image.url, :alt => article.nom %></div></div>
+  <div id="s_cadre_terrier_<%= i %>" class="s_cadre_terrier">
     <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
   </div>
 <% end %>

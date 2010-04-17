@@ -1,11 +1,11 @@
 @import public/constants.sass
 
-#article_desordre_bulle
+#ad_bulle
   position: absolute
   top: 95px
   left: 415px
 
-#article_desordre_retour_serie
+#ad_retour_serie
   position: absolute
   top: 151px
   left: 20px
@@ -23,12 +23,12 @@
   a:hover
     text-decoration: underline
 
-#article_desordre_bloc_centre
+#ad_bloc_centre
   position: absolute
   top: 180px
   left: 200px
 
-#article_desordre_scroll_content
+#ad_scroll_content
   height= !hauteur_image_desordre_petit
   width = 7 * (!largeur_image_desordre_petit + 2px)
   overflow: hidden
@@ -42,7 +42,7 @@
       min-width = !largeur_image_visible_cadre_desordre_petit
       padding-left = !largeur_bord_gauche_cadre_desordre_petit
       padding-right = !largeur_image_desordre_petit - (!largeur_bord_gauche_cadre_desordre_petit + !largeur_image_visible_cadre_desordre_petit) + 2px
-      padding-top: 4px
+      padding-top: 5px
       vertical-align: middle
       text-align: center
       img

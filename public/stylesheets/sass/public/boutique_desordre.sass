@@ -1,19 +1,19 @@
 @import public/constants.sass
 
-#boutique_desordre_bulle
+#bd_bulle
   position: absolute
-  top: 170px
+  top: 95px
   left: 275px
 
-#boutique_desordre_info_boutiques
+#bd_info_boutiques
   position: absolute
-  top: 170px
+  top: 130px
   left: 0
 
-.boutique_desordre_cadre
+.bd_cadre
   position: absolute
 
-.boutique_desordre_image
+.bd_image
   position: absolute
   height = !hauteur_image_visible_cadre_desordre_moyen
   width = !largeur_image_visible_cadre_desordre_moyen
@@ -26,69 +26,71 @@
       max-height = !hauteur_image_visible_cadre_desordre_moyen
       max-width = !largeur_image_visible_cadre_desordre_moyen
 
-!boutique_desordre_top_0 = 342px
-!boutique_desordre_top_1 = 601px
-!boutique_desordre_left_0 = 266px
-!boutique_desordre_left_1 = 528px
-!boutique_desordre_left_2 = 786px
+!bd_top_0 = 182px
+!bd_top_1 = 312px
 
-#boutique_desordre_cadre_0
-  top = !boutique_desordre_top_0 - 1px
-  left = !boutique_desordre_left_0
-#boutique_desordre_image_0
-  top = !boutique_desordre_top_0 + !hauteur_bord_haut_cadre_desordre_moyen - 1px
-  left = !boutique_desordre_left_0 + !largeur_bord_gauche_cadre_desordre_moyen
+!bd_delta = 160px
+!bd_left_0 = 266px
+!bd_left_1 = !bd_left_0 + (1 * !bd_delta)
+!bd_left_2 = !bd_left_0 + (2 * !bd_delta)
 
-#boutique_desordre_cadre_1
-  top = !boutique_desordre_top_0
-  left = !boutique_desordre_left_1
-#boutique_desordre_image_1
-  top = !boutique_desordre_top_0 + !hauteur_bord_haut_cadre_desordre_moyen
-  left = !boutique_desordre_left_1 + !largeur_bord_gauche_cadre_desordre_moyen
+#bd_cadre_0
+  top = !bd_top_0 - 1px
+  left = !bd_left_0
+#bd_image_0
+  top = !bd_top_0 + !hauteur_bord_haut_cadre_desordre_moyen - 1px
+  left = !bd_left_0 + !largeur_bord_gauche_cadre_desordre_moyen
 
-#boutique_desordre_cadre_2
-  top = !boutique_desordre_top_0
-  left = !boutique_desordre_left_2
-#boutique_desordre_image_2
-  top = !boutique_desordre_top_0 + !hauteur_bord_haut_cadre_desordre_moyen
-  left = !boutique_desordre_left_2 + !largeur_bord_gauche_cadre_desordre_moyen
+#bd_cadre_1
+  top = !bd_top_0
+  left = !bd_left_1
+#bd_image_1
+  top = !bd_top_0 + !hauteur_bord_haut_cadre_desordre_moyen
+  left = !bd_left_1 + !largeur_bord_gauche_cadre_desordre_moyen
 
-#boutique_desordre_cadre_3
-  top = !boutique_desordre_top_1 - 2px
-  left = !boutique_desordre_left_0
-#boutique_desordre_image_3
-  top = !boutique_desordre_top_1 + !hauteur_bord_haut_cadre_desordre_moyen - 2px
-  left = !boutique_desordre_left_0 + !largeur_bord_gauche_cadre_desordre_moyen
+#bd_cadre_2
+  top = !bd_top_0
+  left = !bd_left_2
+#bd_image_2
+  top = !bd_top_0 + !hauteur_bord_haut_cadre_desordre_moyen
+  left = !bd_left_2 + !largeur_bord_gauche_cadre_desordre_moyen
 
-#boutique_desordre_cadre_4
-  top = !boutique_desordre_top_1
-  left = !boutique_desordre_left_1
-#boutique_desordre_image_4
-  top = !boutique_desordre_top_1 + !hauteur_bord_haut_cadre_desordre_moyen
-  left = !boutique_desordre_left_1 + !largeur_bord_gauche_cadre_desordre_moyen
+#bd_cadre_3
+  top = !bd_top_1 - 2px
+  left = !bd_left_0
+#bd_image_3
+  top = !bd_top_1 + !hauteur_bord_haut_cadre_desordre_moyen - 2px
+  left = !bd_left_0 + !largeur_bord_gauche_cadre_desordre_moyen
 
-#boutique_desordre_cadre_5
-  top = !boutique_desordre_top_1
-  left = !boutique_desordre_left_2
-#boutique_desordre_image_5
-  top = !boutique_desordre_top_1 + !hauteur_bord_haut_cadre_desordre_moyen
-  left = !boutique_desordre_left_2 + !largeur_bord_gauche_cadre_desordre_moyen
+#bd_cadre_4
+  top = !bd_top_1
+  left = !bd_left_1
+#bd_image_4
+  top = !bd_top_1 + !hauteur_bord_haut_cadre_desordre_moyen
+  left = !bd_left_1 + !largeur_bord_gauche_cadre_desordre_moyen
 
-!boutique_desordre_predelle_top = 855px
-!boutique_desordre_predelle_left = 266px
+#bd_cadre_5
+  top = !bd_top_1
+  left = !bd_left_2
+#bd_image_5
+  top = !bd_top_1 + !hauteur_bord_haut_cadre_desordre_moyen
+  left = !bd_left_2 + !largeur_bord_gauche_cadre_desordre_moyen
 
-#boutique_desordre_predelle_cadres
+!bd_predelle_top = 445px
+!bd_predelle_left = 267px
+
+#bd_predelle_cadres
   position: absolute
-  top = !boutique_desordre_predelle_top
-  left = !boutique_desordre_predelle_left
+  top = !bd_predelle_top
+  left = !bd_predelle_left
   li
     display: inline
     list-style: none
-    padding-right: 6px
+    padding-right: 7px
 
-.boutique_desordre_predelle_image
+.bd_predelle_image
   position: absolute
-  top = !boutique_desordre_predelle_top + !hauteur_bord_haut_cadre_desordre_petit
+  top = !bd_predelle_top + !hauteur_bord_haut_cadre_desordre_petit
   height = !hauteur_image_visible_cadre_desordre_petit
   width = !largeur_image_visible_cadre_desordre_petit
   display: table
@@ -100,18 +102,14 @@
       max-height = !hauteur_image_visible_cadre_desordre_petit
       max-width = !largeur_image_visible_cadre_desordre_petit
 
-!boutique_desordre_decallage_image_predelle = 110px
-#boutique_desordre_predelle_image_0
-  left = !boutique_desordre_predelle_left + !largeur_bord_gauche_cadre_desordre_petit
-#boutique_desordre_predelle_image_1
-  left = !boutique_desordre_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + !boutique_desordre_decallage_image_predelle
-#boutique_desordre_predelle_image_2
-  left = !boutique_desordre_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (2 * !boutique_desordre_decallage_image_predelle) + 2px
-#boutique_desordre_predelle_image_3
-  left = !boutique_desordre_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (3 * !boutique_desordre_decallage_image_predelle) + 4px
-#boutique_desordre_predelle_image_4
-  left = !boutique_desordre_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (4 * !boutique_desordre_decallage_image_predelle) + 6px
-#boutique_desordre_predelle_image_5
-  left = !boutique_desordre_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (5 * !boutique_desordre_decallage_image_predelle) + 8px
-#boutique_desordre_predelle_image_6
-  left = !boutique_desordre_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (6 * !boutique_desordre_decallage_image_predelle) + 10px
+!bd_decallage_image_predelle = 85px
+#bd_predelle_image_0
+  left = !bd_predelle_left + !largeur_bord_gauche_cadre_desordre_petit
+#bd_predelle_image_1
+  left = !bd_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + !bd_decallage_image_predelle
+#bd_predelle_image_2
+  left = !bd_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (2 * !bd_decallage_image_predelle) + 2px
+#bd_predelle_image_3
+  left = !bd_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (3 * !bd_decallage_image_predelle) + 4px
+#bd_predelle_image_4
+  left = !bd_predelle_left + !largeur_bord_gauche_cadre_desordre_petit + (4 * !bd_decallage_image_predelle) + 6px

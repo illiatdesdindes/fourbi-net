@@ -1,7 +1,0 @@
-<div><%= link_to image_tag('insectes/cerambycide.jpg', :alt => 'la boutique du terrier', :id => 'boutique_logo_terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %></div>
-<div class="boutique_nom_boutique">Les séries du terrier</div>
-<ul class="boutique_liste_series">
-  <% for serie in boutique_terrier.series %>
-    <li><%= link_to serie.nom, {:action => :serie_desordre, :id => serie}, {:title => serie.description} %></li>
-  <% end %>
-</ul>

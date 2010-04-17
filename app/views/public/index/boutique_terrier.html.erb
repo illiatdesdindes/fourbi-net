@@ -1,20 +1,25 @@
-<div id="boutique_terrier_bulle">
+<div id="bt_bulle">
   <%= image_tag 'bulles/terrier.jpg', :alt => 'la boutique du terrier' %>
 </div>
 
-<div id="boutique_terrier_info_boutiques">
-  <%= render(:partial => "public/index/boutique_series_terrier", :locals => {:boutique_terrier => @boutique_terrier}) %>
-  <%= render(:partial => "public/index/boutique_series_desordre", :locals => {:boutique_desordre => @boutique_desordre}) %>
+<div id="bt_info_boutiques">
+  <div><%= link_to image_tag('insectes/cerambycide.jpg', :id => 'bc_logo_terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %></div>
+  <div class="bc_nom_boutique">Les séries du terrier</div>
+  <ul class="bc_liste_series">
+    <% for serie in @boutique_terrier.series %>
+      <li><%= link_to serie.nom, {:action => :serie_desordre, :id => serie}, {:title => serie.description} %></li>
+    <% end %>
+  </ul>
 </div>
 
 <% i = 0 %>
 <% for serie in @boutique_terrier.series %>
   <% if i < 8 %>
     <% if article = Article.disponible.serie(serie).order('random()').first %>
-      <div id="boutique_terrier_image_<%= i %>" class="boutique_terrier_image">
+      <div id="bt_image_<%= i %>" class="bt_image">
         <div><%= image_tag article.image.url, :alt => article.nom %></div>
       </div>
-      <div id="boutique_terrier_cadre_<%= i %>" class="boutique_terrier_cadre">
+      <div id="bt_cadre_<%= i %>" class="bt_cadre">
         <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
       </div>
       <% i += 1 %>
@@ -24,22 +29,22 @@
 
 <% for i in (0...[8, @articles.length].min) %>
   <% article = @articles[i] %>
-  <div id="boutique_terrier_image_<%= i %>" class="boutique_terrier_image">
+  <div id="bt_image_<%= i %>" class="bt_image">
     <div><%= image_tag article.image.url, :alt => article.nom %></div>
   </div>
-  <div id="boutique_terrier_cadre_<%= i %>" class="boutique_terrier_cadre">
+  <div id="bt_cadre_<%= i %>" class="bt_cadre">
     <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
   </div>
 <% end %>
 
 <% for i in (8...@articles.length) %>
-  <div id="boutique_terrier_predelle_image_<%= i - 8 %>" class="boutique_terrier_predelle_image">
+  <div id="bt_predelle_image_<%= i - 8 %>" class="bt_predelle_image">
     <% article = @articles[i] %>
     <div><%= image_tag article.image.url, :alt => article.nom %></div>
   </div>
 <% end %>
 
-<ul id="boutique_terrier_predelle_cadres">
+<ul id="bt_predelle_cadres">
   <% for i in (8...@articles.length) %>
     <% article = @articles[i] %>
     <li><%= link_to image_tag('cadres/terrier_petit.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %></li>

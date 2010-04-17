@@ -18,14 +18,14 @@ class Public::IndexController < Public::DefaultPublicController
 
   def boutique_desordre
     @page_title = 'fourbi.net: la boutique du desordre'
-    boutique
-    @articles = trouver_articles(@boutique_desordre.series, 13)
+    @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
+    @articles = trouver_articles(@boutique_desordre.series, 11)
   end
 
   def boutique_terrier
     @page_title = 'fourbi.net: la boutique du terrier'
-    boutique
-    @articles = trouver_articles(@boutique_terrier.series, 17)
+    @boutique_terrier = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
+    @articles = trouver_articles(@boutique_terrier.series, 14)
   end
 
   def serie_desordre
@@ -61,11 +61,6 @@ class Public::IndexController < Public::DefaultPublicController
       end
     end
     articles
-  end
-
-  def boutique
-    @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
-    @boutique_terrier = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
   end
 
   def trouver_articles series, max_number

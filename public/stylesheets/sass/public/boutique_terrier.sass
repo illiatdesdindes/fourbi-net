@@ -1,19 +1,19 @@
 @import public/constants.sass
 
-#boutique_terrier_bulle
+#bt_bulle
   position: absolute
-  top: 130px
+  top: 70px
   left: 400px
 
-#boutique_terrier_info_boutiques
+#bt_info_boutiques
   position: absolute
-  top: 180px
+  top: 140px
   left: 0
 
-.boutique_terrier_cadre
+.bt_cadre
   position: absolute
 
-.boutique_terrier_image
+.bt_image
   position: absolute
   height = !hauteur_image_visible_cadre_terrier_moyen
   width = !largeur_image_visible_cadre_terrier_moyen
@@ -26,83 +26,86 @@
       max-height = !hauteur_image_visible_cadre_terrier_moyen
       max-width = !largeur_image_visible_cadre_terrier_moyen
 
-!boutique_terrier_top_0 = 342px
-!boutique_terrier_top_1 = 576px
-!boutique_terrier_left_0 = 281px
-!boutique_terrier_left_1 = 480px
-!boutique_terrier_left_2 = 679px
-!boutique_terrier_left_3 = 878px
+!bt_top_0 = 170px
+!bt_top_1 = 335px
 
-#boutique_terrier_cadre_0
-  top = !boutique_terrier_top_0 - 1px
-  left = !boutique_terrier_left_0
-#boutique_terrier_image_0
-  top = !boutique_terrier_top_0 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
-  left = !boutique_terrier_left_0 + !largeur_bord_gauche_cadre_terrier_moyen
+!bd_delta = 140px
+!bt_left_0 = 281px
+!bt_left_1 = !bt_left_0 + (1 * !bd_delta)
+!bt_left_2 = !bt_left_0 + (2 * !bd_delta)
+!bt_left_3 = !bt_left_0 + (3 * !bd_delta)
 
-#boutique_terrier_cadre_1
-  top = !boutique_terrier_top_0
-  left = !boutique_terrier_left_1
-#boutique_terrier_image_1
-  top = !boutique_terrier_top_0 + !hauteur_bord_haut_cadre_terrier_moyen
-  left = !boutique_terrier_left_1 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_cadre_0
+  top = !bt_top_0 - 1px
+  left = !bt_left_0
+#bt_image_0
+  top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
+  left = !bt_left_0 + !largeur_bord_gauche_cadre_terrier_moyen
 
-#boutique_terrier_cadre_2
-  top = !boutique_terrier_top_0 + 1px
-  left = !boutique_terrier_left_2
-#boutique_terrier_image_2
-  top = !boutique_terrier_top_0 + !hauteur_bord_haut_cadre_terrier_moyen + 1px
-  left = !boutique_terrier_left_2 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_cadre_1
+  top = !bt_top_0
+  left = !bt_left_1
+#bt_image_1
+  top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen
+  left = !bt_left_1 + !largeur_bord_gauche_cadre_terrier_moyen
 
-#boutique_terrier_cadre_3
-  top = !boutique_terrier_top_0
-  left = !boutique_terrier_left_3
-#boutique_terrier_image_3
-  top = !boutique_terrier_top_0 + !hauteur_bord_haut_cadre_terrier_moyen
-  left = !boutique_terrier_left_3 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_cadre_2
+  top = !bt_top_0 + 1px
+  left = !bt_left_2
+#bt_image_2
+  top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen + 1px
+  left = !bt_left_2 + !largeur_bord_gauche_cadre_terrier_moyen
 
-#boutique_terrier_cadre_4
-  top = !boutique_terrier_top_1 - 1px
-  left = !boutique_terrier_left_0
-#boutique_terrier_image_4
-  top = !boutique_terrier_top_1 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
-  left = !boutique_terrier_left_0 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_cadre_3
+  top = !bt_top_0
+  left = !bt_left_3
+#bt_image_3
+  top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen
+  left = !bt_left_3 + !largeur_bord_gauche_cadre_terrier_moyen
 
-#boutique_terrier_cadre_5
-  top = !boutique_terrier_top_1
-  left = !boutique_terrier_left_1
-#boutique_terrier_image_5
-  top = !boutique_terrier_top_1 + !hauteur_bord_haut_cadre_terrier_moyen
-  left = !boutique_terrier_left_1 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_cadre_4
+  top = !bt_top_1 - 1px
+  left = !bt_left_0
+#bt_image_4
+  top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
+  left = !bt_left_0 + !largeur_bord_gauche_cadre_terrier_moyen
 
-#boutique_terrier_cadre_6
-  top = !boutique_terrier_top_1
-  left = !boutique_terrier_left_2
-#boutique_terrier_image_6
-  top = !boutique_terrier_top_1 + !hauteur_bord_haut_cadre_terrier_moyen
-  left = !boutique_terrier_left_2 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_cadre_5
+  top = !bt_top_1
+  left = !bt_left_1
+#bt_image_5
+  top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen
+  left = !bt_left_1 + !largeur_bord_gauche_cadre_terrier_moyen
 
-#boutique_terrier_cadre_7
-  top = !boutique_terrier_top_1
-  left = !boutique_terrier_left_3 - 1px
-#boutique_terrier_image_7
-  top = !boutique_terrier_top_1 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
-  left = !boutique_terrier_left_3 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_cadre_6
+  top = !bt_top_1
+  left = !bt_left_2
+#bt_image_6
+  top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen
+  left = !bt_left_2 + !largeur_bord_gauche_cadre_terrier_moyen
 
-!boutique_terrier_predelle_top = 810px
-!boutique_terrier_predelle_left = 282px
+#bt_cadre_7
+  top = !bt_top_1
+  left = !bt_left_3 - 1px
+#bt_image_7
+  top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
+  left = !bt_left_3 + !largeur_bord_gauche_cadre_terrier_moyen
 
-#boutique_terrier_predelle_cadres
+!bt_predelle_top = 500px
+!bt_predelle_left = 284px
+
+#bt_predelle_cadres
   position: absolute
-  top = !boutique_terrier_predelle_top
-  left = !boutique_terrier_predelle_left
+  top = !bt_predelle_top
+  left = !bt_predelle_left
   li
     display: inline
     list-style: none
+    padding-right: 10px
 
-.boutique_terrier_predelle_image
+.bt_predelle_image
   position: absolute
-  top = !boutique_terrier_predelle_top + !hauteur_bord_haut_cadre_terrier_petit
+  top = !bt_predelle_top + !hauteur_bord_haut_cadre_terrier_petit
   height = !hauteur_image_visible_cadre_terrier_petit
   width = !largeur_image_visible_cadre_terrier_petit
   display: table
@@ -114,22 +117,16 @@
       max-height = !hauteur_image_visible_cadre_terrier_petit
       max-width = !largeur_image_visible_cadre_terrier_petit
 
-!boutique_terrier_decallage_image_predelle = 84px
-#boutique_terrier_predelle_image_0
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit
-#boutique_terrier_predelle_image_1
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + !boutique_terrier_decallage_image_predelle
-#boutique_terrier_predelle_image_2
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (2 * !boutique_terrier_decallage_image_predelle) + 2px
-#boutique_terrier_predelle_image_3
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (3 * !boutique_terrier_decallage_image_predelle) + 4px
-#boutique_terrier_predelle_image_4
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (4 * !boutique_terrier_decallage_image_predelle) + 6px
-#boutique_terrier_predelle_image_5
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (5 * !boutique_terrier_decallage_image_predelle) + 8px
-#boutique_terrier_predelle_image_6
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (6 * !boutique_terrier_decallage_image_predelle) + 10px
-#boutique_terrier_predelle_image_7
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (7 * !boutique_terrier_decallage_image_predelle) + 12px
-#boutique_terrier_predelle_image_8
-  left = !boutique_terrier_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (8 * !boutique_terrier_decallage_image_predelle) + 14px
+!bt_decallage_image_predelle = 91px
+#bt_predelle_image_0
+  left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit
+#bt_predelle_image_1
+  left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + !bt_decallage_image_predelle
+#bt_predelle_image_2
+  left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (2 * !bt_decallage_image_predelle) + 2px
+#bt_predelle_image_3
+  left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (3 * !bt_decallage_image_predelle) + 4px
+#bt_predelle_image_4
+  left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (4 * !bt_decallage_image_predelle) + 6px
+#bt_predelle_image_5
+  left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (5 * !bt_decallage_image_predelle) + 8px

@@ -1,32 +1,32 @@
-<div id="article_terrier_bulle">
+<div id="at_bulle">
   <%= link_to image_tag('bulles/terrier.jpg', :alt => 'la boutique du terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %>
 </div>
 
-<div id="article_terrier_retour_serie"><%= link_to 'Retour à la série', {:action => :serie_terrier, :id => @article.serie}, {:title => @article.serie.nom } %></div>
+<div id="at_retour_serie"><%= link_to 'Retour à la série', {:action => :serie_terrier, :id => @article.serie}, {:title => @article.serie.nom } %></div>
 
-<div id="article_info">
-  <div id="article_nom_article"><%= raw @article.nom %></div>
-  <div id="article_description_article"><%= raw @article.description %></div>
-  <div id="article_prix_article"><%= number_to_currency @article.prix %></div>
-  <div id="article_ajouter_panier">
+<div id="ac_info">
+  <div id="ac_nom_article"><%= raw @article.nom %></div>
+  <div id="ac_description_article"><%= raw @article.description %></div>
+  <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
+  <div id="ac_ajouter_panier">
     <%= link_to image_tag('panier.jpg', :alt => 'votre panier'), {:controller => 'public/index', :action => :sommaire}, {:title => 'votre panier'} %>
   </div>
 </div>
 
-<div id="article_terrier_bloc_centre">
-  <div id="article_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
-  <table id="article_predelle">
+<div id="at_bloc_centre">
+  <div id="ac_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
+  <table id="ac_predelle">
     <tbody>
     <tr>
-      <td><%= link_to image_tag('mains/gauche.gif', :id => 'article_scroll_gauche', :alt => 'Scroller vers la gauche'), '#', {:onclick  => 'scrollLeft("article_terrier_scroll_content"); return false;', :title => 'Se déplacer vers la droite' } %></td>
+      <td><%= link_to image_tag('mains/gauche.gif', :id => 'ac_scroll_gauche', :alt => 'Scroller vers la gauche'), '#', {:onclick  => 'articleScrollLeft(); return false;', :title => 'Se déplacer vers la droite' } %></td>
       <td colspan="5">
-        <div id="article_terrier_scroll_content">
+        <div id="at_scroll_content" class="ac_scroll_content">
           <table>
             <tbody>
             <tr>
               <% for i in (0...@articles_serie.length) %>
                 <% article = @articles_serie[i] %>
-                <td><%= link_to image_tag(article.image.url, :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom, :id => "article_#{i}"} %></td>
+                <td><%= link_to image_tag(article.image.url, :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom, :id => "ac_#{i}"} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
                 <td></td>
@@ -36,7 +36,7 @@
           </table>
         </div>
       </td>
-      <td><%= link_to image_tag('mains/droite.gif', :id => 'article_scroll_droite', :alt => 'Scroller vers la droite'), '#', {:onclick  => 'scrollRight("article_terrier_scroll_content"); return false;', :title => 'Se déplacer vers la droite'} %></td>
+      <td><%= link_to image_tag('mains/droite.gif', :id => 'ac_scroll_droite', :alt => 'Scroller vers la droite'), '#', {:onclick  => 'artucleScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
     </tr>
     </tbody>
   </table>
