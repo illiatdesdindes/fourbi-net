@@ -10,26 +10,26 @@
 </div>
 
 <div id="s_bulle_desordre">
-  <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), {:action => :boutique_desordre}, {:title => 'La boutique du désordre'} %>
+  <%= link_to image_tag('bulles/desordre.jpg'), {:action => :boutique_desordre}, {:title => 'La boutique du désordre'} %>
 </div>
 
 <% (0...[5, @articles_desordre.length].min).each do |i| %>
   <% article = @articles_desordre[i] %>
-  <div id="s_image_desordre_<%= i %>" class="s_image_desordre"><div><%= image_tag article.image.url, :alt => article.nom %></div></div>
+  <div id="s_image_desordre_<%= i %>" class="s_image_desordre"><div><%= image_tag article.image.url%></div></div>
   <div id="s_cadre_desordre_<%= i %>" class="s_cadre_desordre">
-    <%= link_to image_tag('cadres/desordre_moyen.gif', :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom} %>
+    <%= link_to image_tag('cadres/desordre_moyen.gif'), {:action => :article_desordre, :id => article}, {:title => article.nom} %>
   </div>
 <% end %>
 
 <div id="s_bulle_terrier">
-  <%= link_to image_tag('bulles/terrier.jpg', :alt => 'la boutique du terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %>
+  <%= link_to image_tag('bulles/terrier.jpg'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %>
 </div>
 
 <% (0...[4, @articles_terrier.length].min).each do |i| %>
   <% article = @articles_terrier[i] %>
-  <div id="s_image_terrier_<%= i %>" class="s_image_terrier"><div><%= image_tag article.image.url, :alt => article.nom %></div></div>
+  <div id="s_image_terrier_<%= i %>" class="s_image_terrier"><div><%= image_tag article.image.url%></div></div>
   <div id="s_cadre_terrier_<%= i %>" class="s_cadre_terrier">
-    <%= link_to image_tag('cadres/terrier_moyen.gif', :alt => article.nom ), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
+    <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
   </div>
 <% end %>
 

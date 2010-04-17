@@ -15,6 +15,13 @@ function articleScrollLeft() {
     $(".ac_scroll_content").scrollTo("-=" + (numberArticlesPerPage * $($(".ac_scroll_content td")[0]).outerWidth()), 800);
 }
 
-function articleScrollRight(id) {
+function articleScrollRight() {
     $(".ac_scroll_content").scrollTo("+=" + (numberArticlesPerPage * $($(".ac_scroll_content td")[0]).outerWidth()), 800);
+}
+
+function serieScrollLeft() {
+    $(".sc_bloc_centre").scrollTo("-=" + ($($(".sc_bloc_images")[0]).outerWidth()), 2000);
+}
+function serieScrollRight() {
+    $(".sc_bloc_centre").scrollTo("+=" + ($($(".sc_bloc_images")[0]).outerWidth()), 2000);
 }

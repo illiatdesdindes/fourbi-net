@@ -1,14 +1,56 @@
-<div id="serie_desordre_bulle_desordre">
-  <%= link_to image_tag('bulles/desordre.jpg', :alt => 'la boutique du désordre'), :action => :boutique_desordre %>
+<div id="st_bulle_desordre">
+  <%= link_to image_tag('bulles/desordre.jpg'), {:action => :boutique_desordre}, {:title => 'la boutique du désordre'} %>
 </div>
 
-<div id="serie_descriptif_serie">
-  <div class="serie_titre_serie"><%= raw @serie.nom %></div>
-  <div class="serie_descriptif"><%= raw @serie.description %></div>
-  <div class="serie_titre_boutique">Les séries du désordre</div>
-  <ul id="serie_liste_serie">
+<div id="sc_descriptif_serie">
+  <div class="sc_titre_serie"><%= raw @serie.nom %></div>
+  <div class="sc_descriptif"><%= raw @serie.description %></div>
+  <div class="sc_titre_boutique">Les séries du désordre</div>
+  <ul id="sc_liste_serie">
   <% for serie in @serie.boutique.series %>
     <li><%= link_to serie.nom, {:id => serie}, {:title => serie.description} %></li>
   <% end %>
   </ul>
+</div>
+
+
+<div id="st_bloc_centre" class="sc_bloc_centre">
+  <table>
+    <tr>
+      <% for i in (0...@serie.articles.length) %>
+        <% modulo = i % 26 %>
+        <% article = @serie.articles[i] %>
+
+        <% if 0 == modulo %>
+          <td><table class="st_bloc_images sc_bloc_images">
+          <tr>
+          <td class="sc_left"><%= link_to image_tag('mains/gauche.gif', :id => 'sc_scroll_gauche'), '#', {:onclick  => 'serieScrollLeft(); return false;', :title => 'Se déplacer vers la gauche' } %></td>
+        <% end %>
+
+        <% if [6, 13, 20].include? modulo %>
+        <tr>
+        <% end %>
+
+        <td><%= link_to image_tag(article.image.url), {:action => :article_desordre, :id => article}, {:title => article.nom} %></td>
+
+        <% if [5, 12, 19].include? modulo %>
+        </tr>
+        <% end %>
+
+        <% if 25 == modulo %>
+        <td class="sc_left"><%= link_to image_tag('mains/droite.gif', :id => 'sc_scroll_droite'), '#', {:onclick  => 'serieScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
+        </tr>
+        </table></td>
+        <% end %>
+      <% end %>
+
+      <% modulo_final = (@serie.articles.length - 1) % 26 %>
+      <% unless [5, 12, 19, 25].include? modulo_final %>
+        </tr>
+      <% end %>
+      <% unless 25 == modulo_final %>
+        </table></td>
+      <% end %>
+    </tr>
+  </table>
 </div>
