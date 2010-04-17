@@ -2,18 +2,18 @@
 
 #article_terrier_bulle
   position: absolute
-  top: 175px
+  top: 95px
   left: 440px
 
 #article_terrier_retour_serie
   position: absolute
-  top: 321px
+  top: 130px
   left: 20px
-  width = !largeur_image_terrier_minuscule
-  height = !hauteur_image_terrier_minuscule
+  width = !largeur_image_terrier_petit
+  height = !hauteur_image_terrier_petit
   font-size: 10px
   background:
-    image: url('/images/cadres/terrier_minuscule.gif')
+    image: url('/images/cadres/terrier_petit.gif')
     repeat: no-repeat
   padding:
     top: 40px
@@ -25,27 +25,27 @@
 
 #article_terrier_bloc_centre
   position: absolute
-  top: 280px
-  left: 270px
+  top: 200px
+  left: 200px
 
 #article_terrier_scroll_content
-  height= !hauteur_image_terrier_minuscule
-  width = 7 * (!largeur_image_terrier_minuscule + 2px)
+  height= !hauteur_image_terrier_petit
+  width = 7 * (!largeur_image_terrier_petit + 2px)
   overflow: hidden
   table
-    height = !hauteur_image_terrier_minuscule
+    height = !hauteur_image_terrier_petit
     border-collapse: collapse    
     td
       background:
-        image: url('/images/cadres/terrier_minuscule.gif')
+        image: url('/images/cadres/terrier_petit.gif')
         repeat: no-repeat
-      min-width = !largeur_image_visible_cadre_terrier_minuscule
-      padding-left = !largeur_bord_gauche_cadre_terrier_minuscule
-      padding-right = !largeur_image_terrier_minuscule - (!largeur_bord_gauche_cadre_terrier_minuscule + !largeur_image_visible_cadre_terrier_minuscule) + 2px
+      min-width = !largeur_image_visible_cadre_terrier_petit
+      padding-left = !largeur_bord_gauche_cadre_terrier_petit
+      padding-right = !largeur_image_terrier_petit - (!largeur_bord_gauche_cadre_terrier_petit + !largeur_image_visible_cadre_terrier_petit) + 2px
       padding-top: 4px
       vertical-align: middle
       text-align: center
       img
-        max-height = !hauteur_image_visible_cadre_terrier_minuscule
-        max-width = !largeur_image_visible_cadre_terrier_minuscule
+        max-height = !hauteur_image_visible_cadre_terrier_petit
+        max-width = !largeur_image_visible_cadre_terrier_petit
 

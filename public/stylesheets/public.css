@@ -23,41 +23,25 @@ a {
 
 #haut_timbre {
   top: 30px;
-  left: 592px; }
-
-#haut_timbre > a > img {
-  height: 50px;
-  width: 50px; }
+  left: 640px; }
 
 #haut_panier {
   top: 33px;
-  left: 647px; }
-
-#haut_panier > a > img {
-  height: 47px;
-  width: 75px; }
+  left: 680px; }
 
 #haut_aide {
-  top: 10px;
-  left: 720px; }
-
-#haut_aide > a > img {
-  height: 70px;
-  width: 70px; }
+  top: 20px;
+  left: 735px; }
+  #haut_aide a img {
+    height: 45px; }
 
 #haut_desordre {
-  top: 45px;
-  left: 790px; }
-
-#haut_desordre > a > img {
-  height: 35px; }
+  top: 30px;
+  left: 780px; }
 
 #haut_terrier {
-  top: 5px;
-  left: 830px; }
-
-#haut_terrier > a > img {
-  height: 75px; }
+  top: 10px;
+  left: 820px; }
 
 #sommaire_descriptif {
   position: absolute;
@@ -71,97 +55,109 @@ a {
 
 #sommaire_bulle_desordre {
   position: absolute;
-  top: 192px;
-  left: 275px; }
+  top: 102px;
+  left: 300px; }
 
 .sommaire_cadre_desordre {
   position: absolute;
-  top: 280px; }
+  top: 190px; }
 
 .sommaire_image_desordre {
   position: absolute;
-  top: 334px;
-  height: 142px;
-  width: 215px;
+  top: 213px;
+  height: 58px;
+  width: 90px;
   display: table; }
   .sommaire_image_desordre div {
     text-align: center;
     display: table-cell;
     vertical-align: middle; }
     .sommaire_image_desordre div img {
-      max-height: 142px;
-      max-width: 215px; }
+      max-height: 58px;
+      max-width: 90px; }
 
 #sommaire_cadre_desordre_0 {
-  left: 264px; }
+  left: 269px; }
 
 #sommaire_image_desordre_0 {
-  left: 282px; }
+  left: 277px; }
 
 #sommaire_cadre_desordre_1 {
-  left: 538px; }
+  left: 389px; }
 
 #sommaire_image_desordre_1 {
-  left: 556px; }
+  left: 397px; }
 
 #sommaire_cadre_desordre_2 {
-  left: 812px; }
+  left: 509px; }
 
 #sommaire_image_desordre_2 {
-  left: 830px; }
+  left: 517px; }
+
+#sommaire_cadre_desordre_3 {
+  left: 629px; }
+
+#sommaire_image_desordre_3 {
+  left: 637px; }
+
+#sommaire_cadre_desordre_4 {
+  left: 749px; }
+
+#sommaire_image_desordre_4 {
+  left: 757px; }
 
 #sommaire_bulle_terrier {
   position: absolute;
-  top: 565px;
+  top: 315px;
   left: 305px; }
 
 .sommaire_cadre_terrier {
   position: absolute;
-  top: 661px; }
+  top: 415px; }
 
 .sommaire_image_terrier {
   position: absolute;
-  top: 679px;
+  top: 428px;
   display: table;
-  height: 173px;
-  width: 136px; }
+  height: 128px;
+  width: 98px; }
   .sommaire_image_terrier div {
     text-align: center;
     display: table-cell;
     vertical-align: middle; }
     .sommaire_image_terrier div img {
-      max-height: 173px;
-      max-width: 136px; }
+      max-height: 128px;
+      max-width: 98px; }
 
 #sommaire_cadre_terrier_0 {
   left: 279px; }
 
 #sommaire_image_terrier_0 {
-  left: 299px; }
+  left: 294px; }
 
 #sommaire_cadre_terrier_1 {
-  left: 473px; }
+  left: 419px; }
 
 #sommaire_image_terrier_1 {
-  left: 493px; }
+  left: 434px; }
 
 #sommaire_cadre_terrier_2 {
-  left: 667px; }
+  left: 559px; }
 
 #sommaire_image_terrier_2 {
-  left: 687px; }
+  left: 574px; }
 
 #sommaire_cadre_terrier_3 {
-  left: 861px; }
+  left: 699px; }
 
 #sommaire_image_terrier_3 {
-  left: 881px; }
+  left: 714px; }
 
 #article_info {
   position: absolute;
-  top: 425px;
+  top: 235px;
   left: 0px;
-  width: 210px; }
+  width: 160px; }
 
 #article_nom_article {
   font-weight: bold;
@@ -183,7 +179,8 @@ a {
 
 #article_prix_article {
   font-size: 12px;
-  padding-left: 20px; }
+  padding-left: 20px;
+  padding-bottom: 5px; }
 
 #article_ajouter_panier {
   padding-left: 15px; }
@@ -193,19 +190,19 @@ a {
 
 #article_desordre_bulle {
   position: absolute;
-  top: 215px;
-  left: 435px; }
+  top: 95px;
+  left: 415px; }
 
 #article_desordre_retour_serie {
   position: absolute;
-  top: 301px;
+  top: 151px;
   left: 20px;
-  width: 100px;
-  height: 100px;
+  width: 74px;
+  height: 73px;
   font-size: 10px;
-  background-image: url('/images/cadres/desordre_minuscule.gif');
+  background-image: url('/images/cadres/desordre_petit.gif');
   background-repeat: no-repeat;
-  padding-top: 40px;
+  padding-top: 25px;
   padding-left: 10px; }
   #article_desordre_retour_serie a {
     font-weight: normal; }
@@ -214,42 +211,42 @@ a {
 
 #article_desordre_bloc_centre {
   position: absolute;
-  top: 300px;
-  left: 270px; }
+  top: 180px;
+  left: 200px; }
 
 #article_desordre_scroll_content {
-  height: 100px;
-  width: 714px;
+  height: 73px;
+  width: 532px;
   overflow: hidden; }
   #article_desordre_scroll_content table {
-    height: 100px;
+    height: 73px;
     border-collapse: collapse; }
     #article_desordre_scroll_content table td {
-      background-image: url('/images/cadres/desordre_minuscule.gif');
+      background-image: url('/images/cadres/desordre_petit.gif');
       background-repeat: no-repeat;
-      min-width: 86px;
-      padding-left: 7px;
-      padding-right: 9px;
+      min-width: 64px;
+      padding-left: 6px;
+      padding-right: 6px;
       padding-top: 4px;
       vertical-align: middle;
       text-align: center; }
       #article_desordre_scroll_content table td img {
-        max-height: 57px;
-        max-width: 86px; }
+        max-height: 42px;
+        max-width: 64px; }
 
 #article_terrier_bulle {
   position: absolute;
-  top: 175px;
+  top: 95px;
   left: 440px; }
 
 #article_terrier_retour_serie {
   position: absolute;
-  top: 321px;
+  top: 130px;
   left: 20px;
-  width: 80px;
-  height: 97px;
+  width: 77px;
+  height: 96px;
   font-size: 10px;
-  background-image: url('/images/cadres/terrier_minuscule.gif');
+  background-image: url('/images/cadres/terrier_petit.gif');
   background-repeat: no-repeat;
   padding-top: 40px;
   padding-left: 12px; }
@@ -260,27 +257,27 @@ a {
 
 #article_terrier_bloc_centre {
   position: absolute;
-  top: 280px;
-  left: 270px; }
+  top: 200px;
+  left: 200px; }
 
 #article_terrier_scroll_content {
-  height: 97px;
-  width: 574px;
+  height: 96px;
+  width: 553px;
   overflow: hidden; }
   #article_terrier_scroll_content table {
-    height: 97px;
+    height: 96px;
     border-collapse: collapse; }
     #article_terrier_scroll_content table td {
-      background-image: url('/images/cadres/terrier_minuscule.gif');
+      background-image: url('/images/cadres/terrier_petit.gif');
       background-repeat: no-repeat;
       min-width: 62px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 9px;
+      padding-right: 8px;
       padding-top: 4px;
       vertical-align: middle;
       text-align: center; }
       #article_terrier_scroll_content table td img {
-        max-height: 78px;
+        max-height: 79px;
         max-width: 62px; }
 
 #boutique_logo_desordre {
@@ -327,64 +324,64 @@ a {
 
 .boutique_desordre_image {
   position: absolute;
-  height: 142px;
-  width: 215px;
+  height: 58px;
+  width: 90px;
   display: table; }
   .boutique_desordre_image div {
     text-align: center;
     display: table-cell;
     vertical-align: middle; }
     .boutique_desordre_image div img {
-      max-height: 142px;
-      max-width: 215px; }
+      max-height: 58px;
+      max-width: 90px; }
 
 #boutique_desordre_cadre_0 {
   top: 341px;
   left: 266px; }
 
 #boutique_desordre_image_0 {
-  top: 395px;
-  left: 284px; }
+  top: 364px;
+  left: 274px; }
 
 #boutique_desordre_cadre_1 {
   top: 342px;
   left: 528px; }
 
 #boutique_desordre_image_1 {
-  top: 396px;
-  left: 546px; }
+  top: 365px;
+  left: 536px; }
 
 #boutique_desordre_cadre_2 {
   top: 342px;
   left: 786px; }
 
 #boutique_desordre_image_2 {
-  top: 396px;
-  left: 804px; }
+  top: 365px;
+  left: 794px; }
 
 #boutique_desordre_cadre_3 {
   top: 599px;
   left: 266px; }
 
 #boutique_desordre_image_3 {
-  top: 653px;
-  left: 284px; }
+  top: 622px;
+  left: 274px; }
 
 #boutique_desordre_cadre_4 {
   top: 601px;
   left: 528px; }
 
 #boutique_desordre_image_4 {
-  top: 655px;
-  left: 546px; }
+  top: 624px;
+  left: 536px; }
 
 #boutique_desordre_cadre_5 {
   top: 601px;
   left: 786px; }
 
 #boutique_desordre_image_5 {
-  top: 655px;
-  left: 804px; }
+  top: 624px;
+  left: 794px; }
 
 #boutique_desordre_predelle_cadres {
   position: absolute;
@@ -397,38 +394,38 @@ a {
 
 .boutique_desordre_predelle_image {
   position: absolute;
-  top: 877px;
-  height: 57px;
-  width: 86px;
+  top: 871px;
+  height: 42px;
+  width: 64px;
   display: table; }
   .boutique_desordre_predelle_image div {
     text-align: center;
     display: table-cell;
     vertical-align: middle; }
     .boutique_desordre_predelle_image div img {
-      max-height: 57px;
-      max-width: 86px; }
+      max-height: 42px;
+      max-width: 64px; }
 
 #boutique_desordre_predelle_image_0 {
-  left: 273px; }
+  left: 272px; }
 
 #boutique_desordre_predelle_image_1 {
-  left: 383px; }
+  left: 382px; }
 
 #boutique_desordre_predelle_image_2 {
-  left: 495px; }
+  left: 494px; }
 
 #boutique_desordre_predelle_image_3 {
-  left: 607px; }
+  left: 606px; }
 
 #boutique_desordre_predelle_image_4 {
-  left: 719px; }
+  left: 718px; }
 
 #boutique_desordre_predelle_image_5 {
-  left: 831px; }
+  left: 830px; }
 
 #boutique_desordre_predelle_image_6 {
-  left: 943px; }
+  left: 942px; }
 
 #boutique_terrier_bulle {
   position: absolute;
@@ -445,80 +442,80 @@ a {
 
 .boutique_terrier_image {
   position: absolute;
-  height: 173px;
-  width: 136px;
+  height: 128px;
+  width: 98px;
   display: table; }
   .boutique_terrier_image div {
     text-align: center;
     display: table-cell;
     vertical-align: middle; }
     .boutique_terrier_image div img {
-      max-height: 173px;
-      max-width: 136px; }
+      max-height: 128px;
+      max-width: 98px; }
 
 #boutique_terrier_cadre_0 {
   top: 341px;
   left: 281px; }
 
 #boutique_terrier_image_0 {
-  top: 359px;
-  left: 301px; }
+  top: 354px;
+  left: 296px; }
 
 #boutique_terrier_cadre_1 {
   top: 342px;
   left: 480px; }
 
 #boutique_terrier_image_1 {
-  top: 360px;
-  left: 500px; }
+  top: 355px;
+  left: 495px; }
 
 #boutique_terrier_cadre_2 {
   top: 343px;
   left: 679px; }
 
 #boutique_terrier_image_2 {
-  top: 361px;
-  left: 699px; }
+  top: 356px;
+  left: 694px; }
 
 #boutique_terrier_cadre_3 {
   top: 342px;
   left: 878px; }
 
 #boutique_terrier_image_3 {
-  top: 360px;
-  left: 898px; }
+  top: 355px;
+  left: 893px; }
 
 #boutique_terrier_cadre_4 {
   top: 575px;
   left: 281px; }
 
 #boutique_terrier_image_4 {
-  top: 593px;
-  left: 301px; }
+  top: 588px;
+  left: 296px; }
 
 #boutique_terrier_cadre_5 {
   top: 576px;
   left: 480px; }
 
 #boutique_terrier_image_5 {
-  top: 594px;
-  left: 500px; }
+  top: 589px;
+  left: 495px; }
 
 #boutique_terrier_cadre_6 {
   top: 576px;
   left: 679px; }
 
 #boutique_terrier_image_6 {
-  top: 594px;
-  left: 699px; }
+  top: 589px;
+  left: 694px; }
 
 #boutique_terrier_cadre_7 {
   top: 576px;
   left: 877px; }
 
 #boutique_terrier_image_7 {
-  top: 593px;
-  left: 898px; }
+  top: 588px;
+  left: 893px; }
 
 #boutique_terrier_predelle_cadres {
   position: absolute;
@@ -530,8 +527,8 @@ a {
 
 .boutique_terrier_predelle_image {
   position: absolute;
-  top: 819px;
-  height: 78px;
+  top: 818px;
+  height: 79px;
   width: 62px;
   display: table; }
   .boutique_terrier_predelle_image div {
@@ -539,35 +536,35 @@ a {
     display: table-cell;
     vertical-align: middle; }
     .boutique_terrier_predelle_image div img {
-      max-height: 78px;
+      max-height: 79px;
       max-width: 62px; }
 
 #boutique_terrier_predelle_image_0 {
-  left: 292px; }
+  left: 291px; }
 
 #boutique_terrier_predelle_image_1 {
-  left: 376px; }
+  left: 375px; }
 
 #boutique_terrier_predelle_image_2 {
-  left: 462px; }
+  left: 461px; }
 
 #boutique_terrier_predelle_image_3 {
-  left: 548px; }
+  left: 547px; }
 
 #boutique_terrier_predelle_image_4 {
-  left: 634px; }
+  left: 633px; }
 
 #boutique_terrier_predelle_image_5 {
-  left: 720px; }
+  left: 719px; }
 
 #boutique_terrier_predelle_image_6 {
-  left: 806px; }
+  left: 805px; }
 
 #boutique_terrier_predelle_image_7 {
-  left: 892px; }
+  left: 891px; }
 
 #boutique_terrier_predelle_image_8 {
-  left: 978px; }
+  left: 977px; }
 
 .serie_titre_serie {
   font-weight: bold;
@@ -595,12 +592,12 @@ a {
   font-size: 10px;
   list-style: none; }
 
+#serie_descriptif_serie {
+  position: absolute;
+  top: 360px;
+  left: 20px; }
+
 #serie_desordre_bulle_desordre {
   position: absolute;
   top: 185px;
   left: 300px; }
-
-#serie_desordre_descriptif_serie {
-  position: absolute;
-  top: 360px;
-  left: 20px; }

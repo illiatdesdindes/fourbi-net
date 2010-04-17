@@ -2,21 +2,21 @@
 
 #article_desordre_bulle
   position: absolute
-  top: 215px
-  left: 435px
+  top: 95px
+  left: 415px
 
 #article_desordre_retour_serie
   position: absolute
-  top: 301px
+  top: 151px
   left: 20px
-  width = !largeur_image_desordre_minuscule
-  height = !hauteur_image_desordre_minuscule
+  width = !largeur_image_desordre_petit
+  height = !hauteur_image_desordre_petit
   font-size: 10px
   background:
-    image: url('/images/cadres/desordre_minuscule.gif')
+    image: url('/images/cadres/desordre_petit.gif')
     repeat: no-repeat
   padding:
-    top: 40px
+    top: 25px
     left: 10px
   a
     font-weight: normal
@@ -25,27 +25,27 @@
 
 #article_desordre_bloc_centre
   position: absolute
-  top: 300px
-  left: 270px
+  top: 180px
+  left: 200px
 
 #article_desordre_scroll_content
-  height= !hauteur_image_desordre_minuscule
-  width = 7 * (!largeur_image_desordre_minuscule + 2px)
+  height= !hauteur_image_desordre_petit
+  width = 7 * (!largeur_image_desordre_petit + 2px)
   overflow: hidden
   table
-    height = !hauteur_image_desordre_minuscule
+    height = !hauteur_image_desordre_petit
     border-collapse: collapse    
     td
       background:
-        image: url('/images/cadres/desordre_minuscule.gif')
+        image: url('/images/cadres/desordre_petit.gif')
         repeat: no-repeat
-      min-width = !largeur_image_visible_cadre_desordre_minuscule
-      padding-left = !largeur_bord_gauche_cadre_desordre_minuscule
-      padding-right = !largeur_image_desordre_minuscule - (!largeur_bord_gauche_cadre_desordre_minuscule + !largeur_image_visible_cadre_desordre_minuscule) + 2px
+      min-width = !largeur_image_visible_cadre_desordre_petit
+      padding-left = !largeur_bord_gauche_cadre_desordre_petit
+      padding-right = !largeur_image_desordre_petit - (!largeur_bord_gauche_cadre_desordre_petit + !largeur_image_visible_cadre_desordre_petit) + 2px
       padding-top: 4px
       vertical-align: middle
       text-align: center
       img
-        max-height = !hauteur_image_visible_cadre_desordre_minuscule
-        max-width = !largeur_image_visible_cadre_desordre_minuscule
+        max-height = !hauteur_image_visible_cadre_desordre_petit
+        max-width = !largeur_image_visible_cadre_desordre_petit
 

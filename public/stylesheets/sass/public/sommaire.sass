@@ -12,10 +12,10 @@
 
 #sommaire_bulle_desordre
   position: absolute
-  top: 192px
-  left: 275px
+  top: 102px
+  left: 300px
 
-!sommaire_cadre_desordre_hauteur = 280px
+!sommaire_cadre_desordre_hauteur = 190px
 
 .sommaire_cadre_desordre
   position: absolute
@@ -35,9 +35,12 @@
       max-height = !hauteur_image_visible_cadre_desordre_moyen
       max-width = !largeur_image_visible_cadre_desordre_moyen
 
-!sommaire_desordre_cadre_0 = 264px
-!sommaire_desordre_cadre_1 = 538px
-!sommaire_desordre_cadre_2 = 812px
+!sommaire_desordre_decalage_cadre = 120px
+!sommaire_desordre_cadre_0 = 269px
+!sommaire_desordre_cadre_1 = !sommaire_desordre_cadre_0 + (1 * !sommaire_desordre_decalage_cadre)
+!sommaire_desordre_cadre_2 = !sommaire_desordre_cadre_0 + (2 * !sommaire_desordre_decalage_cadre)
+!sommaire_desordre_cadre_3 = !sommaire_desordre_cadre_0 + (3 * !sommaire_desordre_decalage_cadre)
+!sommaire_desordre_cadre_4 = !sommaire_desordre_cadre_0 + (4 * !sommaire_desordre_decalage_cadre)
 
 #sommaire_cadre_desordre_0
   left = !sommaire_desordre_cadre_0
@@ -54,12 +57,24 @@
 #sommaire_image_desordre_2
   left = !sommaire_desordre_cadre_2 + !largeur_bord_gauche_cadre_desordre_moyen
 
+#sommaire_cadre_desordre_3
+  left = !sommaire_desordre_cadre_3
+#sommaire_image_desordre_3
+  left = !sommaire_desordre_cadre_3 + !largeur_bord_gauche_cadre_desordre_moyen
+
+#sommaire_cadre_desordre_4
+  left = !sommaire_desordre_cadre_4
+#sommaire_image_desordre_4
+  left = !sommaire_desordre_cadre_4 + !largeur_bord_gauche_cadre_desordre_moyen
+
+
+
 #sommaire_bulle_terrier
   position: absolute
-  top: 565px
+  top: 315px
   left: 305px
 
-!sommaire_cadre_terrier_hauteur = 661px
+!sommaire_cadre_terrier_hauteur = 415px
 
 .sommaire_cadre_terrier
   position: absolute
@@ -79,10 +94,11 @@
       max-height = !hauteur_image_visible_cadre_terrier_moyen
       max-width = !largeur_image_visible_cadre_terrier_moyen
 
+!sommaire_terrier_decalage_cadre = 140px
 !sommaire_terrier_cadre_0 = 279px
-!sommaire_terrier_cadre_1 = 473px
-!sommaire_terrier_cadre_2 = 667px
-!sommaire_terrier_cadre_3 = 861px
+!sommaire_terrier_cadre_1 = !sommaire_terrier_cadre_0 + (1 * !sommaire_terrier_decalage_cadre)
+!sommaire_terrier_cadre_2 = !sommaire_terrier_cadre_0 + (2 * !sommaire_terrier_decalage_cadre)
+!sommaire_terrier_cadre_3 = !sommaire_terrier_cadre_0 + (3 * !sommaire_terrier_decalage_cadre)
 
 #sommaire_cadre_terrier_0
   left = !sommaire_terrier_cadre_0

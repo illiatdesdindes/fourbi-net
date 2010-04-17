@@ -27,6 +27,6 @@
 <ul id="boutique_desordre_predelle_cadres">
   <% for i in (6...@articles.length) %>
     <% article = @articles[i] %>
-    <li><%= link_to image_tag('cadres/desordre_minuscule.gif', :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom} %></li>
+    <li><%= link_to image_tag('cadres/desordre_petit.gif', :alt => article.nom ), {:action => :article_desordre, :id => article}, {:title => article.nom} %></li>
   <% end %>
 </ul>
