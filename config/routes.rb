@@ -59,9 +59,9 @@ Fourbi::Application.routes.draw do |map|
   match 'admin' => 'admin/index#index'
   
   match 'admin/articles' => 'admin/articles#index'
-  match 'admin/articles/:id' => 'admin/articles#show'
   match 'admin/articles/new/:id' => 'admin/articles#new'
   match 'admin/articles/edit/:id' => 'admin/articles#edit'
+  match 'admin/articles/:id' => 'admin/articles#show'
 
   match 'admin/boutiques' => 'admin/boutiques#index'
   match 'admin/boutiques/new' => 'admin/boutiques#new'
@@ -70,10 +70,10 @@ Fourbi::Application.routes.draw do |map|
   match 'admin/boutiques/:id' => 'admin/boutiques#show'
 
   match 'admin/series' => 'admin/series#index'
-  match 'admin/series/:id' => 'admin/series#show'
   match 'admin/series/new/:id' => 'admin/series#new'
   match 'admin/series/edit/:id' => 'admin/series#edit'
   match 'admin/series/reorder/:id' => 'admin/series#reorder'
+  match 'admin/series/:id' => 'admin/series#show'
 
   match 'admin/clients' => 'admin/clients#index'
   match 'admin/clients/show' => 'admin/clients#show'
@@ -86,9 +86,9 @@ Fourbi::Application.routes.draw do |map|
   match 'admin/clients/:id' => 'admin/clients#show'
 
   match 'admin/utilisateurs' => 'admin/utilisateurs#index'
-  match 'admin/utilisateurs/:id' => 'admin/utilisateurs#show'
   match 'admin/utilisateurs/new' => 'admin/utilisateurs#new'
   match 'admin/utilisateurs/edit/:id' => 'admin/utilisateurs#edit'
+  match 'admin/utilisateurs/:id' => 'admin/utilisateurs#show'
 
   match 'admin/logout' => 'admin/sessions#logout'
   match 'admin/sessions' => 'admin/sessions#index'
