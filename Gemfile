@@ -24,14 +24,14 @@ gem 'rails', '3.0.0.beta3'
 gem 'email_veracity', '0.5.0', :require => 'email_veracity'
 gem 'andand', '1.3.1'
 gem 'will_paginate', '3.0.pre', :require => 'will_paginate'
-gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git', :branch => 'rails3'
-gem 'rest-client', '1.4.2', :require => 'rest_client'
+gem 'paperclip', :git => 'git://github.com/JasonKing/paperclip.git', :branch => 'rails3'
+gem 'rest-client', '1.5.0', :require => 'rest_client'
 
 group :development do
   gem 'bullet', '2.0.0.beta.2'
   gem 'ruby-growl', '1.0.1'
   gem 'pg'
-  gem 'haml', '2.2.22'
+  gem 'haml', '2.2.24'
 end
 
 group :production do
