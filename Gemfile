@@ -26,6 +26,7 @@ gem 'andand', '1.3.1'
 gem 'will_paginate', '3.0.pre', :require => 'will_paginate'
 gem 'paperclip', :git => 'git://github.com/JasonKing/paperclip.git', :branch => 'rails3'
 gem 'rest-client', '1.5.0', :require => 'rest_client'
+gem 'nokogiri', '1.4.1', :require => 'nokogiri'
 
 group :development do
   gem 'bullet', '2.0.0.beta.2'

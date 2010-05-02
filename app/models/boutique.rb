@@ -16,8 +16,10 @@ class Boutique < ActiveRecord::Base
 
   has_many :series, :order => 'numero ASC'
 
-  validates_presence_of :nom, :numero
-  validates_uniqueness_of :nom, :numero
+  validates_presence_of :nom, :message => 'Le nom ne doit pas être vide'
+  validates_presence_of  :numero
+  validates_uniqueness_of :nom, :message => 'Une boutique avec ce nom existe déjà'
+  validates_presence_of :numero
   validates_numericality_of :numero, :allow_nil => false, :only_integer => true, :greater_than_or_equal_to => 0
 
   validates :nom, :xml => true

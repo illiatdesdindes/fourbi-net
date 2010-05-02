@@ -31,14 +31,17 @@ class Article < ActiveRecord::Base
 
   attr_writer :disponible
 
-  validates_presence_of :nom, :serie_id, :prix, :nombre_restant, :numero
-  validates_uniqueness_of :nom
-  validates_numericality_of :prix, :allow_nil => true, :greater_than => 0, :message => 'doit être supérieur ou égal à 0'
-  validates_numericality_of :nombre_restant, :only_integer => true, :allow_nil => false, :greater_than_or_equal_to => -1
+  validates_presence_of :nom, :message => 'Le nom ne doit pas être vide'
+  validates_presence_of :prix, :message => 'Le prix ne doit pas être vide'
+  validates_presence_of :nombre_restant, :message => 'Le nombre restant ne doit pas être vide'
+  validates_presence_of :serie_id, :numero
+  validates_uniqueness_of :nom, :message => 'Un article avec ce nom existe déjà'
+  validates_numericality_of :prix, :allow_nil => true, :greater_than => 0, :message => 'Le prix doit être supérieur ou égal à 0'
+  validates_numericality_of :nombre_restant, :only_integer => true, :allow_nil => false, :greater_than_or_equal_to => -1, :message => 'La valeur du nombre restant est invalide'
   validates_numericality_of :numero, :allow_nil => false, :only_integer => true, :greater_than_or_equal_to => -1
   validates :nom, :xml => true
   validates :description, :xml => true
-
+  
   has_many :article_clients, :dependent => :delete_all
 
   scope :serie, lambda {|serie| {:conditions => {:serie_id => serie}, :order => 'numero desc'} }
