@@ -2,7 +2,7 @@
   <%= link_to image_tag('bulles/terrier.jpg'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %>
 </div>
 
-<div id="at_retour_serie"><%= link_to 'Retour à la série', {:action => :serie_terrier, :id => @article.serie}, {:title => @article.serie.nom } %></div>
+<div id="at_retour_serie"><%= link_to raw('Retour<br/> à la série'), {:action => :serie_terrier, :id => @article.serie}, {:title => @article.serie.nom } %></div>
 
 <div id="ac_info">
   <div id="ac_nom_article"><%= raw @article.nom %></div>
