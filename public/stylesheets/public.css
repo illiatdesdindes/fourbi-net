@@ -21,6 +21,13 @@ a {
 .image_haut {
   position: absolute; }
 
+.label_haut {
+  position: absolute;
+  top: 65px;
+  font-size: 10px; }
+  .label_haut a {
+    font-weight: normal; }
+
 #haut_timbre {
   top: 30px;
   left: 640px; }
@@ -40,8 +47,23 @@ a {
   left: 780px; }
 
 #haut_terrier {
-  top: 10px;
+  top: 0px;
   left: 820px; }
+
+#haut_timbre_label {
+  left: 640px; }
+
+#haut_panier_label {
+  left: 690px; }
+
+#haut_aide_label {
+  left: 740px; }
+
+#haut_desordre_label {
+  left: 780px; }
+
+#haut_terrier_label {
+  left: 830px; }
 
 #s_descriptif {
   position: absolute;
@@ -577,10 +599,10 @@ a {
       max-height: 42px;
       max-width: 64px; }
 
-#st_bulle_desordre {
+#st_bulle_terrier {
   position: absolute;
-  top: 95px;
-  left: 415px; }
+  top: 75px;
+  left: 365px; }
 
 #st_bloc_centre {
   position: absolute;
