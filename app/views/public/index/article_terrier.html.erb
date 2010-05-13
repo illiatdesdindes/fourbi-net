@@ -26,7 +26,7 @@
             <tr>
               <% for i in (0...@articles_serie.length) %>
                 <% article = @articles_serie[i] %>
-                <td><%= link_to image_tag(article.image.url), {:action => :article_terrier, :id => article}, {:title => article.nom} %></td>
+                <td<%= raw((article.id == @article.id) ? ' class="current"' : '') %>><%= link_to image_tag(article.image.url), {:action => :article_terrier, :id => article}, {:title => article.nom} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
                 <td class="grise"></td>
