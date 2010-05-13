@@ -1,11 +1,11 @@
-<div id="st_bulle_desordre">
-  <%= link_to image_tag('bulles/desordre.jpg'), {:action => :boutique_desordre}, {:title => 'la boutique du désordre'} %>
+<div id="st_bulle_terrier">
+  <%= link_to image_tag('bulles/terrier.jpg'), {:action => :boutique_terrier}, {:title => 'la boutique du terrier'} %>
 </div>
 
 <div id="sc_descriptif_serie">
   <div class="sc_titre_serie"><%= raw @serie.nom %></div>
   <div class="sc_descriptif"><%= raw @serie.description %></div>
-  <div class="sc_titre_boutique">Les séries du désordre</div>
+  <div class="sc_titre_boutique">Les séries du terrier</div>
   <ul id="sc_liste_serie">
   <% for serie in @serie.boutique.series %>
     <li><%= link_to serie.nom, {:id => serie}, {:title => serie.description} %></li>
@@ -31,7 +31,7 @@
         <tr>
         <% end %>
 
-        <td><%= link_to image_tag(article.image.url), {:action => :article_desordre, :id => article}, {:title => article.nom} %></td>
+        <td><%= link_to image_tag(article.image.url), {:action => :article_terrier, :id => article}, {:title => article.nom} %></td>
 
         <% if [5, 12, 19].include? modulo %>
         </tr>
