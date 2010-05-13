@@ -14,42 +14,133 @@
 </div>
 
 
-<div id="st_bloc_centre" class="sc_bloc_centre">
+<% nombre_articles = @serie.articles.length %>
+<div id="sd_bloc_centre" class="sc_bloc_centre">
   <table>
     <tr>
-      <% for i in (0...@serie.articles.length) %>
-        <% modulo = i % 26 %>
-        <% article = @serie.articles[i] %>
+      <td>
+        <table class="sd_bloc_images sc_bloc_images">
 
-        <% if 0 == modulo %>
-          <td><table class="st_bloc_images sc_bloc_images">
           <tr>
-          <td class="sc_left"><%= link_to image_tag('mains/gauche.gif', :id => 'sc_scroll_gauche'), '#', {:onclick  => 'serieScrollLeft(); return false;', :title => 'Se déplacer vers la gauche' } %></td>
+            <% 0.upto([6, nombre_articles - 1].min) do |i| %>
+              <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[i]}) %>
+            <% end %>
+          </tr>
+
+          <% if nombre_articles > 7 %>
+            <tr>
+              <% 7.upto([13, nombre_articles - 1].min) do |i| %>
+                <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[i]}) %>
+              <% end %>
+            </tr>
+          <% end %>
+
+          <% if nombre_articles > 14 %>
+            <tr>
+              <% 14.upto([20, nombre_articles - 1].min) do |i| %>
+                <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[i]}) %>
+              <% end %>
+            </tr>
+          <% end %>
+
+          <% if nombre_articles > 21 %>
+            <tr>
+              <% 21.upto([26, nombre_articles - 1].min) do |i| %>
+                <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[i]}) %>
+              <% end %>
+              <% if nombre_articles > 28 %>
+                <td class="sc_right"><%= link_to image_tag('mains/droite.gif', :id => 'sc_scroll_droite'), '#', {:onclick  => 'serieScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
+              <% elsif nombre_articles == 28 %>
+                <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[27]}) %>
+              <% end %>
+            </tr>
+          <% end %>
+
+        </table>
+      </td>
+      <% if nombre_articles > 28 %>
+        <% nombre_articles_supplementaires = nombre_articles - 27 %>
+
+        <% nombre_ecrans_intermediaires = 0 %>
+        <% if nombre_articles_supplementaires > 27 %>
+          <% nombre_ecrans_intermediaires = (nombre_articles_supplementaires - 27 - 1).div(26) + 1 %>
+          <% 0.upto(nombre_ecrans_intermediaires -1) do |indice_ecran_en_cours| %>
+            <% indice_premier_article_ecran_en_cours = 27 + (26 * indice_ecran_en_cours) %>
+
+            <td>
+              <table class="sd_bloc_images sc_bloc_images">
+
+                <tr>
+                  <td class="sc_left"><%= link_to image_tag('mains/gauche.gif', :id => 'sc_scroll_gauche'), '#', {:onclick  => 'serieScrollLeft(); return false;', :title => 'Se déplacer vers la gauche'} %></td>
+                  <% 0.upto(5) do |i| %>
+                    <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_ecran_en_cours + i]}) %>
+                  <% end %>
+                </tr>
+
+                <tr>
+                  <% 6.upto(12) do |i| %>
+                    <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_ecran_en_cours + i]}) %>
+                  <% end %>
+                </tr>
+
+                <tr>
+                  <% 13.upto(19) do |i| %>
+                    <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_ecran_en_cours + i]}) %>
+                  <% end %>
+                </tr>
+
+                <tr>
+                  <% 20.upto(25) do |i| %>
+                    <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_ecran_en_cours + i]}) %>
+                  <% end %>
+                  <td class="sc_right"><%= link_to image_tag('mains/droite.gif', :id => 'sc_scroll_droite'), '#', {:onclick  => 'serieScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
+                </tr>
+
+              </table>
+            </td>
+
+          <% end %>
         <% end %>
 
-        <% if [6, 13, 20].include? modulo %>
-        <tr>
-        <% end %>
+        <% indice_premier_article_dernier_ecran = 27 + (26 * nombre_ecrans_intermediaires) %>
 
-        <td><%= link_to image_tag(article.image.url), {:action => :article_terrier, :id => article}, {:title => article.nom} %></td>
+        <% nombre_articles_derniers_ecran = nombre_articles_supplementaires - (26 * nombre_ecrans_intermediaires) %>
+        <td>
+          <table class="sd_bloc_images sc_bloc_images">
 
-        <% if [5, 12, 19].include? modulo %>
-        </tr>
-        <% end %>
+            <tr>
+              <td class="sc_left"><%= link_to image_tag('mains/gauche.gif', :id => 'sc_scroll_gauche'), '#', {:onclick  => 'serieScrollLeft(); return false;', :title => 'Se déplacer vers la gauche'} %></td>
+              <% 0.upto([5, nombre_articles_derniers_ecran - 1].min) do |i| %>
+                <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_dernier_ecran + i]}) %>
+              <% end %>
+            </tr>
 
-        <% if 25 == modulo %>
-        <td class="sc_left"><%= link_to image_tag('mains/droite.gif', :id => 'sc_scroll_droite'), '#', {:onclick  => 'serieScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
-        </tr>
-        </table></td>
-        <% end %>
-      <% end %>
+            <% if nombre_articles_derniers_ecran > 5 %>
+              <tr>
+                <% 6.upto([12, nombre_articles_derniers_ecran - 1].min) do |i| %>
+                  <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_dernier_ecran + i]}) %>
+                <% end %>
+              </tr>
+            <% end %>
 
-      <% modulo_final = (@serie.articles.length - 1) % 26 %>
-      <% unless [5, 12, 19, 25].include? modulo_final %>
-        </tr>
-      <% end %>
-      <% unless 25 == modulo_final %>
-        </table></td>
+            <% if nombre_articles_derniers_ecran > 12 %>
+              <tr>
+                <% 13.upto([19, nombre_articles_derniers_ecran - 1].min) do |i| %>
+                  <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_dernier_ecran + i]}) %>
+                <% end %>
+              </tr>
+            <% end %>
+
+            <% if nombre_articles_derniers_ecran > 19 %>
+              <tr>
+                <% 20.upto(nombre_articles_derniers_ecran - 1) do |i| %>
+                  <%= render(:partial => "public/index/serie_article_terrier", :locals => {:article => @serie.articles[indice_premier_article_dernier_ecran + i]}) %>
+                <% end %>
+              </tr>
+            <% end %>
+
+          </table>
+        </td>
       <% end %>
     </tr>
   </table>
