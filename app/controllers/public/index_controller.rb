@@ -6,14 +6,14 @@ class Public::IndexController < Public::DefaultPublicController
     @article = Article.find(params[:id])
     @page_title = "fourbi.net: #{@article.nom}"
     @custom_javascript = 'var numberArticlesPerPage = 7;'
-    @articles_serie = @article.serie.articles.delete_if{|article| article == @article}
+    @articles_serie = @article.serie.articles
   end
 
   def article_terrier
     @article = Article.find(params[:id])
     @page_title = "fourbi.net: #{@article.nom}"
     @custom_javascript = 'var numberArticlesPerPage = 7;'
-    @articles_serie = @article.serie.articles.delete_if{|article| article == @article}
+    @articles_serie = @article.serie.articles
   end
 
   def boutique_desordre
