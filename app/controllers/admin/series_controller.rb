@@ -81,7 +81,7 @@ class Admin::SeriesController < Admin::DefaultAdminController
       @serie = Serie.find(params[:id])
       @page_title = "Reclasser les articles de #{@serie.nom}"
       @articles = Article.where(['serie_id = ? and numero != -1', @serie]).order('numero asc')
-      @custom_javascript_include = 'dragsort-0.3.min'
+      @custom_javascript_include = 'jquery.dragsort-0.3.10'
     end
   end
 

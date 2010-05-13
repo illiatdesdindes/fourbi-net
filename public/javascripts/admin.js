@@ -2,7 +2,7 @@ $(function() {
     $("table.alternated tr:even").addClass("even");
     $("table.sortable").tablesorter();
     if ($('.draggable').size() != 0) {
-        $(".draggable").dragsort();
+        $(".draggable").dragsort({placeHolderTemplate: '<li> </li>'});
     }
 });
 
