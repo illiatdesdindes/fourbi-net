@@ -50,7 +50,7 @@ class Admin::BoutiquesController < Admin::DefaultAdminController
     else
       @boutique = Boutique.find(params[:id])
       @page_title = "Reclasser les boutiques de #{@boutique.nom}"
-      @series = Serie.where('boutique_id = ? and numero != -1', @boutique).order(:order => 'numero asc')
+      @series = Serie.where('boutique_id = ? and numero != -1', @boutique).order('numero asc')
       @custom_javascript_include = 'dragsort-0.3.min'
     end
   end
