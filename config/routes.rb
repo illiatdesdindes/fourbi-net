@@ -94,13 +94,14 @@ Fourbi::Application.routes.draw do |map|
   match 'admin/sessions' => 'admin/sessions#index'
   match 'admin/init' => 'admin/sessions#init'
 
-  match 'boutique_desordre' => 'public/index#boutique_desordre'
-  match 'serie_desordre/:id' => 'public/index#serie_desordre'
-  match 'article_desordre/:id' => 'public/index#article_desordre'
 
-  match 'boutique_terrier' => 'public/index#boutique_terrier'
-  match 'serie_terrier/:id' => 'public/index#serie_terrier'
-  match 'article_terrier/:id' => 'public/index#article_terrier'
+  match 'boutique_desordre' => 'public/desordre#boutique'
+  match 'serie_desordre/:id' => 'public/desordre#serie'
+  match 'article_desordre/:id' => 'public/desordre#article'
+
+  match 'boutique_terrier' => 'public/terrier#boutique'
+  match 'serie_terrier/:id' => 'public/terrier#serie'
+  match 'article_terrier/:id' => 'public/terrier#article'
 
   root :to => 'public/index#sommaire'
 

@@ -52,10 +52,10 @@
   <%= link_to image_tag("questions/#{sprintf('%03d', (rand(3) + 1))}.jpg"), {:controller => 'public/index', :action => :sommaire}, {:title => 'aide'} %>
 </div>
 <div id="haut_desordre" class="image_haut">
-  <%= link_to image_tag("boutons/#{sprintf('%03d', (rand(43) + 1))}.jpg"), {:controller => 'public/index', :action => :boutique_desordre}, {:title => 'galerie du désordre'} %>
+  <%= link_to image_tag("boutons/#{sprintf('%03d', (rand(43) + 1))}.jpg"), {:controller => 'public/desordre', :action => :boutique}, {:title => 'galerie du désordre'} %>
 </div>
 <div id="haut_terrier" class="image_haut">
-  <%= link_to image_tag("insectes/#{sprintf('%03d', (rand(3) + 1))}.jpg"), {:controller => 'public/index', :action => :boutique_terrier}, {:title => 'galerie du terrier'} %>
+  <%= link_to image_tag("insectes/#{sprintf('%03d', (rand(3) + 1))}.jpg"), {:controller => 'public/terrier', :action => :boutique}, {:title => 'galerie du terrier'} %>
 </div>
 
 <div id="haut_timbre_label" class="label_haut">
@@ -66,13 +66,13 @@
 </div>
 
 <div id="haut_aide_label" class="label_haut">
-  <%= link_to 'Aide', {:controller => 'public/index', :action => :boutique_desordre}, {:title => 'galerie du désordre'} %>
+  <%= link_to 'Aide', {:controller => 'public/index', :action => :sommaire}, {:title => 'Aide'} %>
 </div>
 <div id="haut_desordre_label" class="label_haut">
-  <%= link_to 'Désordre', {:controller => 'public/index', :action => :boutique_desordre}, {:title => 'galerie du désordre'} %>
+  <%= link_to 'Désordre', {:controller => 'public/desordre', :action => :boutique}, {:title => 'galerie du désordre'} %>
 </div>
 <div id="haut_terrier_label" class="label_haut">
-  <%= link_to 'Terrier', {:controller => 'public/index', :action => :boutique_terrier}, {:title => 'galerie du terrier'} %>
+  <%= link_to 'Terrier', {:controller => 'public/terrier', :action => :boutique}, {:title => 'galerie du terrier'} %>
 </div>
 
 </body>

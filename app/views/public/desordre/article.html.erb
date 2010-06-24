@@ -1,8 +1,8 @@
-<div id="at_bulle">
-  <%= link_to image_tag('bulles/terrier.jpg'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %>
+<div id="ad_bulle">
+  <%= link_to image_tag('bulles/desordre.jpg'), {:action => :boutique}, {:title => 'La boutique du désordre'} %>
 </div>
 
-<div id="at_retour_serie"><%= link_to raw('Retour<br/> à la série'), {:action => :serie_terrier, :id => @article.serie}, {:title => @article.serie.nom } %></div>
+<div id="ad_retour_serie"><%= link_to raw('Retour<br/> à la série'), {:action => :serie, :id => @article.serie}, {:title => @article.serie.nom } %></div>
 
 <div id="ac_info">
   <div id="ac_nom_article"><%= raw @article.nom %></div>
@@ -13,20 +13,20 @@
   </div>
 </div>
 
-<div id="at_bloc_centre">
+<div id="ad_bloc_centre">
   <div id="ac_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
-  <table id="ac_predelle">
+  <table id="ad_predelle">
     <tbody>
     <tr>
       <td><%= link_to image_tag('mains/gauche.gif', :id => 'ac_scroll_gauche'), '#', {:onclick  => 'articleScrollLeft(); return false;', :title => 'Se déplacer vers la gauche' } %></td>
       <td colspan="5">
-        <div id="at_scroll_content" class="ac_scroll_content">
+        <div id="ad_scroll_content" class="ac_scroll_content">
           <table>
             <tbody>
             <tr>
               <% for i in (0...@articles_serie.length) %>
                 <% article = @articles_serie[i] %>
-                <td<%= raw((article.id == @article.id) ? ' class="current"' : '') %>><%= link_to image_tag(article.image.url), {:action => :article_terrier, :id => article}, {:title => article.nom} %></td>
+                <td<%= raw((article.id == @article.id) ? ' class="current"' : '') %>><%= link_to image_tag(article.image.url), {:action => :article, :id => article}, {:title => article.nom} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
                 <td class="grise"></td>
@@ -36,7 +36,7 @@
           </table>
         </div>
       </td>
-      <td><%= link_to image_tag('mains/droite.gif', :id => 'ac_scroll_droite', :class => ((@article.serie.articles.length <= 7) ? 'grise' : '')), '#', {:onclick  => 'artucleScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
+      <td><%= link_to image_tag('mains/droite.gif', :id => 'ac_scroll_droite', :class => ((@article.serie.articles.length <= 7) ? 'grise' : '')), '#', {:onclick  => 'articleScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
     </tr>
     </tbody>
   </table>

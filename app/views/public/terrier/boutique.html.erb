@@ -3,11 +3,11 @@
 </div>
 
 <div id="bt_info_boutiques">
-  <div><%= link_to image_tag('insectes/cerambycide.jpg', :id => 'bc_logo_terrier'), {:action => :boutique_terrier}, {:title => 'La boutique du terrier'} %></div>
+  <div><%= link_to image_tag('insectes/cerambycide.jpg', :id => 'bc_logo_terrier'), {:action => :boutique}, {:title => 'La boutique du terrier'} %></div>
   <div class="bc_nom_boutique">Les séries du terrier</div>
   <ul class="bc_liste_series">
     <% for serie in @boutique_terrier.series %>
-      <li><%= link_to serie.nom, {:action => :serie_desordre, :id => serie}, {:title => serie.description} %></li>
+      <li><%= link_to serie.nom, {:action => :serie, :id => serie}, {:title => serie.description} %></li>
     <% end %>
   </ul>
 </div>
@@ -20,7 +20,7 @@
         <div><%= image_tag article.image.url, :alt => article.nom %></div>
       </div>
       <div id="bt_cadre_<%= i %>" class="bt_cadre">
-        <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
+        <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article, :id => article}, {:title => article.nom} %>
       </div>
       <% i += 1 %>
     <% end %>
@@ -33,7 +33,7 @@
     <div><%= image_tag article.image.url, :alt => article.nom %></div>
   </div>
   <div id="bt_cadre_<%= i %>" class="bt_cadre">
-    <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article_terrier, :id => article}, {:title => article.nom} %>
+    <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article, :id => article}, {:title => article.nom} %>
   </div>
 <% end %>
 
@@ -47,6 +47,6 @@
 <ul id="bt_predelle_cadres">
   <% for i in (8...@articles.length) %>
     <% article = @articles[i] %>
-    <li><%= link_to image_tag('cadres/terrier_petit.gif'), {:action => :article_terrier, :id => article}, {:title => article.nom} %></li>
+    <li><%= link_to image_tag('cadres/terrier_petit.gif'), {:action => :article, :id => article}, {:title => article.nom} %></li>
   <% end %>
 </ul>
