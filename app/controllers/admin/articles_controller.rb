@@ -18,11 +18,10 @@ class Admin::ArticlesController < Admin::DefaultAdminController
 
       set_changes @article.changed
       if @article.save
-        flash[:notice] = "Article \"#{@article.nom}\" modifié"
-        redirect_to :action => :show, :id => @article
+        redirect_to({:action => :show, :id => @article}, {:notice => "Article \"#{@article.nom}\" modifié"})
       else
         clean_changes
-        flash[:error] = "Article \"#{@article.nom}\" non modifié : #{@article.errors.full_messages[0]}"
+        flash[:alert] = "Article \"#{@article.nom}\" non modifié : #{@article.errors.full_messages[0]}"
         @series = Serie.boutique(@article.serie.boutique_id)
         @page_title = "Modifier un article \"#{@article.nom}\""
       end
@@ -42,10 +41,9 @@ class Admin::ArticlesController < Admin::DefaultAdminController
         @article.numero = -1
       end
       if @article.save
-        flash[:notice] = "Article \"#{@article.nom}\" ajouté"
-        redirect_to :action => :show, :id => @article
+        redirect_to({:action => :show, :id => @article}, {:notice => "Article \"#{@article.nom}\" ajouté"})
       else
-        flash[:error] = "Article \"#{@article.nom}\" non ajouté : #{@article.errors.full_messages[0]}"
+        flash[:alert] = "Article \"#{@article.nom}\" non ajouté : #{@article.errors.full_messages[0]}"
         @series = Serie.boutique(@article.serie.boutique_id)
         @page_title = 'Ajouter un article'
       end

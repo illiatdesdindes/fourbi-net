@@ -71,10 +71,7 @@
 #notice {
   border: 2px solid green; }
 
-#warning {
-  border: 2px solid orange; }
-
-#error {
+#alert {
   border: 2px solid red; }
 
 #errorExplanation {

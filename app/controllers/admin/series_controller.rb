@@ -17,11 +17,10 @@ class Admin::SeriesController < Admin::DefaultAdminController
 
       set_changes @serie.changed
       if @serie.save
-        flash[:notice] = "Série \"#{@serie.nom}\" modifiée"
-        redirect_to :action => :show, :id => @serie
+        redirect_to({:action => :show, :id => @serie}, {:notice => "Série \"#{@serie.nom}\" modifiée"})
       else
         clean_changes
-        flash[:error] = "Série \"#{@serie.nom}\" non modifié-e : #{@serie.errors.full_messages[0]}"
+        flash[:alert] = "Série \"#{@serie.nom}\" non modifié-e : #{@serie.errors.full_messages[0]}"
         @boutiques = Boutique.order('nom asc')
       end
     else
@@ -41,10 +40,9 @@ class Admin::SeriesController < Admin::DefaultAdminController
         @serie.numero = -1
       end
       if @serie.save
-        flash[:notice] = "Série \"#{@serie.nom}\" ajoutée"
-        redirect_to :action => :show, :id => @serie
+        redirect_to({:action => :show, :id => @serie}, {:notice => "Série \"#{@serie.nom}\" ajoutée"})
       else
-        flash[:error] = "Série \"#{@serie.nom}\" non modifié : #{@serie.errors.full_messages[0]}"
+        flash[:alert] = "Série \"#{@serie.nom}\" non modifié : #{@serie.errors.full_messages[0]}"
         @page_title = 'Ajouter une série'
         @boutiques = Boutique.order('nom asc')
       end

@@ -1,0 +1,27 @@
+<div id="panier_info">
+  <div id="panier_info_image">
+    <%= image_tag('panier.jpg') %>
+  </div>
+  <%= "Votre panier contient #{@panier.length} article(s), pour un total de #{number_to_currency(@panier.inject(0) { |total, article_id| total + @panier_contenu[article_id].prix })}" %>
+</div>
+
+<div id="panier_description">Ce que nous sommes parvenus à vous fourguer</div>
+
+<% unless @panier.empty? %>
+  <div id="panier_contenu">
+    <table id="panier_articles">
+      <% @panier.each do |article_id| %>
+        <% article = @panier_contenu[article_id] %>
+        <tr class="panier_article">
+          <td><%= image_tag(article.image.url, {:class => 'panier_article_image'}) %></td>
+          <td class='panier_article_description'><%= article.nom %></td>
+          <td><%= link_to image_tag('corbeille.jpg'), {:remove => article.id}, {:title => 'Supprimer cet article du panier'} %></td>
+        </tr>
+      <% end %>
+    </table>
+    <div id="panier_caisse">
+      <div id="panier_caisse_image"><%= link_to image_tag('caisse_enregistreuse.jpg', :width => '100'), {:action => :coordonnees}, {:title => 'Poursuivre la commande'} %></div>
+      <div>Poursuivre la commande</div>
+    </div>
+  </div>
+<% end %>

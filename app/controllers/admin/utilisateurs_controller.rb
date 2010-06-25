@@ -9,11 +9,10 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
       @utilisateur.attributes = params[:utilisateur]
       set_changes = @utilisateur.changed
       if @utilisateur.save
-        flash[:notice] = "Utilisateur \"#{@utilisateur.nom}\" modifié"
-        redirect_to :action => :show, :id => @utilisateur
+        redirect_to({:action => :show, :id => @utilisateur}, {:notice => "Utilisateur \"#{@utilisateur.nom}\" modifié"})
       else
         clean_changes
-        flash[:error] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
+        flash[:alert] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
       end
     else
       @utilisateur = Utilisateur.find(params[:id])
@@ -30,10 +29,9 @@ class Admin::UtilisateursController < Admin::DefaultAdminController
     if request.post?
       @utilisateur = Utilisateur.new(params[:utilisateur])
       if @utilisateur.save
-        flash[:notice] = "Utilisateur \"#{@utilisateur.nom}\" créé"
-        redirect_to :action => :show, :id => @utilisateur
+        redirect_to({:action => :show, :id => @utilisateur}, {:notice => "Utilisateur \"#{@utilisateur.nom}\" créé"})
       else
-        flash[:error] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
+        flash[:alert] = "Utilisateur \"#{@utilisateur.nom}\" non modifié : #{@utilisateur.errors.full_messages[0]}"
       end
     else
       @utilisateur = Utilisateur.new

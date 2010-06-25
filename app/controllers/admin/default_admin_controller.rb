@@ -22,8 +22,7 @@ class Admin::DefaultAdminController < ApplicationController
 
   def authorize_site_admin
     unless @site_admin
-      flash[:error] = "Cette fonctionalit&eacute; est r&eacute;serv&eacute;e aux administrateurs du site"
-      redirect_to(:controller => "admin/admin")
+      redirect_to({:controller => "admin/admin"}, {:alert => "Cette fonctionalit&eacute; est r&eacute;serv&eacute;e aux administrateurs du site"})
     end
   end
 

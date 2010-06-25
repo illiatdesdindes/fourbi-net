@@ -14,20 +14,21 @@
   <% end %>
   <% if @custom_javascript %>
       <script type="text/javascript">
-          <%= @custom_javascript %>
+          <%= raw @custom_javascript %>
       </script>
+  <% end %>
+  <% if @custom_css %>
+    <style type="text/css">
+      <%= raw @custom_css %>
+    </style>
   <% end %>
 </head>
 <body>
 
 <div id="contenu">
 
-  <% if flash[:error] -%>
+  <% if flash[:alert] -%>
       <div id="error" class="flash"><%= flash[:error] %></div>
-  <% end -%>
-
-  <% if flash[:warning] -%>
-      <div id="warning" class="flash"><%= flash[:warning] %></div>
   <% end -%>
 
   <% if flash[:notice] -%>
@@ -46,7 +47,7 @@
   <%= link_to image_tag("timbres/#{sprintf('%03d', (rand(39) + 1))}.jpg"), {:controller => 'public/index', :action => :sommaire}, {:title => 'nous écrire'} %>
 </div>
 <div id="haut_panier" class="image_haut">
-  <%= link_to image_tag('petit_panier.jpg'), {:controller => 'public/index', :action => :sommaire}, {:title => 'votre panier'} %>
+  <%= link_to image_tag('petit_panier.jpg'), {:controller => 'public/commande', :action => :panier}, {:title => 'votre panier'} %>
 </div>
 <div id="haut_aide" class="image_haut">
   <%= link_to image_tag("questions/#{sprintf('%03d', (rand(3) + 1))}.jpg"), {:controller => 'public/index', :action => :sommaire}, {:title => 'aide'} %>
@@ -62,7 +63,7 @@
   <%= link_to 'Contact', {:controller => 'public/index', :action => :sommaire}, {:title => 'nous écrire'} %>
 </div>
 <div id="haut_panier_label" class="label_haut">
-  <%= link_to 'Panier', {:controller => 'public/index', :action => :sommaire}, {:title => 'votre panier'} %>
+  <%= link_to 'Panier', {:controller => 'public/commande', :action => :panier}, {:title => 'votre panier'} %>
 </div>
 
 <div id="haut_aide_label" class="label_haut">

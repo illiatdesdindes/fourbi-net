@@ -9,11 +9,10 @@ class Admin::BoutiquesController < Admin::DefaultAdminController
       @boutique.attributes = params[:boutique]
       set_changes = @boutique.changed
       if @boutique.save
-        flash[:notice] = "Boutique \"#{@boutique.nom}\" modifiée"
-        redirect_to :action => :show, :id => @boutique
+        redirect_to({:action => :show, :id => @boutique}, {:notice => "Boutique \"#{@boutique.nom}\" modifiée" })
       else
         clean_changes
-        flash[:error] = "Boutique \"#{@boutique.nom}\" non modifiée : #{@boutique.errors.full_messages[0]}"
+        flash[:alert] = "Boutique \"#{@boutique.nom}\" non modifiée : #{@boutique.errors.full_messages[0]}"
       end
     else
       @boutique = Boutique.find(params[:id])

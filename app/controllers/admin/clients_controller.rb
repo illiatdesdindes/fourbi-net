@@ -30,7 +30,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
       @client.save!
       flash[:notice] = "Client \"#{@client.identifiant}\" modifié"
     else
-      flash[:error] = "Le client \"#{@client.identifiant}\" n'est pas dans un status compatible avec la réception d'un chèque"
+      flash[:alert] = "Le client \"#{@client.identifiant}\" n'est pas dans un status compatible avec la réception d'un chèque"
     end
     redirect_to :action => :show, :id => @client
   end
@@ -42,7 +42,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
       @client.save!
       flash[:notice] = "Client \"#{@client.identifiant}\" modifié"
     else
-      flash[:error] = "Le client \"#{@client.identifiant}\" n'est pas dans un status compatible avec l'envoi de sa commande"
+      flash[:alert] = "Le client \"#{@client.identifiant}\" n'est pas dans un status compatible avec l'envoi de sa commande"
     end
     redirect_to :action => :show, :id => @client
   end
@@ -80,11 +80,10 @@ class Admin::ClientsController < Admin::DefaultAdminController
           end
         end
         if @client.save
-          flash[:notice] = "Client \"#{@client.identifiant}\" modifié"
-          redirect_to :action => :show, :id => @client
+          redirect_to({:action => :show, :id => @client}, {:notice => "Client \"#{@client.identifiant}\" modifié"})
         else
           clean_changes
-          flash[:error] = "Client \"#{@client.identifiant}\" non modifié : #{@client.errors.full_messages[0]}"
+          flash[:alert] = "Client \"#{@client.identifiant}\" non modifié : #{@client.errors.full_messages[0]}"
           @boutiques = Boutique.order('nom asc')
           @boutiques = Boutique.order('numero asc').includes([:series => :articles])
           @page_title = "Modifier client \"#{@client.identifiant}\""
@@ -121,8 +120,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
           end
         end
         if @client.save
-          flash[:notice] = "Client \"#{@client.identifiant}\" créé-e"
-          redirect_to :action => :show, :id => @client
+          redirect_to({:action => :show, :id => @client}, {:notice => "Client \"#{@client.identifiant}\" créé-e"})
         else
           @page_title = 'Créer un client'
           @boutiques = Boutique.order('numero asc').includes([:series => :articles])
@@ -155,8 +153,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
       @boutiques = Boutique.order('numero asc').includes([:series => :articles])
       @page_title = "Voir client \"#{@client.identifiant}\""
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = "Le client numéro #{params[:id]} n'existe pas"
-      redirect_to :action => :index
+      redirect_to({:action => :index}, {:alert => "Le client numéro #{params[:id]} n'existe pas"})
     end
   end
 

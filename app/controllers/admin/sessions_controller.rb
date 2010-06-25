@@ -10,7 +10,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
         user.mot_de_passe = params[:mot_de_passe]
         user.site_admin = true
         if !user.save
-          flash[:error] = "Utilisateur non cr&eacute;&eacute; : #{user.errors.full_messages[0]}"
+          flash[:alert] = "Utilisateur non cr&eacute;&eacute; : #{user.errors.full_messages[0]}"
         else
           render :action => :index
         end
@@ -33,7 +33,7 @@ class Admin::SessionsController < Admin::DefaultAdminController
         session[:original_uri] = nil
         redirect_to(uri || { :controller => 'admin/index'})
       else
-        flash[:error] = 'Login / Mot de passe invalide'
+        flash[:alert] = 'Login / Mot de passe invalide'
       end
     end
   end

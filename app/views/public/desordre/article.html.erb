@@ -9,7 +9,7 @@
   <div id="ac_description_article"><%= raw @article.description %></div>
   <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
   <div id="ac_ajouter_panier">
-    <%= link_to image_tag('panier.jpg'), {:controller => 'public/index', :action => :sommaire}, {:title => 'votre panier'} %>
+    <%= link_to image_tag('panier.jpg'), {:controller => 'public/commande', :action => :panier, :add => @article.id}, {:title => 'Ajouter cet article à votre panier'} %>
   </div>
 </div>
 

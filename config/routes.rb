@@ -103,6 +103,9 @@ Fourbi::Application.routes.draw do |map|
   match 'serie_terrier/:id' => 'public/terrier#serie'
   match 'article_terrier/:id' => 'public/terrier#article'
 
+  match 'panier' => 'public/commande#panier'
+  match 'coordonnees' => 'public/commande#coordonnees'
+
   root :to => 'public/index#sommaire'
 
 end
