@@ -14,7 +14,7 @@
         <% article = @panier_contenu[article_id] %>
         <tr class="panier_article">
           <td><%= image_tag(article.image.url, {:class => 'panier_article_image'}) %></td>
-          <td class='panier_article_description'><%= article.nom %></td>
+          <td class='panier_article_description'><%= "#{article.nom} #{number_to_currency(article.prix)}" %></td>
           <td><%= link_to image_tag('corbeille.jpg'), {:remove => article.id}, {:title => 'Supprimer cet article du panier'} %></td>
         </tr>
       <% end %>
