@@ -2,14 +2,16 @@
   <%= link_to image_tag('bulles/desordre.jpg'), {:action => :boutique}, {:title => 'La boutique du désordre'} %>
 </div>
 
-<div id="ad_retour_serie"><%= link_to raw('Retour<br/> à la série'), {:action => :serie, :id => @article.serie}, {:title => @article.serie.nom } %></div>
+<div id="ad_retour_serie"><%= link_to raw('Retour<br/> à la série'), {:action => :serie, :id => @article.serie}, {:title => @article.serie.nom} %></div>
 
 <div id="ac_info">
   <div id="ac_nom_article"><%= raw @article.nom %></div>
   <div id="ac_description_article"><%= raw @article.description %></div>
   <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
   <div id="ac_ajouter_panier">
-    <%= link_to image_tag('panier.jpg'), {:controller => 'public/commande', :action => :panier, :add => @article.id}, {:title => 'Ajouter cet article à votre panier'} %>
+    <%= form_tag url_for({:controller => 'public/commande', :action => :panier, :add => @article.id}), :method => :post do %>
+      <% image_submit_tag 'panier.jpg', :title => 'Ajouter cet article à votre panier' %>
+    <% end %>
   </div>
 </div>
 
@@ -18,7 +20,7 @@
   <table id="ad_predelle">
     <tbody>
     <tr>
-      <td><%= link_to image_tag('mains/gauche.gif', :id => 'ac_scroll_gauche'), '#', {:onclick  => 'articleScrollLeft(); return false;', :title => 'Se déplacer vers la gauche' } %></td>
+      <td><%= link_to image_tag('mains/gauche.gif', :id => 'ac_scroll_gauche'), '#', {:onclick  => 'articleScrollLeft(); return false;', :title => 'Se déplacer vers la gauche'} %></td>
       <td colspan="5">
         <div id="ad_scroll_content" class="ac_scroll_content">
           <table>
