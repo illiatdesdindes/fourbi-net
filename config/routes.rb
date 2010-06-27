@@ -112,6 +112,8 @@ Fourbi::Application.routes.draw do |map|
   match 'contact/terrier' => 'public/contact#terrier'
   match 'contact' => 'public/contact#index'
 
+  match 'cgv' => 'public/index#cgv'
+
   root :to => 'public/index#sommaire'
 
 end

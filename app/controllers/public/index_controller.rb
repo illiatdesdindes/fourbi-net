@@ -2,6 +2,10 @@ class Public::IndexController < Public::DefaultPublicController
 
   layout 'public-layout'
 
+  def cgv
+
+  end
+
   def sommaire
     @page_title = 'fourbi.net, brocante à toutes heures'
     boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).first

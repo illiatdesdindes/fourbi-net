@@ -8,6 +8,7 @@ class Admin::ConfigurationController < Admin::DefaultAdminController
     if request.post?
       Meta.update_value Meta::EMAIL_DESORDRE, params[Meta::EMAIL_DESORDRE]
       Meta.update_value Meta::EMAIL_TERRIER, params[Meta::EMAIL_TERRIER]
+      Meta.update_value Meta::CGV, params[Meta::CGV]
     end
     @page_title = 'Configuration'
   end

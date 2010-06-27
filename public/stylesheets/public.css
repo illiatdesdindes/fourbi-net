@@ -194,6 +194,30 @@ a {
 #s_image_terrier_3 {
   left: 714px; }
 
+#cgv_logo {
+  position: absolute;
+  top: 70px;
+  left: 250px; }
+
+#cgv_titre {
+  position: absolute;
+  top: 180px;
+  left: 310px;
+  width: 275px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold; }
+
+#cgv_contenu {
+  position: absolute;
+  top: 370px;
+  left: 250px;
+  width: 400px;
+  font-size: 10px; }
+  #cgv_contenu p {
+    padding-bottom: 5px;
+    padding-top: 3px; }
+
 #panier_info {
   position: absolute;
   top: 300px;

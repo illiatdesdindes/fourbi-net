@@ -1,0 +1,3 @@
+<div id="cgv_logo"><%= image_tag 'cadres/cgv.jpg', :width => 400 %></div>
+<div id="cgv_titre">Nos conditions générales de vente</div>
+<div id="cgv_contenu"><%= raw Kramdown::Document.new(Meta[Meta::CGV].contenu).to_html %></div>
