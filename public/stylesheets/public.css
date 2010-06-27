@@ -217,6 +217,71 @@ a {
     padding-bottom: 5px;
     padding-top: 3px; }
 
+#coordonnees_info {
+  position: absolute;
+  top: 200px;
+  left: 15px;
+  width: 160px;
+  font-size: 10px; }
+  #coordonnees_info p {
+    padding-bottom: 10px; }
+
+#coordonnees_info_image {
+  padding-bottom: 10px; }
+
+#coordonnees_description {
+  position: absolute;
+  top: 90px;
+  left: 450px;
+  height: 154px;
+  width: 187px;
+  background-image: url("/images/bulles/panier.jpg");
+  background-repeat: no-repeat;
+  padding-top: 48px;
+  padding-left: 20px;
+  font-size: 12px; }
+
+#coordonnees_fond {
+  position: absolute;
+  top: 240px;
+  left: 280px; }
+
+#coordonnees_form {
+  position: absolute;
+  top: 290px;
+  left: 330px;
+  width: 400px;
+  font-size: 12px;
+  vertical-align: top; }
+  #coordonnees_form label {
+    display: inline-block;
+    width: 75px;
+    vertical-align: top; }
+  #coordonnees_form input, #coordonnees_form textarea, #coordonnees_form select {
+    border: black solid 1px;
+    margin-bottom: 8px; }
+
+#coordonnees_caisse {
+  font-size: 12px;
+  padding-bottom: 20px;
+  padding-top: 130px;
+  text-align: right;
+  padding-right: 40px; }
+  #coordonnees_caisse input, #coordonnees_caisse textarea, #coordonnees_caisse select {
+    border: none;
+    margin-bottom: 0px; }
+
+#coordonnees_caisse_image {
+  padding-right: 20px; }
+
+#coordonnees_back {
+  position: absolute;
+  top: 650px;
+  left: 300px;
+  font-size: 12px; }
+  #coordonnees_back a {
+    font-weight: normal; }
+
 #panier_info {
   position: absolute;
   top: 300px;
@@ -267,61 +332,6 @@ a {
   padding-top: 20px; }
 
 #panier_caisse_image {
-  padding-right: 20px; }
-
-#coordonnees_info {
-  position: absolute;
-  top: 200px;
-  left: 15px;
-  width: 160px;
-  font-size: 10px; }
-  #coordonnees_info p {
-    padding-bottom: 10px; }
-
-#coordonnees_info_image {
-  padding-bottom: 10px; }
-
-#coordonnees_description {
-  position: absolute;
-  top: 90px;
-  left: 450px;
-  height: 154px;
-  width: 187px;
-  background-image: url("/images/bulles/panier.jpg");
-  background-repeat: no-repeat;
-  padding-top: 48px;
-  padding-left: 20px;
-  font-size: 12px; }
-
-#coordonnees_fond {
-  position: absolute;
-  top: 240px;
-  left: 280px; }
-
-#coordonnees_form {
-  position: absolute;
-  top: 290px;
-  left: 330px;
-  width: 400px;
-  font-size: 12px;
-  vertical-align: top; }
-  #coordonnees_form label {
-    display: inline-block;
-    width: 75px;
-    vertical-align: top; }
-  #coordonnees_form input, #coordonnees_form textarea, #coordonnees_form select {
-    border: black solid 1px;
-    margin-bottom: 8px; }
-
-#coordonnees_caisse {
-  font-size: 12px;
-  padding-bottom: 20px;
-  padding-top: 130px; }
-  #coordonnees_caisse input, #coordonnees_caisse textarea, #coordonnees_caisse select {
-    border: none;
-    margin-bottom: 0px; }
-
-#coordonnees_caisse_image {
   padding-right: 20px; }
 
 #contact_info {
