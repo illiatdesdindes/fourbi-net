@@ -4,7 +4,9 @@
   </div>
   <p><%= "Votre panier contient #{@panier.length} article(s), pour un total de #{number_to_currency(@panier.inject(0) { |total, article_id| total + @panier_contenu[article_id].prix })}" %></p>
 
-  <p>Vous pouvez consulter <%= link_to 'ici', {:controller => 'public/index', :action => 'cgv'}, {:target => '_blank'} %> nos conditions générales de vente.</p>
+  <p>Vous pouvez
+    consulter <%= link_to 'ici', {:controller => 'public/index', :action => 'cgv'}, {:target => '_blank'} %> nos
+    conditions générales de vente.</p>
 </div>
 
 <div id="panier_description">Ce que nous sommes parvenus à vous fourguer</div>
@@ -17,7 +19,11 @@
         <tr class="panier_article">
           <td><%= image_tag(article.image.url, {:class => 'panier_article_image'}) %></td>
           <td class='panier_article_description'><%= "#{article.nom} #{number_to_currency(article.prix)}" %></td>
-          <td><%= link_to image_tag('corbeille.jpg'), {:remove => article.id}, {:title => 'Supprimer cet article du panier'} %></td>
+          <td>
+            <%= form_tag url_for({:remove => article.id}), :method => :post do %>
+              <% image_submit_tag 'corbeille.jpg', :title => 'Supprimer cet article du panier' %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>
