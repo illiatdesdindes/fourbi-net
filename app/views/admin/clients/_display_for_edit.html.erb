@@ -9,7 +9,7 @@
           <%= edit_value_table('Code postal', (f.text_field :code_postal, :size => 5)) %>
           <%= edit_value_table('Ville', (f.text_field :ville)) %>
           <%= edit_value_table("Pays", (f.select :pays, Countries::NAME_TO_CODE_ARRAY)) %>
-          <%= edit_value_table('Email', (f.text_field :email, :size => 30)) %>
+          <%= edit_value_table('Email', (f.email_field :email, :size => 30)) %>
         </table>
       </fieldset>
       <fieldset>
