@@ -15,26 +15,26 @@
 <fieldset>
   <legend>Commande</legend>
   <% for boutique in @boutiques %>
-      <% if boutique.series.any? {|serie| serie.articles.any? {|article| @client.articles.include? article}} %>
-          <fieldset>
-            <legend><%= h boutique.nom %></legend>
-            <% for serie in boutique.series %>
-                <% if serie.articles.any? {|article| @client.articles.include? article} %>
-                    <fieldset>
-                      <legend><%= h serie.nom %></legend>
-                      <table>
-                        <% for article in serie.articles %>
-                            <% if @client.articles.include? article %>
-                                <% article_client = @client.article_clients.detect{|article_client| article_client.article == article} %>
-                                <p><%= "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %></p>
-                            <% end %>
-                        <% end %>
-                      </table>
-                    </fieldset>
+    <% if boutique.series.any? { |serie| serie.articles.any? { |article| @client.articles.include? article } } %>
+      <fieldset>
+        <legend><%= h boutique.nom %></legend>
+        <% for serie in boutique.series %>
+          <% if serie.articles.any? { |article| @client.articles.include? article } %>
+            <fieldset>
+              <legend><%= h serie.nom %></legend>
+              <table>
+                <% for article in serie.articles %>
+                  <% if @client.articles.include? article %>
+                    <% article_client = @client.article_clients.detect { |article_client| article_client.article == article } %>
+                    <p><%= "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %></p>
+                  <% end %>
                 <% end %>
-            <% end %>
-          </fieldset>
-      <% end %>
+              </table>
+            </fieldset>
+          <% end %>
+        <% end %>
+      </fieldset>
+    <% end %>
   <% end %>
 </fieldset>
 

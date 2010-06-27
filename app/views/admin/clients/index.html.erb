@@ -3,28 +3,28 @@
     <tr>
       <td>
         <% form_tag({:action => :search}, {:class => 'floating barreBoutons'}) do %>
-            <fieldset>
-              <legend>Recherche</legend>
-              <div>
-                <label for="name">Nom</label><br/>
-                <%= text_field_tag :search, params[:search], :size => 20 %>
-              </div>
-              <div>
-                <%= check_box_tag :supprime %>
-                <label>Inclure les clients supprim&eacute;s</label>
-              </div>
-              <%= submit_tag 'Rechercher', :class => 'droite' %>
-            </fieldset>
+          <fieldset>
+            <legend>Recherche</legend>
+            <div>
+              <label for="name">Nom</label><br/>
+              <%= text_field_tag :search, params[:search], :size => 20 %>
+            </div>
+            <div>
+              <%= check_box_tag :supprime %>
+              <label>Inclure les clients supprim&eacute;s</label>
+            </div>
+            <%= submit_tag 'Rechercher', :class => 'droite' %>
+          </fieldset>
         <% end %>
       </td>
       <td>
         <% form_tag({:action => :show}, {:class => 'floating barreBoutons'}) do %>
-            <fieldset>
-              <legend>Choisir</legend>
-              <%= label_tag 'Afficher le client n°' %>
-              <%= text_field_tag 'id', '', :size => 5 %>
-              <%= submit_tag 'Afficher', :class => 'droite' %>
-            </fieldset>
+          <fieldset>
+            <legend>Choisir</legend>
+            <%= label_tag 'Afficher le client n°' %>
+            <%= text_field_tag 'id', '', :size => 5 %>
+            <%= submit_tag 'Afficher', :class => 'droite' %>
+          </fieldset>
         <% end %>
       </td>
     </tr>
@@ -43,14 +43,14 @@
   </thead>
   <tbody>
   <% for client in @clients %>
-      <tr>
-        <td><%= link_to_view client, nil, h(client.identifiant) %></td>
-        <td><%= client.article_clients.collect{ |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}"}.join(', ') %></td>
-        <td><%= "#{number_to_currency client.prix}" %></td>
-        <td><%= client.status_lisible %></td>
-        <td><%= client.date_envoi ? I18n.localize(client.date_envoi) : 'non' %></td>
-        <td><%= I18n.localize(client.created_at) %></td>
-      </tr>
+    <tr>
+      <td><%= link_to_view client, nil, h(client.identifiant) %></td>
+      <td><%= client.article_clients.collect { |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}" }.join(', ') %></td>
+      <td><%= "#{number_to_currency client.prix}" %></td>
+      <td><%= client.status_lisible %></td>
+      <td><%= client.date_envoi ? I18n.localize(client.date_envoi) : 'non' %></td>
+      <td><%= I18n.localize(client.created_at) %></td>
+    </tr>
   <% end %>
   </tbody>
 </table>

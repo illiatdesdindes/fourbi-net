@@ -10,40 +10,40 @@
 </head>
 <body>
 <% if flash[:notice] -%>
-    <div id="notice"><%= flash[:notice] %></div>
+  <div id="notice"><%= flash[:notice] %></div>
 <% end -%>
 
 <% if flash[:error] -%>
-    <div id="error"><%= flash[:error] %></div>
+  <div id="error"><%= flash[:error] %></div>
 <% end -%>
 
 <div class="form">
   <fieldset>
     <legend>Merci d'entrer les informations n&eacute;cessaires</legend>
     <% form_tag :controller => '/admin/sessions', :action => :init do %>
-        <p>
-          <label for="name">Login</label>
-          <%= text_field_tag :login, params[:login] %>
-        </p>
+      <p>
+        <label for="name">Login</label>
+        <%= text_field_tag :login, params[:login] %>
+      </p>
 
-        <p>
-          <label for="nom">Nom</label>
-          <%= text_field_tag :nom, params[:nom] %>
-        </p>
+      <p>
+        <label for="nom">Nom</label>
+        <%= text_field_tag :nom, params[:nom] %>
+      </p>
 
-        <p>
-          <label for="email">Email</label>
-          <%= text_field_tag :email, params[:email] %>
-        </p>
+      <p>
+        <label for="email">Email</label>
+        <%= text_field_tag :email, params[:email] %>
+      </p>
 
-        <p>
-          <label for="password">Mot de passe</label>
-          <%= password_field_tag :mot_de_passe, params[:mot_de_passe] %>
-        </p>
+      <p>
+        <label for="password">Mot de passe</label>
+        <%= password_field_tag :mot_de_passe, params[:mot_de_passe] %>
+      </p>
 
-        <p>
-          <%= submit_tag "Cr&eacute;er l'utilisateur" %>
-        </p>
+      <p>
+        <%= submit_tag "Cr&eacute;er l'utilisateur" %>
+      </p>
     <% end %>
   </fieldset>
 </div>

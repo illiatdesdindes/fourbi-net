@@ -2,13 +2,13 @@
 
 <% form_for @client, :url => {:action => :edit, :id => @client}, :html => {:method => :put} do |f| %>
 
-    <%= render(:partial => "admin/clients/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
+  <%= render(:partial => "admin/clients/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
 
-    <table class="barreBoutons">
-      <tr>
-        <td><%= f.submit 'Modifier', {:id => 'updateButton'} %></td>
-        <td><%= link_to 'Afficher', :action => :show, :id => @client %></td>
-        <td><%= link_to 'Liste des utilisateur-rice-s', :action => :index %></td>
-      </tr>
-    </table>
+  <table class="barreBoutons">
+    <tr>
+      <td><%= f.submit 'Modifier', {:id => 'updateButton'} %></td>
+      <td><%= link_to 'Afficher', :action => :show, :id => @client %></td>
+      <td><%= link_to 'Liste des utilisateur-rice-s', :action => :index %></td>
+    </tr>
+  </table>
 <% end %>

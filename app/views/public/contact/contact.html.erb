@@ -1,0 +1,28 @@
+<div id="contact_message_info">
+  <div id="contact_info_image">
+    <%= image_tag(@logo_path, :width => 130) %>
+  </div>
+  Saisissez le message à envoyer.
+</div>
+
+<div id="contact_bulle_message"><%= image_tag 'contact/bulle.jpg', :width => 500 %></div>
+
+<div id="contact_form">
+  <%= form_tag url_for({:action => :terrier}), :method => :post do %>
+    <div>
+      <%= label_tag 'email', 'Votre adresse mail' %>
+      <br/>
+      <%= email_field_tag 'email', @email %>
+    </div>
+    <div>
+      <%= label_tag 'message', 'Votre message' %>
+      <br/>
+      <%= text_area_tag 'message', @message, :cols => 40, :rows =>10 %>
+    </div>
+    <div id="contact_timbre">
+      <%= image_submit_tag url_timbre, :title => 'Envoyer' %>
+      <%= submit_tag 'Envoyer' %>
+    </div>
+  <% end %>
+</div>
+

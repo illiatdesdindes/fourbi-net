@@ -9,7 +9,7 @@
           <%= edit_value_table('Nom', (f.text_field :nom)) %>
           <%= edit_value_table('Email', (f.text_field :email)) %>
           <% if @site_admin %>
-              <%= edit_value_table('Administrateur du site', (f.check_box :site_admin)) %>
+            <%= edit_value_table('Administrateur du site', (f.check_box :site_admin)) %>
           <% end %>
         </table>
       </fieldset>

@@ -19,14 +19,14 @@
   </thead>
   <tbody>
   <% for article in @articles %>
-      <tr>
-        <td><%= link_to_view article, 'admin/articles', 'Voir' %></td>
-        <td><%= h article.nom %></td>
-        <td><%= (article.numero >=0) ? article.numero : 'indisponible' %></td>
-        <td><%= number_to_currency article.prix %></td>
-        <td><%= nombre_restant_ou_infini article.nombre_restant %></td>
-        <td><%= link_to_view article, 'admin/articles', image_tag(article.image.url, {:height => '75px'}) %></td>
-      </tr>
+    <tr>
+      <td><%= link_to_view article, 'admin/articles', 'Voir' %></td>
+      <td><%= h article.nom %></td>
+      <td><%= (article.numero >=0) ? article.numero : 'indisponible' %></td>
+      <td><%= number_to_currency article.prix %></td>
+      <td><%= nombre_restant_ou_infini article.nombre_restant %></td>
+      <td><%= link_to_view article, 'admin/articles', image_tag(article.image.url, {:height => '75px'}) %></td>
+    </tr>
   <% end %>
   </tbody>
 </table>

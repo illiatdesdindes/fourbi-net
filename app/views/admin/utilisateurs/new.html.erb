@@ -2,12 +2,12 @@
 
 <% form_for @utilisateur, :url => {:action => :new} do |f| %>
 
-    <%= render(:partial => "admin/utilisateurs/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
+  <%= render(:partial => "admin/utilisateurs/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
 
-    <table class="barreBoutons">
-      <tr>
-        <td><%= f.submit 'Cr&eacute;er' %></td>
-        <td><%= link_to 'Liste des utilisateurs', :action => :index %></td>
-      </tr>
-    </table>
+  <table class="barreBoutons">
+    <tr>
+      <td><%= f.submit 'Cr&eacute;er' %></td>
+      <td><%= link_to 'Liste des utilisateurs', :action => :index %></td>
+    </tr>
+  </table>
 <% end %>

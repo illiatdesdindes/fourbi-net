@@ -28,7 +28,7 @@
 <div id="contenu">
 
   <% if flash[:alert] -%>
-      <div id="error" class="flash"><%= flash[:error] %></div>
+      <div id="alert" class="flash"><%= flash[:alert] %></div>
   <% end -%>
 
   <% if flash[:notice] -%>
@@ -44,7 +44,7 @@
 </div>
 
 <div id="haut_timbre" class="image_haut">
-  <%= link_to image_tag("timbres/#{sprintf('%03d', (rand(39) + 1))}.jpg"), {:controller => 'public/contact', :action => :index}, {:title => 'nous écrire'} %>
+  <%= link_to image_tag(url_timbre), {:controller => 'public/contact', :action => :index}, {:title => 'nous écrire'} %>
 </div>
 <div id="haut_panier" class="image_haut">
   <%= link_to image_tag('petit_panier.jpg'), {:controller => 'public/commande', :action => :panier}, {:title => 'votre panier'} %>

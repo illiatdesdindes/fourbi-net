@@ -6,7 +6,7 @@
 <table class="barreBoutons">
   <tr>
     <% if @site_admin || (@utilisateur == @current_user) %>
-        <td><%= link_to_edit @utilisateur %></td>
+      <td><%= link_to_edit @utilisateur %></td>
     <% end %>
     <td><%= link_to 'Liste des utilisateurs', :action => :index %></td>
   </tr>

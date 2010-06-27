@@ -90,6 +90,8 @@ Fourbi::Application.routes.draw do |map|
   match 'admin/utilisateurs/edit/:id' => 'admin/utilisateurs#edit'
   match 'admin/utilisateurs/:id' => 'admin/utilisateurs#show'
 
+  match 'admin/configuration' => 'admin/configuration#index'
+
   match 'admin/logout' => 'admin/sessions#logout'
   match 'admin/sessions' => 'admin/sessions#index'
   match 'admin/init' => 'admin/sessions#init'

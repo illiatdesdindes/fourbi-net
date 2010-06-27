@@ -1,13 +1,13 @@
 <%= error_messages_for :article %>
 
-<% form_for @article, :url => { :action => :new}, :html=>{:multipart=>true} do |f| %>
+<% form_for @article, :url => {:action => :new}, :html=>{:multipart=>true} do |f| %>
 
-    <%= render(:partial => "admin/articles/display_for_edit", :locals => {:f => f, :series => @series, :article => @article}) %>
+  <%= render(:partial => "admin/articles/display_for_edit", :locals => {:f => f, :series => @series, :article => @article}) %>
 
-    <table class="barreBoutons">
-      <tr>
-        <td><%= f.submit 'Cr&eacute;er' %></td>
-        <td><%= link_to 'Liste des articles', :controller => "admin/series", :action => :show, :id => @article.serie %></td>
-      </tr>
-    </table>
+  <table class="barreBoutons">
+    <tr>
+      <td><%= f.submit 'Cr&eacute;er' %></td>
+      <td><%= link_to 'Liste des articles', :controller => "admin/series", :action => :show, :id => @article.serie %></td>
+    </tr>
+  </table>
 <% end %>

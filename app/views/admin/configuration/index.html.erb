@@ -1,0 +1,11 @@
+<%= form_tag url_for(), :method => :post do %>
+  <fieldset>
+    <legend>Email</legend>
+    <table>
+      <%= edit_value_table('Email du desordre', email_field_tag(Meta::EMAIL_DESORDRE, Meta[Meta::EMAIL_DESORDRE].contenu)) %>
+      <%= edit_value_table('Email du terrier', email_field_tag(Meta::EMAIL_TERRIER, Meta[Meta::EMAIL_TERRIER].contenu)) %>
+    </table>
+  </fieldset>
+  <%= submit_tag 'Mettre à jour' %>
+
+<% end %>

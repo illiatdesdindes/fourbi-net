@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100406171408) do
+ActiveRecord::Schema.define(:version => 20100627121926) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(:version => 20100406171408) do
 
   add_index "clients", ["date_envoi"], :name => "index_clients_on_date_envoi"
   add_index "clients", ["status"], :name => "index_clients_on_status"
+
+  create_table "metas", :force => true do |t|
+    t.string "nom",     :null => false
+    t.text   "contenu", :null => false
+  end
+
+  add_index "metas", ["nom"], :name => "index_metas_on_nom", :unique => true
 
   create_table "series", :force => true do |t|
     t.string   "nom",         :null => false

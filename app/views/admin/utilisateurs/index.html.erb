@@ -5,19 +5,19 @@
   </thead>
   <tbody>
   <% for user in @utilisateurs %>
-      <tr>
-        <td><%= link_to_view user, nil, h(user.nom) %></td>
-        <td><%= h user.email %></td>
-      </tr>
+    <tr>
+      <td><%= link_to_view user, nil, h(user.nom) %></td>
+      <td><%= h user.email %></td>
+    </tr>
   <% end %>
   </tbody>
 </table>
 
 <% if @site_admin %>
 
-    <table class="barreBoutons">
-      <tr>
-        <td><%= link_to 'Nouvel utilisateur-rice', :action => :new %></td>
-      </tr>
-    </table>
+  <table class="barreBoutons">
+    <tr>
+      <td><%= link_to 'Nouvel utilisateur-rice', :action => :new %></td>
+    </tr>
+  </table>
 <% end %>

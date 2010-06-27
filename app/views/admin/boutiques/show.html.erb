@@ -14,11 +14,11 @@
   </thead>
   <tbody>
   <% for serie in @series %>
-      <tr>
-        <td><%= link_to_view serie, "admin/series", h(serie.nom) %></td>
-        <td><%= serie.description %></td>
-        <td><%= serie.disponible? ? serie.numero : 'indisponible' %></td>
-      </tr>
+    <tr>
+      <td><%= link_to_view serie, "admin/series", h(serie.nom) %></td>
+      <td><%= serie.description %></td>
+      <td><%= serie.disponible? ? serie.numero : 'indisponible' %></td>
+    </tr>
   <% end %>
   </tbody>
 </table>
