@@ -248,7 +248,8 @@ a {
     padding-top: 10px; }
 
 #panier_articles {
-  padding-right: 50px; }
+  padding-right: 50px;
+  font-size: 12px; }
 
 .panier_article_image {
   max-width: 100px;
