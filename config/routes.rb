@@ -107,6 +107,7 @@ Fourbi::Application.routes.draw do |map|
 
   match 'panier' => 'public/commande#panier'
   match 'coordonnees' => 'public/commande#coordonnees'
+  match 'validation' => 'public/commande#validation'
 
   match 'contact/desordre' => 'public/contact#desordre'
   match 'contact/terrier' => 'public/contact#terrier'

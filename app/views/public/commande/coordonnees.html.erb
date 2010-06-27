@@ -1,0 +1,54 @@
+<div id="coordonnees_info">
+  <div id="coordonnees_info_image">
+    <%= image_tag(url_question) %>
+  </div>
+  <p>La page suivante vous permettra de confirmer toutes les informations de votre commande avant de procéder au paiment
+    sur le site sécurisé de la banque.</p>
+
+  <p>Notre déclaration auprès de la CNIL porte le numéro 1436059, par ailleurs nous nous engageons auprès de vous à ne
+    pas divulguer, d'aucune manière les informations vous concernant.</p>
+</div>
+
+<div id="coordonnees_fond"><%= image_tag 'bulles/bulle002.jpg', :width => 400 %></div>
+
+<div id="coordonnees_description">Et on vous envoie celà où ?</div>
+
+<div id="coordonnees_form">
+  <%= form_tag url_for({}), :method => :post do %>
+
+    <div>
+      <%= label_tag 'nom', 'Nom' %>
+      <%= text_field_tag 'nom', @coordonnees[:nom] %>
+    </div>
+
+    <div>
+      <%= label_tag 'adresse', 'Adresse' %>
+      <%= text_area_tag 'adresse', @coordonnees[:adresse], :cols => 25, :rows => 2 %>
+    </div>
+
+    <div>
+      <%= label_tag 'code_postal', 'Code postal' %>
+      <%= text_field_tag 'code_postal', @coordonnees[:code_postal] %>
+    </div>
+
+    <div>
+      <%= label_tag 'ville', 'Ville' %>
+      <%= text_field_tag 'ville', @coordonnees[:ville] %>
+    </div>
+
+    <div>
+      <%= label_tag 'pays', 'Pays' %>
+      <%= select_tag 'pays', options_for_select(Countries::NAME_TO_CODE_ARRAY, (@coordonnees[:pays])) %>
+    </div>
+
+    <div>
+      <%= label_tag 'email', 'Email' %>
+      <%= email_field_tag 'email', @coordonnees[:email] %>
+    </div>
+    <div id="coordonnees_caisse">
+      <div id="coordonnees_caisse_image"><%= image_submit_tag 'caisse_enregistreuse.jpg', :width => '100', :title => 'Poursuivre la commande' %></div>
+      <div><%= submit_tag 'Poursuivre la commande' %></div>
+    </div>
+
+  <% end %>
+</div>

@@ -40,6 +40,8 @@ class Client < ActiveRecord::Base
 
   scope :attente_envoi, :conditions => ['(status = ? or status = ?) and date_envoi is null', PAIEMENT_CHEQUE, PAIEMENT_EN_LIGNE], :order => 'id asc'
 
+  validate :validation
+
   def status_lisible
     case status
       when NOUVEAU
@@ -65,7 +67,7 @@ class Client < ActiveRecord::Base
     end
   end
 
-  def validate
+  def validation
     errors.add_to_base('Aucun article commandé') if article_clients.empty?
     unless EmailVeracity::Address.new(email).valid?
       errors.add(:email, 'L\'adresse email est invalide')

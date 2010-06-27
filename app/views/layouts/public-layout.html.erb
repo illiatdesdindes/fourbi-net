@@ -50,7 +50,7 @@
   <%= link_to image_tag('petit_panier.jpg'), {:controller => 'public/commande', :action => :panier}, {:title => 'votre panier'} %>
 </div>
 <div id="haut_aide" class="image_haut">
-  <%= link_to image_tag("questions/#{sprintf('%03d', (rand(3) + 1))}.jpg"), {:controller => 'public/index', :action => :sommaire}, {:title => 'aide'} %>
+  <%= link_to image_tag(url_question), {:controller => 'public/index', :action => :sommaire}, {:title => 'aide'} %>
 </div>
 <div id="haut_desordre" class="image_haut">
   <%= link_to image_tag("boutons/#{sprintf('%03d', (rand(43) + 1))}.jpg"), {:controller => 'public/desordre', :action => :boutique}, {:title => 'galerie du désordre'} %>

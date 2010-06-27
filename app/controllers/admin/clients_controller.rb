@@ -70,6 +70,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
               article_client.client = @client
               article_client.article = article
               article_client.quantite = nombre_i
+              article_client.prix_unitaire = article.prix
               @client.article_clients << article_client
               @client.prix += nombre_i * article.prix
             end

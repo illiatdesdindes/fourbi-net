@@ -2,7 +2,9 @@
   <div id="panier_info_image">
     <%= image_tag('panier.jpg') %>
   </div>
-  <%= "Votre panier contient #{@panier.length} article(s), pour un total de #{number_to_currency(@panier.inject(0) { |total, article_id| total + @panier_contenu[article_id].prix })}" %>
+  <p><%= "Votre panier contient #{@panier.length} article(s), pour un total de #{number_to_currency(@panier.inject(0) { |total, article_id| total + @panier_contenu[article_id].prix })}" %></p>
+
+  <p>Vous pouvez consulter <%= link_to 'ici', {:controller => 'public/index', :action => 'cgv'}, {:target => '_blank'} %> nos conditions générales de vente.</p>
 </div>
 
 <div id="panier_description">Ce que nous sommes parvenus à vous fourguer</div>

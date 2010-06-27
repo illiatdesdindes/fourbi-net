@@ -1,3 +1,5 @@
+require 'extend_string'
+
 module Countries
 
   CODE_TO_NAME = {
@@ -46,7 +48,6 @@ module Countries
           'CN' => "Chine",
           'CY' => "Chypre",
           'CO' => "Colombie",
-          'MP' => "Commonwealth des Îles Mariannes du Nord",
           'KM' => "Comores",
           'CG' => "Congo",
           'CD' => "Congo, République Démocratique du",
@@ -73,7 +74,7 @@ module Countries
           'GA' => "Gabon",
           'GM' => "Gambie",
           'GE' => "Géorgie",
-          'GS' => "Géorgie du Sud et les Îles Sandwich du Sud",
+          'GS' => "Géorgie du Sud",
           'GH' => "Ghana",
           'GI' => "Gibraltar",
           'GB' => "Grande Bretagne",
@@ -104,7 +105,6 @@ module Countries
           'FO' => "Iles Féroé",
           'FK' => "Iles Malouines",
           'MH' => "Îles Marshall",
-          'UM' => "Îles Mineures Éloignées des États-Unis",
           'SB' => "Îles Salomon",
           'TC' => "Îles Turks et Caïques",
           'VG' => "Îles Vierges Britanniques",
@@ -226,7 +226,6 @@ module Countries
           'TD' => "Tchad",
           'CZ' => "Tchéquie",
           'TF' => "Terres Australes Françaises",
-          'IO' => "Territoire britannique de l'Océan Indien",
           'TH' => "Thaïlande",
           'TL' => "Timor-Oriental",
           'TG' => "Togo",
@@ -295,7 +294,6 @@ module Countries
           "Chine" => 'CN',
           "Chypre" => 'CY',
           "Colombie" => 'CO',
-          "Commonwealth des Îles Mariannes du Nord" => 'MP',
           "Comores" => 'KM',
           "Congo" => 'CG',
           "Congo, République Démocratique du" => 'CD',
@@ -322,7 +320,7 @@ module Countries
           "Gabon" => 'GA',
           "Gambie" => 'GM',
           "Géorgie" => 'GE',
-          "Géorgie du Sud et les Îles Sandwich du Sud" => 'GS',
+          "Géorgie du Sud" => 'GS',
           "Ghana" => 'GH',
           "Gibraltar" => 'GI',
           "Grande Bretagne" => 'GB',
@@ -353,7 +351,6 @@ module Countries
           "Iles Féroé" => 'FO',
           "Iles Malouines" => 'FK',
           "Îles Marshall" => 'MH',
-          "Îles Mineures Éloignées des États-Unis" => 'UM',
           "Îles Salomon" => 'SB',
           "Îles Turks et Caïques" => 'TC',
           "Îles Vierges Britanniques" => 'VG',
@@ -475,7 +472,6 @@ module Countries
           "Tchad" => 'TD',
           "Tchéquie" => 'CZ',
           "Terres Australes Françaises" => 'TF',
-          "Territoire britannique de l'Océan Indien" => 'IO',
           "Thaïlande" => 'TH',
           "Timor-Oriental" => 'TL',
           "Togo" => 'TG',
@@ -497,6 +493,6 @@ module Countries
           "Zambie" => 'ZM',
           "Zimbabwe" => 'ZW'}
 
-  NAME_TO_CODE_ARRAY = NAME_TO_CODE.to_a.sort{|x,y| x[0] <=> y[0] }
+  NAME_TO_CODE_ARRAY = NAME_TO_CODE.to_a.sort{|x,y| x[0].remove_accents <=> y[0].remove_accents }
 
 end
