@@ -3,6 +3,7 @@ class Public::CommandeController < Public::DefaultPublicController
   layout 'public-layout'
 
   def coordonnees
+    @page_title = 'fourbi.net: vos coordonnées'
     @coordonnees = {}
     if request.post?
       [:nom, :adresse, :code_postal, :ville, :pays, :email].each do |k|
