@@ -24,15 +24,21 @@ class ArticleClient < ActiveRecord::Base
     end
   end
 
-  def before_create
+  before_create :bc
+
+  def bc
     update_article quantite
   end
 
-  def before_destroy
+  before_destroy :bd
+
+  def bd
     update_article -quantite
   end
 
-  def before_update
+  before_update :bu
+
+  def bu
     if changes.include? 'quantite'
       c = changes['quantite']
       update_article(c[1] - c[0])
