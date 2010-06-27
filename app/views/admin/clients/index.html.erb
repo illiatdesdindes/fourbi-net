@@ -45,7 +45,7 @@
   <% for client in @clients %>
     <tr>
       <td><%= link_to_view client, nil, h(client.identifiant) %></td>
-      <td><%= client.article_clients.collect { |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}" }.join(', ') %></td>
+      <td><%= raw client.article_clients.collect { |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}" }.join(', ') %></td>
       <td><%= "#{number_to_currency client.prix}" %></td>
       <td><%= client.status_lisible %></td>
       <td><%= client.date_envoi ? I18n.localize(client.date_envoi) : 'non' %></td>
