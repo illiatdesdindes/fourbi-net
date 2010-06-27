@@ -5,26 +5,26 @@ class Admin::ClientsController < Admin::DefaultAdminController
 
   def article
     article = Article.find(params[:id])
-    article_clients = ArticleClient.where(:article_id => article).includes(:article, :client)
+    article_clients = ArticleClient.where(:article_id => article)
     @clients = article_clients.collect{|article_client| article_client.client}.find_all{|client| client.status != Client::SUPPRIME}
     @page_title = "Liste des clients ayant commandé \"#{article.nom}\""
     render :action => :index
   end
 
   def attente_envoi
-    @clients = Client.attente_envoi.includes([{:article_clients => :articles}])
+    @clients = Client.attente_envoi
     @page_title = 'Liste des clients en attente d\'envoi'
     render :action => :index
   end
 
   def attente_paiement
-    @clients = Client.attente_paiement.includes([{:article_clients => :articles}])
+    @clients = Client.attente_paiement
     @page_title = 'Liste des clients en attente de paiement'
     render :action => :index
   end
 
   def cheque_recu
-    @client = Client.find(params[:id]).includes([:article_clients => :article ])
+    @client = Client.find(params[:id])
     if @client.status == Client::NOUVEAU
       @client.status = Client::PAIEMENT_CHEQUE
       @client.save!
@@ -36,7 +36,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
   end
 
   def commande_envoyee
-    @client = Client.find(params[:id]).includes([:article_clients => :article ])
+    @client = Client.find(params[:id])
     if @client.status == Client::PAIEMENT_CHEQUE || @client.status == Client::PAIEMENT_EN_LIGNE
       @client.date_envoi = DateTime.now
       @client.save!
@@ -98,7 +98,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
   end
 
   def index
-    @clients = Client.paginate(:per_page => 50, :page => params[:page], :order => 'status desc, id', :include => [{:article_clients => :article}])
+    @clients = Client.paginate(:per_page => 50, :page => params[:page], :order => 'status desc, id')
     @page_title = 'Liste des clients'
   end
 
