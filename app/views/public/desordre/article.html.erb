@@ -10,7 +10,8 @@
   <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
   <div id="ac_ajouter_panier">
     <%= form_tag url_for({:controller => 'public/commande', :action => :panier, :add => @article.id}), :method => :post do %>
-      <% image_submit_tag 'panier.jpg', :title => 'Ajouter cet article à votre panier' %>
+      <%= image_submit_tag 'panier.jpg', :title => 'Ajouter cet article à votre panier' %>
+      <%= submit_tag 'Choisir cet article' %>
     <% end %>
   </div>
 </div>

@@ -9,7 +9,7 @@
     pas divulguer, d'aucune manière les informations vous concernant.</p>
 </div>
 
-<div id="coordonnees_fond"><%= image_tag 'bulles/bulle002i.jpg', :width => 400 %></div>
+<div id="coordonnees_fond"><%= image_tag 'bulles/bulle002i.jpg' %></div>
 
 <div id="coordonnees_description">Et on vous envoie celà où ?</div>
 
@@ -54,7 +54,7 @@
 </div>
 
 <div id="coordonnees_back">
-  <%= link_to image_tag('mains/gauche.gif'), :action => :panier, :title => 'Revenir au panier' %>
+  <%= link_to image_tag('mains/gauche.gif'), {:action => :panier}, {:title => 'Revenir au panier'} %>
   <br/>
   <%= link_to 'Revenir au panier', :action => :panier %>
 </div>

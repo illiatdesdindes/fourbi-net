@@ -57,7 +57,9 @@ class Client < ActiveRecord::Base
     end
   end
 
-  def before_update
+  before_update :bu
+
+  def bu
     if changes.include? 'status'
       if (status == PAIEMENT_CHEQUE) || (status == PAIEMENT_EN_LIGNE)
         self.date_paiement= DateTime.now

@@ -29,7 +29,7 @@
     </table>
     <div id="panier_caisse">
       <div id="panier_caisse_image"><%= link_to image_tag('caisse_enregistreuse.jpg', :width => '100'), {:action => :coordonnees}, {:title => 'Poursuivre la commande'} %></div>
-      <div>Poursuivre la commande</div>
+      <div><%= link_to 'Poursuivre la commande', {:action => :coordonnees} %></div>
     </div>
   </div>
 <% end %>

@@ -245,6 +245,8 @@ a {
   position: absolute;
   top: 240px;
   left: 280px; }
+  #coordonnees_fond img {
+    width: 400px; }
 
 #coordonnees_form {
   position: absolute;
@@ -330,9 +332,85 @@ a {
   font-size: 12px;
   padding-bottom: 20px;
   padding-top: 20px; }
+  #panier_caisse a {
+    font-weight: normal; }
 
 #panier_caisse_image {
   padding-right: 20px; }
+
+#validation_info {
+  position: absolute;
+  top: 200px;
+  left: 15px;
+  width: 160px;
+  font-size: 10px; }
+  #validation_info p {
+    padding-bottom: 10px; }
+
+#validation_info_image {
+  padding-bottom: 10px; }
+
+#validation_commande {
+  position: absolute;
+  top: 155px;
+  left: 280px;
+  height: 154px;
+  width: 187px;
+  background-image: url("/images/bulles/panier.jpg");
+  background-repeat: no-repeat;
+  padding-top: 40px;
+  padding-left: 20px;
+  font-size: 12px; }
+
+#validation_coordonnees_img {
+  position: absolute;
+  top: 85px;
+  left: 530px; }
+  #validation_coordonnees_img img {
+    width: 280px; }
+
+#validation_coordonnees {
+  position: absolute;
+  top: 120px;
+  left: 575px;
+  font-size: 12px; }
+  #validation_coordonnees li {
+    list-style: none;
+    padding-bottom: 2px; }
+
+#validation_middle {
+  position: absolute;
+  top: 320px;
+  left: 320px; }
+
+#validation_contenu {
+  border: black solid 2px;
+  padding: 5px;
+  font-size: 12px; }
+  #validation_contenu li {
+    list-style: none;
+    padding-bottom: 5px; }
+
+#validation_liens {
+  padding-top: 20px;
+  font-size: 12px; }
+  #validation_liens div {
+    display: inline-block;
+    vertical-align: top; }
+  #validation_liens a {
+    font-weight: normal; }
+
+#validation_back {
+  padding-right: 30px; }
+
+#validation_print {
+  padding-right: 30px;
+  text-align: center; }
+  #validation_print img {
+    width: 50px; }
+
+#validation_banque img {
+  width: 50px; }
 
 #contact_info {
   position: absolute;
@@ -534,7 +612,8 @@ a {
   padding-bottom: 5px; }
 
 #ac_ajouter_panier {
-  padding-left: 15px; }
+  padding-left: 15px;
+  padding-top: 20px; }
 
 #ac_image {
   text-align: center; }

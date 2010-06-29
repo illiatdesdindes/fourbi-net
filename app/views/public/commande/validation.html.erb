@@ -1,0 +1,55 @@
+<div id="validation_info">
+  <div id="validation_info_image">
+    <%= image_tag(url_question) %>
+  </div>
+  Depuis cette page vous pouvez effectuer votre paiement en ligne sur le site sécurisé de la Banque Populaire de la
+  région Lorraine Champagne ou payer par chèque à l'aide du bon de commande imprimable.
+</div>
+
+<div id="validation_commande">
+  Votre commande pour un montant total de <%= number_to_currency(@client.prix) %>
+</div>
+
+<div id="validation_coordonnees_img"><%= image_tag 'bulles/bulle002i.jpg' %></div>
+
+<div id="validation_coordonnees">
+  Vos coordonnées
+  <ul>
+    <li><label>Nom :</label> <%= @client.identifiant %></li>
+    <li><label>Adresse :</label> <%= @client.adresse %></li>
+    <li><label>Code Postal :</label> <%= @client.code_postal %></li>
+    <li><label>Ville :</label> <%= @client.ville %></li>
+    <li><label>Pays :</label> <%= @client.pays %></li>
+    <li><label>Email :</label> <%= @client.email %></li>
+  </ul>
+</div>
+
+<div id="validation_middle">
+  <div id="validation_contenu">
+    <ul>
+      <% @client.article_clients.each do |article_client| %>
+        <li><%= "#{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="validation_liens">
+    <div id="validation_back">
+      <%= link_to image_tag('mains/gauche.gif'), {:action => :panier}, {:title => 'Revenir aux coordonnées'} %>
+      <br/>
+      <%= link_to raw('Revenir aux <br/> coordonnées'), :action => :panier %>
+    </div>
+
+    <div id="validation_print">
+      <%= link_to image_tag('doc.jpg'), {}, {:title => 'Bon de commande'} %>
+      <br/>
+      <%= link_to 'Bon de commande' %>
+    </div>
+
+    <div id="validation_banque">
+      <%= link_to image_tag('caisse_enregistreuse.jpg'), {}, {:title => 'Payer en ligne'} %>
+      <br/>
+      <%= link_to 'Payer en ligne' %>
+    </div>
+  </div>
+</div>

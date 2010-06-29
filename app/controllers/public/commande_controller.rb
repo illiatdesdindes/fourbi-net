@@ -3,71 +3,85 @@ class Public::CommandeController < Public::DefaultPublicController
   layout 'public-layout'
 
   def coordonnees
-    @page_title = 'fourbi.net: vos coordonnées'
-    @coordonnees = {}
-    if request.post?
-      [:nom, :adresse, :code_postal, :ville, :pays, :email].each do |k|
-        @coordonnees[k] = params[k]
-      end
+    if session[:panier]
+      @page_title = 'fourbi.net: vos coordonnées'
+      @coordonnees = {}
+      if request.post?
+        [:nom, :adresse, :code_postal, :ville, :pays, :email].each do |k|
+          @coordonnees[k] = params[k]
+        end
 
-      if @coordonnees[:nom].blank?
-        flash[:alert] = 'Le nom ne doit pas être vide'
-      elsif @coordonnees[:adresse].blank?
-        flash[:alert] = 'L\'adresse ne doit pas être vide'
-      elsif @coordonnees[:code_postal].blank?
-        flash[:alert] = 'Le code postal ne doit pas être vide'
-      elsif @coordonnees[:ville].blank?
-        flash[:alert] = 'La ville ne doit pas être vide'
-      elsif @coordonnees[:pays].blank?
-        flash[:alert] = 'Le pays ne doit pas être vide'
-      elsif @coordonnees[:email].blank?
-        flash[:alert] = 'L\'email nom ne doit pas être vide'
-      elsif !EmailVeracity::Address.new(@coordonnees[:email]).valid?
-        flash[:alert] = 'L\'email est invalide'
+        if @coordonnees[:nom].blank?
+          flash[:alert] = 'Le nom ne doit pas être vide'
+        elsif @coordonnees[:adresse].blank?
+          flash[:alert] = 'L\'adresse ne doit pas être vide'
+        elsif @coordonnees[:code_postal].blank?
+          flash[:alert] = 'Le code postal ne doit pas être vide'
+        elsif @coordonnees[:ville].blank?
+          flash[:alert] = 'La ville ne doit pas être vide'
+        elsif @coordonnees[:pays].blank?
+          flash[:alert] = 'Le pays ne doit pas être vide'
+        elsif @coordonnees[:email].blank?
+          flash[:alert] = 'L\'email nom ne doit pas être vide'
+        elsif !EmailVeracity::Address.new(@coordonnees[:email]).valid?
+          flash[:alert] = 'L\'email est invalide'
+        else
+          if session[:client_id]
+            client = Client.find(session[:client_id])
+            client.article_clients.each do |article_client|
+              article_client.delete
+            end
+          else
+            client = Client.new
+          end
+
+          client.identifiant = @coordonnees[:nom]
+          client.adresse = @coordonnees[:adresse]
+          client.code_postal = @coordonnees[:code_postal]
+          client.ville = @coordonnees[:ville]
+          client.pays = @coordonnees[:pays]
+          client.email = @coordonnees[:email]
+          client.status= Client::NOUVEAU
+          client.prix = 0
+
+          Client.transaction do
+
+            session[:panier].inject(Hash.new { |hash, key| hash[key] = 0 }) do |memo, item|
+              memo[item] += 1
+              memo
+            end.each_pair do |item_id, quantite|
+              article = Article.find(item_id)
+              article_client = ArticleClient.new
+              article_client.client = client
+              article_client.article = article
+              article_client.quantite = quantite
+              article_client.prix_unitaire = article.prix
+              client.article_clients << article_client
+              client.prix += quantite * article.prix
+            end
+            if client.save
+              session[:client_id] = client.id
+              redirect_to :action => :validation
+            else
+              flash[:alert] = client.errors.full_messages[0]
+            end
+          end
+        end
       else
         if session[:client_id]
           client = Client.find(session[:client_id])
-          client.article_clients.each do |article_client|
-            article_client.mark_for_destruction
-          end
+          @coordonnees[:nom] = client.identifiant
+          @coordonnees[:adresse] = client.adresse
+          @coordonnees[:code_postal] = client.code_postal
+          @coordonnees[:ville] = client.ville
+          @coordonnees[:pays] = client.pays
+          @coordonnees[:email] = client.email
         else
-          client = Client.new
-        end
-
-        client.identifiant = @coordonnees[:nom]
-        client.adresse = @coordonnees[:adresse]
-        client.code_postal = @coordonnees[:code_postal]
-        client.ville = @coordonnees[:ville]
-        client.pays = @coordonnees[:pays]
-        client.email = @coordonnees[:email]
-        client.status= Client::NOUVEAU
-        client.prix = 0
-
-        Client.transaction do
-
-          session[:panier].inject(Hash.new { |hash, key| hash[key] = 0 }) do |memo, item|
-            memo[item] += 1
-            memo
-          end.each_pair do |item_id, quantite|
-            article = Article.find(item_id)
-            article_client = ArticleClient.new
-            article_client.client = client
-            article_client.article = article
-            article_client.quantite = quantite
-            article_client.prix_unitaire = article.prix
-            client.article_clients << article_client
-            client.prix += quantite * article.prix
-          end
-          if client.save
-            session[:client_id] = client.id
-            redirect_to :action => :validation
-          else
-            flash[:alert] = client.errors.full_messages[0]
-          end
+          @coordonnees[:pays] = 'FR'
         end
       end
     else
-      @coordonnees[:pays] = 'FR'
+      redirect_to({:controller => 'public/index', :action => :index}, {:alert => 'Votre panier est vide'})
     end
   end
 
@@ -105,7 +119,11 @@ class Public::CommandeController < Public::DefaultPublicController
   end
 
   def validation
-
+    if session[:client_id]
+      @client = Client.find(session[:client_id])
+    else
+      redirect_to({:action => :coordonnees}, {:alert => 'Coordonnées non trouvees'})
+    end
   end
 
 end
