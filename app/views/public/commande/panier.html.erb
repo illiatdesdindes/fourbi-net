@@ -9,9 +9,10 @@
     conditions générales de vente.</p>
 </div>
 
-<div id="panier_description">Ce que nous sommes<br/>parvenus à vous fourguer</div>
-
-<% unless @panier.empty? %>
+<% if @panier.empty? %>
+  <div id="panier_description">Votre panier est<br/>actuellement vide</div>
+<% else %>
+  <div id="panier_description">Ce que nous sommes<br/>parvenus à vous fourguer</div>
   <div id="panier_contenu">
     <table id="panier_articles">
       <% @panier.each do |article_id| %>
