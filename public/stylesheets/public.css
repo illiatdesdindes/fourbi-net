@@ -251,7 +251,7 @@ a {
 #coordonnees_form {
   position: absolute;
   top: 290px;
-  left: 330px;
+  left: 322px;
   width: 400px;
   font-size: 12px;
   vertical-align: top; }
@@ -371,12 +371,17 @@ a {
 
 #validation_coordonnees {
   position: absolute;
-  top: 120px;
-  left: 575px;
-  font-size: 12px; }
+  top: 115px;
+  left: 565px;
+  font-size: 12px;
+  background-color: white; }
+  #validation_coordonnees ul {
+    padding-top: 5px;
+    padding-left: 2px; }
   #validation_coordonnees li {
     list-style: none;
-    padding-bottom: 2px; }
+    padding-bottom: 2px;
+    width: 210px; }
 
 #validation_middle {
   position: absolute;
