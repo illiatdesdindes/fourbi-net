@@ -41,9 +41,9 @@
     </div>
 
     <div id="validation_print">
-      <%= link_to image_tag('doc.jpg'), {}, {:title => 'Bon de commande'} %>
+      <%= link_to image_tag('doc.jpg'), {:action => :bon_de_commande}, {:title => 'Bon de commande'} %>
       <br/>
-      <%= link_to 'Bon de commande' %>
+      <%= link_to 'Bon de commande', :action => :bon_de_commande %>
     </div>
 
     <div id="validation_banque">

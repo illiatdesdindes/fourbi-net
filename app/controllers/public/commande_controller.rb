@@ -2,6 +2,36 @@ class Public::CommandeController < Public::DefaultPublicController
 
   layout 'public-layout'
 
+  Mime::Type.register "application/pdf", :pdf
+
+
+  def bon_de_commande
+#    if session[:client_id]
+    #     @client = Client.find(session[:client_id])
+    document = Prawn::Document.new(:page_size => "A4") do |pdf|
+      pdf.font_size = 12
+
+      image_path = "#{Rails.public_path}/images"
+
+      pdf.float do
+        pdf.image "#{image_path}/logo.jpg", :at => [0, 800], :position => :left, :vposition => :top
+      end
+
+      pdf.float do
+        pdf.image "#{image_path}/bulles/bulle002.jpg", :at => [0, 700], :width => 200
+      end
+
+      pdf.float do
+        pdf.image "#{image_path}/bulles/bulle003.jpg", :at => [200, 800], :width => 200
+      end
+
+    end
+    send_data document.render, :type => Mime::PDF
+    #  else
+    #   redirect_to({:action => :coordonnees}, {:alert => 'Coordonnées non trouvees'})
+    # end
+  end
+
   def coordonnees
     if session[:panier]
       @page_title = 'fourbi.net: vos coordonnées'
@@ -81,7 +111,7 @@ class Public::CommandeController < Public::DefaultPublicController
         end
       end
     else
-      redirect_to({:controller => 'public/index', :action => :index}, {:alert => 'Votre panier est vide'})
+      redirect_to({:controller => 'public/index', :action => :sommaire}, {:alert => 'Votre panier est vide'})
     end
   end
 

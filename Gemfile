@@ -28,6 +28,7 @@ gem 'paperclip', '2.3.3'
 gem 'rest-client', '1.5.0', :require => 'rest_client'
 gem 'nokogiri', '1.4.1', :require => 'nokogiri'
 gem 'kramdown', '0.9.0', :require => 'kramdown'
+gem 'prawn', '0.10.2', :git => "git://github.com/sandal/prawn", :tag => '0.10.2', :require => "prawn"
 
 group :development do
   gem 'bullet', '2.0.0.beta.2'
