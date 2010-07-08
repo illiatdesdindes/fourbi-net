@@ -326,6 +326,10 @@ a {
 .panier_article_description {
   padding-left: 20px;
   width: 300px; }
+  .panier_article_description a {
+    font-weight: normal; }
+  .panier_article_description a:hover {
+    text-decoration: underline; }
 
 #panier_boutons {
   width: 100%;

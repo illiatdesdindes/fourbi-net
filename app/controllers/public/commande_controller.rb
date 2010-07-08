@@ -141,7 +141,7 @@ class Public::CommandeController < Public::DefaultPublicController
     else
       @custom_css = 'body { background-image: url("/images/fonds/panier.jpg"); }'
       @page_title = 'fourbi.net: votre panier'
-      @panier_contenu = Article.where(:id => @panier).inject({}) do |result, article|
+      @panier_contenu = Article.where(:id => @panier).includes(:serie => :boutique).inject({}) do |result, article|
         result[article.id] = article
         result
       end

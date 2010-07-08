@@ -15,11 +15,14 @@
   <div id="panier_description">Ce que nous sommes<br/>parvenus à vous fourguer</div>
   <div id="panier_contenu">
     <table id="panier_articles">
+
       <% @panier.each do |article_id| %>
         <% article = @panier_contenu[article_id] %>
         <tr class="panier_article">
-          <td><%= image_tag(article.image.url, {:class => 'panier_article_image'}) %></td>
-          <td class='panier_article_description'><%= "#{article.nom} #{number_to_currency(article.prix)}" %></td>
+          <td><%= link_to image_tag(article.image.url, {:class => 'panier_article_image'}), {:controller => ((article.serie.boutique.nom == Boutique::NOM_DESORDRE) ? 'public/desordre' : 'public/terrier'), :action => :article, :id => article.id}, {:title => 'Retourner à l\'article'} %></td>
+          <td class='panier_article_description'>
+            <%= link_to article.nom, {:controller => ((article.serie.boutique.nom == Boutique::NOM_DESORDRE) ? 'public/desordre' : 'public/terrier'), :action => :article, :id => article.id}, {:title => 'Retourner à l\'article'} %>
+            <%= number_to_currency(article.prix) %></td>
           <td>
             <%= form_tag url_for({:remove => article.id}), :method => :post do %>
               <% image_submit_tag 'corbeille.jpg', :title => 'Supprimer cet article du panier' %>
@@ -27,6 +30,7 @@
           </td>
         </tr>
       <% end %>
+
     </table>
 
     <table id="panier_boutons">
