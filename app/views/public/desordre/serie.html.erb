@@ -5,12 +5,11 @@
 <div id="sc_descriptif_serie">
   <div class="sc_titre_serie"><%= raw @serie.nom %></div>
   <div class="sc_descriptif"><%= raw @serie.description %></div>
-  <div class="sc_titre_boutique">Les séries du désordre</div>
-  <ul id="sc_liste_serie">
-    <% for serie in @serie.boutique.series %>
-      <li><%= link_to serie.nom, {:id => serie}, {:title => serie.description} %></li>
-    <% end %>
-  </ul>
+
+  <%= render(:partial => 'public/desordre/series', :locals => {:prefix => 'sc'}) %>
+  <br/>
+  <%= render(:partial => 'public/terrier/series', :locals => {:prefix => 'sc'}) %>
+  
 </div>
 
 <% nombre_articles = @serie.articles.length %>

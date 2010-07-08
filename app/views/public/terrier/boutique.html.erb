@@ -4,9 +4,9 @@
 
 <div id="bt_info_boutiques">
   <div><%= link_to image_tag('insectes/cerambycide.jpg', :id => 'bc_logo_terrier'), {:action => :boutique}, {:title => 'La boutique du terrier'} %></div>
-  <%= render(:partial => 'public/terrier/series') %>
+  <%= render(:partial => 'public/terrier/series', :locals => {:prefix => 'bc'}) %>
   <br/>
-  <%= render(:partial => 'public/desordre/series') %>
+  <%= render(:partial => 'public/desordre/series', :locals => {:prefix => 'bc'}) %>
 </div>
 
 <% i = 0 %>

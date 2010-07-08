@@ -4,9 +4,9 @@
 
 <div id="bd_info_boutiques">
   <div><%= link_to image_tag('boutons/bouton.jpg', :id => 'bc_logo_desordre'), {:action => :boutique}, {:title => 'La boutique du désordre'} %></div>
-  <%= render(:partial => 'public/desordre/series') %>
+  <%= render(:partial => 'public/desordre/series', :locals => {:prefix => 'bc'}) %>
   <br/>
-  <%= render(:partial => 'public/terrier/series') %>
+  <%= render(:partial => 'public/terrier/series', :locals => {:prefix => 'bc'}) %>
 </div>
 
 <% for i in (0...[6, @articles.length].min) %>
