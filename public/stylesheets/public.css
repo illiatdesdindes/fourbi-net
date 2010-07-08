@@ -622,6 +622,9 @@ a {
 
 #ac_image {
   text-align: center; }
+  #ac_image img {
+    max-height: 350px;
+    max-width: 350px; }
 
 #ac_scroll_gauche {
   opacity: 0.5;
