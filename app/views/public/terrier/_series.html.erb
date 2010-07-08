@@ -1,0 +1,6 @@
+  <div class="bc_nom_boutique">Les œuvres du terrier</div>
+  <ul class="bc_liste_series">
+    <% for serie in Boutique.nom(Boutique::NOM_TERRIER).includes(:series).first.series %>
+      <li><%= link_to serie.nom, {:controller => 'public/terrier', :action => :serie, :id => serie}, {:title => serie.description } %></li>
+    <% end %>
+  </ul>

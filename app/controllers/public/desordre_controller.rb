@@ -11,7 +11,7 @@ class Public::DesordreController < Public::DefaultPublicController
 
   def boutique
     @page_title = 'fourbi.net: la boutique du desordre'
-    @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first
+    @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).first
     @articles = trouver_articles(@boutique_desordre.series, 11)
   end
 

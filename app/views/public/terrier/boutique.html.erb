@@ -4,12 +4,9 @@
 
 <div id="bt_info_boutiques">
   <div><%= link_to image_tag('insectes/cerambycide.jpg', :id => 'bc_logo_terrier'), {:action => :boutique}, {:title => 'La boutique du terrier'} %></div>
-  <div class="bc_nom_boutique">Les séries du terrier</div>
-  <ul class="bc_liste_series">
-    <% for serie in @boutique_terrier.series %>
-      <li><%= link_to serie.nom, {:action => :serie, :id => serie}, {:title => serie.description} %></li>
-    <% end %>
-  </ul>
+  <%= render(:partial => 'public/terrier/series') %>
+  <br/>
+  <%= render(:partial => 'public/desordre/series') %>
 </div>
 
 <% i = 0 %>

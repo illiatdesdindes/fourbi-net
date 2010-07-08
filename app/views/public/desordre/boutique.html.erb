@@ -4,12 +4,9 @@
 
 <div id="bd_info_boutiques">
   <div><%= link_to image_tag('boutons/bouton.jpg', :id => 'bc_logo_desordre'), {:action => :boutique}, {:title => 'La boutique du désordre'} %></div>
-  <div class="bc_nom_boutique">Les séries du désordre</div>
-  <ul class="bc_liste_series">
-    <% for serie in @boutique_desordre.series %>
-      <li><%= link_to serie.nom, {:action => :serie, :id => serie}, {:title => serie.description } %></li>
-    <% end %>
-  </ul>
+  <%= render(:partial => 'public/desordre/series') %>
+  <br/>
+  <%= render(:partial => 'public/terrier/series') %>
 </div>
 
 <% for i in (0...[6, @articles.length].min) %>
