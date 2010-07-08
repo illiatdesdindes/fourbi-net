@@ -3,7 +3,8 @@
 # Table name: articles
 #
 #  id                 :integer         not null, primary key
-#  description        :text
+#  description_courte :text
+#  description_longue :text
 #  image_content_type :string(255)
 #  image_file_name    :string(255)
 #  image_file_size    :integer
@@ -40,8 +41,9 @@ class Article < ActiveRecord::Base
   validates_numericality_of :nombre_restant, :only_integer => true, :allow_nil => false, :greater_than_or_equal_to => -1, :message => 'La valeur du nombre restant est invalide'
   validates_numericality_of :numero, :allow_nil => false, :only_integer => true, :greater_than_or_equal_to => -1
   validates :nom, :xml => true
-  validates :description, :xml => true
-  
+  validates :description_courte, :xml => true
+  validates :description_longue, :xml => true
+
   has_many :article_clients, :dependent => :delete_all
 
   scope :serie, lambda {|serie| {:conditions => {:serie_id => serie}, :order => 'numero desc'} }

@@ -6,7 +6,7 @@
 
 <div id="ac_info">
   <div id="ac_nom_article"><%= raw @article.nom %></div>
-  <div id="ac_description_article"><%= raw @article.description %></div>
+  <div id="ac_description_article"><%= raw @article.description_longue %></div>
   <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
   <div id="ac_ajouter_panier">
     <%= form_tag url_for({:controller => 'public/commande', :action => :panier, :add => @article.id}), :method => :post do %>

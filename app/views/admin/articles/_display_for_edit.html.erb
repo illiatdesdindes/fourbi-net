@@ -4,7 +4,8 @@
       <fieldset>
         <table>
           <%= edit_value_table('Nom', (f.text_field :nom)) %>
-          <%= edit_value_table('Description', (f.text_area :description, :cols => 100, :rows => 25)) %>
+          <%= edit_value_table('Description courte', (f.text_area :description_courte, :cols => 100, :rows => 5)) %>
+          <%= edit_value_table('Description longue', (f.text_area :description_longue, :cols => 100, :rows => 25)) %>
           <%= edit_value_table('Série (*: série indisponible)', (f.collection_select :serie_id, series, :id, :nom_disponible)) %>
           <%= edit_value_table('Disponible', (f.check_box :disponible?)) %>
           <%= edit_value_table('Prix', (f.text_field :prix)) %>
