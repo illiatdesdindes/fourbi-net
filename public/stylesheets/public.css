@@ -327,16 +327,14 @@ a {
   padding-left: 20px;
   width: 300px; }
 
-#panier_caisse {
-  text-align: right;
-  font-size: 12px;
-  padding-bottom: 20px;
-  padding-top: 20px; }
-  #panier_caisse a {
+#panier_boutons {
+  width: 100%;
+  font-size: 12px; }
+  #panier_boutons a {
     font-weight: normal; }
 
-#panier_caisse_image {
-  padding-right: 20px; }
+#panier_caisse {
+  float: right; }
 
 #validation_info {
   position: absolute;

@@ -28,9 +28,22 @@
         </tr>
       <% end %>
     </table>
-    <div id="panier_caisse">
-      <div id="panier_caisse_image"><%= link_to image_tag('caisse_enregistreuse.jpg', :width => '100'), {:action => :coordonnees}, {:title => 'Poursuivre la commande'} %></div>
-      <div><%= link_to 'Poursuivre la commande', {:action => :coordonnees} %></div>
-    </div>
+
+    <table id="panier_boutons">
+      <tr>
+        <td>
+          <div id="panier_retour">
+            <div id="panier_retour_image"><%= link_to image_tag('mains/gauche.gif'), {:controller => 'public/index', :action => :sommaire}, {:title => 'Poursuivre les achats'} %></div>
+            <div><%= link_to 'Poursuivre les achats', {:controller => 'public/index', :action => :sommaire} %></div>
+          </div>
+        </td>
+        <td>
+          <div id="panier_caisse">
+            <div id="panier_caisse_image"><%= link_to image_tag('caisse_enregistreuse.jpg', :width => '100'), {:action => :coordonnees}, {:title => 'Passer la commande'} %></div>
+            <div><%= link_to 'Passer la commande', {:action => :coordonnees} %></div>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
 <% end %>
