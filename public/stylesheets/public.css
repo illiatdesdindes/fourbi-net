@@ -888,17 +888,17 @@ a {
   font-weight: bold;
   font-size: 12px;
   padding-left: 15px; }
+  .bc_nom_boutique a:hover {
+    text-decoration: underline; }
 
 .bc_liste_series {
   font-size: 10px;
   padding-left: 15px;
   list-style: none; }
-
-.bc_liste_series a {
-  font-weight: normal; }
-
-.bc_liste_series a:hover {
-  text-decoration: underline; }
+  .bc_liste_series a {
+    font-weight: normal; }
+  .bc_liste_series a:hover {
+    text-decoration: underline; }
 
 #sd_bulle_desordre {
   position: absolute;
@@ -978,13 +978,13 @@ a {
   font-weight: bold;
   font-size: 14px;
   width: 200px; }
+  .sc_nom_boutique a:hover {
+    text-decoration: underline; }
 
 .sc_liste_series a {
   font-weight: normal; }
-
 .sc_liste_series a:hover {
   text-decoration: underline; }
-
 .sc_liste_series li {
   font-size: 10px;
   list-style: none; }
