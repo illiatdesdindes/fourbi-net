@@ -19,6 +19,9 @@
       <div id="bt_cadre_<%= i %>" class="bt_cadre">
         <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article, :id => article}, {:title => article.nom} %>
       </div>
+      <div id="bt_texte_<%= i %>" class="bt_texte">
+        <%= link_to article.serie.nom, {:action => :serie, :id => article.serie}, {:title => "Voir #{article.serie.nom}"} %>
+      </div>
       <% i += 1 %>
     <% end %>
   <% end %>
@@ -38,6 +41,9 @@
   <div id="bt_predelle_image_<%= i - 8 %>" class="bt_predelle_image">
     <% article = @articles[i] %>
     <div><%= image_tag article.image.url, :alt => article.nom %></div>
+  </div>
+  <div id="bt_predelle_texte_<%= i - 8 %>" class="bt_predelle_texte">
+    <%= link_to article.serie.nom, {:action => :serie, :id => article.serie}, {:title => "Voir #{article.serie.nom}"} %>
   </div>
 <% end %>
 

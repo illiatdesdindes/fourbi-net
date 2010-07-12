@@ -17,6 +17,7 @@
   <div id="bd_cadre_<%= i %>" class="bd_cadre">
     <%= link_to image_tag('cadres/desordre_moyen.gif'), {:action => :article, :id => article}, {:title => article.nom} %>
   </div>
+  <div id="bd_texte_<%= i %>" class="bd_texte"><%= link_to article.serie.nom, {:action => :serie, :id => article.serie}, {:title => "Voir #{article.serie.nom}"} %></div>
 <% end %>
 
 <% for i in (6...@articles.length) %>
@@ -24,6 +25,7 @@
     <% article = @articles[i] %>
     <div><%= image_tag article.image.url, :alt => article.nom %></div>
   </div>
+  <div id="bd_predelle_texte_<%= i - 6 %>" class="bd_predelle_texte"><%= link_to article.serie.nom, {:action => :serie, :id => article.serie}, {:title => "Voir #{article.serie.nom}"} %></div>
 <% end %>
 
 <ul id="bd_predelle_cadres">

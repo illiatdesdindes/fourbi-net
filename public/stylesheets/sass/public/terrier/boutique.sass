@@ -2,8 +2,8 @@
 
 #bt_bulle
   position: absolute
-  top: 70px
-  left: 400px
+  top: 50px
+  left: 300px
 
 #bt_info_boutiques
   position: absolute
@@ -26,7 +26,14 @@
       max-height = !hauteur_image_visible_cadre_terrier_moyen
       max-width = !largeur_image_visible_cadre_terrier_moyen
 
-!bt_top_0 = 170px
+.bt_texte
+  position: absolute
+  font-size: 10px
+  text-align: center
+  @include underline-link
+  width = !largeur_image_terrier_moyen
+
+!bt_top_0 = 150px
 !bt_top_1 = 335px
 
 !bd_delta = 140px
@@ -41,6 +48,9 @@
 #bt_image_0
   top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
   left = !bt_left_0 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_0
+  top = !bt_top_0 + !hauteur_image_terrier_moyen - 1px
+  left = !bt_left_0
 
 #bt_cadre_1
   top = !bt_top_0
@@ -48,6 +58,9 @@
 #bt_image_1
   top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen
   left = !bt_left_1 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_1
+  top = !bt_top_0 + !hauteur_image_terrier_moyen
+  left = !bt_left_1
 
 #bt_cadre_2
   top = !bt_top_0 + 1px
@@ -55,6 +68,9 @@
 #bt_image_2
   top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen + 1px
   left = !bt_left_2 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_2
+  top = !bt_top_0 + !hauteur_image_terrier_moyen + 1px
+  left = !bt_left_2
 
 #bt_cadre_3
   top = !bt_top_0
@@ -62,6 +78,9 @@
 #bt_image_3
   top = !bt_top_0 + !hauteur_bord_haut_cadre_terrier_moyen
   left = !bt_left_3 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_3
+  top = !bt_top_0 + !hauteur_image_terrier_moyen
+  left = !bt_left_3
 
 #bt_cadre_4
   top = !bt_top_1 - 1px
@@ -69,6 +88,9 @@
 #bt_image_4
   top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
   left = !bt_left_0 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_4
+  top = !bt_top_1 + !hauteur_image_terrier_moyen - 1px
+  left = !bt_left_0
 
 #bt_cadre_5
   top = !bt_top_1
@@ -76,6 +98,9 @@
 #bt_image_5
   top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen
   left = !bt_left_1 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_5
+  top = !bt_top_1 + !hauteur_image_terrier_moyen
+  left = !bt_left_1
 
 #bt_cadre_6
   top = !bt_top_1
@@ -83,6 +108,9 @@
 #bt_image_6
   top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen
   left = !bt_left_2 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_6
+  top = !bt_top_1 + !hauteur_image_terrier_moyen
+  left = !bt_left_2
 
 #bt_cadre_7
   top = !bt_top_1
@@ -90,8 +118,11 @@
 #bt_image_7
   top = !bt_top_1 + !hauteur_bord_haut_cadre_terrier_moyen - 1px
   left = !bt_left_3 + !largeur_bord_gauche_cadre_terrier_moyen
+#bt_texte_7
+  top = !bt_top_1 + !hauteur_image_terrier_moyen - 1px
+  left = !bt_left_3
 
-!bt_predelle_top = 500px
+!bt_predelle_top = 520px
 !bt_predelle_left = 284px
 
 #bt_predelle_cadres
@@ -117,16 +148,36 @@
       max-height = !hauteur_image_visible_cadre_terrier_petit
       max-width = !largeur_image_visible_cadre_terrier_petit
 
+.bt_predelle_texte
+  position: absolute
+  font-size: 10px
+  text-align: center
+  @include underline-link
+  width = !largeur_image_terrier_petit
+  top = !bt_predelle_top + !hauteur_image_terrier_petit
+
 !bt_decallage_image_predelle = 91px
 #bt_predelle_image_0
   left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit
+#bt_predelle_texte_0
+  left = !bt_predelle_left
 #bt_predelle_image_1
   left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + !bt_decallage_image_predelle
+#bt_predelle_texte_1
+  left = !bt_predelle_left + !bt_decallage_image_predelle
 #bt_predelle_image_2
   left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (2 * !bt_decallage_image_predelle) + 2px
+#bt_predelle_texte_2
+  left = !bt_predelle_left  + (2 * !bt_decallage_image_predelle) + 2px
 #bt_predelle_image_3
   left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (3 * !bt_decallage_image_predelle) + 4px
+#bt_predelle_texte_3
+  left = !bt_predelle_left + (3 * !bt_decallage_image_predelle) + 4px
 #bt_predelle_image_4
   left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (4 * !bt_decallage_image_predelle) + 6px
+#bt_predelle_texte_4
+  left = !bt_predelle_left + (4 * !bt_decallage_image_predelle) + 6px
 #bt_predelle_image_5
   left = !bt_predelle_left + !largeur_bord_gauche_cadre_terrier_petit + (5 * !bt_decallage_image_predelle) + 8px
+#bt_predelle_texte_5
+  left = !bt_predelle_left + (5 * !bt_decallage_image_predelle) + 8px

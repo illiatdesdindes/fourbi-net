@@ -34,7 +34,7 @@ group :development do
   gem 'bullet', '2.0.0.beta.2'
   gem 'ruby-growl', '1.0.1'
   gem 'pg'
-  gem 'haml', '2.2.24'
+  gem 'haml', '3.0.13'
 end
 
 group :production do

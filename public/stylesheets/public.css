@@ -509,7 +509,7 @@ a {
   width: 74px;
   height: 73px;
   font-size: 10px;
-  background-image: url('/images/cadres/desordre_petit.gif');
+  background-image: url("/images/cadres/desordre_petit.gif");
   background-repeat: no-repeat;
   padding-top: 25px;
   padding-left: 10px; }
@@ -531,7 +531,7 @@ a {
     height: 73px;
     border-collapse: collapse; }
     #ad_scroll_content table td {
-      background-image: url('/images/cadres/desordre_petit.gif');
+      background-image: url("/images/cadres/desordre_petit.gif");
       background-repeat: no-repeat;
       min-width: 64px;
       padding-left: 6px;
@@ -555,7 +555,7 @@ a {
   width: 77px;
   height: 96px;
   font-size: 10px;
-  background-image: url('/images/cadres/terrier_petit.gif');
+  background-image: url("/images/cadres/terrier_petit.gif");
   background-repeat: no-repeat;
   padding-top: 40px;
   padding-left: 12px; }
@@ -577,7 +577,7 @@ a {
     height: 96px;
     border-collapse: collapse; }
     #at_scroll_content table td {
-      background-image: url('/images/cadres/terrier_petit.gif');
+      background-image: url("/images/cadres/terrier_petit.gif");
       background-repeat: no-repeat;
       min-width: 62px;
       padding-left: 9px;
@@ -606,12 +606,10 @@ a {
   list-style: none;
   padding-bottom: 5px;
   padding-left: 20px; }
-
-#ac_description_article a {
-  font-weight: normal; }
-
-#ac_description_article a:hover {
-  text-decoration: underline; }
+  #ac_description_article a {
+    font-weight: normal; }
+  #ac_description_article a:hover {
+    text-decoration: underline; }
 
 #ac_prix_article {
   font-size: 12px;
@@ -634,7 +632,7 @@ a {
 
 #bd_bulle {
   position: absolute;
-  top: 95px;
+  top: 75px;
   left: 275px; }
 
 #bd_info_boutiques {
@@ -658,53 +656,87 @@ a {
       max-height: 58px;
       max-width: 90px; }
 
+.bd_texte {
+  position: absolute;
+  font-size: 10px;
+  width: 104px;
+  text-align: center; }
+  .bd_texte a {
+    font-weight: normal; }
+  .bd_texte a:hover {
+    text-decoration: underline; }
+
 #bd_cadre_0 {
-  top: 181px;
+  top: 161px;
   left: 266px; }
 
 #bd_image_0 {
-  top: 204px;
+  top: 184px;
   left: 274px; }
 
+#bd_texte_0 {
+  top: 264px;
+  left: 266px; }
+
 #bd_cadre_1 {
-  top: 182px;
+  top: 162px;
   left: 426px; }
 
 #bd_image_1 {
-  top: 205px;
+  top: 185px;
   left: 434px; }
 
+#bd_texte_1 {
+  top: 265px;
+  left: 426px; }
+
 #bd_cadre_2 {
-  top: 182px;
+  top: 162px;
   left: 586px; }
 
 #bd_image_2 {
-  top: 205px;
+  top: 185px;
   left: 594px; }
 
+#bd_texte_2 {
+  top: 265px;
+  left: 586px; }
+
 #bd_cadre_3 {
-  top: 310px;
+  top: 300px;
   left: 266px; }
 
 #bd_image_3 {
-  top: 333px;
+  top: 323px;
   left: 274px; }
 
+#bd_texte_3 {
+  top: 403px;
+  left: 266px; }
+
 #bd_cadre_4 {
-  top: 312px;
+  top: 302px;
   left: 426px; }
 
 #bd_image_4 {
-  top: 335px;
+  top: 325px;
   left: 434px; }
 
+#bd_texte_4 {
+  top: 405px;
+  left: 426px; }
+
 #bd_cadre_5 {
-  top: 312px;
+  top: 302px;
   left: 586px; }
 
 #bd_image_5 {
-  top: 335px;
+  top: 325px;
   left: 594px; }
+
+#bd_texte_5 {
+  top: 405px;
+  left: 586px; }
 
 #bd_predelle_cadres {
   position: absolute;
@@ -744,10 +776,36 @@ a {
 #bd_predelle_image_4 {
   left: 619px; }
 
+.bd_predelle_texte {
+  position: absolute;
+  top: 520px;
+  font-size: 10px;
+  width: 74px;
+  text-align: center; }
+  .bd_predelle_texte a {
+    font-weight: normal; }
+  .bd_predelle_texte a:hover {
+    text-decoration: underline; }
+
+#bd_predelle_texte_0 {
+  left: 267px; }
+
+#bd_predelle_texte_1 {
+  left: 352px; }
+
+#bd_predelle_texte_2 {
+  left: 439px; }
+
+#bd_predelle_texte_3 {
+  left: 526px; }
+
+#bd_predelle_texte_4 {
+  left: 613px; }
+
 #bt_bulle {
   position: absolute;
-  top: 70px;
-  left: 400px; }
+  top: 50px;
+  left: 300px; }
 
 #bt_info_boutiques {
   position: absolute;
@@ -770,37 +828,63 @@ a {
       max-height: 128px;
       max-width: 98px; }
 
+.bt_texte {
+  position: absolute;
+  font-size: 10px;
+  text-align: center;
+  width: 126px; }
+  .bt_texte a {
+    font-weight: normal; }
+  .bt_texte a:hover {
+    text-decoration: underline; }
+
 #bt_cadre_0 {
-  top: 169px;
+  top: 149px;
   left: 281px; }
 
 #bt_image_0 {
-  top: 182px;
+  top: 162px;
   left: 296px; }
 
+#bt_texte_0 {
+  top: 302px;
+  left: 281px; }
+
 #bt_cadre_1 {
-  top: 170px;
+  top: 150px;
   left: 421px; }
 
 #bt_image_1 {
-  top: 183px;
+  top: 163px;
   left: 436px; }
 
+#bt_texte_1 {
+  top: 303px;
+  left: 421px; }
+
 #bt_cadre_2 {
-  top: 171px;
+  top: 151px;
   left: 561px; }
 
 #bt_image_2 {
-  top: 184px;
+  top: 164px;
   left: 576px; }
 
+#bt_texte_2 {
+  top: 304px;
+  left: 561px; }
+
 #bt_cadre_3 {
-  top: 170px;
+  top: 150px;
   left: 701px; }
 
 #bt_image_3 {
-  top: 183px;
+  top: 163px;
   left: 716px; }
+
+#bt_texte_3 {
+  top: 303px;
+  left: 701px; }
 
 #bt_cadre_4 {
   top: 334px;
@@ -810,6 +894,10 @@ a {
   top: 347px;
   left: 296px; }
 
+#bt_texte_4 {
+  top: 487px;
+  left: 281px; }
+
 #bt_cadre_5 {
   top: 335px;
   left: 421px; }
@@ -817,6 +905,10 @@ a {
 #bt_image_5 {
   top: 348px;
   left: 436px; }
+
+#bt_texte_5 {
+  top: 488px;
+  left: 421px; }
 
 #bt_cadre_6 {
   top: 335px;
@@ -826,6 +918,10 @@ a {
   top: 348px;
   left: 576px; }
 
+#bt_texte_6 {
+  top: 488px;
+  left: 561px; }
+
 #bt_cadre_7 {
   top: 335px;
   left: 700px; }
@@ -834,9 +930,13 @@ a {
   top: 347px;
   left: 716px; }
 
+#bt_texte_7 {
+  top: 487px;
+  left: 701px; }
+
 #bt_predelle_cadres {
   position: absolute;
-  top: 500px;
+  top: 520px;
   left: 284px; }
   #bt_predelle_cadres li {
     display: inline;
@@ -845,7 +945,7 @@ a {
 
 .bt_predelle_image {
   position: absolute;
-  top: 508px;
+  top: 528px;
   height: 79px;
   width: 62px;
   display: table; }
@@ -857,23 +957,52 @@ a {
       max-height: 79px;
       max-width: 62px; }
 
+.bt_predelle_texte {
+  position: absolute;
+  font-size: 10px;
+  text-align: center;
+  width: 77px;
+  top: 616px; }
+  .bt_predelle_texte a {
+    font-weight: normal; }
+  .bt_predelle_texte a:hover {
+    text-decoration: underline; }
+
 #bt_predelle_image_0 {
   left: 293px; }
+
+#bt_predelle_texte_0 {
+  left: 284px; }
 
 #bt_predelle_image_1 {
   left: 384px; }
 
+#bt_predelle_texte_1 {
+  left: 375px; }
+
 #bt_predelle_image_2 {
   left: 477px; }
+
+#bt_predelle_texte_2 {
+  left: 468px; }
 
 #bt_predelle_image_3 {
   left: 570px; }
 
+#bt_predelle_texte_3 {
+  left: 561px; }
+
 #bt_predelle_image_4 {
   left: 663px; }
 
+#bt_predelle_texte_4 {
+  left: 654px; }
+
 #bt_predelle_image_5 {
   left: 756px; }
+
+#bt_predelle_texte_5 {
+  left: 747px; }
 
 #bc_logo_desordre {
   padding-left: 17px;
@@ -916,7 +1045,7 @@ a {
 .sd_bloc_images {
   border-collapse: collapse; }
   .sd_bloc_images td {
-    background-image: url('/images/cadres/desordre_petit.gif');
+    background-image: url("/images/cadres/desordre_petit.gif");
     background-repeat: no-repeat;
     min-width: 64px;
     padding-left: 6px;
@@ -945,7 +1074,7 @@ a {
 .st_bloc_images {
   border-collapse: collapse; }
   .st_bloc_images td {
-    background-image: url('/images/cadres/terrier_petit.gif');
+    background-image: url("/images/cadres/terrier_petit.gif");
     background-repeat: no-repeat;
     min-width: 62px;
     padding-left: 9px;
