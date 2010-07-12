@@ -523,6 +523,12 @@ a {
   top: 180px;
   left: 200px; }
 
+#ad_info {
+  position: absolute;
+  top: 240px;
+  left: 730px;
+  width: 150px; }
+
 #ad_scroll_content {
   height: 73px;
   width: 532px;
@@ -542,6 +548,12 @@ a {
       #ad_scroll_content table td img {
         max-height: 42px;
         max-width: 64px; }
+
+#ad_description_longue {
+  width: 670px;
+  font-size: 10px;
+  padding-top: 10px;
+  text-align: justify; }
 
 #at_bulle {
   position: absolute;
@@ -569,6 +581,12 @@ a {
   top: 200px;
   left: 200px; }
 
+#at_info {
+  position: absolute;
+  top: 210px;
+  left: 730px;
+  width: 150px; }
+
 #at_scroll_content {
   height: 96px;
   width: 553px;
@@ -589,11 +607,11 @@ a {
         max-height: 79px;
         max-width: 62px; }
 
-#ac_info {
-  position: absolute;
-  top: 235px;
-  left: 0px;
-  width: 160px; }
+#at_description_longue {
+  width: 690px;
+  font-size: 10px;
+  padding-top: 10px;
+  text-align: justify; }
 
 #ac_nom_article {
   font-weight: bold;
@@ -617,8 +635,9 @@ a {
   padding-bottom: 5px; }
 
 #ac_ajouter_panier {
-  padding-left: 15px;
-  padding-top: 20px; }
+  padding-left: 15px; }
+  #ac_ajouter_panier input {
+    cursor: pointer; }
 
 #ac_image {
   text-align: center; }
@@ -629,6 +648,12 @@ a {
 #ac_scroll_gauche {
   opacity: 0.5;
   filter: alpha(opacity=50); }
+
+#ac_descriptif_serie {
+  position: absolute;
+  top: 180px;
+  left: 20px;
+  width: 150px; }
 
 #bd_bulle {
   position: absolute;

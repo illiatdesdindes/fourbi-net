@@ -2,18 +2,10 @@
   <%= link_to image_tag('bulles/desordre.jpg'), {:action => :boutique}, {:title => 'La boutique du désordre'} %>
 </div>
 
-<div id="ad_retour_serie"><%= link_to raw('Retour<br/> à la série'), {:action => :serie, :id => @article.serie}, {:title => @article.serie.nom} %></div>
-
-<div id="ac_info">
-  <div id="ac_nom_article"><%= raw @article.nom %></div>
-  <div id="ac_description_article"><%= raw @article.description_longue %></div>
-  <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
-  <div id="ac_ajouter_panier">
-    <%= form_tag url_for({:controller => 'public/commande', :action => :panier, :add => @article.id}), :method => :post do %>
-      <%= image_submit_tag 'panier.jpg', :title => 'Ajouter cet article à votre panier' %>
-      <%= submit_tag 'Choisir cet article' %>
-    <% end %>
-  </div>
+<div id="ac_descriptif_serie">
+  <%= render(:partial => 'public/desordre/series', :locals => {:prefix => 'sc'}) %>
+  <br/>
+  <%= render(:partial => 'public/terrier/series', :locals => {:prefix => 'sc'}) %>
 </div>
 
 <div id="ad_bloc_centre">
@@ -43,4 +35,19 @@
     </tr>
     </tbody>
   </table>
+  <% unless @article.description_longue.blank? %>
+    <div id="ad_description_longue"><%= raw @article.description_longue %></div>
+  <% end %>
+</div>
+
+<div id="ad_info">
+  <div id="ac_nom_article"><%= raw @article.nom %></div>
+  <div id="ac_description_article"><%= raw @article.description_courte %></div>
+  <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
+  <div id="ac_ajouter_panier">
+    <%= form_tag url_for({:controller => 'public/commande', :action => :panier, :add => @article.id}), :method => :post do %>
+      <%= image_submit_tag 'panier.jpg', :title => 'Ajouter cet article à votre panier' %>
+      <%= submit_tag 'Choisir cet article' %>
+    <% end %>
+  </div>
 </div>
