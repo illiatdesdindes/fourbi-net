@@ -10,6 +10,7 @@ end
 
 set :public, PATH_TO_IMAGES
 set :port, 4567
+set :env => :production
 
 delete '/script' do
   target_file = "#{PATH_TO_IMAGES}/#{params[:id]}"
