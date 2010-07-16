@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708181921) do
+ActiveRecord::Schema.define(:version => 20100716181155) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20100708181921) do
 
   create_table "articles", :force => true do |t|
     t.string   "nom",                :null => false
-    t.text     "description_longue"
+    t.text     "description_courte"
     t.integer  "numero",             :null => false
     t.integer  "serie_id",           :null => false
     t.integer  "nombre_restant",     :null => false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20100708181921) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.text     "description_courte"
+    t.text     "description_longue"
   end
 
   add_index "articles", ["nombre_restant"], :name => "index_articles_on_nombre_restant"
@@ -111,5 +111,17 @@ ActiveRecord::Schema.define(:version => 20100708181921) do
 
   add_index "utilisateurs", ["login"], :name => "index_utilisateurs_on_login", :unique => true
   add_index "utilisateurs", ["nom"], :name => "index_utilisateurs_on_nom", :unique => true
+
+  create_table "vues", :force => true do |t|
+    t.integer  "article_id",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vues", ["article_id"], :name => "index_vues_on_article_id"
 
 end

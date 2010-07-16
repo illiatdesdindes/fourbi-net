@@ -45,6 +45,7 @@ class Article < ActiveRecord::Base
   validates :description_longue, :xml => true
 
   has_many :article_clients, :dependent => :delete_all
+  has_many :vues, :dependent => :delete_all
 
   scope :serie, lambda {|serie| {:conditions => {:serie_id => serie}, :order => 'numero desc'} }
 

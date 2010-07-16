@@ -3,6 +3,23 @@ class Admin::ArticlesController < Admin::DefaultAdminController
   layout 'admin-layout'
   before_filter :authorize_base
 
+  def add_vue
+    article = Article.find(params[:id])
+    if request.post?
+      @vue = Vue.new(params[:vue])
+      @vue.article = article
+      if @vue.save
+        redirect_to({:action => :show, :id => article}, {:notice => "Image ajoutée"})
+      else
+        flash[:alert] = "Image non ajoutée : #{@vue.errors.full_messages[0]}"
+        @page_title = 'Ajouter une image'
+      end
+    else
+      @vue = Vue.new
+      @vue.article = article
+    end
+  end
+
   def edit
     if request.put?
       @article = Article.find(params[:id])
@@ -53,6 +70,15 @@ class Admin::ArticlesController < Admin::DefaultAdminController
       @article.serie = Serie.find(params[:id])
       @series = Serie.boutique(@article.serie.boutique_id)
       @page_title = 'Ajouter un article'
+    end
+  end
+
+  def remove_vue
+    if request.delete?
+      vue = Vue.find(params[:id]).destroy
+      redirect_to({:action => :show, :id => vue.article}, {:notice => 'Image supprimée'})
+    else
+      redirect_to :controller => "admin/index", :action => :index
     end
   end
 

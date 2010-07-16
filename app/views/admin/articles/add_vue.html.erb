@@ -1,0 +1,30 @@
+<%= error_messages_for :vue %>
+
+<%= form_for @vue, :url => {:action => :add_vue, :id => @vue.article }, :html=>{:multipart=>true} do |f| %>
+
+  <table class="edit">
+    <tr>
+      <td>
+        <fieldset>
+          <table>
+            <tr>
+              <td colspan="2">
+                <fieldset>
+                  <legend>Image</legend>
+                  <div><%= image_tag @vue.image.url %></div>
+                  <%= f.file_field :image %>
+                </fieldset>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </td>
+    </tr>
+  </table>
+  <table class="barreBoutons">
+    <tr>
+      <td><%= f.submit 'Ajouter' %></td>
+      <td><%= link_to 'Afficher article', :action => :show, :id => @vue.article %></td>
+    </tr>
+  </table>
+<% end %>

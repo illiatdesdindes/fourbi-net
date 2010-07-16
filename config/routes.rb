@@ -62,6 +62,8 @@ Fourbi::Application.routes.draw do |map|
   match 'admin/articles/new/:id' => 'admin/articles#new'
   match 'admin/articles/edit/:id' => 'admin/articles#edit'
   match 'admin/articles/:id' => 'admin/articles#show'
+  match 'admin/articles/add_vue/:id' => 'admin/articles#add_vue'
+  match 'admin/articles/remove_vue/:id' => 'admin/articles#remove_vue'
 
   match 'admin/boutiques' => 'admin/boutiques#index'
   match 'admin/boutiques/new' => 'admin/boutiques#new'

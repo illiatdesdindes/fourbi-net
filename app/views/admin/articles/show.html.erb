@@ -10,7 +10,16 @@
 <table class="barreBoutons">
   <tr>
     <td><%= link_to_edit @article %></td>
+    <td><%= link_to 'Ajouter une image supplémentataire', :action => :add_vue, :id => @article %></td>
     <td><%= link_to 'Liste des articles', :controller => "admin/series", :action => :show, :id => @article.serie %></td>
     <td><%= link_to 'Liste des clients l\'ayant commandé', :controller => "admin/clients", :action => :article, :id => @article %></td>
   </tr>
 </table>
+<br/>
+
+<% for vue in @article.vues %>
+  <div class="barreBoutons">
+    <%= image_tag vue.image.url %>
+    <%= button_to 'Effacer', {:action => :remove_vue, :id => vue}, :confirm => 'En êtes-vous certain ?', :method => 'delete' %>
+  </div>
+<% end %>
