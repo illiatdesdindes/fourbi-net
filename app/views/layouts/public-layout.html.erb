@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
   <title><%= @page_title %></title>
   <%= stylesheet_link_tag 'public' %>
-  <%= javascript_include_tag 'jquery-1.4.2.min', 'jquery.scrollTo-1.4.2-min', 'public' %>
+  <%= javascript_include_tag 'jquery-1.4.2.min', 'jquery.scrollTo-1.4.2-min', 'public', :cache => 'public' %>
   <% if @custom_javascript_include %>
       <%= javascript_include_tag @custom_javascript_include %>
   <% end %>
@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<div id="contenu">
+<div id="flash">
 
   <% if flash[:alert] -%>
       <div id="alert" class="flash"><%= flash[:alert] %></div>
@@ -35,9 +35,9 @@
       <div id="notice" class="flash"><%= flash[:notice] %></div>
   <% end -%>
 
-  <%= yield %>
-
 </div>
+
+<%= yield %>
 
 <div id="logo">
    <%= link_to image_tag('logo.jpg'), {:controller => 'public/index', :action => :sommaire,}, {:title => 'retour au sommaire'} %>
