@@ -640,7 +640,8 @@ a {
     cursor: pointer; }
 
 #ac_image {
-  text-align: center; }
+  text-align: center;
+  min-height: 250px; }
   #ac_image img {
     max-height: 350px;
     max-width: 350px; }
