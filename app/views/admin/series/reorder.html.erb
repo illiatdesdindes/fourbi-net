@@ -6,7 +6,7 @@
   </ul>
 </div>
 
-<% form_for @serie, :url => {:action => :reorder, :id => @serie}, :html => {:method => :put} do |f| %>
+<%= form_for @serie, :url => {:action => :reorder, :id => @serie}, :html => {:method => :put} do |f| %>
   <input type="hidden" name="order"/>
   <table class="barreBoutons">
     <tr>

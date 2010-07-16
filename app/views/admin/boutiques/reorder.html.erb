@@ -6,7 +6,7 @@
   </ul>
 </div>
 
-<% form_for @boutique, :url => {:action => :reorder, :id => @boutique}, :html => {:method => :put} do |f| %>
+<%= form_for @boutique, :url => {:action => :reorder, :id => @boutique}, :html => {:method => :put} do |f| %>
   <input type="hidden" name="order"/>
   <table class="barreBoutons">
     <tr>

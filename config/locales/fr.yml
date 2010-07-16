@@ -140,3 +140,8 @@ fr:
         
   errors:
     format: "{{message}}"
+    template:
+      header:
+        one: "Impossible d'enregistrer {{model}}: 1 erreur"
+        other: "Impossible d'enregistrer {{model}}: {{count}} erreurs."
+      body: "Veuillez vérifier les champs suivants :"

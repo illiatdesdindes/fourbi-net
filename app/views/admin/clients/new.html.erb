@@ -1,6 +1,6 @@
 <%= error_messages_for :client %>
 
-<% form_for @client, :url => {:action => :new} do |f| %>
+<%= form_for @client, :url => {:action => :new} do |f| %>
 
   <%= render(:partial => "admin/clients/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
 

@@ -1,6 +1,6 @@
 <%= error_messages_for :article %>
 
-<% form_for @article, :url => {:action => :new}, :html=>{:multipart=>true} do |f| %>
+<%= form_for @article, :url => {:action => :new}, :html=>{:multipart=>true} do |f| %>
 
   <%= render(:partial => "admin/articles/display_for_edit", :locals => {:f => f, :series => @series, :article => @article}) %>
 
