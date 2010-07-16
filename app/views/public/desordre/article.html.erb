@@ -9,7 +9,10 @@
 </div>
 
 <div id="ad_bloc_centre">
-  <div id="ac_image"><%= image_tag(@article.image.url, :alt => @article.nom) %></div>
+  <div id="ac_image">
+    <div><%= link_to image_tag(@article.image.url, :alt => @article.nom), {:action => :zoom_article, :id => @article}, {:title => 'Cliquez pour zoomer', :target => '_blank'} %></div>
+    <div><%= link_to 'Voir une image plus grande', {:action => :zoom_article, :id => @article}, {:target => '_blank'} %></div>
+  </div>
   <table id="ad_predelle">
     <tbody>
     <tr>

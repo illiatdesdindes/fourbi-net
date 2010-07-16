@@ -100,10 +100,12 @@ Fourbi::Application.routes.draw do |map|
   match 'boutique_desordre' => 'public/desordre#boutique'
   match 'serie_desordre/:id' => 'public/desordre#serie'
   match 'article_desordre/:id' => 'public/desordre#article'
+  match 'zoom_desordre/:id' => 'public/desordre#zoom_article'
 
   match 'boutique_terrier' => 'public/terrier#boutique'
   match 'serie_terrier/:id' => 'public/terrier#serie'
   match 'article_terrier/:id' => 'public/terrier#article'
+  match 'zoom_terrier/:id' => 'public/terrier#zoom_article'
 
   match 'panier' => 'public/commande#panier'
   match 'coordonnees' => 'public/commande#coordonnees'

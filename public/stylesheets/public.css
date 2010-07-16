@@ -641,10 +641,16 @@ a {
 
 #ac_image {
   text-align: center;
+  font-size: 10px;
+  padding-bottom: 20px;
   min-height: 250px; }
   #ac_image img {
     max-height: 350px;
     max-width: 350px; }
+  #ac_image a {
+    font-weight: normal; }
+  #ac_image a:hover {
+    text-decoration: underline; }
 
 #ac_scroll_gauche {
   opacity: 0.5;
@@ -1149,3 +1155,21 @@ td.sc_left {
 
 td.sc_right {
   background-image: none; }
+
+#zc_logo {
+  padding-top: 10px;
+  padding-left: 10px; }
+  #zc_logo img {
+    width: 100px; }
+
+#zc_image {
+  padding-left: 50px; }
+
+#zc_close {
+  font-size: 10px;
+  padding-left: 50px;
+  padding-top: 10px; }
+  #zc_close a {
+    font-weight: normal; }
+  #zc_close a:hover {
+    text-decoration: underline; }
