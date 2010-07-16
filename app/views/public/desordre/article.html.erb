@@ -11,7 +11,7 @@
 <div id="ad_bloc_centre">
   <div id="ac_image">
     <div><%= link_to image_tag(@article.image.url, :alt => @article.nom), {:action => :zoom_article, :id => @article}, {:title => 'Cliquez pour zoomer', :target => '_blank'} %></div>
-    <div><%= link_to 'Voir une image plus grande', {:action => :zoom_article, :id => @article}, {:target => '_blank'} %></div>
+    <div><%= link_to "Voir une image plus grande#{@article.vues.empty? ? '' : ' et d\'autres vues'}", {:action => :zoom_article, :id => @article}, {:target => '_blank'} %></div>
   </div>
   <table id="ad_predelle">
     <tbody>
@@ -22,9 +22,8 @@
           <table>
             <tbody>
             <tr>
-              <% for i in (0...@articles_serie.length) %>
-                <% article = @articles_serie[i] %>
-                <td<%= raw((article.id == @article.id) ? ' class="current"' : '') %>><%= link_to image_tag(article.image.url), {:action => :article, :id => article}, {:title => article.nom} %></td>
+              <% for article in @articles_serie %>
+                <td><%= link_to image_tag(article.image.url), {:action => :article, :id => article}, {:title => article.nom} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
                 <td class="grise"></td>

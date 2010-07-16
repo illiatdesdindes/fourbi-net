@@ -1,0 +1,20 @@
+@import public/constants.sass
+
+#zd_scroll_content
+  margin-top: 20px
+  margin-left: 50px
+  height = !hauteur_image_desordre_petit
+  border-collapse: collapse
+  td
+    background:
+      image: url('/images/cadres/desordre_petit.gif')
+      repeat: no-repeat
+    min-width = !largeur_image_visible_cadre_desordre_petit
+    padding-left = !largeur_bord_gauche_cadre_desordre_petit
+    padding-right = !largeur_image_desordre_petit - (!largeur_bord_gauche_cadre_desordre_petit + !largeur_image_visible_cadre_desordre_petit) + 2px
+    padding-top: 5px
+    vertical-align: middle
+    text-align: center
+    img
+      max-height = !hauteur_image_visible_cadre_desordre_petit
+      max-width = !largeur_image_visible_cadre_desordre_petit

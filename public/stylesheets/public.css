@@ -1156,6 +1156,42 @@ td.sc_left {
 td.sc_right {
   background-image: none; }
 
+#zd_scroll_content {
+  margin-top: 20px;
+  margin-left: 50px;
+  height: 73px;
+  border-collapse: collapse; }
+  #zd_scroll_content td {
+    background-image: url("/images/cadres/desordre_petit.gif");
+    background-repeat: no-repeat;
+    min-width: 64px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    vertical-align: middle;
+    text-align: center; }
+    #zd_scroll_content td img {
+      max-height: 42px;
+      max-width: 64px; }
+
+#zt_scroll_content {
+  margin-top: 20px;
+  margin-left: 50px;
+  height: 96px;
+  width: 553px; }
+  #zt_scroll_content td {
+    background-image: url("/images/cadres/terrier_petit.gif");
+    background-repeat: no-repeat;
+    min-width: 62px;
+    padding-left: 9px;
+    padding-right: 8px;
+    padding-top: 4px;
+    vertical-align: middle;
+    text-align: center; }
+    #zt_scroll_content td img {
+      max-height: 79px;
+      max-width: 62px; }
+
 #zc_logo {
   padding-top: 10px;
   padding-left: 10px; }

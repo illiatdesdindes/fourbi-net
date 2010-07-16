@@ -4,6 +4,19 @@
   <%= image_tag @article.image.url, {:alt => @article.nom} %>
 </div>
 
+<% unless @article.vues.empty? %>
+  <table id="zt_scroll_content">
+    <tbody>
+    <tr>
+      <td><%= link_to image_tag(@article.image.url), {:action => :zoom_article, :id => @article}, {:title => 'Voir cette image'} %></td>
+      <% for vue in @article.vues %>
+        <td><%= link_to image_tag(vue.image.url), {:action => :zoom_vue, :id => vue}, {:title => 'Voir cette image'} %></td>
+      <% end %>
+    </tr>
+    </tbody>
+  </table>
+<% end %>
+
 <div id="zc_close">
   <%= link_to 'Fermer la fenêtre', '#', {:onclick => 'window.close();'} %>
 </div>

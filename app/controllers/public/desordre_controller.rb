@@ -1,4 +1,4 @@
-class Public::DesordreController < Public::DefaultPublicController
+class Public::DesordreController < Public::DefaultBoutiqueController
 
   layout 'public-layout'
 
@@ -14,19 +14,5 @@ class Public::DesordreController < Public::DefaultPublicController
     @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).first
     @articles = trouver_articles(@boutique_desordre.series, 11)
   end
-
-  def serie
-    @serie = Serie.find(params[:id])
-    @page_title = "fourbi.net: #{@serie.nom}"
-  end
-
-  def zoom_article
-    @article = Article.find(params[:id])
-    @page_title = "fourbi.net: #{@article.nom}"
-    @custom_javascript = 'var numberArticlesPerPage = 7;'
-    @articles_serie = @article.serie.articles
-    @no_layout = true
-  end
-
 
 end
