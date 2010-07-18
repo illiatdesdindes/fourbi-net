@@ -549,11 +549,11 @@ a {
         max-height: 42px;
         max-width: 64px; }
 
+#ad_nom_serie {
+  width: 670px; }
+
 #ad_description_longue {
-  width: 670px;
-  font-size: 10px;
-  padding-top: 10px;
-  text-align: justify; }
+  width: 670px; }
 
 #at_bulle {
   position: absolute;
@@ -607,11 +607,11 @@ a {
         max-height: 79px;
         max-width: 62px; }
 
+#at_nom_serie {
+  width: 690px; }
+
 #at_description_longue {
-  width: 690px;
-  font-size: 10px;
-  padding-top: 10px;
-  text-align: justify; }
+  width: 690px; }
 
 #ac_nom_article {
   font-weight: bold;
@@ -661,6 +661,16 @@ a {
   top: 180px;
   left: 20px;
   width: 150px; }
+
+.ac_nom_serie {
+  font-size: 10px;
+  padding-top: 10px;
+  text-align: center; }
+
+.ac_description_longue {
+  font-size: 10px;
+  padding-top: 10px;
+  text-align: justify; }
 
 #bd_bulle {
   position: absolute;

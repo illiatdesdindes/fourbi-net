@@ -14,6 +14,7 @@
     <div><%= link_to image_tag(@article.image.url, :alt => @article.nom), '#', {:title => 'Cliquez pour zoomer', :onclick => "#{poup_up_script} return false;"} %></div>
     <div><%= link_to "Voir une image plus grande#{@article.vues.empty? ? '' : ' et d\'autres vues'}", '#', {:onclick => "#{poup_up_script} return false;"} %></div>
   </div>
+  <div id="at_nom_serie" class="ac_nom_serie"><%= @article.serie.nom %></div>
   <table id="ac_predelle">
     <tbody>
     <tr>
@@ -39,7 +40,7 @@
     </tbody>
   </table>
   <% unless @article.description_longue.blank? %>
-    <div id="at_description_longue"><%= raw @article.description_longue %></div>
+    <div id="at_description_longue" class="ac_description_longue"><%= raw @article.description_longue %></div>
   <% end %>
 </div>
 
