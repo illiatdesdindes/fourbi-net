@@ -4,32 +4,57 @@ class Public::CommandeController < Public::DefaultPublicController
 
   Mime::Type.register "application/pdf", :pdf
 
+  include ActionView::Helpers::NumberHelper
 
   def bon_de_commande
-#    if session[:client_id]
-    #     @client = Client.find(session[:client_id])
-    document = Prawn::Document.new(:page_size => "A4") do |pdf|
-      pdf.font_size = 12
+    if session[:client_id]
+      client = Client.find(session[:client_id], :include => [:article_clients => :article])
+      montant = 10
 
-      image_path = "#{Rails.public_path}/images"
+      document = Prawn::Document.new(:page_size => "A4") do |pdf|
+        pdf.font_size = 10
 
-      pdf.float do
-        pdf.image "#{image_path}/logo.jpg", :at => [0, 800], :position => :left, :vposition => :top
+        image_path = "#{Rails.public_path}/images"
+
+        pdf.float do
+          pdf.image "#{image_path}/logo.jpg", :at => [0, 800], :position => :left, :vposition => :top, :scale => 1.25
+        end
+
+        pdf.float do
+          pdf.image "#{image_path}/bulles/bulle003.jpg", :at => [300, 765], :width => 200
+        end
+        pdf.text_box 'Bon de commande à imprimer ou à recopier', :at => [353, 700], :width => 90, :align => :center
+
+        pdf.float do
+          pdf.image "#{image_path}/bulles/bulle002.jpg", :at => [17, 630], :width => 150
+        end
+        pdf.text_box "Nous avons retenu que vous souhaitiez les articles suivants pour un montant de: #{number_to_currency(montant)}", :at => [40, 600], :width => 110
+
+        pdf.line_width = 3
+        pdf.stroke_rectangle [90, 510], 400, 260
+
+        pdf.bounding_box([100, 500], :width => 250, :height => 350) do
+          values = client.article_clients.collect { |client_article| [client_article.article.nom, number_to_currency(client_article.prix_unitaire)] }
+          pdf.table values, :cell_style => {:border_width => 0}
+        end
+
+        pdf.float do
+          pdf.image "#{image_path}/bulles/bulle004.jpg", :at => [0, 220], :width => 250
+        end
+        pdf.text_box 'Votre commande vous sera expédiée à réception de votre chèque', :at => [60, 150], :width => 140, :align => :center
+
+        pdf.line_width = 1
+        pdf.stroke_rectangle [270, 220], 250, 100
+        pdf.text_box [client.identifiant, client.adresse, "#{client.code_postal} #{client.ville}", Countries::CODE_TO_NAME[client.pays], client.email].join("\n"), :at => [280, 210], :width => 230, :leading => 2
+
+        pdf.text_box 'Merci de libéller vos chèques à l’ordre de Philippe De Jonckheere et les adresser à Philippe De Jonckheere, 92, rue Charles Bassée, 94120 Fontenay-sous-Bois, France',
+                     :at => [250, 50], :width => 300
+
       end
-
-      pdf.float do
-        pdf.image "#{image_path}/bulles/bulle002.jpg", :at => [0, 700], :width => 200
-      end
-
-      pdf.float do
-        pdf.image "#{image_path}/bulles/bulle003.jpg", :at => [200, 800], :width => 200
-      end
-
+      send_data document.render, :type => Mime::PDF
+    else
+      redirect_to({:action => :coordonnees}, {:alert => 'Coordonnées non trouvees'})
     end
-    send_data document.render, :type => Mime::PDF
-    #  else
-    #   redirect_to({:action => :coordonnees}, {:alert => 'Coordonnées non trouvees'})
-    # end
   end
 
   def coordonnees
