@@ -44,7 +44,7 @@
   padding-top: 10px; }
 
 .barreBoutons a, .barreBoutons input, .barreBoutons textareaenv {
-  border: 2px outset #f5f5f5;
+  border: 2px outset;
   padding: 2px;
   text-decoration: none;
   background-color: white;
@@ -118,7 +118,7 @@ table.alternated {
     background-color: #cccccc;
     color: black; }
   table.alternated tr:hover {
-    background-color: #FFFF99; }
+    background-color: #ffff99; }
 
 .even {
   background-color: #e5eeee; }
@@ -168,7 +168,7 @@ table.edit td {
   float: right; }
 
 .changed {
-  color: #008000; }
+  color: green; }
 
 .deleted {
   background-color: #ffcccc; }
@@ -184,7 +184,7 @@ ul.draggable {
     padding-bottom: 2px;
     padding-top: 2px;
     margin: auto;
-    margin-bottom: 5px;
+      margin-bottom: 5px;
     text-align: center; }
 
 .floating {
@@ -215,7 +215,7 @@ a {
   font-weight: bold; }
 
 a:hover {
-  background-color: #DDDDDD; }
+  background-color: #dddddd; }
 
 h1 {
   padding-top: 10px;
