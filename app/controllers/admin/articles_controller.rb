@@ -9,7 +9,7 @@ class Admin::ArticlesController < Admin::DefaultAdminController
       @vue = Vue.new(params[:vue])
       @vue.article = article
       if @vue.save
-        redirect_to({:action => :show, :id => article}, {:notice => "Image ajoutée"})
+        redirect_to({:action => :show, :id => article}, {:notice => 'Image ajoutée'})
       else
         flash[:alert] = "Image non ajoutée : #{@vue.errors.full_messages[0]}"
         @page_title = 'Ajouter une image'
@@ -17,6 +17,20 @@ class Admin::ArticlesController < Admin::DefaultAdminController
     else
       @vue = Vue.new
       @vue.article = article
+    end
+  end
+
+  def delete
+    if request.delete?
+      article = Article.find(params[:id])
+      if article.article_clients.empty?
+        article.destroy
+        redirect_to({:controller => 'admin/series', :action => :show, :id => article.serie}, {:notice => 'Article supprimé'})
+      else
+        redirect_to({:action => :show, :id => params[:id]}, {:notice => 'Il existe des commandes pour cet article'})
+      end
+    else
+      redirect_to({:action => :show, :id => params[:id]}, {:notice => 'Mauvaise action'})
     end
   end
 
