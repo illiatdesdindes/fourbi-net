@@ -9,12 +9,20 @@ module Public::DefaultPublicHelper
   end
 
   def javascript_pop_up url, name = 'popup', params = {}
-    {:location => false, :menubar => false, :personalbar => false, :titlebar => false}.each_pair do |key, value|
+    {:location => false, :menubar => false, :personalbar => false, :titlebar => false, :resizable => true, :scrollbars => true}.each_pair do |key, value|
       params[key] ||= value
     end
     params_array = []
     params.each_pair do |key, value|
-      params_array << ["#{key.to_s}=#{value.to_s}"]
+      value_text = value
+      if value.is_a? TrueClass
+        value_text = 'yes'
+      elsif value.is_a? TrueClass
+        value_text = 'no'
+      else
+        value_text = value.to_s
+      end
+      params_array << ["#{key.to_s}=#{value_text}"]
     end
     raw "window.open('#{url}', '#{name}', '#{params_array.join(',')}');"
   end
