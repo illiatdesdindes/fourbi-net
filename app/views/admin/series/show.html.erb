@@ -25,7 +25,7 @@
       <td><%= (article.numero >=0) ? article.numero : 'indisponible' %></td>
       <td><%= number_to_currency article.prix %></td>
       <td><%= nombre_restant_ou_infini article.nombre_restant %></td>
-      <td><%= link_to_view article, 'admin/articles', image_tag(article.image.url, {:height => '75px'}) %></td>
+      <td><%= link_to_view article, 'admin/articles', image_tag(article.image.url((@serie.boutique.nom == Boutique::NOM_DESORDRE) ? :desordre_petit : :terrier_petit)) %></td>
     </tr>
   <% end %>
   </tbody>
