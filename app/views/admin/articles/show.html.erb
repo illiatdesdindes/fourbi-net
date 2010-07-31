@@ -11,12 +11,16 @@
   <tr>
     <td><%= link_to_edit @article %></td>
     <td><%= link_to 'Ajouter une image supplémentataire', :action => :add_vue, :id => @article %></td>
-    <td><%= link_to 'Liste des articles', :controller => "admin/series", :action => :show, :id => @article.serie %></td>
-    <td><%= link_to 'Liste des clients l\'ayant commandé', :controller => "admin/clients", :action => :article, :id => @article %></td>
+    <td><%= link_to 'Liste des clients l\'ayant commandé', :controller => 'admin/clients', :action => :article, :id => @article %></td>
     <% if @article.article_clients.empty? %>
       <td><%= button_to 'Supprimer l\'article', {:action => :delete, :id => @article}, :method => :delete, :confirm => 'Voulez vous vraiment supprimer cet article ?' %></td>
     <% end %>
-
+  </tr>
+</table>
+<table class="barreBoutons">
+  <tr>
+    <td><%= link_to 'Retour à la série', :controller => 'admin/series', :action => :show, :id => @article.serie %></td>
+    <td><%= link_to 'Nouvel article dans la même série', :action => :new, :id => @article.serie %></td>
   </tr>
 </table>
 <br/>
