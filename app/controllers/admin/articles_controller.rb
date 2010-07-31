@@ -92,7 +92,7 @@ class Admin::ArticlesController < Admin::DefaultAdminController
       vue = Vue.find(params[:id]).destroy
       redirect_to({:action => :show, :id => vue.article}, {:notice => 'Image supprimée'})
     else
-      redirect_to :controller => "admin/index", :action => :index
+      redirect_to :controller => 'admin/index', :action => :index
     end
   end
 

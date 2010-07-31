@@ -2,12 +2,12 @@
 
 <%= form_for @serie, :url => {:action => :new} do |f| %>
 
-  <%= render(:partial => "admin/series/display_for_edit", :locals => {:f => f, :boutiques => @boutiques}) %>
+  <%= render(:partial => 'admin/series/display_for_edit', :locals => {:f => f, :boutiques => @boutiques}) %>
 
   <table class="barreBoutons">
     <tr>
       <td><%= f.submit 'Ajouter' %></td>
-      <td><%= link_to 'Liste des séries', :controller => "admin/boutiques", :action => :show, :id => @serie.boutique %></td>
+      <td><%= link_to 'Liste des séries', :controller => 'admin/boutiques', :action => :show, :id => @serie.boutique %></td>
     </tr>
   </table>
 <% end %>

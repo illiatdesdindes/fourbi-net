@@ -8,7 +8,7 @@
     <tr>
       <td><%= f.submit 'Modifier', {:id => 'updateButton'} %></td>
       <td><%= link_to 'Afficher', :action => :show, :id => @article %></td>
-      <td><%= link_to 'Liste des articles', :controller => "admin/series", :action => :show, :id => @article.serie %></td>
+      <td><%= link_to 'Liste des articles', :controller => 'admin/series', :action => :show, :id => @article.serie %></td>
     </tr>
   </table>
 <% end %>
