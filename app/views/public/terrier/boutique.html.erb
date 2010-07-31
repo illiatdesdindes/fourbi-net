@@ -14,7 +14,7 @@
   <% if i < 8 %>
     <% if article = Article.disponible.serie(serie).order('random()').first %>
       <div id="bt_image_<%= i %>" class="bt_image">
-        <div><%= image_tag article.image.url, :alt => article.nom %></div>
+        <div><%= image_tag article.image.url(:terrier_moyen), :alt => article.nom %></div>
       </div>
       <div id="bt_cadre_<%= i %>" class="bt_cadre">
         <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article, :id => article}, {:title => article.nom} %>
@@ -27,20 +27,10 @@
   <% end %>
 <% end %>
 
-<% for i in (0...[8, @articles.length].min) %>
-  <% article = @articles[i] %>
-  <div id="bt_image_<%= i %>" class="bt_image">
-    <div><%= image_tag article.image.url, :alt => article.nom %></div>
-  </div>
-  <div id="bt_cadre_<%= i %>" class="bt_cadre">
-    <%= link_to image_tag('cadres/terrier_moyen.gif'), {:action => :article, :id => article}, {:title => article.nom} %>
-  </div>
-<% end %>
-
 <% for i in (8...@articles.length) %>
   <div id="bt_predelle_image_<%= i - 8 %>" class="bt_predelle_image">
     <% article = @articles[i] %>
-    <div><%= image_tag article.image.url, :alt => article.nom %></div>
+    <div><%= image_tag article.image.url(:terrier_petit), :alt => article.nom %></div>
   </div>
   <div id="bt_predelle_texte_<%= i - 8 %>" class="bt_predelle_texte">
     <%= link_to article.serie.nom, {:action => :serie, :id => article.serie}, {:title => "Voir #{article.serie.nom}"} %>

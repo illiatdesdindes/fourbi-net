@@ -20,13 +20,20 @@
 
 class Article < ActiveRecord::Base
 
-  has_attached_file :image, :path => ":class/:attachment/:id.:extension", :url => "#{Paperclip::Storage::Http::IMAGES_ROOT_URL}:class/:attachment/:id.:extension", :storage => :http
+  has_attached_file :image,
+                    :path => ':class/:attachment/:style/:id.:extension',
+                    :storage => :http,
+                    :styles => {:terrier_moyen => '128x98',
+                                :terrier_petit => '62x79',
+                                :desordre_petit => '64x42',
+                                :desordre_moyen => '90x58',
+                                :image_article => '350x350'}
 
   validates_attachment_content_type :image,
                                     :content_type => ['image/gif', 'image/jpeg', 'image/png', 'image/pjpeg',
                                                       'image/x-png']
 
-  validates_attachment_size :image , :less_than => 1000000
+  validates_attachment_size :image, :less_than => 1000000
 
   belongs_to :serie
 
@@ -47,7 +54,7 @@ class Article < ActiveRecord::Base
   has_many :article_clients, :dependent => :delete_all
   has_many :vues, :dependent => :delete_all
 
-  scope :serie, lambda {|serie| {:conditions => {:serie_id => serie}, :order => 'numero desc'} }
+  scope :serie, lambda { |serie| {:conditions => {:serie_id => serie}, :order => 'numero desc'} }
 
   scope :disponible, :conditions => ['numero != ?', -1], :order => 'numero desc'
 

@@ -11,7 +11,7 @@
 <div id="ad_bloc_centre">
   <div id="ac_image">
     <% poup_up_script = javascript_pop_up(url_for({:action => :zoom_article, :id => @article}), "Zoom #{@article.nom}") %>
-    <div><%= link_to image_tag(@article.image.url, :alt => @article.nom), '#', {:title => 'Cliquez pour zoomer', :onclick => "#{poup_up_script} return false;"} %></div>
+    <div><%= link_to image_tag(@article.image.url(:image_article), :alt => @article.nom), '#', {:title => 'Cliquez pour zoomer', :onclick => "#{poup_up_script} return false;"} %></div>
     <div><%= link_to "Voir une image plus grande#{@article.vues.empty? ? '' : ' et d\'autres vues'}", '#', {:onclick => "#{poup_up_script} return false;"} %></div>
   </div>
   <div id="ad_nom_serie" class="ac_nom_serie"><%= @article.serie.nom %></div>
@@ -25,7 +25,7 @@
             <tbody>
             <tr>
               <% for article in @articles_serie %>
-                <td><%= link_to image_tag(article.image.url), {:action => :article, :id => article}, {:title => article.nom} %></td>
+                <td><%= link_to image_tag(article.image.url(:desordre_petit)), {:action => :article, :id => article}, {:title => article.nom} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
                 <td class="grise"></td>

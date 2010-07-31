@@ -12,7 +12,7 @@
 <% for i in (0...[6, @articles.length].min) %>
   <% article = @articles[i] %>
   <div id="bd_image_<%= i %>" class="bd_image">
-    <div><%= image_tag article.image.url, :alt => article.nom %></div>
+    <div><%= image_tag article.image.url(:desordre_moyen), :alt => article.nom %></div>
   </div>
   <div id="bd_cadre_<%= i %>" class="bd_cadre">
     <%= link_to image_tag('cadres/desordre_moyen.gif'), {:action => :article, :id => article}, {:title => article.nom} %>
@@ -23,7 +23,7 @@
 <% for i in (6...@articles.length) %>
   <div id="bd_predelle_image_<%= i - 6 %>" class="bd_predelle_image">
     <% article = @articles[i] %>
-    <div><%= image_tag article.image.url, :alt => article.nom %></div>
+    <div><%= image_tag article.image.url(:desordre_petit), :alt => article.nom %></div>
   </div>
   <div id="bd_predelle_texte_<%= i - 6 %>" class="bd_predelle_texte"><%= link_to article.serie.nom, {:action => :serie, :id => article.serie}, {:title => "Voir #{article.serie.nom}"} %></div>
 <% end %>

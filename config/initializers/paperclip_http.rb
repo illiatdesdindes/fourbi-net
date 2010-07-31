@@ -15,6 +15,13 @@ module Paperclip
       Paperclip::Storage::Http::PASSWORD = ENV['PAPERCLIP_PASSWORD']
 
       def self.extended base
+        base.instance_eval do
+          @url = ":path_url"
+        end
+        Paperclip.interpolates(:path_url) do |attachment, style|
+          "#{Paperclip::Storage::Http::IMAGES_ROOT_URL}#{attachment.path(style)}"
+        end
+
       end
 
       def flush_deletes
@@ -36,6 +43,13 @@ module Paperclip
         rescue RestClient::ResourceNotFound
           return false
         end
+      end
+
+      def to_file style = default_style
+        file = Tempfile.new(path(style))
+        file.write(RestClient.get "#{IMAGES_ROOT_URL}#{path(style)}")
+        file.rewind
+        return file
       end
 
     end
