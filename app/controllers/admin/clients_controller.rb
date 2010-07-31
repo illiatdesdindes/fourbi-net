@@ -98,7 +98,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
   end
 
   def index
-    @clients = Client.paginate(:per_page => 50, :page => params[:page], :order => 'status desc, id')
+    @clients = Client.paginate(:per_page => 50, :page => params[:page], :order => 'status desc, id', :include => [:article_clients => :article])
     @page_title = 'Liste des clients'
   end
 
