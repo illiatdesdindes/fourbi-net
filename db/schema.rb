@@ -1,15 +1,16 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead 
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your 
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100716181155) do
+ActiveRecord::Schema.define(:version => 20100801101153) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -52,18 +53,23 @@ ActiveRecord::Schema.define(:version => 20100716181155) do
   add_index "boutiques", ["numero"], :name => "index_boutiques_on_numero", :unique => true
 
   create_table "clients", :force => true do |t|
-    t.string   "identifiant",   :null => false
-    t.text     "adresse",       :null => false
+    t.string   "identifiant",                                 :null => false
+    t.text     "adresse",                                     :null => false
     t.string   "code_postal"
     t.string   "ville"
-    t.string   "pays",          :null => false
-    t.string   "email",         :null => false
-    t.string   "status",        :null => false
+    t.string   "pays",                                        :null => false
+    t.string   "email",                                       :null => false
+    t.string   "status",                                      :null => false
     t.datetime "date_paiement"
-    t.float    "prix",          :null => false
+    t.float    "prix",                                        :null => false
     t.datetime "date_envoi"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cyberplus_auth_number",         :limit => 6
+    t.string   "cyberplus_auth_result",         :limit => 2
+    t.string   "cyberplus_payment_certificate", :limit => 40
+    t.string   "cyberplus_result",              :limit => 2
+    t.boolean  "cyberplus_verification_banque"
   end
 
   add_index "clients", ["date_envoi"], :name => "index_clients_on_date_envoi"

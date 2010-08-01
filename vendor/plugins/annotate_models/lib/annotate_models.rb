@@ -1,9 +1,9 @@
 require "config/environment"
 
-MODEL_DIR   = File.join(RAILS_ROOT, "app/models")
-FIXTURE_DIR = File.join(RAILS_ROOT, "test/fixtures")
-RSPEC_DIR   = File.join(RAILS_ROOT, "spec/models")
-RSPEC_FIXTURES = File.join(RAILS_ROOT, "spec/fixtures")
+MODEL_DIR   = File.join(Rails.root, "app/models")
+FIXTURE_DIR = File.join(Rails.root, "test/fixtures")
+RSPEC_DIR   = File.join(Rails.root, "spec/models")
+RSPEC_FIXTURES = File.join(Rails.root, "spec/fixtures")
 
 
 module ActiveRecord

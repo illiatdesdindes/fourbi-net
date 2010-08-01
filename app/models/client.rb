@@ -2,19 +2,24 @@
 #
 # Table name: clients
 #
-#  id            :integer         not null, primary key
-#  adresse       :text            not null
-#  code_postal   :string(255)
-#  date_envoi    :datetime
-#  date_paiement :datetime
-#  email         :string(255)     not null
-#  identifiant   :string(255)     not null
-#  pays          :string(255)     not null
-#  prix          :float           not null
-#  status        :string(255)     not null
-#  ville         :string(255)
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id                            :integer         not null, primary key
+#  adresse                       :text            not null
+#  code_postal                   :string(255)
+#  cyberplus_auth_number         :string(6)
+#  cyberplus_auth_result         :string(2)
+#  cyberplus_payment_certificate :string(40)
+#  cyberplus_result              :string(2)
+#  cyberplus_verification_banque :boolean
+#  date_envoi                    :datetime
+#  date_paiement                 :datetime
+#  email                         :string(255)     not null
+#  identifiant                   :string(255)     not null
+#  pays                          :string(255)     not null
+#  prix                          :float           not null
+#  status                        :string(255)     not null
+#  ville                         :string(255)
+#  created_at                    :datetime
+#  updated_at                    :datetime
 #
 
 class Client < ActiveRecord::Base
