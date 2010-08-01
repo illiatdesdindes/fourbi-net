@@ -34,7 +34,7 @@ group :development do
   gem 'ruby-growl', '1.0.1'
   gem 'pg'
   gem 'haml', '3.0.15'
-  gem 'prawn', '0.10.2', :git => "git://github.com/sandal/prawn", :tag => '0.10.2', :require => 'prawn', :submodules => true
+  gem 'prawn', '0.10.2', :git => "git://github.com/sandal/prawn", :tag => '0.10.2', :require => 'prawn'
 end
 
 group :production do
