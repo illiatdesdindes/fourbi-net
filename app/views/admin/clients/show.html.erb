@@ -14,17 +14,22 @@
 </fieldset>
 <fieldset title="content">
   <legend>Commande</legend>
+
+  <% articles = @client.article_clients.collect{|article_client| article_client.article}.uniq %>
+  <% series = articles.collect{|article| article.serie }.uniq  %>
+  <% boutiques = series.collect{|serie| serie.boutique }.uniq  %>
+
   <% for boutique in @boutiques %>
-    <% if boutique.series.any? { |serie| serie.articles.any? { |article| @client.articles.include? article } } %>
+    <% if boutiques.include? boutique %>
       <fieldset>
         <legend><%= h boutique.nom %></legend>
         <% for serie in boutique.series %>
-          <% if serie.articles.any? { |article| @client.articles.include? article } %>
+          <% if series.include? serie %>
             <fieldset>
               <legend><%= h serie.nom %></legend>
               <table>
                 <% for article in serie.articles %>
-                  <% if @client.articles.include? article %>
+                  <% if articles.include? article %>
                     <% article_client = @client.article_clients.detect { |article_client| article_client.article == article } %>
                     <p><%= raw "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %></p>
                   <% end %>
