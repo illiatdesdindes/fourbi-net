@@ -23,7 +23,7 @@ gem 'rails', '3.0.0.rc'
 
 gem 'email_veracity', '0.5.0', :require => 'email_veracity'
 gem 'andand', '1.3.1'
-gem 'will_paginate', '3.0.pre', :require => 'will_paginate'
+gem 'will_paginate', '3.0.pre2', :require => 'will_paginate'
 gem 'paperclip', '2.3.3'
 gem 'rest-client', '1.6.0', :require => 'rest_client'
 gem 'nokogiri', '1.4.1', :require => 'nokogiri'
@@ -32,7 +32,7 @@ gem 'prawn', '0.10.2', :git => "git://github.com/sandal/prawn", :tag => '0.10.2'
 
 group :development do
   gem 'bullet', '2.0.0.beta.3'
-  gem 'ruby-growl', '1.0.1'
+  gem 'ruby-growl', '2.0'
   gem 'pg'
   gem 'haml', '3.0.15'
 end
