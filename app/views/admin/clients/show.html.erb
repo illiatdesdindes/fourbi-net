@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset title="general">
   <legend>Information générales</legend>
   <%= display_value_changed 'Nom prénom', h(@client.identifiant), 'identifiant' %>
   <%= display_value_changed 'Adresse', h(@client.adresse), 'adresse' %>
@@ -12,7 +12,7 @@
   <% bouton_envoi = (((@client.status == Client::PAIEMENT_CHEQUE) || (@client.status == Client::PAIEMENT_EN_LIGNE)) && (!@client.date_envoi)) ? " #{button_to('Commande envoyée', {:action => :commande_envoyee, :id => @client}, {:class => 'bouton', :confirm => 'En &ecirc;tes vous certain ?'})}" : '' %>
   <%= display_value_changed 'Envoi', @client.date_envoi ? I18n.localize(@client.date_envoi) : 'non', 'date_envoi', bouton_envoi %>
 </fieldset>
-<fieldset>
+<fieldset title="content">
   <legend>Commande</legend>
   <% for boutique in @boutiques %>
     <% if boutique.series.any? { |serie| serie.articles.any? { |article| @client.articles.include? article } } %>
@@ -26,7 +26,7 @@
                 <% for article in serie.articles %>
                   <% if @client.articles.include? article %>
                     <% article_client = @client.article_clients.detect { |article_client| article_client.article == article } %>
-                    <p><%= "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %></p>
+                    <p><%= raw "#{article_client.quantite} #{link_to_view(article, 'admin/articles', h(article.nom))} à #{article_client.prix_unitaire}€" %></p>
                   <% end %>
                 <% end %>
               </table>
@@ -36,6 +36,16 @@
       </fieldset>
     <% end %>
   <% end %>
+</fieldset>
+
+<fieldset title="paiement">
+  <legend>Paiement en ligne</legend>
+  <%= display_value 'Numéro d\'autorisation', @client.cyberplus_auth_number %>
+  <%= display_value 'Résultat de l\'autorisation', @client.cyberplus_auth_result %>
+  <%= display_value 'Certificat de paiement', @client.cyberplus_payment_certificate %>
+  <%= display_value 'Résultat', @client.cyberplus_result %>
+  <%= display_value 'Vérification banque', @client.cyberplus_verification_banque?.to_fs %>
+
 </fieldset>
 
 <table class="barreBoutons">

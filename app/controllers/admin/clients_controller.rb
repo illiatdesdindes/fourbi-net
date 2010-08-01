@@ -150,7 +150,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
 
   def show
     begin
-      @client = Client.find(params[:id]).includes([:article_clients => :article ])
+      @client = Client.find(params[:id], :include => [:article_clients => :article])
       @boutiques = Boutique.order('numero asc').includes([:series => :articles])
       @page_title = "Voir client \"#{@client.identifiant}\""
     rescue ActiveRecord::RecordNotFound

@@ -79,14 +79,14 @@ Fourbi::Application.routes.draw do
   match 'admin/series/:id' => 'admin/series#show'
 
   match 'admin/clients' => 'admin/clients#index'
-  match 'admin/clients/show' => 'admin/clients#show'
+  match 'admin/clients/cheque_recu/:id' => 'admin/clients#cheque_recu'
   match 'admin/clients/new' => 'admin/clients#new'
   match 'admin/clients/edit/:id' => 'admin/clients#edit'
   match 'admin/clients/article/:id' => 'admin/clients#article'
   match 'admin/clients/attente_envoi' => 'admin/clients#attente_envoi'
   match 'admin/clients/attente_paiement' => 'admin/clients#attente_paiement'
   match 'admin/clients/search' => 'admin/clients#search'
-  match 'admin/clients/:id' => 'admin/clients#show'
+  match 'admin/clients/show' => 'admin/clients#show'
 
   match 'admin/utilisateurs' => 'admin/utilisateurs#index'
   match 'admin/utilisateurs/new' => 'admin/utilisateurs#new'

@@ -53,15 +53,15 @@ ActiveRecord::Schema.define(:version => 20100801101153) do
   add_index "boutiques", ["numero"], :name => "index_boutiques_on_numero", :unique => true
 
   create_table "clients", :force => true do |t|
-    t.string   "identifiant",                                 :null => false
-    t.text     "adresse",                                     :null => false
+    t.string   "identifiant",                                                    :null => false
+    t.text     "adresse",                                                        :null => false
     t.string   "code_postal"
     t.string   "ville"
-    t.string   "pays",                                        :null => false
-    t.string   "email",                                       :null => false
-    t.string   "status",                                      :null => false
+    t.string   "pays",                                                           :null => false
+    t.string   "email",                                                          :null => false
+    t.string   "status",                                                         :null => false
     t.datetime "date_paiement"
-    t.float    "prix",                                        :null => false
+    t.float    "prix",                                                           :null => false
     t.datetime "date_envoi"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20100801101153) do
     t.string   "cyberplus_auth_result",         :limit => 2
     t.string   "cyberplus_payment_certificate", :limit => 40
     t.string   "cyberplus_result",              :limit => 2
-    t.boolean  "cyberplus_verification_banque"
+    t.boolean  "cyberplus_verification_banque",               :default => false
   end
 
   add_index "clients", ["date_envoi"], :name => "index_clients_on_date_envoi"
