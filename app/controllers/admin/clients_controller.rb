@@ -18,7 +18,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
   end
 
   def attente_paiement
-    @clients = Client.attente_paiement
+    @clients = Client.attente_paiement.includes(:article_clients => :article)
     @page_title = 'Liste des clients en attente de paiement'
     render :action => :index
   end
