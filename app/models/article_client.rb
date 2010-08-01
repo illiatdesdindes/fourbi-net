@@ -18,7 +18,10 @@ class ArticleClient < ActiveRecord::Base
   belongs_to :article
   belongs_to :client
 
-  def before_validation_on_create
+  before_validation :on_create => :set_price
+
+
+  def set_price
     if article
       self.prix_unitaire = article.prix
     end

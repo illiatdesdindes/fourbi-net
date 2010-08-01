@@ -25,7 +25,7 @@
             <%= number_to_currency(article.prix) %></td>
           <td>
             <%= form_tag url_for({:remove => article.id}), :method => :post do %>
-              <% image_submit_tag 'corbeille.jpg', :title => 'Supprimer cet article du panier' %>
+              <%= image_submit_tag 'corbeille.jpg', :title => 'Supprimer cet article du panier' %>
             <% end %>
           </td>
         </tr>

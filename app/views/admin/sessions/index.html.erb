@@ -20,7 +20,7 @@
 <div class="form">
   <fieldset>
     <legend>Merci de vous authentifier</legend>
-    <% form_tag do %>
+    <%= form_tag do %>
       <p>
         <label for="name">Login</label>
         <%= text_field_tag :login, params[:login] %>

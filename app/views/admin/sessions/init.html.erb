@@ -20,7 +20,7 @@
 <div class="form">
   <fieldset>
     <legend>Merci d'entrer les informations n&eacute;cessaires</legend>
-    <% form_tag :controller => '/admin/sessions', :action => :init do %>
+    <%= form_tag :controller => '/admin/sessions', :action => :init do %>
       <p>
         <label for="name">Login</label>
         <%= text_field_tag :login, params[:login] %>
