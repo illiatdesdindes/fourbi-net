@@ -26,7 +26,8 @@ class Admin::ClientsController < Admin::DefaultAdminController
   def cheque_recu
     @client = Client.find(params[:id])
     if @client.status == Client::NOUVEAU
-      @client.status = Client::PAIEMENT_CHEQUE
+      @client.status = Client::PAYE
+      @client.methode_paiement = Client::PAIEMENT_CHEQUE
       @client.save!
       flash[:notice] = "Client \"#{@client.identifiant}\" modifié"
     else
@@ -37,7 +38,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
 
   def commande_envoyee
     @client = Client.find(params[:id])
-    if @client.status == Client::PAIEMENT_CHEQUE || @client.status == Client::PAIEMENT_EN_LIGNE
+    if @client.status == Client::PAYE
       @client.date_envoi = DateTime.now
       @client.save!
       flash[:notice] = "Client \"#{@client.identifiant}\" modifié"

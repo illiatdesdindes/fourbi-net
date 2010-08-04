@@ -7,9 +7,9 @@
   <%= display_value_changed 'Pays', @client.pays, 'pays' %>
   <%= display_value_changed 'Email', "<a href=\"mailto:#{h(@client.email)}\">#{h(@client.email)}</a>", 'email' %>
   <%= display_value_changed 'Prix', "#{number_to_currency @client.prix}", 'prix' %>
-  <% bouton_paiement = (@client.status == Client::NOUVEAU) ? " #{button_to('Chèque reçu', {:action => :cheque_recu, :id => @client}, {:class => 'bouton', :confirm => 'En &ecirc;tes vous certain ?'})}" : '' %>
+  <% bouton_paiement = (@client.status == Client::NOUVEAU) ? " #{button_to('Chèque reçu', {:action => :cheque_recu, :id => @client}, {:class => 'bouton', :confirm => 'En êtes vous certain ?'})}" : '' %>
   <%= display_value_changed 'Status', @client.status_lisible, 'status', bouton_paiement %>
-  <% bouton_envoi = (((@client.status == Client::PAIEMENT_CHEQUE) || (@client.status == Client::PAIEMENT_EN_LIGNE)) && (!@client.date_envoi)) ? " #{button_to('Commande envoyée', {:action => :commande_envoyee, :id => @client}, {:class => 'bouton', :confirm => 'En &ecirc;tes vous certain ?'})}" : '' %>
+  <% bouton_envoi = (@client.status == Client::PAYE) ? " #{button_to('Commande envoyée', {:action => :commande_envoyee, :id => @client}, {:class => 'bouton', :confirm => 'En êtes vous certain ?'})}" : '' %>
   <%= display_value_changed 'Envoi', @client.date_envoi ? I18n.localize(@client.date_envoi) : 'non', 'date_envoi', bouton_envoi %>
 </fieldset>
 <fieldset title="content">

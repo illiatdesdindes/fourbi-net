@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100801101153) do
+ActiveRecord::Schema.define(:version => 20100804164553) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20100801101153) do
     t.string   "cyberplus_payment_certificate", :limit => 40
     t.string   "cyberplus_result",              :limit => 2
     t.boolean  "cyberplus_verification_banque",               :default => false
+    t.string   "methode_paiement",              :limit => 1
   end
 
   add_index "clients", ["date_envoi"], :name => "index_clients_on_date_envoi"

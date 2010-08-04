@@ -80,6 +80,7 @@ Fourbi::Application.routes.draw do
 
   match 'admin/clients' => 'admin/clients#index'
   match 'admin/clients/cheque_recu/:id' => 'admin/clients#cheque_recu'
+  match 'admin/clients/commande_envoyee/:id' => 'admin/clients#commande_envoyee'
   match 'admin/clients/new' => 'admin/clients#new'
   match 'admin/clients/edit/:id' => 'admin/clients#edit'
   match 'admin/clients/article/:id' => 'admin/clients#article'

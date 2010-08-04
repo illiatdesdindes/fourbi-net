@@ -14,6 +14,7 @@
 #  date_paiement                 :datetime
 #  email                         :string(255)     not null
 #  identifiant                   :string(255)     not null
+#  methode_paiement              :string(1)
 #  pays                          :string(255)     not null
 #  prix                          :float           not null
 #  status                        :string(255)     not null
@@ -32,6 +33,10 @@ class Client < ActiveRecord::Base
 
   SUPPRIME = 'S'
 
+  PAYE = 'P'
+
+  ENVOYE = 'E'
+
   has_many :article_clients, :autosave => true
   has_many :articles, :through => :article_clients
 
@@ -43,7 +48,7 @@ class Client < ActiveRecord::Base
 
   scope :attente_paiement, :conditions => ['status = ?', NOUVEAU], :order => 'id asc'
 
-  scope :attente_envoi, :conditions => ['(status = ? or status = ?) and date_envoi is null', PAIEMENT_CHEQUE, PAIEMENT_EN_LIGNE], :order => 'id asc'
+  scope :attente_envoi, :conditions => ['status = ? and date_envoi is null', PAYE], :order => 'id asc'
 
   validate :validation
 
@@ -51,10 +56,10 @@ class Client < ActiveRecord::Base
     case status
       when NOUVEAU
         'Nouveau'
-      when PAIEMENT_CHEQUE
-        "Payé par chèque le #{I18n.localize(date_paiement)}"
-      when PAIEMENT_EN_LIGNE
-        "Payé en ligne le #{I18n.localize(date_paiement)}"
+      when PAYE
+        (methode_paiement == PAIEMENT_EN_LIGNE) ? "Payé en ligne le #{I18n.localize(date_paiement)}" : "Payé par chèque le #{I18n.localize(date_paiement)}"
+      when ENVOYE
+        'Envoyé'
       when SUPPRIME
         'Supprimé'
       else
@@ -66,18 +71,27 @@ class Client < ActiveRecord::Base
 
   def bu
     if changes.include? 'status'
-      if (status == PAIEMENT_CHEQUE) || (status == PAIEMENT_EN_LIGNE)
+      if status == PAYE
         self.date_paiement= DateTime.now
-      elsif status == NOUVEAU
-        self.date_paiement= null
+      else
+        if status == NOUVEAU
+          self.date_paiement= null
+        end
+        self.methode_paiement= null
       end
     end
   end
 
   def validation
     errors.add_to_base('Aucun article commandé') if article_clients.empty?
-    unless EmailVeracity::Address.new(email).valid?
+    unless EmailVeracity::Address.new(self.email).valid?
       errors.add(:email, 'L\'adresse email est invalide')
+    end
+    unless [NOUVEAU, PAYE, ENVOYE, SUPPRIME].include? self.status
+      errors.add(:status, 'Le statut est invalide')
+    end
+    if PAYE == self.status && (! [PAIEMENT_EN_LIGNE, PAIEMENT_CHEQUE].include? self.methode_paiement)
+      errors.add(:methode_paiement, 'La méthode de paiment est invalide')
     end
   end
 

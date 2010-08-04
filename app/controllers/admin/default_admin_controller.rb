@@ -12,7 +12,7 @@ class Admin::DefaultAdminController < ApplicationController
 
   def authorize_base
     unless session[:id_user] && (@current_user = Utilisateur.find(session[:id_user]))
-      session[:original_uri] = request.request_uri
+      session[:original_uri] = request.fullpath
       redirect_to :controller => 'admin/sessions', :action => :index
     else
       @site_admin = @current_user.site_admin?
