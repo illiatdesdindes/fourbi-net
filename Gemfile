@@ -31,7 +31,7 @@ gem 'kramdown', '0.9.0', :require => 'kramdown'
 gem 'prawn', '0.10.2', :git => "git://github.com/sandal/prawn", :tag => '0.10.2', :require => "prawn", :submodules => true
 
 group :development do
-  gem 'bullet', '2.0.0.beta.3'
+  gem 'bullet', '2.0.0.rc1'
   gem 'ruby-growl', '2.0'
   gem 'pg'
   gem 'haml', '3.0.15'
