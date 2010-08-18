@@ -7,8 +7,6 @@
 #  description_longue :text
 #  image_content_type :string(255)
 #  image_file_name    :string(255)
-#  image_file_size    :integer
-#  image_updated_at   :datetime
 #  nom                :string(255)     not null
 #  nombre_restant     :integer         not null
 #  numero             :integer         not null

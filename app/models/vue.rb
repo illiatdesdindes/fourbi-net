@@ -6,8 +6,6 @@
 #  article_id         :integer         not null
 #  image_content_type :string(255)
 #  image_file_name    :string(255)
-#  image_file_size    :integer
-#  image_updated_at   :datetime
 #  created_at         :datetime
 #  updated_at         :datetime
 #
