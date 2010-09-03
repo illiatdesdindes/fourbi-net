@@ -4,7 +4,7 @@ class Public::DefaultPublicController < ApplicationController
     series = Serie.disponible.boutique(boutique)
     articles = []
     for serie in series
-      articles_series = Article.disponible.serie(serie).order('random()')
+      articles_series = Article.disponible.serie(serie).order('numero asc')
       unless articles_series.empty?
         articles << articles_series.first
         if articles.length == number
