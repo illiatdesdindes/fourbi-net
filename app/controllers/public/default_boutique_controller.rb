@@ -1,6 +1,6 @@
 class Public::DefaultBoutiqueController < Public::DefaultPublicController
 
-    def serie
+  def serie
     @serie = Serie.find(params[:id])
     @page_title = "fourbi.net: #{@serie.nom}"
   end
