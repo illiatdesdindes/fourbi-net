@@ -1,6 +1,6 @@
 class Notifier < ActionMailer::Base
 
-  def message from, to, content
+  def send_contact_mail from, to, content
     mail(:from => from,
          :to => to,
          :subject => 'Message de fourbi.net') do |format|
