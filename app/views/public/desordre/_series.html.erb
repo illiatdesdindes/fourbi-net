@@ -1,6 +1,8 @@
 <div class="<%= prefix %>_nom_boutique"><%= link_to 'Les séries du désordre', {:controller => 'public/desordre', :action => :boutique}, {:title => 'retourner à la boutique'} %></div>
 <ul class="<%= prefix %>_liste_series">
-  <% for serie in Boutique.nom(Boutique::NOM_DESORDRE).includes(:series).first.series %>
-    <li><%= link_to serie.nom, {:controller => 'public/desordre', :action => :serie, :id => serie}, {:title => serie.description } %></li>
+  <% for serie in Serie.nom_boutique(Boutique::NOM_DESORDRE).disponible %>
+    <% if article = Article.disponible.serie(serie).order('numero asc').first %>
+      <li><%= link_to serie.nom, {:controller => 'public/desordre', :action => :article, :id => article}, {:title => serie.description} %></li>
+    <% end %>
   <% end %>
 </ul>

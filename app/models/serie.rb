@@ -18,7 +18,7 @@ class Serie < ActiveRecord::Base
   include ERB::Util
 
   belongs_to :boutique
-  has_many :articles, :order => 'numero ASC'
+  has_many :articles, :order => 'series.numero ASC'
 
   validates_presence_of :nom, :numero, :boutique_id
   validates_numericality_of :numero, :allow_nil => false, :only_integer => true, :greater_than_or_equal_to => -1
@@ -28,9 +28,11 @@ class Serie < ActiveRecord::Base
 
   attr_writer :disponible
 
-  scope :boutique, lambda {|boutique| {:conditions => {:boutique_id => boutique}, :order => 'numero desc'} }
+  scope :nom_boutique, lambda {|nom_boutique| {:conditions => {'boutiques.nom' => nom_boutique}, :order => 'series.numero desc', :include => :boutique} }
 
-  scope :disponible, :conditions => ['numero != ?', -1], :order => 'numero desc'
+  scope :boutique, lambda {|boutique| {:conditions => {:boutique_id => boutique}, :order => 'series.numero desc'} }
+
+  scope :disponible, :conditions => ['series.numero != ?', -1], :order => 'series.numero desc'
 
   def nom_disponible
     if numero != -1
