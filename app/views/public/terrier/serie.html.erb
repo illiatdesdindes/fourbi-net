@@ -13,11 +13,11 @@
 </div>
 
 <% nombre_articles = @serie.articles.length %>
-<div id="sd_bloc_centre" class="sc_bloc_centre">
+<div id="st_bloc_centre" class="sc_bloc_centre">
   <table>
     <tr>
       <td>
-        <table class="sd_bloc_images sc_bloc_images">
+        <table class="st_bloc_images sc_bloc_images">
 
           <tr>
             <% 0.upto([6, nombre_articles - 1].min) do |i| %>
@@ -66,7 +66,7 @@
             <% indice_premier_article_ecran_en_cours = 27 + (26 * indice_ecran_en_cours) %>
 
             <td>
-              <table class="sd_bloc_images sc_bloc_images">
+              <table class="st_bloc_images sc_bloc_images">
 
                 <tr>
                   <td class="sc_left"><%= link_to image_tag('mains/gauche.gif', :id => 'sc_scroll_gauche'), '#', {:onclick  => 'serieScrollLeft(); return false;', :title => 'Se déplacer vers la gauche'} %></td>
@@ -104,7 +104,7 @@
 
         <% nombre_articles_derniers_ecran = nombre_articles_supplementaires - (26 * nombre_ecrans_intermediaires) %>
         <td>
-          <table class="sd_bloc_images sc_bloc_images">
+          <table class="st_bloc_images sc_bloc_images">
 
             <tr>
               <td class="sc_left"><%= link_to image_tag('mains/gauche.gif', :id => 'sc_scroll_gauche'), '#', {:onclick  => 'serieScrollLeft(); return false;', :title => 'Se déplacer vers la gauche'} %></td>
