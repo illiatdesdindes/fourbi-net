@@ -18,7 +18,7 @@ class Public::DefaultPublicController < ApplicationController
   def trouver_articles series, max_number
     articles = []
     for serie in series
-      if article = Article.disponible.serie(serie).order('random()').first
+      if article = Article.disponible.serie(serie).order('numero asc').first
         articles << article
         if articles.length == max_number
           return articles
