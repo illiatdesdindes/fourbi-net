@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
   <title><%= @page_title %></title>
   <%= stylesheet_link_tag 'admin' %>
-  <%= javascript_include_tag 'jquery-1.4.2.min', 'rails', 'jquery.tablesorter.min', :cache => 'admin-cache'  %>
+  <%= javascript_include_tag 'jquery-1.4.2.min', 'rails', 'jquery.tablesorter.min' %>
   <% if @custom_javascript_include %>
       <%= javascript_include_tag @custom_javascript_include %>
   <% end %>
