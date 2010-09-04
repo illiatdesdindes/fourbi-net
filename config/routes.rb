@@ -117,6 +117,8 @@ Fourbi::Application.routes.draw do
   match 'coordonnees' => 'public/commande#coordonnees'
   match 'validation' => 'public/commande#validation'
   match 'bon_de_commande' => 'public/commande#bon_de_commande'
+  match 'retour_paiement_echec' => 'public/commande#retour_paiement_echec'
+  match 'retour_paiement_success' => 'public/commande#retour_paiement_success'
 
   match 'contact/desordre' => 'public/contact#desordre'
   match 'contact/terrier' => 'public/contact#terrier'

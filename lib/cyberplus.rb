@@ -1,6 +1,6 @@
 # Simplifie l'ecriture d'application rails utilisant l'API Cyberplus de la Banque Populaire.
 # http://www.cyberpaiement.tm.fr/
-# Copyright (c) 2009 Julien Kirch, released under the MIT license
+# Copyright (c) 2009-2010 Julien Kirch, released under the MIT license
 
 require 'digest/sha1'
 

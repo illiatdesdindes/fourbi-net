@@ -83,7 +83,9 @@ class Client < ActiveRecord::Base
   end
 
   def validation
-    errors.add_to_base('Aucun article commandé') if article_clients.empty?
+    if article_clients.empty?
+      errors.add_to_base('Aucun article commandé')
+    end
     unless EmailVeracity::Address.new(self.email).valid?
       errors.add(:email, 'L\'adresse email est invalide')
     end
@@ -91,7 +93,7 @@ class Client < ActiveRecord::Base
       errors.add(:status, 'Le statut est invalide')
     end
     if PAYE == self.status && (! [PAIEMENT_EN_LIGNE, PAIEMENT_CHEQUE].include? self.methode_paiement)
-      errors.add(:methode_paiement, 'La méthode de paiment est invalide')
+      errors.add(:methode_paiement, 'La méthode de paiement est invalide')
     end
   end
 

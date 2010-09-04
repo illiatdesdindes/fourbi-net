@@ -47,9 +47,14 @@
     </div>
 
     <div id="validation_banque">
-      <%= link_to image_tag('caisse_enregistreuse.jpg'), {}, {:title => 'Payer en ligne'} %>
-      <br/>
-      <%= link_to 'Payer en ligne' %>
+      <% form_for :commande, @client, :url => Cyberplus::URL_PLATEFORME do |f| %>
+          <% @params_cyberplus.each_pair do |key, value| %>
+            <%= hidden_field_tag key, value %>
+          <% end %>
+          <%= image_submit_tag 'caisse_enregistreuse.jpg', :title => 'Poursuivre la commande' %>
+          <br/>
+          <%= f.submit 'Payer en ligne' %>
+      <% end %>
     </div>
   </div>
 </div>

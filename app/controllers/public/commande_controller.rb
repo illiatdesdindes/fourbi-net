@@ -1,3 +1,6 @@
+require 'erb'
+include ERB::Util
+
 class Public::CommandeController < Public::DefaultPublicController
 
   layout 'public-layout'
@@ -173,12 +176,53 @@ class Public::CommandeController < Public::DefaultPublicController
     end
   end
 
+  def retour_paiement_echec
+
+  end
+
+  def retour_paiement_success
+
+  end
+
   def validation
     if session[:client_id]
       @client = Client.find(session[:client_id])
+      @params_cyberplus = Cyberplus.calculer_params(create_params_cyberplus(@client))
     else
       redirect_to({:action => :coordonnees}, {:alert => 'Coordonnées non trouvees'})
     end
   end
+
+  private
+
+  def create_params_cyberplus client
+    result = {}
+
+    result[:amount] = (client.prix * 100).to_i
+    trans_id = client.id.to_s.rjust(6, '0')
+    result[:trans_id] = trans_id[(trans_id.size() - 6) ... (trans_id.size)]
+    result[:trans_date] = client.created_at
+
+    result[:cust_email] = client.email
+    result[:cust_id] = client.id
+    result[:cust_name] = html_escape client.identifiant
+    result[:cust_city] = html_escape client.ville
+    result[:cust_zip] = html_escape client.code_postal
+    result[:cust_address] = html_escape client.adresse
+    result[:order_id] = client.id
+    result[:order_info] = "Commande de #{client.article_clients.count} articles(s)"
+    result[:cust_country] = client.pays
+    result[:language] = 'fr'
+    result[:url_success] = url_for :controller => 'public/commande', :action => :retour_paiement_success, :protocol => 'http', :only_path => false
+    result[:url_refused] = result[:url_referral] = result[:url_cancel] = result[:url_error] = url_for(:controller => 'public/commande', :action => :retour_paiement_echec, :protocol => 'http', :only_path => false)
+    result[:ctx_mode] = :TEST
+    result[:payment_config] = 'SINGLE'
+    result[:validation_mode] = 0
+    result[:site_id] = Meta[Meta::CYBERPLUS_SITE_ID].contenu
+    result[:certificat] = Meta[Meta::CYBERPLUS_CERTIFICAT].contenu
+    result[:payment_cards] = ''
+    return result
+  end
+
 
 end

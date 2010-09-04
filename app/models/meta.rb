@@ -28,6 +28,10 @@ class Meta < ActiveRecord::Base
 
   EMAIL_TERRIER = 'email_terrier'
 
+  CYBERPLUS_SITE_ID = 'cyberplus_site_id'
+
+  CYBERPLUS_CERTIFICAT = 'cyberplus_certificat'
+
   def Meta.update_value name, value
     item = Meta[name]
     item.contenu = value

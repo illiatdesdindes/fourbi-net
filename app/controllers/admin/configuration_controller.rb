@@ -6,11 +6,27 @@ class Admin::ConfigurationController < Admin::DefaultAdminController
 
   def index
     if request.post?
-      Meta.update_value Meta::EMAIL_DESORDRE, params[Meta::EMAIL_DESORDRE]
-      Meta.update_value Meta::EMAIL_TERRIER, params[Meta::EMAIL_TERRIER]
-      Meta.update_value Meta::CGV, params[Meta::CGV]
+      update_meta Meta::EMAIL_DESORDRE
+      update_meta Meta::EMAIL_TERRIER
+      update_meta Meta::CGV
+      unless params[Meta::CYBERPLUS_SITE_ID].blank?
+        if (params[Meta::CYBERPLUS_SITE_ID].size != 8)
+          flash[:error] = 'La valeur du site_id ne fait pas 8 caractères de long'
+        else
+          update_meta Meta::CYBERPLUS_SITE_ID
+        end
+      end
+      unless params[Meta::CYBERPLUS_CERTIFICAT].blank?
+        update_meta Meta::CYBERPLUS_CERTIFICAT
+      end
     end
     @page_title = 'Configuration'
+  end
+
+  private
+
+  def update_meta key
+    Meta.update_value key, params[key]
   end
 
 end

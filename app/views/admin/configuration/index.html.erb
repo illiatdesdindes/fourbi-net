@@ -10,6 +10,13 @@
     <legend>CGV</legend>
     <%= text_area_tag Meta::CGV, Meta[Meta::CGV].contenu, :cols => 120, :rows =>20 %>
   </fieldset>
+  <fieldset>
+    <legend>Cyberplus</legend>
+    <table>
+      <%= edit_value_table('site_id', text_field_tag(Meta::CYBERPLUS_SITE_ID)) %>
+      <%= edit_value_table('certificat', text_field_tag(Meta::CYBERPLUS_CERTIFICAT)) %>
+    </table>
+  </fieldset>
   <%= submit_tag 'Mettre à jour' %>
 
 <% end %>
