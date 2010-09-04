@@ -164,7 +164,7 @@ class Public::CommandeController < Public::DefaultPublicController
         redirect_to({:action => :panier})
       end
     else
-      @custom_css = 'body { background-image: url("/images/fonds/panier.jpg"); }'
+      @custom_css = 'body { background-image: url("/images/fonds/panier.jpg"); background-repeat: no-repeat; }'
       @page_title = 'fourbi.net: votre panier'
       @panier_contenu = Article.where(:id => @panier).includes(:serie => :boutique).inject({}) do |result, article|
         result[article.id] = article
