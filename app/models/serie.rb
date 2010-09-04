@@ -29,11 +29,11 @@ class Serie < ActiveRecord::Base
 
   attr_writer :disponible
 
-  scope :nom_boutique, lambda {|nom_boutique| {:conditions => {'boutiques.nom' => nom_boutique}, :order => 'series.numero desc', :include => :boutique} }
+  scope :nom_boutique, lambda {|nom_boutique| where('boutiques.nom' => nom_boutique).order('series.numero desc').include(:boutique) }
 
-  scope :boutique, lambda {|boutique| {:conditions => {:boutique_id => boutique}, :order => 'series.numero desc'} }
+  scope :boutique, lambda {|boutique| where(:boutique_id => boutique).order('series.numero desc') }
 
-  scope :disponible, :conditions => ['series.numero != ?', -1], :order => 'series.numero desc'
+  scope :disponible, where('series.numero != ?', -1).order('series.numero desc')
 
   def nom_disponible
     if numero != -1

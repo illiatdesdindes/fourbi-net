@@ -4,7 +4,7 @@ class Public::DefaultPublicController < ApplicationController
     series = Serie.disponible.boutique(boutique)
     articles = []
     for serie in series
-      articles_series = Article.disponible.serie(serie).order('numero asc')
+      articles_series = Article.disponible.serie(serie).order('articles.numero asc')
       unless articles_series.empty?
         articles << articles_series.first
         if articles.length == number
@@ -18,7 +18,7 @@ class Public::DefaultPublicController < ApplicationController
   def trouver_articles series, max_number
     articles = []
     for serie in series
-      if article = Article.disponible.serie(serie).order('numero asc').first
+      if article = Article.disponible.serie(serie).order('articles.numero asc').first
         articles << article
         if articles.length == max_number
           return articles

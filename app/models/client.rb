@@ -46,9 +46,9 @@ class Client < ActiveRecord::Base
 
   attr_protected :prix, :status, :commande_envoyee
 
-  scope :attente_paiement, :conditions => ['status = ?', NOUVEAU], :order => 'id asc'
+  scope :attente_paiement, where('status = ?', NOUVEAU).order('id asc')
 
-  scope :attente_envoi, :conditions => ['status = ? and date_envoi is null', PAYE], :order => 'id asc'
+  scope :attente_envoi, where('status = ? and date_envoi is null', PAYE).order('id asc')
 
   validate :validation
 

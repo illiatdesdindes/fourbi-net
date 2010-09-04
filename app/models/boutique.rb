@@ -25,8 +25,7 @@ class Boutique < ActiveRecord::Base
   validates :nom, :xml => true
   validates :description, :xml => true
 
-  scope :nom, lambda {|nom| {:conditions => {:nom => nom} }}
-
+  scope :nom, lambda {|nom| where(:nom => nom) }
 
   NOM_DESORDRE = 'desordre.net'
 

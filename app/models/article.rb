@@ -52,9 +52,15 @@ class Article < ActiveRecord::Base
   has_many :article_clients, :dependent => :delete_all
   has_many :vues, :dependent => :delete_all
 
-  scope :serie, lambda { |serie| {:conditions => {:serie_id => serie}, :order => 'numero desc'} }
+  scope :boutique, lambda {|boutique_id| where('series.boutique_id = ?', boutique_id).includes(:serie) }
 
-  scope :disponible, :conditions => ['numero != ?', -1], :order => 'numero desc'
+  scope :serie, lambda { |serie| where('articles.serie_id = ?', serie).order('series.numero desc').includes(:serie) }
+
+  scope :disponible, where('articles.numero != ?', -1).order('articles.numero desc')
+
+  scope :premier_serie, where('articles.numero = ?', 0)
+
+  scope :serie_disponible, where('series.numero != ?', -1).includes(:serie)
 
   before_save :update_order
 
