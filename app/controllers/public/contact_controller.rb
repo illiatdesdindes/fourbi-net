@@ -27,20 +27,18 @@ class Public::ContactController < Public::DefaultPublicController
       if @email.blank?
         flash[:alert] = 'L\'adresse email est vide'
         render :contact
-      elsif (! EmailVeracity::Address.new(@email).valid? )
+      elsif (!EmailVeracity::Address.new(@email).valid?)
         flash[:alert] = 'L\'adresse email est invalide'
         render :contact
       elsif @message.blank?
         flash[:alert] = 'Le message est vide'
         render :contact
+      elsif (to = Meta[email_meta_name].contenu).blank?
+        flash[:alert] = 'Pas d\'adresse mail de destination configurée'
+        render :contact
       else
-        if (to = Meta[email_meta_name].contenu).blank?
-          flash[:alert] = 'Pas d\'adresse mail de destination configurée'
-          render :contact
-        else
-          Notifier.send_contact_mail(@email, to, @message).deliver
-          redirect_to({:controller => 'public/index', :action => :sommaire}, {:notice => 'Votre message a été envoyé !'})
-        end
+        Notifier.send_contact_mail(@email, to, @message).deliver
+        redirect_to({:controller => 'public/index', :action => :sommaire}, {:notice => 'Votre message a été envoyé !'})
       end
     else
       @email = ''
