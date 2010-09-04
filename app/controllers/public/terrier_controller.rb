@@ -12,7 +12,7 @@ class Public::TerrierController < Public::DefaultBoutiqueController
   def boutique
     @page_title = 'fourbi.net: la boutique du terrier'
     @boutique_terrier = Boutique.nom(Boutique::NOM_TERRIER).first
-    @articles = trouver_articles(@boutique_terrier.series, 14)
+    @articles = trouver_articles(@boutique_terrier, 14)
   end
 
 end

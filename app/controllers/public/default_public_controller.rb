@@ -15,17 +15,8 @@ class Public::DefaultPublicController < ApplicationController
     articles
   end
 
-  def trouver_articles series, max_number
-    articles = []
-    for serie in series
-      if article = Article.disponible.serie(serie).order('articles.numero asc').first
-        articles << article
-        if articles.length == max_number
-          return articles
-        end
-      end
-    end
-    articles
+  def trouver_articles boutique, max_number
+    Article.boutique(boutique.id).premier_serie.serie_disponible.order('series.numero asc, articles.numero asc').limit(max_number)
   end
   
 end

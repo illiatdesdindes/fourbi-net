@@ -12,7 +12,7 @@ class Public::DesordreController < Public::DefaultBoutiqueController
   def boutique
     @page_title = 'fourbi.net: la boutique du desordre'
     @boutique_desordre = Boutique.nom(Boutique::NOM_DESORDRE).first
-    @articles = trouver_articles(@boutique_desordre.series, 11)
+    @articles = trouver_articles(@boutique_desordre, 11)
   end
 
 end
