@@ -6,7 +6,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
   def article
     article = Article.find(params[:id])
     article_clients = ArticleClient.where(:article_id => article)
-    @clients = article_clients.collect{|article_client| article_client.client}.find_all{|client| client.status != Client::SUPPRIME}
+    @clients = article_clients.collect { |article_client| article_client.client }.find_all { |client| client.status != Client::SUPPRIME }
     @page_title = "Liste des clients ayant commandé \"#{article.nom}\""
     @new_client_button = true
     render :action => :index
@@ -16,6 +16,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
     @clients = Client.attente_envoi
     @page_title = 'Liste des clients en attente d\'envoi'
     @new_client_button = false
+    @mail_envoi = true
     render :action => :index
   end
 
@@ -23,6 +24,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
     @clients = Client.attente_paiement.includes(:article_clients => :article)
     @page_title = 'Liste des clients en attente de paiement'
     @new_client_button = false
+    @mail_envoi = false
     render :action => :index
   end
 
@@ -62,7 +64,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
           nombre_i = nombre.to_i
           if nombre_i != 0
             # on a choisi des articles
-            if article_client = @client.article_clients.detect{|article_client| article_client.article == article}
+            if article_client = @client.article_clients.detect { |article_client| article_client.article == article }
               # on en avait déjà commandé
               if article_client.quantite != nombre_i
                 @client.prix += (nombre_i - article_client.quantite) * article_client.prix_unitaire
@@ -78,7 +80,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
               @client.article_clients << article_client
               @client.prix += nombre_i * article.prix
             end
-          elsif article_client = @client.article_clients.detect{|article_client| article_client.article == article}
+          elsif article_client = @client.article_clients.detect { |article_client| article_client.article == article }
             # on en avait commandé mais plus maintenant
             @client.prix -= article_client.quantite * article_client.prix_unitaire
             article_client.mark_for_destruction
@@ -104,6 +106,24 @@ class Admin::ClientsController < Admin::DefaultAdminController
   def index
     @clients = Client.paginate(:per_page => 50, :page => params[:page], :order => 'status desc, id', :include => [:article_clients => :article])
     @page_title = 'Liste des clients'
+    @mail_envoi = false
+    @new_client_button = true
+  end
+
+  def mail_envoi
+    @client = Client.find(params[:id])
+    if @client.date_envoi
+      redirect_to({:action => :show, :id => @client}, {:alert => 'La commande de ce client a déjà été envoyée'})
+    else
+      if request.post?
+        Notifier.send_confirmation_mail(params[:from], params[:to], params[:subject], params[:body_mail]).deliver
+        @client.date_envoi = DateTime.now
+        @client.save!
+        redirect_to({:action => :attente_envoi}, {:notice => 'Mail envoyé'})
+      else
+        @page_title = 'Envoi de mail de confirmation'
+      end
+    end
   end
 
   def new

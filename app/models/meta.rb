@@ -32,6 +32,10 @@ class Meta < ActiveRecord::Base
 
   CYBERPLUS_CERTIFICAT = 'cyberplus_certificat'
 
+  MAIL_CONFIRMATION_TITRE = 'mail_confirmation_titre'
+
+  MAIL_CONFIRMATION_CONTENU = 'mail_confirmation_contenu'
+
   def Meta.update_value name, value
     item = Meta[name]
     item.contenu = value

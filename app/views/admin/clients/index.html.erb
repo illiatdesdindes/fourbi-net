@@ -34,6 +34,9 @@
 
 <table class="sortable alternated">
   <thead>
+  <% if @mail_envoi %>
+    <th>Envoi mail</th>
+  <% end %>
   <th>Identifiant&nbsp;&nbsp;</th>
   <th>Commande&nbsp;&nbsp;</th>
   <th>Prix&nbsp;&nbsp;</th>
@@ -44,6 +47,9 @@
   <tbody>
   <% for client in @clients %>
     <tr>
+      <% if @mail_envoi %>
+        <td><%= link_to 'Envoyer', :action => :mail_envoi, :id => client %></td>
+      <% end %>
       <td><%= link_to_view client, nil, h(client.identifiant) %></td>
       <td><%= raw client.article_clients.collect { |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}" }.join(', ') %></td>
       <td><%= "#{number_to_currency client.prix}" %></td>

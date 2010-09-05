@@ -9,8 +9,7 @@
   <%= display_value_changed 'Prix', "#{number_to_currency @client.prix}", 'prix' %>
   <% bouton_paiement = (@client.status == Client::NOUVEAU) ? " #{button_to('Chèque reçu', {:action => :cheque_recu, :id => @client}, {:class => 'bouton', :confirm => 'En êtes vous certain ?'})}" : '' %>
   <%= display_value_changed 'Status', @client.status_lisible, 'status', bouton_paiement %>
-  <% bouton_envoi = (@client.status == Client::PAYE) ? " #{button_to('Commande envoyée', {:action => :commande_envoyee, :id => @client}, {:class => 'bouton', :confirm => 'En êtes vous certain ?'})}" : '' %>
-  <%= display_value_changed 'Envoi', @client.date_envoi ? I18n.localize(@client.date_envoi) : 'non', 'date_envoi', bouton_envoi %>
+  <%= display_value_changed 'Envoi', @client.date_envoi ? I18n.localize(@client.date_envoi) : 'non', 'date_envoi' %>
 </fieldset>
 <fieldset title="content">
   <legend>Commande</legend>
@@ -48,6 +47,9 @@
 <table class="barreBoutons">
   <tr>
     <td><%= link_to_edit @client %></td>
+    <% if (@client.status == Client::PAYE) && (!@client.date_envoi) %>
+      <td><%= link_to 'Mail de confirmation', :action => :mail_envoi, :id => @client %></td>
+    <% end %>
     <td><%= link_to 'Liste des clients', :action => :index %></td>
   </tr>
 </table>

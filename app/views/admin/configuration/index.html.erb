@@ -7,6 +7,16 @@
     </table>
   </fieldset>
   <fieldset>
+    <legend>Mail de confirmation d'envoi</legend>
+    <table>
+      <%= edit_value_table('Titre du mail de confirmation', email_field_tag(Meta::MAIL_CONFIRMATION_TITRE, Meta[Meta::MAIL_CONFIRMATION_TITRE].contenu)) %>
+    </table>
+    <fieldset>
+      <legend>Contenu</legend>
+      <%= text_area_tag Meta::MAIL_CONFIRMATION_CONTENU, Meta[Meta::MAIL_CONFIRMATION_CONTENU].contenu, :cols => 120, :rows =>20 %>
+    </fieldset>
+  </fieldset>
+  <fieldset>
     <legend>CGV</legend>
     <%= text_area_tag Meta::CGV, Meta[Meta::CGV].contenu, :cols => 120, :rows =>20 %>
   </fieldset>

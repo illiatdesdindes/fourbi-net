@@ -1,0 +1,19 @@
+<%= form_for :envoi, :url => {:action => :mail_envoi, :id => @client} do |f| %>
+
+  <table>
+    <%= edit_value_table('De', email_field_tag(:de, Meta[Meta::EMAIL_DESORDRE].contenu)) %>
+    <%= edit_value_table('À', email_field_tag(:a, @client.email)) %>
+    <%= edit_value_table('Titre', email_field_tag(:subject, Meta[Meta::MAIL_CONFIRMATION_TITRE].contenu)) %>
+  </table>
+
+  <fieldset>
+    <legend>Contenu</legend>
+    <%= text_area_tag :body_mail, Meta[Meta::MAIL_CONFIRMATION_CONTENU].contenu, :cols => 100, :rows =>20 %>
+  </fieldset>
+
+  <table class="barreBoutons">
+    <tr>
+      <td><%= f.submit 'Envoyer' %></td>
+    </tr>
+  </table>
+<% end %>
