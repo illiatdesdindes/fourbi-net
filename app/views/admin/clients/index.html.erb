@@ -58,8 +58,10 @@
 <br/>
 <%= pagine @clients %>
 
-<table class="barreBoutons">
-  <tr>
-    <td><%= link_to 'Nouveau client', :action => :new %></td>
-  </tr>
-</table>
+<% if @new_client_button %>
+  <table class="barreBoutons">
+    <tr>
+      <td><%= link_to 'Nouveau client', :action => :new %></td>
+    </tr>
+  </table>
+<% end %>

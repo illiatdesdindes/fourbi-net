@@ -8,18 +8,21 @@ class Admin::ClientsController < Admin::DefaultAdminController
     article_clients = ArticleClient.where(:article_id => article)
     @clients = article_clients.collect{|article_client| article_client.client}.find_all{|client| client.status != Client::SUPPRIME}
     @page_title = "Liste des clients ayant commandé \"#{article.nom}\""
+    @new_client_button = true
     render :action => :index
   end
 
   def attente_envoi
     @clients = Client.attente_envoi
     @page_title = 'Liste des clients en attente d\'envoi'
+    @new_client_button = false
     render :action => :index
   end
 
   def attente_paiement
     @clients = Client.attente_paiement.includes(:article_clients => :article)
     @page_title = 'Liste des clients en attente de paiement'
+    @new_client_button = false
     render :action => :index
   end
 
