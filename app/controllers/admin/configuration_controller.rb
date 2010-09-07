@@ -28,7 +28,9 @@ class Admin::ConfigurationController < Admin::DefaultAdminController
   private
 
   def update_meta key
-    Meta.update_value key, params[key]
+    unless params[key].blank?
+      Meta.update_value key, params[key]
+    end
   end
 
 end
