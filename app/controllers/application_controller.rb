@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  session_times_out_in 600, :after_timeout => :when_session_times_out
+
   protect_from_forgery
 
   after_filter :set_content_type
