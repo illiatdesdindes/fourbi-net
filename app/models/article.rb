@@ -31,8 +31,6 @@ class Article < ActiveRecord::Base
                                     :content_type => ['image/gif', 'image/jpeg', 'image/png', 'image/pjpeg',
                                                       'image/x-png']
 
-  validates_attachment_size :image, :less_than => 1000000
-
   belongs_to :serie
 
   attr_writer :disponible
