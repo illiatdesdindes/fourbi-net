@@ -4,6 +4,8 @@
   </div>
   <p><%= "Votre panier contient #{@panier.length} article(s), pour un total de #{number_to_currency(@panier.inject(0) { |total, article_id| total + @panier_contenu[article_id].prix })}" %></p>
 
+  <p>Si vous habitez à l'étranger, une surtaxe de 5€ par article vous sera imposée.</p>
+
   <p>Vous pouvez
     consulter <%= link_to 'ici', {:controller => 'public/index', :action => 'cgv'}, {:target => '_blank'} %> nos
     conditions générales de vente.</p>
