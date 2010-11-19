@@ -10,7 +10,7 @@
 
 <div id="at_bloc_centre">
   <div id="ac_image">
-    <% poup_up_script = javascript_pop_up(url_for({:action => :zoom_article, :id => @article}), "Zoom #{@article.nom}") %>
+    <% poup_up_script = javascript_pop_up(url_for({:action => :zoom_article, :id => @article}), "Zoom #{@article.nom.gsub("'", "\\'")}") %>
     <div><%= link_to image_tag(@article.image.url(:image_article), :alt => @article.nom), '#', {:title => 'Cliquez pour zoomer', :onclick => "#{poup_up_script} return false;"} %></div>
     <div><%= link_to "Voir une image plus grande#{@article.vues.empty? ? '' : ' et d\'autres vues'}", '#', {:onclick => "#{poup_up_script} return false;"} %></div>
   </div>
