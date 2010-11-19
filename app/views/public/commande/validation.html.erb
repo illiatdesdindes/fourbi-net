@@ -19,7 +19,7 @@
     <li><label>Adresse :</label> <%= @client.adresse %></li>
     <li><label>Code Postal :</label> <%= @client.code_postal %></li>
     <li><label>Ville :</label> <%= @client.ville %></li>
-    <li><label>Pays :</label> <%= @client.pays %></li>
+    <li><label>Pays :</label> <%= Countries::CODE_TO_NAME[@client.pays] %></li>
     <li><label>Email :</label> <%= @client.email %></li>
   </ul>
 </div>

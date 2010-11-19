@@ -4,7 +4,7 @@
   <%= display_value_changed 'Adresse', h(@client.adresse), 'adresse' %>
   <%= display_value_changed 'Code Postal', h(@client.code_postal), 'code_postal' %>
   <%= display_value_changed 'Ville', @client.ville, 'ville' %>
-  <%= display_value_changed 'Pays', @client.pays, 'pays' %>
+  <%= display_value_changed 'Pays', Countries::CODE_TO_NAME[@client.pays], 'pays' %>
   <%= display_value_changed 'Email', "<a href=\"mailto:#{h(@client.email)}\">#{h(@client.email)}</a>", 'email' %>
   <%= display_value_changed 'Prix', "#{number_to_currency @client.prix}", 'prix' %>
   <%= display_value_changed 'Frais de port', "#{number_to_currency @client.port}", 'port' %>
