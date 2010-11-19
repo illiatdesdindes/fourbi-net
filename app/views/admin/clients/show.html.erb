@@ -15,22 +15,9 @@
 <fieldset title="content">
   <legend>Commande</legend>
 
-  <% article_clients = @client.article_clients %>
-  <% article_clients.sort! do |a , b |
-    if a.article.serie.boutique != b.article.serie.boutique
-      a.article.serie.boutique <=> b.article.serie.boutique
-    elsif a.article.serie.numero != b.article.serie.numero
-      a.article.serie.numero <=> b.article.serie.numero
-    elsif a.article.numero != b.article.numero
-      a.article.numero <=> b.article.numero
-    else
-      0
-    end
-  end %>
-
   <table class="alternated">
-    <% for ac in article_clients %>
-      <tr><%= raw "<td>#{ac.quantite}</td><td>#{link_to_view(ac.article, 'admin/articles', h(ac.article.nom))}</td><td>#{link_to_view(ac.article.serie, 'admin/series', h(ac.article.serie.nom))}</td>" %></tr>
+    <% for ac in @client.article_clients %>
+      <tr><%= raw "<td>#{ac.quantite}</td><td>#{link_to_view(ac.article, 'admin/articles', h(ac.article.nom))}</td>" %></tr>
     <% end %>
   </table>
 </fieldset>
