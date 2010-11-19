@@ -20,7 +20,7 @@ class Public::CommandeController < Public::DefaultPublicController
         image_path = "#{Rails.public_path}/images"
 
         pdf.float do
-          pdf.image "#{image_path}/logo.jpg", :at => [0, 800], :position => :left, :vposition => :top, :scale => 1.25
+          pdf.image "#{image_path}/logo_nb.jpg", :at => [0, 800], :position => :left, :vposition => :top, :scale => 0.37
         end
 
         pdf.float do
@@ -50,7 +50,7 @@ class Public::CommandeController < Public::DefaultPublicController
         pdf.stroke_rectangle [270, 220], 250, 100
         pdf.text_box [client.identifiant, client.adresse, "#{client.code_postal} #{client.ville}", Countries::CODE_TO_NAME[client.pays], client.email].join("\n"), :at => [280, 210], :width => 230, :leading => 2
 
-        pdf.text_box 'Merci de libéller vos chèques à l’ordre de Philippe De Jonckheere et les adresser à Philippe De Jonckheere, 92, rue Charles Bassée, 94120 Fontenay-sous-Bois, France',
+        pdf.text_box 'Merci de libéller vos chèques à l\'ordre de Philippe De Jonckheere et les adresser à Philippe De Jonckheere, 92, rue Charles Bassée, 94120 Fontenay-sous-Bois, France',
                      :at => [250, 50], :width => 300
 
       end
