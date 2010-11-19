@@ -56,7 +56,7 @@ module Admin::DefaultAdminHelper
 
   def link_or_current name, options
     link_to_unless_current(name, options, {}) do
-      "#{name} &lt;"
+      "#{name} <"
     end
   end
 
