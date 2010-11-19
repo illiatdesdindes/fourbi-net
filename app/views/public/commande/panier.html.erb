@@ -14,8 +14,8 @@
 <% else %>
   <div id="panier_description">Ce que nous sommes<br/>parvenus à vous fourguer</div>
   <div id="panier_contenu">
-    <table id="panier_articles">
 
+    <table id="panier_articles">
       <% @panier.each do |article_id| %>
         <% article = @panier_contenu[article_id] %>
         <tr class="panier_article">
@@ -30,7 +30,6 @@
           </td>
         </tr>
       <% end %>
-
     </table>
 
     <table id="panier_boutons">
@@ -43,7 +42,7 @@
         </td>
         <td>
           <div id="panier_caisse">
-            <div id="panier_caisse_image"><%= link_to image_tag('caisse_enregistreuse.jpg', :width => '100'), {:action => :coordonnees}, {:title => 'Passer la commande'} %></div>
+            <div id="panier_caisse_image"><%= link_to image_tag('caisse_enregistreuse.gif', :width => '100'), {:action => :coordonnees}, {:title => 'Passer la commande'} %></div>
             <div><%= link_to 'Passer la commande', {:action => :coordonnees} %></div>
           </div>
         </td>
