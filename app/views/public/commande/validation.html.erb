@@ -30,6 +30,9 @@
       <% @client.article_clients.each do |article_client| %>
         <li><%= "#{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %></li>
       <% end %>
+      <% if @client.port != 0 %>
+          <li><%= "Frais de port : #{number_to_currency(@client.port)}" %></li>
+      <% end %>
     </ul>
   </div>
 

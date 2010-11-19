@@ -1,8 +1,8 @@
-# This file is auto-generated from the current state of the database. Instead 
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your 
+# Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818181232) do
+ActiveRecord::Schema.define(:version => 20101119150815) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20100818181232) do
     t.string   "cyberplus_result",              :limit => 2
     t.boolean  "cyberplus_verification_banque",               :default => false
     t.string   "methode_paiement",              :limit => 1
+    t.float    "port",                                        :default => 0.0,   :null => false
   end
 
   add_index "clients", ["date_envoi"], :name => "index_clients_on_date_envoi"

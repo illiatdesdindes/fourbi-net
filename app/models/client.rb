@@ -16,6 +16,7 @@
 #  identifiant                   :string(255)     not null
 #  methode_paiement              :string(1)
 #  pays                          :string(255)     not null
+#  port                          :float           default(0.0), not null
 #  prix                          :float           not null
 #  status                        :string(255)     not null
 #  ville                         :string(255)

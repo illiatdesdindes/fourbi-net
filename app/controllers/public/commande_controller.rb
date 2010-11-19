@@ -12,7 +12,6 @@ class Public::CommandeController < Public::DefaultPublicController
   def bon_de_commande
     if session[:client_id]
       client = Client.find(session[:client_id], :include => [:article_clients => :article])
-      montant = 10
 
       document = Prawn::Document.new(:page_size => "A4") do |pdf|
         pdf.font_size = 10
@@ -26,18 +25,21 @@ class Public::CommandeController < Public::DefaultPublicController
         pdf.float do
           pdf.image "#{image_path}/bulles/bulle003.jpg", :at => [300, 765], :width => 200
         end
-        pdf.text_box 'Bon de commande à imprimer ou à recopier', :at => [353, 700], :width => 90, :align => :center
+        pdf.text_box "Commande n°#{client.id} \n\n Bon de commande à imprimer ou à recopier", :at => [353, 710], :width => 90, :align => :center
 
         pdf.float do
           pdf.image "#{image_path}/bulles/bulle002.jpg", :at => [17, 630], :width => 150
         end
-        pdf.text_box "Nous avons retenu que vous souhaitiez les articles suivants pour un montant de: #{number_to_currency(montant)}", :at => [40, 600], :width => 110
+        pdf.text_box "Nous avons retenu que vous souhaitiez les articles suivants pour un montant de: #{number_to_currency(client.prix)}", :at => [40, 600], :width => 110
 
         pdf.line_width = 3
         pdf.stroke_rectangle [90, 510], 400, 260
 
         pdf.bounding_box([100, 500], :width => 250, :height => 350) do
           values = client.article_clients.collect { |client_article| [client_article.article.nom, number_to_currency(client_article.prix_unitaire)] }
+          if client.port != 0
+            values << ['Frais de port', number_to_currency(client.port)]
+          end
           pdf.table values, :cell_style => {:border_width => 0}
         end
 
@@ -101,9 +103,9 @@ class Public::CommandeController < Public::DefaultPublicController
           client.email = @coordonnees[:email]
           client.status= Client::NOUVEAU
           client.prix = 0
+          client.port = 0
 
           Client.transaction do
-
             session[:panier].inject(Hash.new { |hash, key| hash[key] = 0 }) do |memo, item|
               memo[item] += 1
               memo
@@ -116,7 +118,11 @@ class Public::CommandeController < Public::DefaultPublicController
               article_client.prix_unitaire = article.prix
               client.article_clients << article_client
               client.prix += quantite * article.prix
+              if client.pays != 'FR'
+                client.port += 5 * quantite
+              end
             end
+            client.prix += client.port
             if client.save
               session[:client_id] = client.id
               redirect_to :action => :validation
