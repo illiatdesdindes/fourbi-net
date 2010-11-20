@@ -116,7 +116,7 @@ class Admin::ClientsController < Admin::DefaultAdminController
       redirect_to({:action => :show, :id => @client}, {:alert => 'La commande de ce client a déjà été envoyée'})
     else
       if request.post?
-        Notifier.send_confirmation_mail(params[:from], params[:to], params[:subject], params[:body_mail]).deliver
+        MailHttp.send_mail(params[:from], params[:to], params[:subject], params[:body_mail])
         @client.date_envoi = DateTime.now
         @client.save!
         redirect_to({:action => :attente_envoi}, {:notice => 'Mail envoyé'})

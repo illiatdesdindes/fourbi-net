@@ -37,7 +37,7 @@ class Public::ContactController < Public::DefaultPublicController
         flash[:alert] = 'Pas d\'adresse mail de destination configurée'
         render :contact
       else
-        Notifier.send_contact_mail(@email, to, @message).deliver
+        MailHttp.send_mail(@email, to, 'Message de fourbi.net', @message)
         redirect_to({:controller => 'public/index', :action => :sommaire}, {:notice => 'Votre message a été envoyé !'})
       end
     else
