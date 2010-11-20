@@ -24,12 +24,16 @@
 
 <fieldset title="paiementEnLigne">
   <legend>Paiement en ligne</legend>
-  <%= display_value 'Numéro d\'autorisation', @client.cyberplus_auth_number %>
-  <%= display_value 'Résultat de l\'autorisation', @client.cyberplus_auth_result %>
-  <%= display_value 'Certificat de paiement', @client.cyberplus_payment_certificate %>
   <%= display_value 'Résultat', @client.cyberplus_result %>
+  <%= display_value 'Code supplémentaire', @client.cyberplus_extra_result %>
   <%= display_value 'Vérification banque', @client.cyberplus_verification_banque?.to_fs %>
 
+  <%= display_value 'Résultat de l\'autorisation', @client.cyberplus_auth_result %>
+  <%= display_value 'Demande d\'autorisation', @client.cyberplus_auth_mode %>
+  <%= display_value 'Numéro d\'autorisation', @client.cyberplus_auth_number %>
+  <%= display_value 'Numéro de carte', @client.cyberplus_card_number %>
+  <%= display_value 'Garantie du paiement', @client.cyberplus_warranty_result %>
+  <%= display_value 'Certificat de paiement', @client.cyberplus_payment_certificate %>
 </fieldset>
 
 <table class="barreBoutons">

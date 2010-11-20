@@ -182,11 +182,28 @@ class Public::CommandeController < Public::DefaultPublicController
     end
   end
 
+  def rappel_paiement
+    Cyberplus::verifier_params params
+
+    client = Client.find(params[:vads_order_id])
+    mettre_a_jour_commande_cyberplus client
+    client.cyberplus_verification_banque = true
+    client.methode_paiement = Client::PAIEMENT_EN_LIGNE
+
+    if params[:vads_result] == '00'
+      client.status = Client::PAYE
+    else
+      client.statut= Client::REFUSE
+    end
+    client.save!
+    render :text => "OK"
+  end
+
   def retour_paiement_echec
 
   end
 
-  def retour_paiement_success
+  def retour_paiement_succes
 
   end
 
@@ -216,10 +233,10 @@ class Public::CommandeController < Public::DefaultPublicController
     result[:cust_zip] = html_escape client.code_postal
     result[:cust_address] = html_escape client.adresse
     result[:order_id] = client.id
-    result[:order_info] = "Commande de #{client.article_clients.count} articles(s)"
+    result[:order_info] = "Commande de #{client.article_clients.inject(0){|n, ac| n + ac.quantite}} articles(s)"
     result[:cust_country] = client.pays
     result[:language] = 'fr'
-    result[:url_success] = url_for :controller => 'public/commande', :action => :retour_paiement_success, :protocol => 'http', :only_path => false
+    result[:url_success] = url_for :controller => 'public/commande', :action => :retour_paiement_succes, :protocol => 'http', :only_path => false
     result[:url_refused] = result[:url_referral] = result[:url_cancel] = result[:url_error] = url_for(:controller => 'public/commande', :action => :retour_paiement_echec, :protocol => 'http', :only_path => false)
     result[:ctx_mode] = :TEST
     result[:payment_config] = 'SINGLE'
@@ -228,5 +245,15 @@ class Public::CommandeController < Public::DefaultPublicController
     return result
   end
 
+  def mettre_a_jour_commande_cyberplus client
+    client.cyberplus_auth_result = params[:vads_auth_result]
+    client.cyberplus_auth_mode = params[:vads_auth_mode]
+    client.cyberplus_auth_number = params[:vads_auth_number]
+    client.cyberplus_card_number = params[:vads_card_number]
+    client.cyberplus_warranty_result = params[:vads_warranty_result]
+    client.cyberplus_payment_certificate = params[:vads_payment_certificate]
+    client.cyberplus_result = params[:vads_result]
+    client.cyberplus_extra_result = params[:vads_extra_result]
+  end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101119150815) do
+ActiveRecord::Schema.define(:version => 20101120162713) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -70,6 +70,10 @@ ActiveRecord::Schema.define(:version => 20101119150815) do
     t.boolean  "cyberplus_verification_banque",               :default => false
     t.string   "methode_paiement",              :limit => 1
     t.float    "port",                                        :default => 0.0,   :null => false
+    t.string   "cyberplus_auth_mode",           :limit => 10
+    t.string   "cyberplus_card_number",         :limit => 19
+    t.string   "cyberplus_extra_result",        :limit => 2
+    t.string   "cyberplus_warranty_result",     :limit => 20
   end
 
   add_index "clients", ["date_envoi"], :name => "index_clients_on_date_envoi"

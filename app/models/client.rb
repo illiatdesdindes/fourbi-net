@@ -5,11 +5,15 @@
 #  id                            :integer         not null, primary key
 #  adresse                       :text            not null
 #  code_postal                   :string(255)
+#  cyberplus_auth_mode           :string(10)
 #  cyberplus_auth_number         :string(6)
 #  cyberplus_auth_result         :string(2)
+#  cyberplus_card_number         :string(19)
+#  cyberplus_extra_result        :string(2)
 #  cyberplus_payment_certificate :string(40)
 #  cyberplus_result              :string(2)
 #  cyberplus_verification_banque :boolean
+#  cyberplus_warranty_result     :string(20)
 #  date_envoi                    :datetime
 #  date_paiement                 :datetime
 #  email                         :string(255)     not null
@@ -28,6 +32,8 @@ class Client < ActiveRecord::Base
 
   NOUVEAU = 'N'
 
+  REFUSE = 'R'
+
   PAIEMENT_EN_LIGNE = 'L'
 
   PAIEMENT_CHEQUE = 'C'
@@ -45,9 +51,24 @@ class Client < ActiveRecord::Base
   validates_length_of :pays, :is => 2, :allow_nil => false
   validates_numericality_of :prix, :only_integer => false, :allow_nil => false, :greater_than => 0
 
-  attr_protected :prix, :status, :commande_envoyee, :port
+  attr_protected :prix,
+                 :status,
+                 :commande_envoyee,
+                 :port,
+                 :date_envoi,
+                 :date_paiement,
+                 :methode_paiement,
+                 :cyberplus_auth_mode,
+                 :cyberplus_auth_number,
+                 :cyberplus_auth_result,
+                 :cyberplus_card_number,
+                 :cyberplus_extra_result,
+                 :cyberplus_payment_certificate,
+                 :cyberplus_result,
+                 :cyberplus_verification_banque,
+                 :cyberplus_warranty_result
 
-  scope :attente_paiement, where('status = ?', NOUVEAU).order('id asc').includes([:article_clients => :article])
+  scope :attente_paiement, where('status = ? or status = ?', NOUVEAU, REFUSE).order('id asc').includes([:article_clients => :article])
 
   scope :attente_envoi, where('status = ? and date_envoi is null', PAYE).order('id asc').includes([:article_clients => :article])
 
@@ -61,6 +82,8 @@ class Client < ActiveRecord::Base
         (methode_paiement == PAIEMENT_EN_LIGNE) ? "Payé en ligne le #{I18n.localize(date_paiement)}" : "Payé par chèque le #{I18n.localize(date_paiement)}"
       when ENVOYE
         'Envoyé'
+      when REFUSE
+        'Refusé'
       when SUPPRIME
         'Supprimé'
       else
@@ -93,7 +116,7 @@ class Client < ActiveRecord::Base
     unless [NOUVEAU, PAYE, ENVOYE, SUPPRIME].include? self.status
       errors.add(:status, 'Le statut est invalide')
     end
-    if PAYE == self.status && (! [PAIEMENT_EN_LIGNE, PAIEMENT_CHEQUE].include? self.methode_paiement)
+    if PAYE == self.status && (![PAIEMENT_EN_LIGNE, PAIEMENT_CHEQUE].include? self.methode_paiement)
       errors.add(:methode_paiement, 'La méthode de paiement est invalide')
     end
   end
