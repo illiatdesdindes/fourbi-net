@@ -22,7 +22,7 @@ a {
   opacity: 0.5;
   filter: alpha(opacity=50); }
 
-input {
+input[type="submit"] {
   cursor: pointer;
   background-color: white; }
 
