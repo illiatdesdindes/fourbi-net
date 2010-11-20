@@ -132,7 +132,7 @@ class Cyberplus
   def Cyberplus.verifier_params params
     keys = []
     params.each_key do |key|
-      if key.index('vads_') == 1
+      if key.index('vads_') == 0
         keys << key.to_s
       end
     end
@@ -140,7 +140,7 @@ class Cyberplus
 
     values = []
     keys.each do |key|
-      keys << result[key.to_sym]
+      values << params[key]
     end
 
     signature = Digest::SHA1.hexdigest("#{values.join('+')}+#{CYBERPLUS_CERTIFICAT}")
