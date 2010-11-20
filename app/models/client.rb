@@ -45,7 +45,7 @@ class Client < ActiveRecord::Base
   validates_length_of :pays, :is => 2, :allow_nil => false
   validates_numericality_of :prix, :only_integer => false, :allow_nil => false, :greater_than => 0
 
-  attr_protected :prix, :status, :commande_envoyee
+  attr_protected :prix, :status, :commande_envoyee, :port
 
   scope :attente_paiement, where('status = ?', NOUVEAU).order('id asc')
 
