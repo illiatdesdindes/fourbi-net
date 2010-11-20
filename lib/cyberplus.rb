@@ -6,7 +6,11 @@ require 'digest/sha1'
 
 class Cyberplus
 
-  CHAMPS_OBLIGATOIRES = [:amount, :ctx_mode, :payment_cards, :payment_config, :site_id, :trans_id, :validation_mode, :certificat, :trans_date]
+  Cyberplus::CYBERPLUS_SITE_ID = ENV['CYBERPLUS_SITE_ID']
+
+  Cyberplus::CYBERPLUS_CERTIFICAT = ENV['CYBERPLUS_CERTIFICAT']
+
+  CHAMPS_OBLIGATOIRES = [:amount, :ctx_mode, :payment_cards, :payment_config, :trans_id, :validation_mode, :trans_date]
 
   CHAMPS_FACULTATIFS_A_RECOPIER = [:cust_email, :cust_id, :cust_name, :cust_phone, :cust_title, :cust_city, :cust_zip, :cust_address, :language, :order_id, :order_info, :cust_country, :url_success, :url_referral, :url_refused, :url_cancel, :url_error, :url_return]
 
@@ -53,7 +57,18 @@ class Cyberplus
       end
     end
 
-    result[:site_id] = check_integer_and_length params, :site_id, 8
+
+    if CYBERPLUS_SITE_ID.nil?
+      raise 'CYBERPLUS_SITE_ID est vide'
+    elsif CYBERPLUS_SITE_ID.size != 8
+      raise 'CYBERPLUS_SITE_ID est invalide car il devrait avoir 8 caractères de long'
+    else
+      result[:site_id] = CYBERPLUS_SITE_ID
+    end
+
+    if CYBERPLUS_CERTIFICAT.nil?
+      raise 'CYBERPLUS_CERTIFICAT est vide'
+    end
 
     result[:trans_date] = params[:trans_date].strftime '%Y%m%d%H%M%S'
 
@@ -81,7 +96,7 @@ class Cyberplus
         raise "Cle non trouvée \"#{champ}\""
       end
     end
-    signature << "+#{params[:certificat]}"
+    signature << "+#{CYBERPLUS_CERTIFICAT}"
     result[:signature] = Digest::SHA1.hexdigest signature
 
     CHAMPS_FACULTATIFS_A_RECOPIER.each do |nom_champ|
@@ -114,7 +129,7 @@ class Cyberplus
     if params_resultat.has_key? :hash
       signature << "+#{params_resultat[:hash]}"
     end
-    signature << "+#{params_originaux[:certificat]}"
+    signature << "+#{CYBERPLUS_CERTIFICAT}"
 
     signature_calculee = Digest::SHA1.hexdigest signature
 

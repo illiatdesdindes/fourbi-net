@@ -28,10 +28,6 @@ class Meta < ActiveRecord::Base
 
   EMAIL_TERRIER = 'email_terrier'
 
-  CYBERPLUS_SITE_ID = 'cyberplus_site_id'
-
-  CYBERPLUS_CERTIFICAT = 'cyberplus_certificat'
-
   MAIL_CONFIRMATION_TITRE = 'mail_confirmation_titre'
 
   MAIL_CONFIRMATION_CONTENU = 'mail_confirmation_contenu'

@@ -224,8 +224,6 @@ class Public::CommandeController < Public::DefaultPublicController
     result[:ctx_mode] = :TEST
     result[:payment_config] = 'SINGLE'
     result[:validation_mode] = 0
-    result[:site_id] = Meta[Meta::CYBERPLUS_SITE_ID].contenu
-    result[:certificat] = Meta[Meta::CYBERPLUS_CERTIFICAT].contenu
     result[:payment_cards] = ''
     return result
   end
