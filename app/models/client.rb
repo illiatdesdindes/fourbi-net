@@ -47,9 +47,9 @@ class Client < ActiveRecord::Base
 
   attr_protected :prix, :status, :commande_envoyee, :port
 
-  scope :attente_paiement, where('status = ?', NOUVEAU).order('id asc')
+  scope :attente_paiement, where('status = ?', NOUVEAU).order('id asc').includes([:article_clients => :article])
 
-  scope :attente_envoi, where('status = ? and date_envoi is null', PAYE).order('id asc')
+  scope :attente_envoi, where('status = ? and date_envoi is null', PAYE).order('id asc').includes([:article_clients => :article])
 
   validate :validation
 
