@@ -1,0 +1,16 @@
+<div id="paiement_echec_logo">
+  <%= image_tag "bulles/bulle001.jpg" %>
+</div>
+<div id="paiement_echec_texte">
+  Quelque chose ne s'est pas bien passé, votre paiement en ligne est refusé, on le regrette beaucoup
+  ainsi nous vous proposons de faire cela à l'ancienne en nous envoyant un chèque accompagné du bon de commande suivant:
+  <br/>
+
+  <div id="paiement_echec_doc">
+    <%= link_to image_tag('doc.jpg'), {:controller => 'public/commande', :action => :bon_de_commande}, {:title => 'Bon de commande'} %>
+  </div>
+</div>
+
+<div id="paiement_echec_caisse">
+  <%= image_tag 'caisse_enregistreuse.gif' %>
+</div>

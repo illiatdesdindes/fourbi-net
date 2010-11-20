@@ -1,7 +1,8 @@
 class Public::RetourController < Public::DefaultPublicController
 
-  skip_before_filter :verify_authenticity_token
+  layout 'public-layout'
 
+  skip_before_filter :verify_authenticity_token
 
   def rappel
     Cyberplus::verifier_params params
@@ -21,11 +22,10 @@ class Public::RetourController < Public::DefaultPublicController
   end
 
   def paiement_echec
-
   end
 
   def paiement_succes
-
+  reset_session
   end
 
   private
