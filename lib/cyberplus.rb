@@ -107,7 +107,7 @@ class Cyberplus
       end
     end
 
-    result[:vads_return_mode] = 'POST'
+    result[:vads_return_mode] = 'NONE'
     result[:vads_action_mode] = 'INTERACTIVE'
     result[:vads_page_action] = 'PAYMENT'
     result[:vads_version] = 'V2'
