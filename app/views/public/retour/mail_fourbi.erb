@@ -4,7 +4,7 @@ le paiement d'une commande vient d'être effectué :
 
 Contenu de la commande :
 
-<%= articles_desordre = []
+<% articles_desordre = []
     articles_terrier = []
     @client.article_clients.each do |article_client|
         ((article_client.article.serie.boutique == Boutique::NOM_DESORDRE) ? articles_desordre : articles_terrier) << article_client
@@ -43,4 +43,4 @@ Ville : <%= @client.ville %>
 Pays : <%= Countries::CODE_TO_NAME[@client.pays] %>
 Email : <%= @client.email %>
 
-La commande est accessible à <%= url_for :controller => 'admin/clients', :action => :show, :id => @client %>
+La commande est accessible à <%= url_for :controller => 'admin/clients', :action => :show, :id => @client, :only_path => false %>
