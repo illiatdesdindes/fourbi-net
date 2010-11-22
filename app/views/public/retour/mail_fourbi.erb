@@ -7,32 +7,31 @@ Contenu de la commande :
 <% articles_desordre = []
     articles_terrier = []
     @client.article_clients.each do |article_client|
-        ((article_client.article.serie.boutique == Boutique::NOM_DESORDRE) ? articles_desordre : articles_terrier) << article_client
+        ((article_client.article.serie.boutique.nom == Boutique::NOM_DESORDRE) ? articles_desordre : articles_terrier) << article_client
     end
 %>
 
 Désordre:
 <% if articles_desordre.empty? %>
-    rien
+rien
 <% else %>
-    <% articles_desordre.each do |article_client| %>
-        <%= "-  #{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %>
-    <% end %>
+<% articles_desordre.each do |article_client| %>
+<%= "-  #{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %>
+<% end %>
 <% end %>
 
 Terrier:
 <% if articles_terrier.empty? %>
-    rien
+rien
 <% else %>
-    <% articles_terrier.each do |article_client| %>
-        <%= "-  #{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %>
-    <% end %>
+<% articles_terrier.each do |article_client| %>
+<%= "-  #{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %>
+<% end %>
 <% end %>
 
 <% if @client.port != 0 %>
-    <%= "Frais de port : #{number_to_currency(@client.port)}" %>
+<%= "Frais de port : #{number_to_currency(@client.port)}\n" %>
 <% end %>
-
 Total : <%= number_to_currency(@client.prix) %>
 
 Coordonnées du client:
