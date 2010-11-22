@@ -32,6 +32,8 @@ class Meta < ActiveRecord::Base
 
   MAIL_CONFIRMATION_CONTENU = 'mail_confirmation_contenu'
 
+  EMAIL_CONTACT = 'email_contact'
+
   def Meta.update_value name, value
     item = Meta[name]
     item.contenu = value

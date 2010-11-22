@@ -1,0 +1,46 @@
+Bonjour,
+
+le paiement d'une commande vient d'être effectué :
+
+Contenu de la commande :
+
+<%= articles_desordre = []
+    articles_terrier = []
+    @client.article_clients.each do |article_client|
+        ((article_client.article.serie.boutique == Boutique::NOM_DESORDRE) ? articles_desordre : articles_terrier) << article_client
+    end
+%>
+
+Désordre:
+<% if articles_desordre.empty? %>
+    rien
+<% else %>
+    <% articles_desordre.each do |article_client| %>
+        <%= "-  #{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %>
+    <% end %>
+<% end %>
+
+Terrier:
+<% if articles_terrier.empty? %>
+    rien
+<% else %>
+    <% articles_terrier.each do |article_client| %>
+        <%= "-  #{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %>
+    <% end %>
+<% end %>
+
+<% if @client.port != 0 %>
+    <%= "Frais de port : #{number_to_currency(@client.port)}" %>
+<% end %>
+
+Total : <%= number_to_currency(@client.prix) %>
+
+Coordonnées du client:
+Nom : <%= @client.identifiant %>
+Adresse : <%= @client.adresse %>
+Code Postal : <%= @client.code_postal %>
+Ville : <%= @client.ville %>
+Pays : <%= Countries::CODE_TO_NAME[@client.pays] %>
+Email : <%= @client.email %>
+
+La commande est accessible à <%= url_for :controller => 'admin/clients', :action => :show, :id => @client %>

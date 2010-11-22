@@ -1,0 +1,25 @@
+Bonjour,
+
+   nous avons bien reçu votre commande, nous la traiterons dès que possible et vous recevrez un mail lors de son envoi.
+
+Contenu de la commande :
+<% @client.article_clients.each do |article_client| %>
+  <%= "-  #{article_client.quantite} #{article_client.article.nom} (#{number_to_currency(article_client.prix_unitaire)}) : #{number_to_currency(article_client.prix_unitaire * article_client.quantite)}" %>
+<% end %>
+<% if @client.port != 0 %>
+ <%= "- Frais de port : #{number_to_currency(@client.port)}" %>
+<% end %>
+
+Total : <%= number_to_currency(@client.prix) %>
+
+Vos coordonnées:
+Nom : <%= @client.identifiant %>
+Adresse : <%= @client.adresse %>
+Code Postal : <%= @client.code_postal %>
+Ville : <%= @client.ville %>
+Pays : <%= Countries::CODE_TO_NAME[@client.pays] %>
+Email : <%= @client.email %>
+
+Pour nous contacter vous pouvez répondre à ce mail ou nous écrire à <%= Meta[Meta::EMAIL_CONTACT].contenu %>
+
+Merci

@@ -2,8 +2,9 @@
   <fieldset>
     <legend>Email</legend>
     <table>
-      <%= edit_value_table('Email du desordre', email_field_tag(Meta::EMAIL_DESORDRE, Meta[Meta::EMAIL_DESORDRE].contenu)) %>
+      <%= edit_value_table('Email du désordre', email_field_tag(Meta::EMAIL_DESORDRE, Meta[Meta::EMAIL_DESORDRE].contenu)) %>
       <%= edit_value_table('Email du terrier', email_field_tag(Meta::EMAIL_TERRIER, Meta[Meta::EMAIL_TERRIER].contenu)) %>
+      <%= edit_value_table('Email de contact', email_field_tag(Meta::EMAIL_CONTACT, Meta[Meta::EMAIL_CONTACT].contenu)) %>
     </table>
   </fieldset>
   <fieldset>

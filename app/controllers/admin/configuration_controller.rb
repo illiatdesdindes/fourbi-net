@@ -8,6 +8,7 @@ class Admin::ConfigurationController < Admin::DefaultAdminController
     if request.post?
       update_meta Meta::EMAIL_DESORDRE
       update_meta Meta::EMAIL_TERRIER
+      update_meta Meta::EMAIL_CONTACT
       update_meta Meta::CGV
       update_meta Meta::MAIL_CONFIRMATION_TITRE
       update_meta Meta::MAIL_CONFIRMATION_CONTENU
