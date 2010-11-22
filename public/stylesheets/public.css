@@ -676,6 +676,21 @@ input[type="submit"] {
   padding-top: 10px;
   text-align: justify; }
 
+.ac_nom_boutique {
+  font-weight: bold;
+  font-size: 14px;
+  width: 200px; }
+  .ac_nom_boutique a:hover {
+    text-decoration: underline; }
+
+.ac_liste_series a {
+  font-weight: normal; }
+.ac_liste_series a:hover {
+  text-decoration: underline; }
+.ac_liste_series li {
+  font-size: 10px;
+  list-style: none; }
+
 #bd_bulle {
   position: absolute;
   top: 75px;
@@ -1074,101 +1089,6 @@ input[type="submit"] {
     font-weight: normal; }
   .bc_liste_series a:hover {
     text-decoration: underline; }
-
-#sd_bulle_desordre {
-  position: absolute;
-  top: 95px;
-  left: 415px; }
-
-#sd_bloc_centre {
-  position: absolute;
-  top: 180px;
-  left: 220px;
-  border-collapse: collapse;
-  overflow: hidden;
-  width: 630px; }
-
-.sd_bloc_images {
-  border-collapse: collapse; }
-  .sd_bloc_images td {
-    background-image: url("/images/cadres/desordre_petit.gif");
-    background-repeat: no-repeat;
-    min-width: 64px;
-    padding-left: 6px;
-    padding-right: 20px;
-    padding-bottom: 8px;
-    vertical-align: middle;
-    text-align: center;
-    height: 85px; }
-    .sd_bloc_images td img {
-      max-height: 42px;
-      max-width: 64px; }
-
-#st_bulle_terrier {
-  position: absolute;
-  top: 75px;
-  left: 365px; }
-
-#st_bloc_centre {
-  position: absolute;
-  top: 180px;
-  left: 220px;
-  border-collapse: collapse;
-  overflow: hidden;
-  width: 651px; }
-
-.st_bloc_images {
-  border-collapse: collapse; }
-  .st_bloc_images td {
-    background-image: url("/images/cadres/terrier_petit.gif");
-    background-repeat: no-repeat;
-    min-width: 62px;
-    padding-left: 9px;
-    padding-right: 22px;
-    padding-bottom: 8px;
-    vertical-align: middle;
-    text-align: center;
-    height: 108px; }
-    .st_bloc_images td img {
-      max-height: 79px;
-      max-width: 62px; }
-
-#sc_descriptif_serie {
-  position: absolute;
-  top: 180px;
-  left: 20px; }
-
-.sc_titre_serie {
-  font-weight: bold;
-  font-size: 14px;
-  width: 200px;
-  padding-bottom: 0px; }
-
-.sc_descriptif {
-  font-size: 10px;
-  width: 200px;
-  padding-bottom: 20px; }
-
-.sc_nom_boutique {
-  font-weight: bold;
-  font-size: 14px;
-  width: 200px; }
-  .sc_nom_boutique a:hover {
-    text-decoration: underline; }
-
-.sc_liste_series a {
-  font-weight: normal; }
-.sc_liste_series a:hover {
-  text-decoration: underline; }
-.sc_liste_series li {
-  font-size: 10px;
-  list-style: none; }
-
-td.sc_left {
-  background-image: none; }
-
-td.sc_right {
-  background-image: none; }
 
 #zd_scroll_content {
   margin-top: 20px;

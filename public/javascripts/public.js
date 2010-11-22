@@ -32,10 +32,3 @@ function updateScrollArticles() {
     $("#ac_scroll_droite").fadeTo(200, (scrollPosition == $.scrollTo.max($(".ac_scroll_content")[0], "x")) ? 0.5 : 1);
     $("#ac_scroll_gauche").fadeTo(200, (scrollPosition == 0) ? 0.5 : 1);
 }
-
-function serieScrollLeft() {
-    $(".sc_bloc_centre").scrollTo("-=" + ($($(".sc_bloc_images")[0]).outerWidth()), 2000);
-}
-function serieScrollRight() {
-    $(".sc_bloc_centre").scrollTo("+=" + ($($(".sc_bloc_images")[0]).outerWidth()), 2000);
-}
