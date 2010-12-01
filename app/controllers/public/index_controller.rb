@@ -2,6 +2,10 @@ class Public::IndexController < Public::DefaultPublicController
 
   layout 'public-layout'
 
+  def aide
+    
+  end
+
   def cgv
 
   end

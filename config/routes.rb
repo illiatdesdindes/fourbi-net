@@ -125,6 +125,7 @@ Fourbi::Application.routes.draw do
   match 'contact' => 'public/contact#index'
 
   match 'cgv' => 'public/index#cgv'
+  match 'aide' => 'public/index#aide'
 
   root :to => 'public/index#sommaire'
 
