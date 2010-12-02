@@ -26,14 +26,11 @@
   top = !sommaire_cadre_desordre_hauteur + !hauteur_bord_haut_cadre_desordre_moyen
   height = !hauteur_image_visible_cadre_desordre_moyen
   width = !largeur_image_visible_cadre_desordre_moyen
-  display: table
   div
     text-align: center
-    display: table-cell
-    vertical-align: middle
-    img
       max-height = !hauteur_image_visible_cadre_desordre_moyen
       max-width = !largeur_image_visible_cadre_desordre_moyen
+      width: expression(this.width > 98 ? 98: true)
 
 !sommaire_desordre_decalage_cadre = 120px
 !sommaire_desordre_cadre_0 = 269px
@@ -83,16 +80,14 @@
 .s_image_terrier
   position: absolute
   top = !sommaire_cadre_terrier_hauteur + !hauteur_bord_haut_cadre_terrier_moyen
-  display: table
   height = !hauteur_image_visible_cadre_terrier_moyen
   width = !largeur_image_visible_cadre_terrier_moyen
   div
     text-align: center
-    display: table-cell
-    vertical-align: middle
     img
       max-height = !hauteur_image_visible_cadre_terrier_moyen
       max-width = !largeur_image_visible_cadre_terrier_moyen
+      width: expression(this.width > 98 ? 98: true)
 
 !sommaire_terrier_decalage_cadre = 140px
 !sommaire_terrier_cadre_0 = 279px

@@ -22,6 +22,9 @@ a {
   opacity: 0.5;
   filter: alpha(opacity=50); }
 
+input {
+  background-color: white; }
+
 input[type="submit"] {
   cursor: pointer;
   background-color: white; }
@@ -110,15 +113,12 @@ input[type="submit"] {
   position: absolute;
   top: 213px;
   height: 58px;
-  width: 90px;
-  display: table; }
+  width: 90px; }
   .s_image_desordre div {
     text-align: center;
-    display: table-cell;
-    vertical-align: middle; }
-    .s_image_desordre div img {
-      max-height: 58px;
-      max-width: 90px; }
+      text-align-max-height: 58px;
+      text-align-max-width: 90px;
+      text-align-width: expression(this.width > 98 ? 98: true); }
 
 #s_cadre_desordre_0 {
   left: 269px; }
@@ -162,16 +162,14 @@ input[type="submit"] {
 .s_image_terrier {
   position: absolute;
   top: 428px;
-  display: table;
   height: 128px;
   width: 98px; }
   .s_image_terrier div {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle; }
+    text-align: center; }
     .s_image_terrier div img {
       max-height: 128px;
-      max-width: 98px; }
+      max-width: 98px;
+      width: expression(this.width > 98 ? 98: true); }
 
 #s_cadre_terrier_0 {
   left: 279px; }
@@ -341,7 +339,9 @@ p {
 
 .panier_article_image {
   max-width: 100px;
-  max-height: 100px; }
+  max-height: 100px;
+  width: expression(this.width > 100 ? 100: true);
+  height: expression(this.height > 100 ? 100: true); }
 
 .panier_article_description {
   padding-left: 20px;
@@ -352,7 +352,7 @@ p {
     text-decoration: underline; }
 
 #panier_boutons {
-  width: 100%;
+  width: 600px;
   font-size: 12px; }
   #panier_boutons a {
     font-weight: normal; }

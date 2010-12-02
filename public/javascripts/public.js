@@ -1,4 +1,21 @@
+(function ($) {
+    // VERTICALLY ALIGN FUNCTION
+    $.fn.vAlign = function() {
+        return this.each(function(i) {
+            var ah = $(this).height();
+
+            // safari
+            if (ah != 0) {
+                var ph = $(this).parent().parent().height();
+                var mh = (ph - ah) / 2;
+                $(this).parent().css('margin-top', mh);
+            }
+        });
+    };
+})(jQuery);
+
 $(function() {
+    $(".s_image_terrier img, .s_image_desordre img").vAlign();
     centerImages();
     $("#ac_image").load(function() {
         centerImages()
@@ -7,6 +24,10 @@ $(function() {
         $(".ac_scroll_content").scrollTo($("#ad_scroll_content .current"));
         updateScrollArticles();
     }
+});
+
+jQuery(window).load(function() {
+    $(".s_image_terrier img, .s_image_desordre img").vAlign();
 });
 
 function centerImages() {
