@@ -26,10 +26,6 @@ $(function() {
     }
 });
 
-jQuery(window).load(function() {
-    $(".s_image_terrier img, .s_image_desordre img").vAlign();
-});
-
 function centerImages() {
     if ($("#ac_image").width() > $("#ac_predelle").width()) {
         $("#ac_predelle").css("padding-left", "" + (($("#article_image").width() - $("#ac_predelle").width()) / 2) + "px");

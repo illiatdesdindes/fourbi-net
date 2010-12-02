@@ -113,12 +113,16 @@ input[type="submit"] {
   position: absolute;
   top: 213px;
   height: 58px;
-  width: 90px; }
+  width: 90px;
+  display: table; }
   .s_image_desordre div {
     text-align: center;
-      text-align-max-height: 58px;
-      text-align-max-width: 90px;
-      text-align-width: expression(this.width > 98 ? 98: true); }
+    display: table-cell;
+    vertical-align: middle; }
+    .s_image_desordre div img {
+      max-height: 58px;
+      max-width: 90px;
+      width: expression(this.width > 98 ? 98: true); }
 
 #s_cadre_desordre_0 {
   left: 269px; }
@@ -162,10 +166,13 @@ input[type="submit"] {
 .s_image_terrier {
   position: absolute;
   top: 428px;
+  display: table;
   height: 128px;
   width: 98px; }
   .s_image_terrier div {
-    text-align: center; }
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle; }
     .s_image_terrier div img {
       max-height: 128px;
       max-width: 98px;
