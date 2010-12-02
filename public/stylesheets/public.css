@@ -567,6 +567,7 @@ p {
       background-image: url("/images/cadres/desordre_petit.gif");
       background-repeat: no-repeat;
       min-width: 64px;
+      width: 64px;
       padding-left: 6px;
       padding-right: 6px;
       padding-top: 5px;
@@ -625,6 +626,7 @@ p {
       background-image: url("/images/cadres/terrier_petit.gif");
       background-repeat: no-repeat;
       min-width: 62px;
+      width: 62px;
       padding-left: 9px;
       padding-right: 8px;
       padding-top: 4px;
