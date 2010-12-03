@@ -26,3 +26,8 @@ function mettreAJourPrix() {
     });
     $("#prixAffiche").html(prix);
 }
+
+function envoiSimple() {
+    $("#envoi_simple").val(1);
+    $("form").submit();
+}
