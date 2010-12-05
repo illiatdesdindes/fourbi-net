@@ -8,7 +8,7 @@ class Public::DefaultBoutiqueController < Public::DefaultPublicController
   def zoom_article
     @article = Article.find(params[:id])
     @image = @article.image.url
-    @page_title = "fourbi.net: #{@article.nom}"
+    @page_title = "fourbi.net: #{@article.nom}, cliquez sur l'image pour la déplacer"
     @articles_serie = @article.serie.articles
     @no_layout = true
   end
