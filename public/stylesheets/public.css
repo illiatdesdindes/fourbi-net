@@ -210,6 +210,8 @@ input[type="submit"] {
   font-size: 12px; }
   #aide_contenu img {
     border: 1px solid black; }
+  #aide_contenu a:hover {
+    text-decoration: underline; }
 
 #aide_logo img {
   border: 0; }
