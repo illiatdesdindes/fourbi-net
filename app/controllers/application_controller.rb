@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  session_times_out_in 600, :after_timeout => :when_session_times_out
+  session_times_out_in 10.minutes, :after_timeout => :when_session_times_out
 
   protect_from_forgery
 
@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
     if (response.content_type == 'text/html') && request.accepts.include?('application/xml')
       response.content_type = 'application/xhtml+xml'
     end
+  end
+
+  private
+
+  def when_session_times_out
+    flash[:alert] = 'Votre session a été déconnectée'
   end
 
 end
