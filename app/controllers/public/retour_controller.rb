@@ -1,6 +1,6 @@
 class Public::RetourController < Public::DefaultPublicController
 
-  layout 'public-layout'
+  layout 'public-layout', :except => :vider_session
 
   skip_before_filter :verify_authenticity_token
 
@@ -24,6 +24,11 @@ class Public::RetourController < Public::DefaultPublicController
   end
 
   def paiement_succes
+    reset_session
+  end
+
+  def vider_session
+    render :text => 'OK', :content_type => 'text/plain'
   end
 
   private

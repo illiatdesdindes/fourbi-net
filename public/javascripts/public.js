@@ -136,3 +136,9 @@ function dragged(e) {
     cursorPositionY = e.screenY;
     window.scrollBy(deltaX, deltaY);
 }
+
+function closeSession() {
+    $.get("/vider_session", function() {
+        window.location("/");
+    })
+}

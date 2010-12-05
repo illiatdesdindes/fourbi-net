@@ -118,6 +118,7 @@ Fourbi::Application.routes.draw do
 
   match 'paiement_echec' => 'public/retour#paiement_echec'
   match 'paiement_succes' => 'public/retour#paiement_succes'
+  match 'vider_session' => 'public/retour#vider_session'
   match 'rappel' => 'public/retour#rappel'
 
   match 'contact/desordre' => 'public/contact#desordre'
