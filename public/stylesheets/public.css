@@ -721,7 +721,8 @@ p {
   text-decoration: underline; }
 .ac_liste_series li {
   font-size: 10px;
-  list-style: none; }
+  list-style: none;
+  line-height: 14px; }
 
 #bd_bulle {
   position: absolute;
