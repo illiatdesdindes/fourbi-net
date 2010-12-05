@@ -43,21 +43,8 @@
 
 #paiement_succes_bulle_terrier {
   position: absolute;
-  top: 115px;
+  top: 135px;
   left: 160px; }
-
-#paiement_succes_texte_terrier {
-  position: absolute;
-  top: 140px;
-  left: 175px;
-  font-size: 36px; }
-
-#paiement_succes_texte_desordre {
-  position: absolute;
-  top: 155px;
-  left: 455px;
-  font-style: italic;
-  font-size: 20px; }
 
 #paiement_succes_texte {
   position: absolute;
