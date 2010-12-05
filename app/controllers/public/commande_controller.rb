@@ -63,7 +63,7 @@ class Public::CommandeController < Public::DefaultPublicController
   end
 
   def coordonnees
-    if session[:panier]
+    if session[:panier] && (!session[:panier].empty?)
       @page_title = 'fourbi.net: vos coordonnées'
       @coordonnees = {}
       if request.post?
