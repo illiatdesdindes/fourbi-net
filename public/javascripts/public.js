@@ -20,7 +20,7 @@ $(function() {
     $("#ac_image").load(function() {
         centerImages()
     });
-    if ($('.ac_scroll_content').size() != 0) {
+    if (($('.ac_scroll_content').size() != 0) && ($("#ad_scroll_content .current").size() != 0)) {
         $(".ac_scroll_content").scrollTo($("#ad_scroll_content .current"));
         updateScrollArticles();
     }

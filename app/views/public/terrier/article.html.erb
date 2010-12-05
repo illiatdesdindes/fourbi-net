@@ -25,7 +25,7 @@
             <tbody>
             <tr>
               <% for article in @articles_serie %>
-                <td><%= link_to image_tag(article.image.url(:terrier_petit)), {:action => :article, :id => article}, {:title => article.nom} %></td>
+                <td><%= link_to image_tag(article.image.url(:terrier_petit)), {:action => :article, :id => article}, {:title => article.nom, :class => ((article == @article) ? 'current' : '')} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
                 <td class="grise"></td>
