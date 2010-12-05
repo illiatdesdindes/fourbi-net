@@ -49,11 +49,14 @@ class ArticleClient < ActiveRecord::Base
   end
 
   def update_article delta
-    if delta < 0 && article.nombre_restant == 0
-      raise 'Plus d\'exemplaire de l\'article restant, impossible de le réserver'
-    elsif article.nombre_restant != -1
-      article.nombre_restant += article.nombre_restant
-      article.save!
+    if article.nombre_restant != -1
+      if (delta > 0) && (article.nombre_restant < delta)
+        client.errors.add('prix', "Il manque #{delta - article.nombre_restant} exemplaire(s) de #{article.nom} en stock pour pouvoir valider votre commande, merci d'en supprimer")
+        false
+      else
+        article.nombre_restant -= delta
+        article.save!
+      end
     end
   end
 

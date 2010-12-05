@@ -44,7 +44,7 @@ class Client < ActiveRecord::Base
 
   ENVOYE = 'E'
 
-  has_many :article_clients, :autosave => true
+  has_many :article_clients, :autosave => true, :dependent => :destroy
   has_many :articles, :through => :article_clients
 
   validates_presence_of :adresse, :code_postal, :ville, :status, :identifiant, :email
@@ -71,6 +71,8 @@ class Client < ActiveRecord::Base
   scope :attente_paiement, where('status = ? or status = ?', NOUVEAU, REFUSE).order('id asc').includes([:article_clients => :article])
 
   scope :attente_envoi, where('status = ? and date_envoi is null', PAYE).order('id asc').includes([:article_clients => :article])
+
+  scope :old, where('(status = ? or status = ?) and extract(epoch from (NOW() - updated_at)) > 1814400', NOUVEAU, REFUSE).order('id asc').includes([:article_clients => :article])
 
   validate :validation
 

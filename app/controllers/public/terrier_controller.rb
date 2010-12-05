@@ -3,6 +3,7 @@ class Public::TerrierController < Public::DefaultBoutiqueController
   layout 'public-layout'
 
   def article
+    @panier = session[:panier] || []
     @article = Article.find(params[:id])
     @page_title = "fourbi.net: #{@article.nom}"
     @custom_javascript = 'var numberArticlesPerPage = 7;'

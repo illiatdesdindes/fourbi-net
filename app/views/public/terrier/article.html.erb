@@ -18,29 +18,29 @@
   <table id="ac_predelle">
     <tbody>
     <tr>
-      <td><%= link_to image_tag('mains/gauche.gif', :id => 'ac_scroll_gauche'), '#', {:onclick  => 'articleScrollLeft(); return false;', :title => 'Se déplacer vers la gauche'} %></td>
+      <td><%= link_to image_tag('mains/gauche.gif', :id => 'ac_scroll_gauche'), '#', {:onclick => 'articleScrollLeft(); return false;', :title => 'Se déplacer vers la gauche'} %></td>
       <td colspan="5">
-        <div id="at_scroll_content" class="ac_scroll_content" >
+        <div id="at_scroll_content" class="ac_scroll_content">
           <table>
             <tbody>
             <tr>
               <% for article in @articles_serie %>
-                <td><%= link_to image_tag(article.image.url(:terrier_petit)), {:action => :article, :id => article}, {:title => article.nom, :class => ((article == @article) ? 'current' : '')} %></td>
+                  <td><%= link_to image_tag(article.image.url(:terrier_petit)), {:action => :article, :id => article}, {:title => article.nom, :class => ((article == @article) ? 'current' : '')} %></td>
               <% end %>
               <% (@article.serie.articles.length..7).each do %>
-                <td class="grise"></td>
+                  <td class="grise"></td>
               <% end %>
             </tr>
             </tbody>
           </table>
         </div>
       </td>
-      <td><%= link_to image_tag('mains/droite.gif', :id => 'ac_scroll_droite', :class => ((@article.serie.articles.length <= 7) ? 'grise' : '')), '#', {:onclick  => 'articleScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
+      <td><%= link_to image_tag('mains/droite.gif', :id => 'ac_scroll_droite', :class => ((@article.serie.articles.length <= 7) ? 'grise' : '')), '#', {:onclick => 'articleScrollRight(); return false;', :title => 'Se déplacer vers la droite'} %></td>
     </tr>
     </tbody>
   </table>
   <% unless @article.description_longue.blank? %>
-    <div id="at_description_longue" class="ac_description_longue"><%= raw @article.description_longue %></div>
+      <div id="at_description_longue" class="ac_description_longue"><%= raw @article.description_longue %></div>
   <% end %>
 </div>
 
@@ -48,10 +48,15 @@
   <div id="ac_nom_article"><%= raw @article.nom %></div>
   <div id="ac_description_article"><%= raw @article.description_courte %></div>
   <div id="ac_prix_article"><%= number_to_currency @article.prix %></div>
-  <div id="ac_ajouter_panier">
-    <%= form_tag url_for({:controller => 'public/commande', :action => :panier, :add => @article.id}), :method => :post do %>
-      <%= image_submit_tag 'panier.jpg', :title => 'Ajouter cet article à votre panier' %>
-      <%= submit_tag 'Choisir cet article' %>
-    <% end %>
-  </div>
+
+  <% if ((@article.nombre_restant == -1) || (@article.nombre_restant > @panier.find_all { |i| i == @article.id }.length)) %>
+      <div id="ac_ajouter_panier">
+        <%= form_tag url_for({:controller => 'public/commande', :action => :panier, :add => @article.id}), :method => :post do %>
+            <%= image_submit_tag 'panier.jpg', :title => 'Ajouter cet article à votre panier' %>
+            <%= submit_tag 'Choisir cet article' %>
+        <% end %>
+      </div>
+  <% else %>
+      <div id="ac_no_stock">Plus d'exemplaire en stock</div>
+  <% end %>
 </div>

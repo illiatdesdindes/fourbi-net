@@ -28,10 +28,11 @@ class Admin::SessionsController < Admin::DefaultAdminController
       user = Utilisateur.authenticate(params[:login], params[:mot_de_passe])
       if user
         cleanup_sessions
+        cleanup_clients
         session[:id_user] = user.id
         uri = session[:original_uri]
         session[:original_uri] = nil
-        redirect_to(uri || { :controller => 'admin/index'})
+        redirect_to(uri || {:controller => 'admin/index'})
       else
         flash[:alert] = 'Login / Mot de passe invalide'
       end
@@ -40,14 +41,18 @@ class Admin::SessionsController < Admin::DefaultAdminController
 
   def logout
     session[:id_user] = nil
-    flash[:notice] = 'D&eacute;connect&eacute;'
+    flash[:notice] = 'Déconnecté'
     redirect_to :action => :index
   end
 
   private
 
   def cleanup_sessions
-    # ActiveRecord::Base.connection.execute('DELETE FROM sessions WHERE extract(epoch from (NOW() - updated_at)) > 3600' )
+    ActiveRecord::Base.connection.execute('DELETE FROM sessions WHERE extract(epoch from (NOW() - updated_at)) > 3600')
+  end
+
+  def cleanup_clients
+    Client.old.destroy_all
   end
 
 
