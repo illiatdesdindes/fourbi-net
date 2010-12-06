@@ -203,10 +203,10 @@ class Public::CommandeController < Public::DefaultPublicController
 
     result[:cust_email] = client.email
     result[:cust_id] = client.id
-    result[:cust_name] = html_escape client.identifiant
-    result[:cust_city] = html_escape client.ville
-    result[:cust_zip] = html_escape client.code_postal
-    result[:cust_address] = html_escape client.adresse
+    result[:cust_name] = client.identifiant
+    result[:cust_city] = client.ville
+    result[:cust_zip] = client.code_postal
+    result[:cust_address] = client.adresse
     result[:order_id] = client.id
     result[:order_info] = "Commande de #{client.article_clients.inject(0){|n, ac| n + ac.quantite}} articles(s)"
     result[:cust_country] = client.pays
@@ -217,7 +217,7 @@ class Public::CommandeController < Public::DefaultPublicController
     result[:payment_config] = 'SINGLE'
     result[:validation_mode] = 0
     result[:payment_cards] = ''
-    return result
+    result
   end
 
 end
