@@ -1,21 +1,25 @@
 <%= form_for :envoi, :url => {:action => :mail_envoi, :id => @client} do |f| %>
 
-  <table>
-    <%= edit_value_table('De', email_field_tag(:de, @de || Meta[Meta::EMAIL_CONTACT].contenu)) %>
-    <%= edit_value_table('À', email_field_tag(:a, @a || @client.email)) %>
-    <%= edit_value_table('Titre', email_field_tag(:subject, @subject || Meta[Meta::MAIL_CONFIRMATION_TITRE].contenu)) %>
-  </table>
+    <table>
+      <%= edit_value_table('De', email_field_tag(:de, @de || Meta[Meta::EMAIL_CONTACT].contenu)) %>
+      <%= edit_value_table('À', email_field_tag(:a, @a || @client.email)) %>
+      <%= edit_value_table('Titre', email_field_tag(:subject, @subject || Meta[Meta::MAIL_CONFIRMATION_TITRE].contenu)) %>
+    </table>
 
-  <fieldset>
-    <legend>Contenu</legend>
-    <%= text_area_tag :body_mail, @body || Meta[Meta::MAIL_CONFIRMATION_CONTENU].contenu, :cols => 100, :rows =>20 %>
-  </fieldset>
+    <fieldset>
+      <legend>Contenu</legend>
+      <%= text_area_tag :body_mail, @body || Meta[Meta::MAIL_CONFIRMATION_CONTENU].contenu, :cols => 100, :rows =>20 %>
+    </fieldset>
 
-  <table class="barreBoutons">
-    <tr>
-      <%= hidden_field_tag :envoi_simple, 0 %>
-      <td><%= link_to 'Envoyer', '#', :onclick => 'envoiSimple(); return false;' %></td>
-      <td><%= f.submit 'Envoyer et valider l\'envoi' %></td>
-    </tr>
-  </table>
+    <table class="barreBoutons">
+      <tr>
+        <%= hidden_field_tag :envoi_simple, 0 %>
+        <td><%= link_to 'Envoyer', '#', :onclick => 'envoiSimple(); return false;' %></td>
+        <% if @client.number_shops == 2 %>
+            <td><%= f.submit 'Envoyer et valider l\'envoi', {:confirm => 'Cette commande concerne les deux boutiques, les deux envois ont-ils bien été fait ?'} %></td>
+        <% else %>
+            <td><%= f.submit 'Envoyer et valider l\'envoi' %></td>
+        <% end %>
+      </tr>
+    </table>
 <% end %>

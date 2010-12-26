@@ -51,7 +51,7 @@
         <td><%= link_to 'Envoyer', :action => :mail_envoi, :id => client %></td>
       <% end %>
       <td><%= link_to_view client, nil, h(client.identifiant) %></td>
-      <td class="<%= (client.article_clients.collect{ |article_client| article_client.article.serie.boutique_id}.uniq.length == 2) ? 'deux_boutiques' : ''%>"><%= raw client.article_clients.collect { |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}" }.join(', ') %></td>
+      <td class="<%= (client.number_shops == 2) ? 'deux_boutiques' : ''%>"><%= raw client.article_clients.collect { |article_client| "#{article_client.quantite} #{link_to_view(article_client.article, 'admin/articles', h(article_client.article.nom))}" }.join(', ') %></td>
       <td><%= "#{number_to_currency client.prix}" %></td>
       <td><%= client.status_lisible %></td>
       <td><%= client.date_envoi ? I18n.localize(client.date_envoi) : 'non' %></td>

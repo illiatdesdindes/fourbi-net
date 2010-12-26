@@ -123,4 +123,8 @@ class Client < ActiveRecord::Base
     end
   end
 
+  def number_shops
+    article_clients.collect{ |article_client| article_client.article.serie.boutique_id}.uniq.length
+  end
+
 end
