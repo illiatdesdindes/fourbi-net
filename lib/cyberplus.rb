@@ -10,8 +10,9 @@ class Cyberplus
 
   Cyberplus::CYBERPLUS_CERTIFICAT = ENV['CYBERPLUS_CERTIFICAT']
 
+  Cyberplus::CYBERPLUS_CTX_MODE = ENV['CYBERPLUS_CTX_MODE']
+
   CHAMPS_OBLIGATOIRES = [:amount,
-                         :ctx_mode,
                          :payment_cards,
                          :payment_config,
                          :trans_id,
@@ -57,10 +58,10 @@ class Cyberplus
 
     result[:vads_cust_country] = check_integer_and_length(params, :cust_country, 2) if params.has_key? [:cust_country]
 
-    unless [:TEST, :PRODUCTION, 'TEST', 'PRODUCTION'].include? params[:ctx_mode]
-      raise "La valeur du mode \"#{params[:ctx_mode]}\" est invalide"
+    unless ['TEST', 'PRODUCTION'].include? CYBERPLUS_CTX_MODE
+      raise "La valeur du mode \"#{CYBERPLUS_CTX_MODE}\" est invalide"
     else
-      result[:vads_ctx_mode] = params[:ctx_mode]
+      result[:vads_ctx_mode] = CYBERPLUS_CTX_MODE
     end
 
     payment_config = params[:payment_config]

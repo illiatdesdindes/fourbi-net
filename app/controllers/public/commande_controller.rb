@@ -213,7 +213,6 @@ class Public::CommandeController < Public::DefaultPublicController
     result[:language] = 'fr'
     result[:url_success] = url_for :controller => 'public/retour', :action => :paiement_succes, :protocol => 'http', :only_path => false
     result[:url_refused] = result[:url_referral] = result[:url_cancel] = result[:url_error] = url_for(:controller => 'public/retour', :action => :paiement_echec, :protocol => 'http', :only_path => false)
-    result[:ctx_mode] = :TEST
     result[:payment_config] = 'SINGLE'
     result[:validation_mode] = 0
     result[:payment_cards] = ''
