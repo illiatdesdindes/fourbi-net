@@ -65,6 +65,7 @@ Fourbi::Application.routes.draw do
   match 'admin/articles/:id' => 'admin/articles#show'
   match 'admin/articles/add_vue/:id' => 'admin/articles#add_vue'
   match 'admin/articles/remove_vue/:id' => 'admin/articles#remove_vue'
+  match 'admin/articles/add_news/:id' => 'admin/articles#add_to_news'
 
   match 'admin/boutiques' => 'admin/boutiques#index'
   match 'admin/boutiques/new' => 'admin/boutiques#new'
@@ -125,6 +126,7 @@ Fourbi::Application.routes.draw do
   match 'contact/terrier' => 'public/contact#terrier'
   match 'contact' => 'public/contact#index'
 
+  match 'nouveautes' => 'public/index#nouveautes'
   match 'cgv' => 'public/index#cgv'
   match 'aide' => 'public/index#aide'
 

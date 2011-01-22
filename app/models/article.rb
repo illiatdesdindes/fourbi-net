@@ -9,6 +9,7 @@
 #  image_file_name    :string(255)
 #  nom                :string(255)     not null
 #  nombre_restant     :integer         not null
+#  nouveaute_id       :integer
 #  numero             :integer         not null
 #  prix               :float           not null
 #  serie_id           :integer         not null
@@ -19,13 +20,13 @@
 class Article < ActiveRecord::Base
 
   has_attached_file :image,
-                    :path => ':class/:attachment/:style/:id.:extension',
+                    :path    => ':class/:attachment/:style/:id.:extension',
                     :storage => :http,
-                    :styles => {:terrier_moyen => '128x98',
-                                :terrier_petit => '62x79',
-                                :desordre_petit => '64x42',
-                                :desordre_moyen => '90x58',
-                                :image_article => '350x350'}
+                    :styles  => {:terrier_moyen  => '128x98',
+                                 :terrier_petit  => '62x79',
+                                 :desordre_petit => '64x42',
+                                 :desordre_moyen => '90x58',
+                                 :image_article  => '350x350'}
 
   validates_attachment_content_type :image,
                                     :content_type => ['image/gif', 'image/jpeg', 'image/png', 'image/pjpeg',
@@ -50,7 +51,7 @@ class Article < ActiveRecord::Base
   has_many :article_clients, :dependent => :delete_all
   has_many :vues, :dependent => :delete_all
 
-  scope :boutique, lambda {|boutique_id| where('series.boutique_id = ?', boutique_id).includes(:serie) }
+  scope :boutique, lambda { |boutique_id| where('series.boutique_id = ?', boutique_id).includes(:serie) }
 
   scope :serie, lambda { |serie| where('articles.serie_id = ?', serie).order('series.numero desc').includes(:serie) }
 
@@ -59,6 +60,10 @@ class Article < ActiveRecord::Base
   scope :premier_serie, where('articles.numero = ?', 0)
 
   scope :serie_disponible, where('series.numero != ?', -1).includes(:serie)
+
+  scope :nouveaute, lambda { |number|
+    where('nouveaute_id is not null').order('articles.nouveaute_id asc').limit(number).includes(:serie => :boutique)
+  }
 
   before_save :update_order
 

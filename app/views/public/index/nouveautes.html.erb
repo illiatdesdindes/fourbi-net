@@ -1,0 +1,31 @@
+<div id="nouveautes_logo"><%= image_tag 'bulles/nouveautes.jpg' %></div>
+
+<div id="nouveautes_texte">
+  <div id="nouveautes_titre">Les nouveautés du Désordre et du Terrier</div>
+  Accédez aux dernières séries et aux derniers articles de notre pléthorique catalogue
+</div>
+
+<% if @nouveautes.length > 0 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[0], :hauteur => 'haut', :colonne => 0}) %>
+<% end %>
+<% if @nouveautes.length > 1 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[1], :hauteur => 'haut', :colonne => 1}) %>
+<% end %>
+<% if @nouveautes.length > 2 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[2], :hauteur => 'haut', :colonne => 2}) %>
+<% end %>
+<% if @nouveautes.length > 3 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[3], :hauteur => 'haut', :colonne => 3}) %>
+<% end %>
+<% if @nouveautes.length > 4 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[4], :hauteur => 'bas', :colonne => 0}) %>
+<% end %>
+<% if @nouveautes.length > 5 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[5], :hauteur => 'bas', :colonne => 1}) %>
+<% end %>
+<% if @nouveautes.length > 6 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[6], :hauteur => 'bas', :colonne => 2}) %>
+<% end %>
+<% if @nouveautes.length > 7 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[7], :hauteur => 'bas', :colonne => 3}) %>
+<% end %>

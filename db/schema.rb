@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101120162713) do
+ActiveRecord::Schema.define(:version => 20110122104553) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20101120162713) do
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.text     "description_longue"
+    t.integer  "nouveaute_id"
   end
 
   add_index "articles", ["nombre_restant"], :name => "index_articles_on_nombre_restant"
@@ -40,11 +41,12 @@ ActiveRecord::Schema.define(:version => 20101120162713) do
   add_index "articles", ["serie_id"], :name => "index_articles_on_serie_id"
 
   create_table "boutiques", :force => true do |t|
-    t.string   "nom",         :null => false
-    t.integer  "numero",      :null => false
+    t.string   "nom",            :null => false
+    t.integer  "numero",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "nom_controller", :null => false
   end
 
   add_index "boutiques", ["nom"], :name => "index_boutiques_on_nom", :unique => true
@@ -70,10 +72,10 @@ ActiveRecord::Schema.define(:version => 20101120162713) do
     t.boolean  "cyberplus_verification_banque",               :default => false
     t.string   "methode_paiement",              :limit => 1
     t.float    "port",                                        :default => 0.0,   :null => false
-    t.string   "cyberplus_auth_mode",           :limit => 10
-    t.string   "cyberplus_card_number",         :limit => 19
     t.string   "cyberplus_extra_result",        :limit => 2
     t.string   "cyberplus_warranty_result",     :limit => 20
+    t.string   "cyberplus_auth_mode",           :limit => 10
+    t.string   "cyberplus_card_number",         :limit => 19
   end
 
   add_index "clients", ["date_envoi"], :name => "index_clients_on_date_envoi"

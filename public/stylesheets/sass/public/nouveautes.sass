@@ -1,0 +1,110 @@
+@import public/constants.sass
+
+#nouveautes_logo
+  position: absolute
+  top: 40px
+  left: 260px
+
+#nouveautes_texte
+  position: absolute
+  left: 17px
+  top: 240px
+  width: 250px
+  font-size: 10px
+
+#nouveautes_titre
+  font-weight: bold
+
+.nouveautes_element
+  position: absolute
+
+.nouveautes_haut_cadre_terrier
+  top: 260px
+
+.nouveautes_haut_cadre_desordre
+  top: 285px
+
+.nouveautes_bas_cadre_terrier
+  top: 405px
+
+.nouveautes_bas_cadre_desordre
+  top: 430px
+
+.nouveautes_haut_image_terrier
+  top = 260 + !hauteur_bord_haut_cadre_terrier_moyen
+
+.nouveautes_bas_image_terrier
+  top = 405 + !hauteur_bord_haut_cadre_terrier_moyen
+
+.nouveautes_haut_image_desordre
+  top = 285 + !hauteur_bord_haut_cadre_desordre_moyen
+
+.nouveautes_bas_image_desordre
+  top = 430 + !hauteur_bord_haut_cadre_desordre_moyen
+
+!nouveautes_colonne_0_cadre_terrier = 250px
+!nouveautes_cadre_ecartement = 125px
+!nouveautes_cadre_ecartement_desordre_terrier = 11px
+
+.nouveautes_colonne_0_cadre_terrier
+  left = !nouveautes_colonne_0_cadre_terrier
+.nouveautes_colonne_1_cadre_terrier
+  left = !nouveautes_colonne_0_cadre_terrier + !nouveautes_cadre_ecartement
+.nouveautes_colonne_2_cadre_terrier
+  left = !nouveautes_colonne_0_cadre_terrier + (2 * !nouveautes_cadre_ecartement)
+.nouveautes_colonne_3_cadre_terrier
+  left = !nouveautes_colonne_0_cadre_terrier + (3 * !nouveautes_cadre_ecartement)
+
+.nouveautes_colonne_0_cadre_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + !nouveautes_cadre_ecartement_desordre_terrier
+.nouveautes_colonne_1_cadre_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + !nouveautes_cadre_ecartement + !nouveautes_cadre_ecartement_desordre_terrier
+.nouveautes_colonne_2_cadre_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + (2 * !nouveautes_cadre_ecartement) + !nouveautes_cadre_ecartement_desordre_terrier
+.nouveautes_colonne_3_cadre_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + (3 * !nouveautes_cadre_ecartement) + !nouveautes_cadre_ecartement_desordre_terrier
+
+.nouveautes_colonne_0_image_terrier
+  left = !nouveautes_colonne_0_cadre_terrier + !largeur_bord_gauche_cadre_terrier_moyen
+.nouveautes_colonne_1_image_terrier
+  left = !nouveautes_colonne_0_cadre_terrier + !nouveautes_cadre_ecartement + !largeur_bord_gauche_cadre_terrier_moyen
+.nouveautes_colonne_2_image_terrier
+  left = !nouveautes_colonne_0_cadre_terrier + (2 * !nouveautes_cadre_ecartement) + !largeur_bord_gauche_cadre_terrier_moyen
+.nouveautes_colonne_3_image_terrier
+  left = !nouveautes_colonne_0_cadre_terrier + (3 * !nouveautes_cadre_ecartement) + !largeur_bord_gauche_cadre_terrier_moyen
+
+.nouveautes_colonne_0_image_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + !nouveautes_cadre_ecartement_desordre_terrier + !largeur_bord_gauche_cadre_desordre_moyen
+.nouveautes_colonne_1_image_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + !nouveautes_cadre_ecartement + !nouveautes_cadre_ecartement_desordre_terrier + !largeur_bord_gauche_cadre_desordre_moyen
+.nouveautes_colonne_2_image_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + (2 * !nouveautes_cadre_ecartement) + !nouveautes_cadre_ecartement_desordre_terrier + !largeur_bord_gauche_cadre_desordre_moyen
+.nouveautes_colonne_3_image_desordre
+  left = !nouveautes_colonne_0_cadre_terrier + (3 * !nouveautes_cadre_ecartement) + !nouveautes_cadre_ecartement_desordre_terrier + !largeur_bord_gauche_cadre_desordre_moyen
+
+.nouveautes_image_desordre
+  position: absolute
+  width = !largeur_image_visible_cadre_desordre_moyen
+  display: table
+  div
+    text-align: center
+    display: table-cell
+    vertical-align: middle
+    img
+      max-height = !hauteur_image_visible_cadre_desordre_moyen
+      max-width = !largeur_image_visible_cadre_desordre_moyen
+      width: expression(this.width > 98 ? 98: true)
+
+.nouveautes_image_terrier
+  position: absolute
+  display: table
+  height = !hauteur_image_visible_cadre_terrier_moyen
+  width = !largeur_image_visible_cadre_terrier_moyen
+  div
+    text-align: center
+    display: table-cell
+    vertical-align: middle
+    img
+      max-height = !hauteur_image_visible_cadre_terrier_moyen
+      max-width = !largeur_image_visible_cadre_terrier_moyen
+      width: expression(this.width > 98 ? 98: true)

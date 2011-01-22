@@ -2,12 +2,13 @@
 #
 # Table name: boutiques
 #
-#  id          :integer         not null, primary key
-#  description :text
-#  nom         :string(255)     not null
-#  numero      :integer         not null
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id             :integer         not null, primary key
+#  description    :text
+#  nom            :string(255)     not null
+#  nom_controller :string(255)     not null
+#  numero         :integer         not null
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 class Boutique < ActiveRecord::Base

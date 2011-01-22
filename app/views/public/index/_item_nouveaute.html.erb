@@ -1,0 +1,21 @@
+<% if article.serie.boutique.nom == Boutique::NOM_DESORDRE %>
+
+    <div class="nouveautes_image_desordre <%= "nouveautes_#{hauteur}_image_desordre nouveautes_colonne_#{colonne}_image_desordre" %>">
+      <div><%= image_tag article.image.url(:desordre_moyen) %></div>
+    </div>
+
+    <div class="nouveautes_element <%= "nouveautes_#{hauteur}_cadre_desordre nouveautes_colonne_#{colonne}_cadre_desordre" %>">
+      <%= link_to image_tag('cadres/desordre_moyen.gif'), {:controller => 'public/desordre', :action => :article, :id => article}, {:title => article.nom} %>
+    </div>
+
+<% else %>
+
+    <div class="nouveautes_image_terrier <%= "nouveautes_#{hauteur}_image_terrier nouveautes_colonne_#{colonne}_image_terrier" %>">
+      <div><%= image_tag article.image.url(:terrier_moyen) %></div>
+    </div>
+
+    <div class="nouveautes_element <%= "nouveautes_#{hauteur}_cadre_terrier nouveautes_colonne_#{colonne}_cadre_terrier" %>">
+      <%= link_to image_tag('cadres/terrier_moyen.gif'), {:controller => 'public/terrier', :action => :article, :id => article}, {:title => article.nom} %>
+    </div>
+
+<% end %>

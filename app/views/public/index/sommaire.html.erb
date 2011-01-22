@@ -8,7 +8,20 @@
     délais
     possible de fabrication et d'expédition.</p>
 
-  <p>Site conçu et réalisé par Philippe De Jonckheere et L.L. de Mars avec l'aide de <%= link_to 'Julien Kirch', 'http://archiloque.net' %>.</p>
+  <p>Site conçu et réalisé par Philippe De Jonckheere et L.L. de Mars avec l'aide
+    de <%= link_to 'Julien Kirch', 'http://archiloque.net' %>.</p>
+
+  <br/><br/>
+
+  <p>Nouveautés en ligne:</p>
+
+  <div id="s_nouveautes">
+    <div>
+      <% @nouveautes.each do |article| %>
+          <%= link_to image_tag(article.image.url(:image_article)), {:controller => "public/#{article.serie.boutique.nom_controller}", :action => :article, :id => article}, {:title => article.nom} %>
+      <% end %>
+    </div>
+  </div>
 
 </div>
 
@@ -17,13 +30,13 @@
 </div>
 
 <% (0...[5, @articles_desordre.length].min).each do |i| %>
-  <% article = @articles_desordre[i] %>
-  <div id="s_image_desordre_<%= i %>" class="s_image_desordre">
-    <div><%= image_tag article.image.url(:desordre_moyen) %></div>
-  </div>
-  <div id="s_cadre_desordre_<%= i %>" class="s_cadre_desordre">
-    <%= link_to image_tag('cadres/desordre_moyen.gif'), {:controller => 'public/desordre', :action => :article, :id => article}, {:title => article.nom} %>
-  </div>
+    <% article = @articles_desordre[i] %>
+    <div id="s_image_desordre_<%= i %>" class="s_image_desordre">
+      <div><%= image_tag article.image.url(:desordre_moyen) %></div>
+    </div>
+    <div id="s_cadre_desordre_<%= i %>" class="s_cadre_desordre">
+      <%= link_to image_tag('cadres/desordre_moyen.gif'), {:controller => 'public/desordre', :action => :article, :id => article}, {:title => article.nom} %>
+    </div>
 <% end %>
 
 <div id="s_bulle_terrier">
@@ -31,12 +44,12 @@
 </div>
 
 <% (0...[4, @articles_terrier.length].min).each do |i| %>
-  <% article = @articles_terrier[i] %>
-  <div id="s_image_terrier_<%= i %>" class="s_image_terrier">
-    <div><%= image_tag article.image.url(:terrier_moyen) %></div>
-  </div>
-  <div id="s_cadre_terrier_<%= i %>" class="s_cadre_terrier">
-    <%= link_to image_tag('cadres/terrier_moyen.gif'), {:controller => 'public/terrier', :action => :article, :id => article}, {:title => article.nom} %>
-  </div>
+    <% article = @articles_terrier[i] %>
+    <div id="s_image_terrier_<%= i %>" class="s_image_terrier">
+      <div><%= image_tag article.image.url(:terrier_moyen) %></div>
+    </div>
+    <div id="s_cadre_terrier_<%= i %>" class="s_cadre_terrier">
+      <%= link_to image_tag('cadres/terrier_moyen.gif'), {:controller => 'public/terrier', :action => :article, :id => article}, {:title => article.nom} %>
+    </div>
 <% end %>
 

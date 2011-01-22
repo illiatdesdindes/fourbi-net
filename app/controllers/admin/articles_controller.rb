@@ -3,19 +3,27 @@ class Admin::ArticlesController < Admin::DefaultAdminController
   layout 'admin-layout'
   before_filter :authorize_base
 
+  def add_to_news
+    article        = Article.find(params[:id])
+    article.nouveaute_id = -1
+    article.save
+    ActiveRecord::Base.connection.execute('update articles set nouveaute_id = nouveaute_id +1')
+    redirect_to({:action => :show, :id => article.id}, {:notice => 'Article ajouté en tête des nouveautés'})
+  end
+
   def add_vue
     article = Article.find(params[:id])
     if request.post?
-      @vue = Vue.new(params[:vue])
+      @vue         = Vue.new(params[:vue])
       @vue.article = article
       if @vue.save
         redirect_to({:action => :show, :id => article}, {:notice => 'Image ajoutée'})
       else
         flash[:alert] = "Image non ajoutée : #{@vue.errors.full_messages[0]}"
-        @page_title = 'Ajouter une image'
+        @page_title   = 'Ajouter une image'
       end
     else
-      @vue = Vue.new
+      @vue         = Vue.new
       @vue.article = article
     end
   end
@@ -36,9 +44,9 @@ class Admin::ArticlesController < Admin::DefaultAdminController
 
   def edit
     if request.put?
-      @article = Article.find(params[:id])
+      @article            = Article.find(params[:id])
 
-      etait_disponible = @article.disponible?
+      etait_disponible    = @article.disponible?
       @article.attributes = params[:article]
 
       if etait_disponible && ((!@article.disponible?) || (@article.nombre_restant == 0))
@@ -53,12 +61,12 @@ class Admin::ArticlesController < Admin::DefaultAdminController
       else
         clean_changes
         flash[:alert] = "Article \"#{@article.nom}\" non modifié : #{@article.errors.full_messages[0]}"
-        @series = Serie.boutique(@article.serie.boutique_id)
-        @page_title = "Modifier un article \"#{@article.nom}\""
+        @series       = Serie.boutique(@article.serie.boutique_id)
+        @page_title   = "Modifier un article \"#{@article.nom}\""
       end
     else
-      @article = Article.find(params[:id])
-      @series = Serie.boutique(@article.serie.boutique_id)
+      @article    = Article.find(params[:id])
+      @series     = Serie.boutique(@article.serie.boutique_id)
       @page_title = "Modifier un article \"#{@article.nom}\""
     end
   end
@@ -75,15 +83,15 @@ class Admin::ArticlesController < Admin::DefaultAdminController
         redirect_to({:action => :show, :id => @article}, {:notice => "Article \"#{@article.nom}\" ajouté"})
       else
         flash[:alert] = "Article \"#{@article.nom}\" non ajouté : #{@article.errors.full_messages[0]}"
-        @series = Serie.boutique(@article.serie.boutique_id)
-        @page_title = 'Ajouter un article'
+        @series       = Serie.boutique(@article.serie.boutique_id)
+        @page_title   = 'Ajouter un article'
       end
     else
-      @article = Article.new
+      @article                = Article.new
       @article.nombre_restant = -1
-      @article.serie = Serie.find(params[:id])
-      @series = Serie.boutique(@article.serie.boutique_id)
-      @page_title = 'Ajouter un article'
+      @article.serie          = Serie.find(params[:id])
+      @series                 = Serie.boutique(@article.serie.boutique_id)
+      @page_title             = 'Ajouter un article'
     end
   end
 
@@ -97,7 +105,7 @@ class Admin::ArticlesController < Admin::DefaultAdminController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article    = Article.find(params[:id])
     @page_title = "Voir article \"#{@article.nom}\""
   end
 
