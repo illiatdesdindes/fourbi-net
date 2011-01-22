@@ -104,7 +104,7 @@ class Cyberplus
 
     CHAMPS_FACULTATIFS_A_RECOPIER.each do |nom_champ|
       if params.has_key? nom_champ
-        result[('vads_' + nom_champ.to_s).to_sym] = params[nom_champ]
+        result[('vads_' + nom_champ.to_s).to_sym] = params[nom_champ].delete('&')
       end
     end
 
