@@ -419,7 +419,7 @@ p {
   vertical-align: top; }
   #coordonnees_form label {
     display: inline-block;
-    width: 85px;
+    width: 80px;
     vertical-align: top; }
   #coordonnees_form input, #coordonnees_form textarea, #coordonnees_form select {
     border: black solid 1px;
