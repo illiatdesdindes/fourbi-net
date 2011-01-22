@@ -1,26 +1,26 @@
 <%= form_tag url_for(), :method => :post do %>
-  <fieldset>
-    <legend>Email</legend>
-    <table>
-      <%= edit_value_table('Email du désordre', email_field_tag(Meta::EMAIL_DESORDRE, Meta[Meta::EMAIL_DESORDRE].contenu)) %>
-      <%= edit_value_table('Email du terrier', email_field_tag(Meta::EMAIL_TERRIER, Meta[Meta::EMAIL_TERRIER].contenu)) %>
-      <%= edit_value_table('Email de contact', email_field_tag(Meta::EMAIL_CONTACT, Meta[Meta::EMAIL_CONTACT].contenu)) %>
-    </table>
-  </fieldset>
-  <fieldset>
-    <legend>Mail de confirmation d'envoi</legend>
-    <table>
-      <%= edit_value_table('Titre du mail de confirmation', email_field_tag(Meta::MAIL_CONFIRMATION_TITRE, Meta[Meta::MAIL_CONFIRMATION_TITRE].contenu)) %>
-    </table>
     <fieldset>
-      <legend>Contenu</legend>
-      <%= text_area_tag Meta::MAIL_CONFIRMATION_CONTENU, Meta[Meta::MAIL_CONFIRMATION_CONTENU].contenu, :cols => 120, :rows =>20 %>
+      <legend>Email</legend>
+      <table>
+        <%= edit_value_table('Email du désordre', email_field_tag(Meta::EMAIL_DESORDRE, Meta[Meta::EMAIL_DESORDRE].contenu)) %>
+        <%= edit_value_table('Email du terrier', email_field_tag(Meta::EMAIL_TERRIER, Meta[Meta::EMAIL_TERRIER].contenu)) %>
+        <%= edit_value_table('Email de contact', email_field_tag(Meta::EMAIL_CONTACT, Meta[Meta::EMAIL_CONTACT].contenu)) %>
+      </table>
     </fieldset>
-  </fieldset>
-  <fieldset>
-    <legend>CGV</legend>
-    <%= text_area_tag Meta::CGV, Meta[Meta::CGV].contenu, :cols => 120, :rows =>20 %>
-  </fieldset>
-  <%= submit_tag 'Mettre à jour' %>
+    <fieldset>
+      <legend>Mail de confirmation d'envoi</legend>
+      <table>
+        <%= edit_value_table('Titre du mail de confirmation', email_field_tag(Meta::MAIL_CONFIRMATION_TITRE, Meta[Meta::MAIL_CONFIRMATION_TITRE].contenu)) %>
+      </table>
+      <fieldset>
+        <legend>Contenu</legend>
+        <%= text_area_tag Meta::MAIL_CONFIRMATION_CONTENU, Meta[Meta::MAIL_CONFIRMATION_CONTENU].contenu, :cols => 120, :rows =>20 %>
+      </fieldset>
+    </fieldset>
+    <fieldset>
+      <legend>CGV</legend>
+      <%= text_area_tag Meta::CGV, Meta[Meta::CGV].contenu, :cols => 120, :rows =>20 %>
+    </fieldset>
+    <%= submit_tag 'Mettre à jour' %>
 
 <% end %>
