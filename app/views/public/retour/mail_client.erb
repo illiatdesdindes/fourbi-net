@@ -19,6 +19,7 @@ Code Postal : <%= @client.code_postal %>
 Ville : <%= @client.ville %>
 Pays : <%= Countries::CODE_TO_NAME[@client.pays] %>
 Email : <%= @client.email %>
+<%= @client.dedicace.blank? ? '' : "Dédicace : #{client.dedicace}\n" %>
 
 Pour nous contacter vous pouvez répondre à ce mail ou nous écrire à <%= Meta[Meta::EMAIL_CONTACT].contenu %>
 

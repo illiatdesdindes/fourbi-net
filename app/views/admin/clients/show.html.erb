@@ -7,6 +7,7 @@
   <%= display_value_changed 'Pays', Countries::CODE_TO_NAME[@client.pays], 'pays' %>
   <%= display_value_changed 'Email', "<a href=\"mailto:#{h(@client.email)}\">#{h(@client.email)}</a>", 'email' %>
   <%= display_value_changed 'Prix', "#{number_to_currency @client.prix}", 'prix' %>
+  <%= display_value_changed 'Dédicace', @client.dedicace, 'dedicace' %>
   <%= display_value_changed 'Frais de port', "#{number_to_currency @client.port}", 'port' %>
   <% bouton_paiement = (@client.status == Client::NOUVEAU) ? " #{button_to('Chèque reçu', {:action => :cheque_recu, :id => @client}, {:class => 'bouton', :confirm => 'En êtes vous certain ?'})}" : '' %>
   <%= display_value_changed 'Status', @client.status_lisible, 'status', bouton_paiement %>

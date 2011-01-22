@@ -50,7 +50,13 @@ class Public::CommandeController < Public::DefaultPublicController
 
         pdf.line_width = 1
         pdf.stroke_rectangle [270, 220], 250, 100
-        pdf.text_box [client.identifiant, client.adresse, "#{client.code_postal} #{client.ville}", Countries::CODE_TO_NAME[client.pays], client.email].join("\n"), :at => [280, 210], :width => 230, :leading => 2
+        pdf.text_box [client.identifiant,
+                      client.adresse,
+                      "#{client.code_postal} #{client.ville}",
+                      Countries::CODE_TO_NAME[client.pays],
+                      client.email,
+                      client.dedicace].
+                         join("\n"), :at => [280, 210], :width => 230, :leading => 2
 
         pdf.text_box 'Merci de libéller vos chèques à l\'ordre de Philippe De Jonckheere et les adresser à Philippe De Jonckheere, 92, rue Charles Bassée, 94120 Fontenay-sous-Bois, France',
                      :at => [250, 50], :width => 300
@@ -67,7 +73,7 @@ class Public::CommandeController < Public::DefaultPublicController
       @page_title = 'fourbi.net: vos coordonnées'
       @coordonnees = {}
       if request.post?
-        [:nom, :adresse, :code_postal, :ville, :pays, :email].each do |k|
+        [:nom, :adresse, :code_postal, :ville, :pays, :email, :dedicace].each do |k|
           @coordonnees[k] = params[k]
         end
 
@@ -101,6 +107,7 @@ class Public::CommandeController < Public::DefaultPublicController
           client.ville = @coordonnees[:ville]
           client.pays = @coordonnees[:pays]
           client.email = @coordonnees[:email]
+          client.dedicace = @coordonnees[:dedicace]
           client.status= Client::NOUVEAU
           client.prix = 0
           client.port = 0
@@ -127,6 +134,7 @@ class Public::CommandeController < Public::DefaultPublicController
               session[:client_id] = client.id
               redirect_to :action => :validation
             else
+              @dedicace = client.article_clients.any?{|ac| ac.article.serie.boutique.nom == Boutique::NOM_TERRIER}
               flash[:alert] = client.errors.full_messages[0]
             end
           end
@@ -140,8 +148,11 @@ class Public::CommandeController < Public::DefaultPublicController
           @coordonnees[:ville] = client.ville
           @coordonnees[:pays] = client.pays
           @coordonnees[:email] = client.email
+          @coordonnees[:dedicace] = client.dedicace
+          @dedicace = client.article_clients.any?{|ac| ac.article.serie.boutique.nom == Boutique::NOM_TERRIER}
         else
           @coordonnees[:pays] = 'FR'
+          @dedicace = session[:panier].any?{|c| Article.find(c).serie.boutique.nom == Boutique::NOM_TERRIER}
         end
       end
     else

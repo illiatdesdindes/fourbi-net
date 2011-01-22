@@ -16,6 +16,7 @@
 #  cyberplus_warranty_result     :string(20)
 #  date_envoi                    :datetime
 #  date_paiement                 :datetime
+#  dedicace                      :string(255)
 #  email                         :string(255)     not null
 #  identifiant                   :string(255)     not null
 #  methode_paiement              :string(1)

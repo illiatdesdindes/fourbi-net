@@ -41,5 +41,6 @@ Code Postal : <%= @client.code_postal %>
 Ville : <%= @client.ville %>
 Pays : <%= Countries::CODE_TO_NAME[@client.pays] %>
 Email : <%= @client.email %>
+<%= @client.dedicace.blank? ? '' : "Dédicace : #{client.dedicace}\n" %>
 
 La commande est accessible à <%= url_for :controller => 'admin/clients', :action => :show, :id => @client, :only_path => false %>

@@ -13,7 +13,6 @@
 <div id="validation_coordonnees_img"><%= image_tag 'bulles/bulle002i.jpg' %></div>
 
 <div id="validation_coordonnees">
-  Vos coordonnées:
   <ul>
     <li><label>Nom et Prénom :</label> <%= @client.identifiant %></li>
     <li><label>Adresse :</label> <%= @client.adresse %></li>
@@ -21,6 +20,9 @@
     <li><label>Ville :</label> <%= @client.ville %></li>
     <li><label>Pays :</label> <%= Countries::CODE_TO_NAME[@client.pays] %></li>
     <li><label>Email :</label> <%= @client.email %></li>
+    <% if @client.dedicace %>
+        <li><label>Dédicace:</label> <%= @client.dedicace %></li>
+    <% end %>
   </ul>
 </div>
 

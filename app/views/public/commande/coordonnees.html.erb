@@ -17,7 +17,7 @@
   <%= form_tag url_for({}), :method => :post do %>
 
     <div>
-      <%= label_tag 'nom', 'Nom et Prénom' %>
+      <%= label_tag 'nom', 'Nom Prénom' %>
       <%= text_field_tag 'nom', @coordonnees[:nom] %>
     </div>
 
@@ -45,6 +45,14 @@
       <%= label_tag 'email', 'Email' %>
       <%= email_field_tag 'email', @coordonnees[:email] %>
     </div>
+
+    <% if @dedicace %>
+          <div>
+            <%= label_tag 'dedicace', 'Dédicace' %>
+            <%= text_field_tag 'dedicace', @coordonnees[:dedicace], :size => 25 %>
+          </div>
+    <% end %>
+
     <div id="coordonnees_caisse">
       <div id="coordonnees_caisse_image"><%= image_submit_tag 'caisse_enregistreuse.gif', :width => '100', :title => 'Poursuivre la commande' %></div>
       <div><%= submit_tag 'Poursuivre la commande' %></div>
