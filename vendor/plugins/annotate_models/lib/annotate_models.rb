@@ -101,7 +101,7 @@ module AnnotateModels
     model_file_name = File.join(MODEL_DIR, klass.name.underscore + ".rb")
     annotate_one_file(model_file_name, info)
 
-    if File.join(RAILS_ROOT, "spec")
+    if File.join(Rails.root.to_s, "spec")
       rspec_file_name = File.join(RSPEC_DIR, klass.name.underscore + "_spec.rb")
       annotate_one_file(rspec_file_name, info)
 
