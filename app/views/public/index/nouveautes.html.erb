@@ -18,14 +18,26 @@
     <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[3], :hauteur => 'haut', :colonne => 3}) %>
 <% end %>
 <% if @nouveautes.length > 4 %>
-    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[4], :hauteur => 'bas', :colonne => 0}) %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[4], :hauteur => 'milieu', :colonne => 0}) %>
 <% end %>
 <% if @nouveautes.length > 5 %>
-    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[5], :hauteur => 'bas', :colonne => 1}) %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[5], :hauteur => 'milieu', :colonne => 1}) %>
 <% end %>
 <% if @nouveautes.length > 6 %>
-    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[6], :hauteur => 'bas', :colonne => 2}) %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[6], :hauteur => 'milieu', :colonne => 2}) %>
 <% end %>
 <% if @nouveautes.length > 7 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[7], :hauteur => 'milieu', :colonne => 3}) %>
+<% end %>
+<% if @nouveautes.length > 8 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[4], :hauteur => 'bas', :colonne => 0}) %>
+<% end %>
+<% if @nouveautes.length > 9 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[5], :hauteur => 'bas', :colonne => 1}) %>
+<% end %>
+<% if @nouveautes.length > 10 %>
+    <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[6], :hauteur => 'bas', :colonne => 2}) %>
+<% end %>
+<% if @nouveautes.length > 11 %>
     <%= render(:partial => 'public/index/item_nouveaute', :locals => {:article => @nouveautes[7], :hauteur => 'bas', :colonne => 3}) %>
 <% end %>

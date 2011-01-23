@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110122133328) do
+ActiveRecord::Schema.define(:version => 20110123091400) do
 
   create_table "article_clients", :force => true do |t|
     t.integer "article_id",    :null => false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20110122133328) do
   end
 
   add_index "articles", ["nombre_restant"], :name => "index_articles_on_nombre_restant"
+  add_index "articles", ["nouveaute_id"], :name => "index_articles_on_nouveaute_id"
   add_index "articles", ["numero"], :name => "index_articles_on_numero"
   add_index "articles", ["serie_id"], :name => "index_articles_on_serie_id"
 

@@ -18,7 +18,7 @@
   <div id="s_nouveautes">
     <div>
       <% @nouveautes.each do |article| %>
-          <%= link_to image_tag(article.image.url(:image_article)), {:controller => "public/#{article.serie.boutique.nom_controller}", :action => :article, :id => article}, {:title => article.nom} %>
+          <%= link_to image_tag(article.image.url(:image_article)), {:action => :nouveautes}, {:title => article.nom} %>
       <% end %>
     </div>
   </div>

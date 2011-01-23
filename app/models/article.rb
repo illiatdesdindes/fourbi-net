@@ -62,7 +62,7 @@ class Article < ActiveRecord::Base
   scope :serie_disponible, where('series.numero != ?', -1).includes(:serie)
 
   scope :nouveaute, lambda { |number|
-    where('nouveaute_id is not null').order('articles.nouveaute_id asc').limit(number).includes(:serie => :boutique)
+    where('nouveaute_id is not null').where('articles.numero != ?', -1).order('articles.nouveaute_id asc').limit(number)
   }
 
   before_save :update_order
