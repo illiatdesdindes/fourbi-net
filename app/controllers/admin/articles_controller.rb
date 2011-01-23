@@ -95,6 +95,13 @@ class Admin::ArticlesController < Admin::DefaultAdminController
     end
   end
 
+  def remove_from_news
+    article        = Article.find(params[:id])
+    article.nouveaute_id = nil
+    article.save
+    redirect_to({:action => :show, :id => article.id}, {:notice => 'Article supprimé des nouveautés'})
+  end
+
   def remove_vue
     if request.delete?
       vue = Vue.find(params[:id]).destroy

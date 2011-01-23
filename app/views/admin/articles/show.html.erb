@@ -16,7 +16,10 @@
     <% if @article.article_clients.empty? %>
       <td><%= button_to 'Supprimer l\'article', {:action => :delete, :id => @article}, :method => :delete, :confirm => 'Voulez vous vraiment supprimer cet article ?' %></td>
     <% end %>
-    <td><%= link_to 'Ajouter aux nouveautés', :action => :add_to_news, :id => @article %></td>
+    <td><%= link_to 'Ajouter en tête des nouveautés', :action => :add_to_news, :id => @article %></td>
+    <% if @article.nouveaute_id %>
+        <td><%= link_to 'Supprimer des nouveautés', :action => :remove_from_news, :id => @article %></td>
+    <% end %>
   </tr>
 </table>
 <table class="barreBoutons">
