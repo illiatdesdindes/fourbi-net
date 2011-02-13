@@ -2,14 +2,14 @@
 
 #nouveautes_logo
   position: absolute
-  top: 40px
+  top: 20px
   left: 260px
 
 #nouveautes_texte
   position: absolute
   left: 17px
   top: 240px
-  width: 250px
+  width: 200px
   font-size: 10px
 
 #nouveautes_titre
@@ -18,44 +18,42 @@
 .nouveautes_element
   position: absolute
 
+!nouveaute_haut = 240px
+!nouveaute_delta_hauteur_rayon = 180px
+!nouveaute_delta_hauteur_terrier_desordre = 35px
+ 
 .nouveautes_haut_cadre_terrier
-  top: 260px
+  top = !nouveaute_haut
+.nouveautes_haut_image_terrier
+  top = !nouveaute_haut + !hauteur_bord_haut_cadre_terrier_moyen
 
 .nouveautes_haut_cadre_desordre
-  top: 285px
+  top: !nouveaute_haut + !nouveaute_delta_hauteur_terrier_desordre
+.nouveautes_haut_image_desordre
+  top = !nouveaute_haut + !nouveaute_delta_hauteur_terrier_desordre + !hauteur_bord_haut_cadre_desordre_moyen
 
 .nouveautes_milieu_cadre_terrier
-  top: 415px
+  top = !nouveaute_haut + !nouveaute_delta_hauteur_rayon
+.nouveautes_milieu_image_terrier
+  top = !nouveaute_haut + !nouveaute_delta_hauteur_rayon + !hauteur_bord_haut_cadre_terrier_moyen
 
 .nouveautes_milieu_cadre_desordre
-  top: 440px
+  top = !nouveaute_haut + !nouveaute_delta_hauteur_rayon + !nouveaute_delta_hauteur_terrier_desordre
+.nouveautes_milieu_image_desordre
+  top = !nouveaute_haut + !nouveaute_delta_hauteur_rayon + !nouveaute_delta_hauteur_terrier_desordre + !hauteur_bord_haut_cadre_desordre_moyen
 
 .nouveautes_bas_cadre_terrier
-  top: 570px
+  top = !nouveaute_haut + (2 * !nouveaute_delta_hauteur_terrier_desordre)
+.nouveautes_bas_image_terrier
+  top = !nouveaute_haut + (2 * !nouveaute_delta_hauteur_terrier_desordre) + !hauteur_bord_haut_cadre_terrier_moyen
 
 .nouveautes_bas_cadre_desordre
-  top: 595px
-
-.nouveautes_haut_image_terrier
-  top = 260 + !hauteur_bord_haut_cadre_terrier_moyen
-
-.nouveautes_haut_image_desordre
-  top = 285 + !hauteur_bord_haut_cadre_desordre_moyen
-
-.nouveautes_milieu_image_terrier
-  top = 415 + !hauteur_bord_haut_cadre_terrier_moyen
-
-.nouveautes_milieu_image_desordre
-  top = 440 + !hauteur_bord_haut_cadre_desordre_moyen
-
-.nouveautes_bas_image_terrier
-  top = 570 + !hauteur_bord_haut_cadre_terrier_moyen
-
+  top = !nouveaute_haut + (2 * !nouveaute_delta_hauteur_rayon)+ !nouveaute_delta_hauteur_terrier_desordre
 .nouveautes_bas_image_desordre
-  top = 595 + !hauteur_bord_haut_cadre_desordre_moyen
+  top = !nouveaute_haut + (2 * !nouveaute_delta_hauteur_rayon)+ !nouveaute_delta_hauteur_terrier_desordre + !hauteur_bord_haut_cadre_desordre_moyen
 
-!nouveautes_colonne_0_cadre_terrier = 250px
-!nouveautes_cadre_ecartement = 125px
+!nouveautes_colonne_0_cadre_terrier = 230px
+!nouveautes_cadre_ecartement = 135px
 !nouveautes_cadre_ecartement_desordre_terrier = 11px
 
 .nouveautes_colonne_0_cadre_terrier

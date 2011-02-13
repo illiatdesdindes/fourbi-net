@@ -264,14 +264,14 @@ p {
 
 #nouveautes_logo {
   position: absolute;
-  top: 40px;
+  top: 20px;
   left: 260px; }
 
 #nouveautes_texte {
   position: absolute;
   left: 17px;
   top: 240px;
-  width: 250px;
+  width: 200px;
   font-size: 10px; }
 
 #nouveautes_titre {
@@ -281,88 +281,88 @@ p {
   position: absolute; }
 
 .nouveautes_haut_cadre_terrier {
-  top: 260px; }
-
-.nouveautes_haut_cadre_desordre {
-  top: 285px; }
-
-.nouveautes_milieu_cadre_terrier {
-  top: 415px; }
-
-.nouveautes_milieu_cadre_desordre {
-  top: 440px; }
-
-.nouveautes_bas_cadre_terrier {
-  top: 570px; }
-
-.nouveautes_bas_cadre_desordre {
-  top: 595px; }
+  top: 240px; }
 
 .nouveautes_haut_image_terrier {
-  top: 273px; }
+  top: 253px; }
+
+.nouveautes_haut_cadre_desordre {
+  top: 275px; }
 
 .nouveautes_haut_image_desordre {
-  top: 308px; }
+  top: 298px; }
+
+.nouveautes_milieu_cadre_terrier {
+  top: 420px; }
 
 .nouveautes_milieu_image_terrier {
-  top: 428px; }
+  top: 433px; }
+
+.nouveautes_milieu_cadre_desordre {
+  top: 455px; }
 
 .nouveautes_milieu_image_desordre {
-  top: 463px; }
+  top: 478px; }
+
+.nouveautes_bas_cadre_terrier {
+  top: 310px; }
 
 .nouveautes_bas_image_terrier {
-  top: 583px; }
+  top: 323px; }
+
+.nouveautes_bas_cadre_desordre {
+  top: 635px; }
 
 .nouveautes_bas_image_desordre {
-  top: 618px; }
+  top: 658px; }
 
 .nouveautes_colonne_0_cadre_terrier {
-  left: 250px; }
+  left: 230px; }
 
 .nouveautes_colonne_1_cadre_terrier {
-  left: 375px; }
+  left: 365px; }
 
 .nouveautes_colonne_2_cadre_terrier {
   left: 500px; }
 
 .nouveautes_colonne_3_cadre_terrier {
-  left: 625px; }
+  left: 635px; }
 
 .nouveautes_colonne_0_cadre_desordre {
-  left: 261px; }
+  left: 241px; }
 
 .nouveautes_colonne_1_cadre_desordre {
-  left: 386px; }
+  left: 376px; }
 
 .nouveautes_colonne_2_cadre_desordre {
   left: 511px; }
 
 .nouveautes_colonne_3_cadre_desordre {
-  left: 636px; }
+  left: 646px; }
 
 .nouveautes_colonne_0_image_terrier {
-  left: 265px; }
+  left: 245px; }
 
 .nouveautes_colonne_1_image_terrier {
-  left: 390px; }
+  left: 380px; }
 
 .nouveautes_colonne_2_image_terrier {
   left: 515px; }
 
 .nouveautes_colonne_3_image_terrier {
-  left: 640px; }
+  left: 650px; }
 
 .nouveautes_colonne_0_image_desordre {
-  left: 269px; }
+  left: 249px; }
 
 .nouveautes_colonne_1_image_desordre {
-  left: 394px; }
+  left: 384px; }
 
 .nouveautes_colonne_2_image_desordre {
   left: 519px; }
 
 .nouveautes_colonne_3_image_desordre {
-  left: 644px; }
+  left: 654px; }
 
 .nouveautes_image_desordre {
   position: absolute;
