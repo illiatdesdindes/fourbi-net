@@ -55,7 +55,7 @@ class Article < ActiveRecord::Base
 
   scope :serie, lambda { |serie| where('articles.serie_id = ?', serie).order('series.numero desc').includes(:serie) }
 
-  scope :disponible, where('articles.numero != ?', -1).order('articles.numero desc')
+  scope :disponible, where('articles.numero != ?', -1).order('articles.numero asc')
 
   scope :premier_serie, where('articles.numero = ?', 0)
 
