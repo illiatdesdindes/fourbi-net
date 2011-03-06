@@ -1,7 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://gemcutter.org'
 
-gem 'rails', '3.0.4'
+gem 'rails', '3.0.5'
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -27,7 +27,7 @@ gem 'will_paginate', '3.0.pre2', :require => 'will_paginate'
 gem 'paperclip', '2.3.8'
 gem 'rest-client', '1.6.0', :require => 'rest_client'
 gem 'nokogiri', '1.4.4', :require => 'nokogiri'
-gem 'kramdown', '0.13.1', :require => 'kramdown'
+gem 'kramdown', '0.13.2', :require => 'kramdown'
 gem 'prawn', '0.10.2', :git => "git://github.com/sandal/prawn", :tag => '0.10.2', :require => "prawn", :submodules => true
 
 group :development do
