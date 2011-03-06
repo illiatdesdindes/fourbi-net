@@ -1,5 +1,7 @@
 module MailHttp
 
+  RestClient.log = "stdout"
+
   MailHttp::SCRIPT_URL = ENV['MAIL_SCRIPT_URL']
 
   MailHttp::USER = ENV['MAIL_USER']
