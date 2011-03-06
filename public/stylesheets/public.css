@@ -292,17 +292,23 @@ p {
 .nouveautes_haut_image_desordre {
   top: 298px; }
 
+.nouveautes_haut_descriptif {
+  top: 400px; }
+
 .nouveautes_milieu_cadre_terrier {
-  top: 420px; }
+  top: 440px; }
 
 .nouveautes_milieu_image_terrier {
-  top: 433px; }
+  top: 453px; }
 
 .nouveautes_milieu_cadre_desordre {
-  top: 455px; }
+  top: 475px; }
 
 .nouveautes_milieu_image_desordre {
-  top: 478px; }
+  top: 498px; }
+
+.nouveautes_milieu_descriptif {
+  top: 600px; }
 
 .nouveautes_bas_cadre_terrier {
   top: 310px; }
@@ -311,10 +317,13 @@ p {
   top: 323px; }
 
 .nouveautes_bas_cadre_desordre {
-  top: 635px; }
+  top: 675px; }
 
 .nouveautes_bas_image_desordre {
-  top: 658px; }
+  top: 698px; }
+
+.nouveautes_bas_descriptif {
+  top: 800px; }
 
 .nouveautes_colonne_0_cadre_terrier {
   left: 230px; }
@@ -390,6 +399,12 @@ p {
       max-height: 128px;
       max-width: 98px;
       width: expression(this.width > 98 ? 98: true); }
+
+.nouveautes_descriptif {
+  position: absolute;
+  width: 126px;
+  text-align: center;
+  font-size: 10px; }
 
 #coordonnees_info {
   position: absolute;
