@@ -28,7 +28,7 @@
 .nouveautes_haut_image_terrier
   top = !nouveaute_haut + !hauteur_bord_haut_cadre_terrier_moyen
 .nouveautes_haut_cadre_desordre
-  top: !nouveaute_haut + !nouveaute_delta_hauteur_terrier_desordre
+  top = !nouveaute_haut + !nouveaute_delta_hauteur_terrier_desordre
 .nouveautes_haut_image_desordre
   top = !nouveaute_haut + !nouveaute_delta_hauteur_terrier_desordre + !hauteur_bord_haut_cadre_desordre_moyen
 .nouveautes_haut_descriptif
@@ -98,8 +98,9 @@
 
 .nouveautes_image_desordre
   position: absolute
-  width = !largeur_image_visible_cadre_desordre_moyen
   display: table
+  height = !hauteur_image_visible_cadre_desordre_moyen
+  width = !largeur_image_visible_cadre_desordre_moyen
   div
     text-align: center
     display: table-cell

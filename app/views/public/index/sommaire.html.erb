@@ -15,15 +15,11 @@
 
   <p>Nouveautés en ligne:</p>
 
-  <div id="s_nouveautes">
-    <div>
-      <% @nouveautes.each do |article| %>
-          <%= link_to image_tag(article.image.url(:image_article)), {:action => :nouveautes}, {:title => article.nom} %>
-      <% end %>
-    </div>
-  </div>
-
 </div>
+
+<% (0...@nouveautes.length).each do |i| %>
+    <%= render(:partial => 'public/index/item_nouveaute_sommaire', :locals => {:article => @nouveautes[i], :colonne => i}) %>
+<% end %>
 
 <div id="s_bulle_desordre">
   <%= link_to image_tag('bulles/desordre.jpg'), {:controller => 'public/desordre', :action => :boutique}, {:title => 'La boutique du désordre'} %>

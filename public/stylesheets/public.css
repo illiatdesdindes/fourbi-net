@@ -209,11 +209,84 @@ input[type="submit"] {
 #s_image_terrier_3 {
   left: 714px; }
 
-#s_nouveautes div {
-  display: inline; }
+.s_nouveautes_element {
+  position: absolute; }
 
-#s_nouveautes img {
-  max-width: 60px; }
+.s_nouveautes_cadre_terrier {
+  top: 450px; }
+
+.s_nouveautes_image_terrier {
+  top: 458px; }
+
+.s_nouveautes_cadre_desordre {
+  top: 461px; }
+
+.s_nouveautes_image_desordre {
+  top: 477px; }
+
+.s_nouveautes_colonne_0_cadre_terrier {
+  left: 17px; }
+
+.s_nouveautes_colonne_1_cadre_terrier {
+  left: 97px; }
+
+.s_nouveautes_colonne_2_cadre_terrier {
+  left: 177px; }
+
+.s_nouveautes_colonne_0_cadre_desordre {
+  left: 20px; }
+
+.s_nouveautes_colonne_1_cadre_desordre {
+  left: 100px; }
+
+.s_nouveautes_colonne_2_cadre_desordre {
+  left: 180px; }
+
+.s_nouveautes_colonne_0_image_terrier {
+  left: 26px; }
+
+.s_nouveautes_colonne_1_image_terrier {
+  left: 106px; }
+
+.s_nouveautes_colonne_2_image_terrier {
+  left: 186px; }
+
+.s_nouveautes_colonne_0_image_desordre {
+  left: 26px; }
+
+.s_nouveautes_colonne_1_image_desordre {
+  left: 106px; }
+
+.s_nouveautes_colonne_2_image_desordre {
+  left: 188px; }
+
+.s_nouveautes_image_desordre {
+  position: absolute;
+  height: 42px;
+  width: 64px;
+  display: table; }
+  .s_nouveautes_image_desordre div {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle; }
+    .s_nouveautes_image_desordre div img {
+      max-height: 42px;
+      max-width: 64px;
+      width: expression(this.width > 64 ? 64: true); }
+
+.s_nouveautes_image_terrier {
+  position: absolute;
+  display: table;
+  height: 79px;
+  width: 62px; }
+  .s_nouveautes_image_terrier div {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle; }
+    .s_nouveautes_image_terrier div img {
+      max-height: 79px;
+      max-width: 62px;
+      width: expression(this.width > 62 ? 62: true); }
 
 #aide_contenu {
   position: absolute;
@@ -375,8 +448,9 @@ p {
 
 .nouveautes_image_desordre {
   position: absolute;
-  width: 90px;
-  display: table; }
+  display: table;
+  height: 58px;
+  width: 90px; }
   .nouveautes_image_desordre div {
     text-align: center;
     display: table-cell;

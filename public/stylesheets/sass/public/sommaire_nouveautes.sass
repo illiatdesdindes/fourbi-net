@@ -1,0 +1,74 @@
+.s_nouveautes_element
+  position: absolute
+
+!s_nouveaute_top = 450px
+!s_nouveaute_delta_hauteur_terrier_desordre = 11px
+
+.s_nouveautes_cadre_terrier
+  top = !s_nouveaute_top
+.s_nouveautes_image_terrier
+  top = !s_nouveaute_top + !hauteur_bord_haut_cadre_terrier_petit
+.s_nouveautes_cadre_desordre
+  top = !s_nouveaute_top + !s_nouveaute_delta_hauteur_terrier_desordre
+.s_nouveautes_image_desordre
+  top = !s_nouveaute_top + !s_nouveaute_delta_hauteur_terrier_desordre + !hauteur_bord_haut_cadre_desordre_petit
+
+!s_nouveautes_colonne_0_cadre_terrier = 17px
+!s_nouveautes_cadre_ecartement = 80px
+!s_nouveautes_cadre_ecartement_desordre_terrier = 3px
+
+.s_nouveautes_colonne_0_cadre_terrier
+  left = !s_nouveautes_colonne_0_cadre_terrier
+.s_nouveautes_colonne_1_cadre_terrier
+  left = !s_nouveautes_colonne_0_cadre_terrier + !s_nouveautes_cadre_ecartement
+.s_nouveautes_colonne_2_cadre_terrier
+  left = !s_nouveautes_colonne_0_cadre_terrier + (2 * !s_nouveautes_cadre_ecartement)
+
+.s_nouveautes_colonne_0_cadre_desordre
+  left = !s_nouveautes_colonne_0_cadre_terrier + !s_nouveautes_cadre_ecartement_desordre_terrier
+.s_nouveautes_colonne_1_cadre_desordre
+  left = !s_nouveautes_colonne_0_cadre_terrier + !s_nouveautes_cadre_ecartement + !s_nouveautes_cadre_ecartement_desordre_terrier
+.s_nouveautes_colonne_2_cadre_desordre
+  left = !s_nouveautes_colonne_0_cadre_terrier + (2 * !s_nouveautes_cadre_ecartement) + !s_nouveautes_cadre_ecartement_desordre_terrier
+
+.s_nouveautes_colonne_0_image_terrier
+  left = !s_nouveautes_colonne_0_cadre_terrier + !largeur_bord_gauche_cadre_terrier_petit
+.s_nouveautes_colonne_1_image_terrier
+  left = !s_nouveautes_colonne_0_cadre_terrier + !s_nouveautes_cadre_ecartement + !largeur_bord_gauche_cadre_terrier_petit
+.s_nouveautes_colonne_2_image_terrier
+  left = !s_nouveautes_colonne_0_cadre_terrier + (2 * !s_nouveautes_cadre_ecartement) + !largeur_bord_gauche_cadre_terrier_petit
+
+.s_nouveautes_colonne_0_image_desordre
+  left = !s_nouveautes_colonne_0_cadre_terrier + !s_nouveautes_cadre_ecartement_desordre_terrier + !largeur_bord_gauche_cadre_desordre_petit
+.s_nouveautes_colonne_1_image_desordre
+  left = !s_nouveautes_colonne_0_cadre_terrier + !s_nouveautes_cadre_ecartement + !s_nouveautes_cadre_ecartement_desordre_terrier + !largeur_bord_gauche_cadre_desordre_petit
+.s_nouveautes_colonne_2_image_desordre
+  left = !s_nouveautes_colonne_0_cadre_terrier + (2 * !s_nouveautes_cadre_ecartement) + !s_nouveautes_cadre_ecartement_desordre_terrier + !largeur_bord_gauche_cadre_desordre_moyen
+
+.s_nouveautes_image_desordre
+  position: absolute
+  height = !hauteur_image_visible_cadre_desordre_petit
+  width = !largeur_image_visible_cadre_desordre_petit
+  display: table
+  div
+    text-align: center
+    display: table-cell
+    vertical-align: middle
+    img
+      max-height = !hauteur_image_visible_cadre_desordre_petit
+      max-width = !largeur_image_visible_cadre_desordre_petit
+      width: expression(this.width > 64 ? 64: true)
+
+.s_nouveautes_image_terrier
+  position: absolute
+  display: table
+  height = !hauteur_image_visible_cadre_terrier_petit
+  width = !largeur_image_visible_cadre_terrier_petit
+  div
+    text-align: center
+    display: table-cell
+    vertical-align: middle
+    img
+      max-height = !hauteur_image_visible_cadre_terrier_petit
+      max-width = !largeur_image_visible_cadre_terrier_petit
+      width: expression(this.width > 62 ? 62: true)
