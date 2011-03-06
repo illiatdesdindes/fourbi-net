@@ -404,7 +404,7 @@ p { padding-bottom: 10px; }
 
 #ac_scroll_gauche { opacity: 0.5; filter: alpha(opacity=50); }
 
-#ac_descriptif_serie { position: absolute; top: 180px; left: 20px; width: 150px; }
+#ac_descriptif_serie { position: absolute; top: 180px; left: 20px; width: 200px; }
 
 .ac_nom_serie { font-size: 10px; padding-top: 10px; text-align: center; }
 
@@ -415,7 +415,7 @@ p { padding-bottom: 10px; }
 
 .ac_liste_series a { font-weight: normal; }
 .ac_liste_series a:hover { text-decoration: underline; }
-.ac_liste_series li { font-size: 10px; list-style: none; line-height: 14px; }
+.ac_liste_series li { font-size: 10px; list-style: none; }
 
 #ac_no_stock { color: orange; font-size: 12px; padding-left: 20px; }
 
