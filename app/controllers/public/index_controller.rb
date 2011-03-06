@@ -3,7 +3,7 @@ class Public::IndexController < Public::DefaultPublicController
   layout 'public-layout'
 
   def aide
-    
+
   end
 
   def cgv
@@ -12,7 +12,7 @@ class Public::IndexController < Public::DefaultPublicController
 
   def nouveautes
     @nouveautes = Article.nouveaute(12).includes(:serie => :boutique)
-    @page_title = 'fourbi.net: les nouveatés'
+    @page_title = 'fourbi.net: les nouveautés'
   end
 
   def sommaire
