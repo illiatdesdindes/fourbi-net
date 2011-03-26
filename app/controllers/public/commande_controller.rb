@@ -219,7 +219,9 @@ class Public::CommandeController < Public::DefaultPublicController
     result[:cust_zip] = client.code_postal
     result[:cust_address] = client.adresse
     result[:order_id] = client.id
-    result[:order_info] = "Commande de #{client.article_clients.inject(0){|n, ac| n + ac.quantite}} articles(s)"
+
+    quantite_articles = client.article_clients.inject(0){|n, ac| n + ac.quantite}
+    result[:order_info] = "Commande de #{quantite_articles} article#{(quantite_articles > 1) ? "s" : "" }"
     result[:cust_country] = client.pays
     result[:language] = 'fr'
     result[:url_success] = url_for :controller => 'public/retour', :action => :paiement_succes, :protocol => 'http', :only_path => false
