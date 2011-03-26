@@ -51,7 +51,7 @@ class ArticleClient < ActiveRecord::Base
   def update_article delta
     if article.nombre_restant != -1
       if (delta > 0) && (article.nombre_restant < delta)
-        client.errors.add('prix', "Il manque #{delta - article.nombre_restant} exemplaire(s) de #{article.nom} en stock pour pouvoir valider votre commande, merci d'en supprimer")
+        client.errors.add(:base, "Il manque #{delta - article.nombre_restant} exemplaire(s) de #{article.nom} en stock pour pouvoir valider votre commande, merci d'en supprimer")
         false
       else
         article.nombre_restant -= delta
