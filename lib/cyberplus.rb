@@ -1,8 +1,9 @@
 # Simplifie l'ecriture d'application rails utilisant l'API Cyberplus de la Banque Populaire.
 # http://www.cyberpaiement.tm.fr/
-# Copyright (c) 2009-2010 Julien Kirch, released under the MIT license
+# Copyright (c) 2009-2011 Julien Kirch, released under the MIT license
 
 require 'digest/sha1'
+require 'extend_string'
 
 class Cyberplus
 
@@ -92,10 +93,11 @@ class Cyberplus
 
     result[:vads_trans_id] = check_integer_and_length params, :trans_id, 6
 
-    validation_mode = check_integer params, :validation_mode
+    check_integer params, :validation_mode
 
     result[:vads_payment_cards] = params[:payment_cards]
 
+    validation_mode = params[:validation_mode]
     unless [0, 1].include? validation_mode.to_i
       raise "La valeur du validation_mode \"#{validation_mode}\" est invalide"
     else
@@ -104,7 +106,7 @@ class Cyberplus
 
     CHAMPS_FACULTATIFS_A_RECOPIER.each do |nom_champ|
       if params.has_key? nom_champ
-        result[('vads_' + nom_champ.to_s).to_sym] = params[nom_champ].to_s.delete('&<>')
+        result[('vads_' + nom_champ.to_s).to_sym] = params[nom_champ].to_s.delete('&<>').remove_accents
       end
     end
 
@@ -166,6 +168,7 @@ class Cyberplus
     end
   end
 
+  # Vérifie qu'un paramètre est bien un entier
   def Cyberplus.check_integer params, name
     valeur_sans_prefixe = params[name].to_s.sub(/\A0+/, '')
 
