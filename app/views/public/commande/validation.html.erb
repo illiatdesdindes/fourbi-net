@@ -52,7 +52,7 @@
     </div>
 
     <div id="validation_banque">
-      <% form_for :commande, @client, :url => Cyberplus::URL_PLATEFORME do |f| %>
+      <% form_for :commande, @client, :authenticity_token => false, :url => Cyberplus::URL_PLATEFORME do |f| %>
           <% @params_cyberplus.each_pair do |key, value| %>
             <%= hidden_field_tag key, value %>
           <% end %>
