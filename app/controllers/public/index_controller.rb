@@ -11,7 +11,7 @@ class Public::IndexController < Public::DefaultPublicController
   end
 
   def nouveautes
-    @nouveautes = Article.nouveaute(12).includes(:serie => :boutique)
+    @nouveautes = Article.nouveaute(8).includes(:serie => :boutique)
     @page_title = 'fourbi.net: les nouveautés'
   end
 
